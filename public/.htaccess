@@ -12,9 +12,35 @@ Options +FollowSymLinks
     RewriteEngine On
     RewriteBase /
 
-    # Ensure HTTPS
+    # --------------------------------------------------------------------------
+    # 1. SUBDOMAIN ISOLATION (CRITICAL FOR 20i / cPanel)
+    # --------------------------------------------------------------------------
+    # In shared hosting (20i StackCP, cPanel), subdomains like email.tonmoyinfrastructure.org
+    # and openmail.tonmoyinfrastructure.org often have document roots inside public_html/
+    # (e.g. public_html/email and public_html/openmail).
+    #
+    # Because Apache inherits parent .htaccess files, the main site's rewrite rules
+    # execute on all subdomains. We immediately halt rewriting if the host is a subdomain.
+    RewriteCond %{HTTP_HOST} !^(www\.)?tonmoyinfrastructure\.org$ [NC]
+    RewriteRule ^ - [L]
+
+    # --------------------------------------------------------------------------
+    # 2. HTTPS ENFORCEMENT (StackCDN / Cloudflare / Reverse Proxy Compatible)
+    # --------------------------------------------------------------------------
+    # 20i StackCDN and Cloudflare terminate SSL at the edge and proxy requests to
+    # the Apache backend over HTTP while passing X-Forwarded-Proto: https.
+    # A blind "RewriteCond %{HTTPS} off" check triggers an infinite 301 loop (ERR_TOO_MANY_REDIRECTS).
     RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTP:X-Forwarded-SSL} !on
+    RewriteCond %{ENV:HTTPS} !on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # --------------------------------------------------------------------------
+    # 3. DIRECTORY SHORTCUTS & SUBDOMAIN FORWARDING (Main domain only)
+    # --------------------------------------------------------------------------
+    # If accessed directly via main domain path, route email to its subdomain
+    RewriteRule ^email(/.*)?$ https://email.tonmoyinfrastructure.org$1 [R=301,L]
 
     # Legacy product shortcuts
     RewriteRule ^openmail/?$ /projects/openmail/ [R=301,L]
@@ -25,13 +51,12 @@ Options +FollowSymLinks
     RewriteRule ^m31tesla/?$ /projects/m31tesla/ [R=301,L]
     RewriteRule ^m31entropy/?$ /projects/m31entropy/ [R=301,L]
 
-    # If requested directory exists but missing trailing slash, enforce slash
+    # --------------------------------------------------------------------------
+    # 4. NEXT.JS STATIC ROUTING & TRAILING SLASH (Main domain only)
+    # --------------------------------------------------------------------------
+    # Next.js export with trailingSlash: true creates folder/index.html.
+    # Enforce trailing slash on directories to prevent 404 or index leak.
     RewriteCond %{REQUEST_FILENAME} -d
-    RewriteCond %{REQUEST_URI} !(.*)/$
-    RewriteRule ^(.*)$ $1/ [L,R=301]
-
-    # If directory with index.html exists, rewrite clean path to trailing slash
-    RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
     RewriteCond %{REQUEST_URI} !(.*)/$
     RewriteRule ^(.*)$ /$1/ [L,R=301]
 
@@ -40,6 +65,16 @@ Options +FollowSymLinks
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{DOCUMENT_ROOT}/$1.html -f
     RewriteRule ^([^/]+)/?$ /$1.html [L]
+
+    # --------------------------------------------------------------------------
+    # 5. BRACKETED CHUNK FALLBACK (For cPanel/20i File Manager unzipping)
+    # --------------------------------------------------------------------------
+    # Some file managers (such as 20i / cPanel) strip square brackets [ ] from folder
+    # names during upload or unzipping (e.g. converting [slug] to slug).
+    # If a requested chunk has brackets and does not exist on disk, rewrite to the
+    # unbracketed directory name so Next.js dynamic routes hydrate without ChunkLoadError.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(_next/static/chunks/.+)(?:\[|%5[bB])([^/\]%]+)(?:\]|%5[dD])(.*)$ /$1$2$3 [L]
 </IfModule>
 
 # Custom 404 handler pointing to Next.js export 404 page

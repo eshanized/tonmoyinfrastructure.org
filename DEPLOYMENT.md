@@ -23,6 +23,16 @@ The platform features an existing `@netlify/plugin-nextjs` configuration:
 - Publish directory: `.next`
 - Node version: `>= 18.17.0`
 
+### Option C: Shared Hosting / 20i StackCP / cPanel (Static Export to `public_html`)
+When hosting on shared Linux platforms (e.g. 20i StackCP, cPanel, DirectAdmin):
+1. Run `npm run build` to generate the static files in the `out/` directory.
+2. Upload the contents of `out/` into `/public_html/`.
+3. **Important for Existing Subdomains**:
+   - If subdomains (such as `email` and `openmail`) exist as subfolders inside `/public_html/`, **do not delete or overwrite them**.
+   - `public/.htaccess` includes explicit subdomain isolation (`RewriteCond %{HTTP_HOST} !^(www\.)?tonmoyinfrastructure\.org$ [NC]`) so root rewrites will never interfere with subdomains.
+   - `public/.htaccess` is pre-configured with proxy-aware HTTPS redirection (`X-Forwarded-Proto`) to prevent `ERR_TOO_MANY_REDIRECTS` loops when behind StackCDN or Cloudflare.
+4. **Recommended Architecture**: In 20i StackCP or cPanel "Subdomains", map subdomain Document Roots outside `/public_html` (e.g. `/email` and `/openmail`) for total file isolation.
+
 ---
 
 ## 2. Environment Variables
