@@ -11,12 +11,11 @@ export function ReadingProgress() {
     restDelta: 0.001,
   });
 
-  if (prefersReduced) return null;
-
   return (
     <motion.div
       className="fixed top-0 left-0 right-0 z-[55] h-0.5 origin-left bg-brand"
-      style={{ scaleX }}
+      style={{ scaleX: prefersReduced ? 0 : scaleX, display: prefersReduced ? 'none' : 'block' }}
+      aria-hidden="true"
     />
   );
 }
