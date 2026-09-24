@@ -30,7 +30,10 @@ const navItems: NavItem[] = [
     label: 'Infrastructure',
     href: '/infrastructure',
     children: [
-      { label: 'Overview', href: '/infrastructure', meta: '01' },
+      { label: 'Solutions Hub', href: '/solutions', meta: '01' },
+      { label: 'Infrastructure Overview', href: '/infrastructure', meta: '02' },
+      { label: 'Data Centers', href: '/infrastructure/data-centers' },
+      { label: 'Courier Network', href: '/infrastructure/courier' },
       { label: 'Domains', href: '/infrastructure/domains' },
       { label: 'Hosting', href: '/infrastructure/hosting' },
       { label: 'Networking', href: '/infrastructure/networking' },

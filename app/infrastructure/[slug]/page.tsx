@@ -8,6 +8,8 @@ import { TivIcon } from '@/components/shared/tiv-icon';
 import { Reveal } from '@/components/shared/motion';
 import { NetworkDiagram } from '@/components/infrastructure/network-diagram';
 import { OpticalPath } from '@/components/infrastructure/optical-path';
+import { CourierDiagram } from '@/components/infrastructure/courier-diagram';
+import { DataCenterDiagram } from '@/components/infrastructure/data-center-diagram';
 import { getInfrastructureService, getInfrastructureServices } from '@/lib/content';
 import { generateInfrastructureMetadata } from '@/lib/seo';
 import { generatePageGraph } from '@/lib/structured-data';
@@ -111,6 +113,18 @@ export default function InfrastructureServicePage({
               {(slug === 'optical-systems' || slug === 'optical') && (
                 <div className="mt-10">
                   <OpticalPath />
+                </div>
+              )}
+
+              {slug === 'data-centers' && (
+                <div className="mt-10">
+                  <DataCenterDiagram />
+                </div>
+              )}
+
+              {slug === 'courier' && (
+                <div className="mt-10">
+                  <CourierDiagram />
                 </div>
               )}
             </div>

@@ -29,7 +29,10 @@ const navGroups: NavGroup[] = [
     label: 'Infrastructure',
     href: '/infrastructure',
     children: [
-      { label: 'Overview', href: '/infrastructure' },
+      { label: 'Solutions Hub', href: '/solutions' },
+      { label: 'Infrastructure Overview', href: '/infrastructure' },
+      { label: 'Data Centers', href: '/infrastructure/data-centers' },
+      { label: 'Courier Network', href: '/infrastructure/courier' },
       { label: 'Domains', href: '/infrastructure/domains' },
       { label: 'Hosting', href: '/infrastructure/hosting' },
       { label: 'Networking', href: '/infrastructure/networking' },

@@ -9,7 +9,10 @@ const footerNav = {
     { label: 'Open Source', href: '/open-source' },
   ],
   Infrastructure: [
+    { label: 'Solutions Hub', href: '/solutions' },
     { label: 'Overview', href: '/infrastructure' },
+    { label: 'Data Centers', href: '/infrastructure/data-centers' },
+    { label: 'Courier Network', href: '/infrastructure/courier' },
     { label: 'Hosting', href: '/infrastructure/hosting' },
     { label: 'Networking', href: '/infrastructure/networking' },
     { label: 'Optical Systems', href: '/infrastructure/optical' },

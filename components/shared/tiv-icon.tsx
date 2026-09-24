@@ -27,6 +27,11 @@ import {
   MessageSquare,
   ArrowUpRight,
   ArrowRight,
+  Truck,
+  Plane,
+  Package,
+  Database,
+  Building2,
   type LucideIcon,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -61,6 +66,11 @@ const iconMap: Record<string, LucideIcon> = {
   message: MessageSquare,
   arrowUpRight: ArrowUpRight,
   arrowRight: ArrowRight,
+  truck: Truck,
+  plane: Plane,
+  package: Package,
+  database: Database,
+  building: Building2,
 };
 
 export function TivIcon({
