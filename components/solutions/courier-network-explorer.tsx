@@ -59,9 +59,9 @@ export function CourierNetworkExplorer() {
           >
             <defs>
               <linearGradient id="corridorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="var(--border)" stopOpacity="0.2" />
-                <stop offset="50%" stopColor="var(--brand)" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="var(--border)" stopOpacity="0.2" />
+                <stop offset="0%" stopColor="hsl(var(--border))" stopOpacity="0.2" />
+                <stop offset="50%" stopColor="hsl(var(--brand))" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="hsl(var(--border))" stopOpacity="0.2" />
               </linearGradient>
             </defs>
 
@@ -75,7 +75,7 @@ export function CourierNetworkExplorer() {
                   y1={y}
                   x2={mapWidth}
                   y2={y}
-                  stroke="var(--border)"
+                  stroke="hsl(var(--border))"
                   strokeWidth="0.5"
                   strokeDasharray="4 4"
                 />
@@ -90,7 +90,7 @@ export function CourierNetworkExplorer() {
                   y1="0"
                   x2={x}
                   y2={mapHeight}
-                  stroke="var(--border)"
+                  stroke="hsl(var(--border))"
                   strokeWidth="0.5"
                   strokeDasharray="4 4"
                 />
@@ -114,7 +114,7 @@ export function CourierNetworkExplorer() {
                     key={`corridor-${hubA.name}-${hubB.name}`}
                     d={`M ${posA.x} ${posA.y} Q ${midX} ${midY} ${posB.x} ${posB.y}`}
                     fill="none"
-                    stroke={isConnectedToSelected ? 'var(--brand)' : 'var(--border)'}
+                    stroke={isConnectedToSelected ? 'hsl(var(--brand))' : 'hsl(var(--border))'}
                     strokeWidth={isConnectedToSelected ? 1.5 : 0.6}
                     opacity={isConnectedToSelected ? 0.9 : 0.25}
                   />
@@ -135,19 +135,19 @@ export function CourierNetworkExplorer() {
                   onClick={() => setSelectedHub(hub)}
                 >
                   {isSelected && (
-                    <circle r="12" fill="var(--brand)" opacity="0.3" className="animate-ping" />
+                    <circle r="12" fill="hsl(var(--brand))" opacity="0.3" className="animate-ping" />
                   )}
                   <circle
                     r={isSelected ? 7 : 4.5}
-                    fill="var(--card)"
-                    stroke="var(--brand)"
+                    fill="hsl(var(--card))"
+                    stroke="hsl(var(--brand))"
                     strokeWidth={isSelected ? 2 : 1.2}
                   />
-                  <circle r={isSelected ? 3.5 : 2} fill="var(--brand)" />
+                  <circle r={isSelected ? 3.5 : 2} fill="hsl(var(--brand))" />
                   <text
                     x="8"
                     y="4"
-                    fill="var(--foreground)"
+                    fill="hsl(var(--foreground))"
                     fontSize="9.5"
                     fontFamily="var(--font-jetbrains)"
                     fontWeight={isSelected ? '600' : '400'}

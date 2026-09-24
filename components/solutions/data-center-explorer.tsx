@@ -39,7 +39,7 @@ export function DataCenterExplorer() {
   const getLoadColor = (load: number) => {
     if (load < 80) return '#10b981'; // emerald
     if (load < 88) return '#f59e0b'; // amber
-    return 'var(--brand)'; // coral brand
+    return 'hsl(var(--brand))'; // coral brand
   };
 
   return (
@@ -94,7 +94,7 @@ export function DataCenterExplorer() {
               <span className="h-2 w-2 rounded-full bg-amber-500" /> 80-87% Load
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-[var(--brand)]" /> 88%+ Load
+              <span className="h-2 w-2 rounded-full bg-brand" /> 88%+ Load
             </span>
           </div>
         </div>
@@ -116,7 +116,7 @@ export function DataCenterExplorer() {
                   y1={y}
                   x2={mapWidth}
                   y2={y}
-                  stroke="var(--border)"
+                  stroke="hsl(var(--border))"
                   strokeWidth="0.5"
                   strokeDasharray="4 4"
                 />
@@ -131,7 +131,7 @@ export function DataCenterExplorer() {
                   y1="0"
                   x2={x}
                   y2={mapHeight}
-                  stroke="var(--border)"
+                  stroke="hsl(var(--border))"
                   strokeWidth="0.5"
                   strokeDasharray="4 4"
                 />
@@ -150,7 +150,7 @@ export function DataCenterExplorer() {
                     y1={from.y}
                     x2={to.x}
                     y2={to.y}
-                    stroke="var(--border)"
+                    stroke="hsl(var(--border))"
                     strokeWidth="1"
                     strokeDasharray="2 4"
                     opacity="0.4"
@@ -179,7 +179,7 @@ export function DataCenterExplorer() {
                   {/* Outer ring */}
                   <circle
                     r={isSelected ? '8' : '5'}
-                    fill="var(--card)"
+                    fill="hsl(var(--card))"
                     stroke={pinColor}
                     strokeWidth={isSelected ? '2.5' : '1.5'}
                   />
@@ -190,7 +190,7 @@ export function DataCenterExplorer() {
                   <text
                     x="8"
                     y="4"
-                    fill="var(--foreground)"
+                    fill="hsl(var(--foreground))"
                     fontSize="10"
                     fontFamily="var(--font-jetbrains)"
                     fontWeight={isSelected ? '600' : '400'}

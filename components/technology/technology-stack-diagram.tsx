@@ -8,9 +8,9 @@ const layers = [
 ];
 
 const layerColors: Record<string, string> = {
-  Stable: 'var(--brand)',
-  Developing: 'var(--brand)',
-  Research: 'var(--muted-foreground)',
+  Stable: 'hsl(var(--brand))',
+  Developing: 'hsl(var(--brand))',
+  Research: 'hsl(var(--muted-foreground))',
 };
 
 export function TechnologyStackDiagram() {
@@ -31,7 +31,7 @@ export function TechnologyStackDiagram() {
       >
         {layers.map((layer, i) => {
           const y = padding + i * (blockHeight + gap);
-          const color = layerColors[layer.status] || 'var(--muted-foreground)';
+          const color = layerColors[layer.status] || 'hsl(var(--muted-foreground))';
           return (
             <g key={layer.name}>
               <rect
@@ -40,7 +40,7 @@ export function TechnologyStackDiagram() {
                 width={blockWidth}
                 height={blockHeight}
                 fill="none"
-                stroke="var(--border)"
+                stroke="hsl(var(--border))"
                 strokeWidth="1"
               />
               <rect
@@ -53,7 +53,7 @@ export function TechnologyStackDiagram() {
               <text
                 x={padding + 16}
                 y={y + blockHeight / 2 + 1}
-                fill="var(--foreground)"
+                fill="hsl(var(--foreground))"
                 fontSize="14"
                 fontFamily="var(--font-display)"
                 fontWeight="600"
@@ -64,7 +64,7 @@ export function TechnologyStackDiagram() {
               <text
                 x={padding + blockWidth - 8}
                 y={y + blockHeight / 2 + 1}
-                fill="var(--muted-foreground)"
+                fill="hsl(var(--muted-foreground))"
                 fontSize="11"
                 fontFamily="var(--font-jetbrains)"
                 dominantBaseline="middle"
@@ -83,17 +83,17 @@ export function TechnologyStackDiagram() {
             y1={padding - 12}
             x2={width / 2}
             y2={padding - 4}
-            stroke="var(--muted-foreground)"
+            stroke="hsl(var(--muted-foreground))"
             strokeWidth="1"
           />
           <polygon
             points={`${width / 2 - 4},${padding - 4} ${width / 2 + 4},${padding - 4} ${width / 2},${padding}`}
-            fill="var(--muted-foreground)"
+            fill="hsl(var(--muted-foreground))"
           />
           <text
             x={width / 2}
             y={padding - 18}
-            fill="var(--muted-foreground)"
+            fill="hsl(var(--muted-foreground))"
             fontSize="10"
             fontFamily="var(--font-jetbrains)"
             textAnchor="middle"

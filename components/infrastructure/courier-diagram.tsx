@@ -19,9 +19,9 @@ export function CourierDiagram() {
       >
         <defs>
           <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="var(--border)" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="var(--brand)" stopOpacity="1" />
-            <stop offset="100%" stopColor="var(--border)" stopOpacity="0.8" />
+            <stop offset="0%" stopColor="hsl(var(--border))" stopOpacity="0.8" />
+            <stop offset="50%" stopColor="hsl(var(--brand))" stopOpacity="1" />
+            <stop offset="100%" stopColor="hsl(var(--border))" stopOpacity="0.8" />
           </linearGradient>
           <marker
             id="courierArrow"
@@ -32,74 +32,74 @@ export function CourierDiagram() {
             markerHeight="6"
             orient="auto-start-reverse"
           >
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--muted-foreground)" />
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--muted-foreground))" />
           </marker>
         </defs>
 
         {/* Stage 1: Origin & Intake */}
         <g transform="translate(40, 40)">
-          <rect width="180" height="90" rx="2" fill="var(--secondary)" stroke="var(--border)" strokeWidth="1" />
-          <rect x="0" y="0" width="180" height="3" fill="var(--brand)" />
-          <text x="90" y="28" textAnchor="middle" fill="var(--foreground)" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
+          <rect width="180" height="90" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
+          <rect x="0" y="0" width="180" height="3" fill="hsl(var(--brand))" />
+          <text x="90" y="28" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
             1. Parcel & Asset Intake
           </text>
-          <text x="90" y="48" textAnchor="middle" fill="var(--muted-foreground)" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="90" y="48" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
             Cryptographic Tracking Tag
           </text>
-          <text x="90" y="66" textAnchor="middle" fill="var(--muted-foreground)" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="90" y="66" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
             Anti-Static / Fragile Seals
           </text>
-          <text x="90" y="82" textAnchor="middle" fill="var(--brand)" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="90" y="82" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
             T0: Intake Timestamped
           </text>
         </g>
 
         {/* Connector 1 -> 2 */}
-        <line x1="220" y1="85" x2="300" y2="85" stroke="var(--border)" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#courierArrow)" />
+        <line x1="220" y1="85" x2="300" y2="85" stroke="hsl(var(--border))" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#courierArrow)" />
 
         {/* Stage 2: Customs & Security Inspection */}
         <g transform="translate(300, 40)">
-          <rect width="200" height="90" rx="2" fill="var(--secondary)" stroke="var(--border)" strokeWidth="1" />
-          <rect x="0" y="0" width="200" height="3" fill="var(--brand)" />
-          <text x="100" y="28" textAnchor="middle" fill="var(--foreground)" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
+          <rect width="200" height="90" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
+          <rect x="0" y="0" width="200" height="3" fill="hsl(var(--brand))" />
+          <text x="100" y="28" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
             2. Customs & GDP Audit
           </text>
-          <text x="100" y="48" textAnchor="middle" fill="var(--muted-foreground)" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="100" y="48" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
             Automated HS Duty Calculation
           </text>
-          <text x="100" y="66" textAnchor="middle" fill="var(--muted-foreground)" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="100" y="66" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
             Cold Chain & X-Ray Screening
           </text>
-          <text x="100" y="82" textAnchor="middle" fill="var(--brand)" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="100" y="82" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
             ISO 9001 / GDP Verification
           </text>
         </g>
 
         {/* Connector 2 -> 3 */}
-        <line x1="500" y1="85" x2="580" y2="85" stroke="var(--border)" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#courierArrow)" />
+        <line x1="500" y1="85" x2="580" y2="85" stroke="hsl(var(--border))" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#courierArrow)" />
 
         {/* Stage 3: Air Freight & Transit Corridors */}
         <g transform="translate(580, 40)">
-          <rect width="180" height="90" rx="2" fill="var(--secondary)" stroke="var(--border)" strokeWidth="1" />
-          <rect x="0" y="0" width="180" height="3" fill="var(--brand)" />
-          <text x="90" y="28" textAnchor="middle" fill="var(--foreground)" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
+          <rect width="180" height="90" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
+          <rect x="0" y="0" width="180" height="3" fill="hsl(var(--brand))" />
+          <text x="90" y="28" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
             3. Scheduled Transit Mesh
           </text>
-          <text x="90" y="48" textAnchor="middle" fill="var(--muted-foreground)" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="90" y="48" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
             Express Direct Air Flights
           </text>
-          <text x="90" y="66" textAnchor="middle" fill="var(--muted-foreground)" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="90" y="66" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
             Intercontinental Flight Lanes
           </text>
-          <text x="90" y="82" textAnchor="middle" fill="var(--brand)" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="90" y="82" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
             In-Transit Telemetry
           </text>
         </g>
 
         {/* Central Core: 17-Hub International Distribution Mesh */}
         <g transform="translate(80, 180)">
-          <rect width="640" height="100" rx="4" fill="var(--background)" stroke="var(--border)" strokeWidth="1" />
-          <text x="320" y="26" textAnchor="middle" fill="var(--foreground)" fontSize="13" fontWeight="600" fontFamily="var(--font-display)">
+          <rect width="640" height="100" rx="4" fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="1" />
+          <text x="320" y="26" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="13" fontWeight="600" fontFamily="var(--font-display)">
             Global Hub Routing Mesh (17 International Gateway Nodes)
           </text>
 
@@ -117,11 +117,11 @@ export function CourierDiagram() {
               { code: 'BOM', country: 'IN', x: 560 },
             ].map((node) => (
               <g key={node.code} transform={`translate(${node.x}, 0)`}>
-                <rect width="55" height="42" rx="2" fill="var(--secondary)" stroke="var(--border)" strokeWidth="0.8" />
-                <text x="27.5" y="18" textAnchor="middle" fill="var(--brand)" fontSize="10" fontWeight="bold" fontFamily="var(--font-jetbrains)">
+                <rect width="55" height="42" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="0.8" />
+                <text x="27.5" y="18" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontWeight="bold" fontFamily="var(--font-jetbrains)">
                   {node.code}
                 </text>
-                <text x="27.5" y="32" textAnchor="middle" fill="var(--muted-foreground)" fontSize="8" fontFamily="var(--font-sans)">
+                <text x="27.5" y="32" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="8" fontFamily="var(--font-sans)">
                   {node.country}
                 </text>
               </g>
@@ -130,34 +130,34 @@ export function CourierDiagram() {
         </g>
 
         {/* Connecting Lines between Mesh and Final Stages */}
-        <line x1="240" y1="280" x2="240" y2="330" stroke="var(--border)" strokeWidth="1.5" markerEnd="url(#courierArrow)" />
-        <line x1="560" y1="280" x2="560" y2="330" stroke="var(--border)" strokeWidth="1.5" markerEnd="url(#courierArrow)" />
+        <line x1="240" y1="280" x2="240" y2="330" stroke="hsl(var(--border))" strokeWidth="1.5" markerEnd="url(#courierArrow)" />
+        <line x1="560" y1="280" x2="560" y2="330" stroke="hsl(var(--border))" strokeWidth="1.5" markerEnd="url(#courierArrow)" />
 
         {/* Stage 4A: Regional Gateway Sorting */}
         <g transform="translate(140, 330)">
-          <rect width="200" height="70" rx="2" fill="var(--secondary)" stroke="var(--border)" strokeWidth="1" />
-          <text x="100" y="24" textAnchor="middle" fill="var(--foreground)" fontSize="11" fontWeight="600" fontFamily="var(--font-display)">
+          <rect width="200" height="70" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
+          <text x="100" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="600" fontFamily="var(--font-display)">
             4A. Regional Sorting & Depots
           </text>
-          <text x="100" y="42" textAnchor="middle" fill="var(--muted-foreground)" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="100" y="42" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-jetbrains)">
             Automated Conveyor Sortation
           </text>
-          <text x="100" y="58" textAnchor="middle" fill="var(--brand)" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="100" y="58" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
             T+36h Routing Clear
           </text>
         </g>
 
         {/* Stage 4B: Last-Mile Delivery */}
         <g transform="translate(460, 330)">
-          <rect width="200" height="70" rx="2" fill="var(--secondary)" stroke="var(--border)" strokeWidth="1" />
-          <rect x="0" y="0" width="200" height="2" fill="var(--brand)" />
-          <text x="100" y="24" textAnchor="middle" fill="var(--foreground)" fontSize="11" fontWeight="600" fontFamily="var(--font-display)">
+          <rect width="200" height="70" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
+          <rect x="0" y="0" width="200" height="2" fill="hsl(var(--brand))" />
+          <text x="100" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="600" fontFamily="var(--font-display)">
             4B. Final Last-Mile Handover
           </text>
-          <text x="100" y="42" textAnchor="middle" fill="var(--muted-foreground)" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="100" y="42" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-jetbrains)">
             Secure Signature & Geotag
           </text>
-          <text x="100" y="58" textAnchor="middle" fill="var(--brand)" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="100" y="58" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
             Guaranteed T+48h Delivery
           </text>
         </g>

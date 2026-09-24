@@ -76,7 +76,7 @@ export function TechnologyMap() {
                 y1={from.y}
                 x2={to.x}
                 y2={to.y}
-                stroke={isActive ? 'var(--brand)' : 'var(--border)'}
+                stroke={isActive ? 'hsl(var(--brand))' : 'hsl(var(--border))'}
                 strokeWidth={isActive ? '1.5' : '1'}
               />
             );
@@ -107,15 +107,15 @@ export function TechnologyMap() {
                   y={node.y - 14}
                   width={nodeWidth}
                   height="28"
-                  fill={isSelected ? 'var(--brand)' : isRoot ? 'var(--brand)' : isBranch ? 'var(--secondary)' : 'var(--card)'}
-                  stroke={isSelected || isRoot ? 'var(--brand)' : isStable ? 'var(--brand)' : 'var(--border)'}
+                  fill={isSelected ? 'hsl(var(--brand))' : isRoot ? 'hsl(var(--brand))' : isBranch ? 'hsl(var(--secondary))' : 'hsl(var(--card))'}
+                  stroke={isSelected || isRoot ? 'hsl(var(--brand))' : isStable ? 'hsl(var(--brand))' : 'hsl(var(--border))'}
                   strokeWidth={strokeWidth}
                   strokeDasharray={strokeDash}
                 />
                 <text
                   x={node.x}
                   y={node.y + 1}
-                  fill={isSelected || isRoot ? 'var(--brand-foreground)' : 'var(--foreground)'}
+                  fill={isSelected || isRoot ? 'hsl(var(--brand-foreground))' : 'hsl(var(--foreground))'}
                   fontSize={isRoot ? '13' : '11'}
                 fontFamily="var(--font-display)"
                   fontWeight={isRoot || isBranch ? '600' : '400'}

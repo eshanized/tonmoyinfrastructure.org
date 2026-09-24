@@ -7,9 +7,25 @@ import { Reveal } from '@/components/shared/motion';
 import { FleetMetrics } from '@/components/solutions/fleet-metrics';
 import { DataCenterExplorer } from '@/components/solutions/data-center-explorer';
 import { CourierNetworkExplorer } from '@/components/solutions/courier-network-explorer';
+import dynamic from 'next/dynamic';
 import { generatePageMetadata } from '@/lib/seo';
 import { generatePageGraph } from '@/lib/structured-data';
 import { JsonLd } from '@/components/shared/json-ld';
+
+const OpenStreetMapViewer = dynamic(
+  () => import('@/components/solutions/open-street-map-viewer'),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-[550px] w-full items-center justify-center border border-border bg-card font-mono text-xs text-muted-foreground">
+        <span className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-brand animate-ping" />
+          Loading OpenStreetMap Live Telemetry Layer...
+        </span>
+      </div>
+    ),
+  }
+);
 
 export const metadata = generatePageMetadata({
   title: 'Global Infrastructure & Logistics Solutions',
@@ -80,6 +96,22 @@ export default function SolutionsPage() {
           </Reveal>
           <Reveal delay={0.1} className="mt-10">
             <FleetMetrics />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Live OpenStreetMap Section */}
+      <section id="global-map" className="border-b border-border bg-background">
+        <div className="tiv-container py-16 md:py-24">
+          <Reveal>
+            <SectionHeader
+              label="Live Cartography"
+              title="OpenStreetMap Global Telemetry Grid."
+              description="Interactive global telemetry rendered on OpenStreetMap tiles — inspect our 16 mission-critical data center facilities, 17 international courier gateway hubs, and connected 48-hour flight corridors in real time."
+            />
+          </Reveal>
+          <Reveal delay={0.1} className="mt-10">
+            <OpenStreetMapViewer />
           </Reveal>
         </div>
       </section>
