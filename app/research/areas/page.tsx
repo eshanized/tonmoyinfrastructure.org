@@ -36,6 +36,7 @@ const areaDetails: Record<
       'Evaluation metrics for non-hallucinatory software modifications',
     ],
     systems: [
+      { label: 'Octate (AI Code Review Engine)', href: '/projects/octate' },
       { label: 'Mercura (Local AI Assistant)', href: '/projects/mercura' },
       { label: 'Autonomous Systems Paper', href: '/research/publications/autonomous-development-systems' },
     ],
@@ -51,7 +52,7 @@ const areaDetails: Record<
       'Traffic telemetry and congestion avoidance in bare-metal clusters',
     ],
     systems: [
-      { label: 'Octate (Data Platform)', href: '/projects/octate' },
+      { label: 'TIVNet Overlay Architecture', href: '/infrastructure/networking' },
       { label: 'Autonomous Systems Paper', href: '/research/publications/autonomous-development-systems' },
     ],
     objectives:
@@ -82,7 +83,7 @@ const areaDetails: Record<
     ],
     systems: [
       { label: 'OpenMail (Queue Engine)', href: '/projects/openmail' },
-      { label: 'Octate (Event Pipeline)', href: '/projects/octate' },
+      { label: 'M31A (Autonomous Infrastructure)', href: '/projects/m31a' },
     ],
     objectives:
       'Building distributed primitives that guarantee causal consistency without compromising single-node throughput or introducing cloud vendor lock-in.',
@@ -112,7 +113,7 @@ const areaDetails: Record<
     ],
     systems: [
       { label: 'Mercura Platform', href: '/projects/mercura' },
-      { label: 'Octate Platform', href: '/projects/octate' },
+      { label: 'Octate (Code Review CLI)', href: '/projects/octate' },
     ],
     objectives:
       'Restoring developer autonomy with blisteringly fast, local-first tooling that requires zero external network roundtrips for core engineering workflows.',
