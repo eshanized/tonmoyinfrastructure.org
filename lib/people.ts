@@ -141,7 +141,7 @@ const rawPeople: Person[] = [
       },
       {
         name: 'Octate',
-        description: 'A TIV software project.',
+        description: 'Terminal-native AI code review CLI.',
         category: 'TIV Project',
         href: '/projects/octate',
       },
