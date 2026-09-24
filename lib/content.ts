@@ -370,21 +370,39 @@ M31A is a stable release. The core platform is complete and deployed. TIV contin
     status: 'Stable Release',
     category: 'Software',
     shortDescription:
-      'Stable release software built and shipped by TIV.',
+      'Terminal-native AI code review CLI. Deterministic repository intelligence meets LLM reasoning.',
     description:
-      'A TIV software project. Stable release software built and shipped by TIV.',
+      'Terminal-native AI code review CLI. Combines local Tree-sitter WASM AST parsing, cross-file reference graphs, and static linter discovery with multi-stage LLM review DAGs and a two-stage critic quality gate.',
     version: '1.0.0',
     releaseDate: '2026-09-13',
     featured: true,
-    technology: ['Systems', 'Software Engineering'],
-    repository: '',
+    technology: ['TypeScript', 'Node.js', 'Tree-sitter', 'React / Ink', 'SARIF v2.1.0', 'Nemotron 3 Ultra', 'Git'],
+    repository: 'https://github.com/vedanthq/Octate',
     documentation: '/projects/octate',
-    website: '',
-    license: 'TBD',
-    artifactType: 'Software System',
+    website: 'https://www.npmjs.com/package/@tiverse/octate',
+    license: 'MIT',
+    artifactType: 'Tool',
     organization: 'Tonmoy Infrastructure & Vision',
     affiliation: 'TIV',
     sources: [
+      {
+        platform: 'github',
+        type: 'repository',
+        url: 'https://github.com/vedanthq/Octate',
+        label: 'GitHub Repository',
+        affiliation: 'TIV',
+        organization: 'Tonmoy Infrastructure & Vision',
+        verified: true,
+      },
+      {
+        platform: 'registry',
+        type: 'library',
+        url: 'https://www.npmjs.com/package/@tiverse/octate',
+        label: 'npm (@tiverse/octate)',
+        affiliation: 'TIVerse',
+        organization: 'Tonmoy Infrastructure & Vision',
+        verified: true,
+      },
       {
         platform: 'documentation',
         type: 'documentation',
@@ -396,34 +414,155 @@ M31A is a stable release. The core platform is complete and deployed. TIV contin
       },
     ],
     problem:
-      'Infrastructure environments require dependable, modular software utilities that can be deployed independently without vendor coupling.',
+      'Traditional code review is constrained by engineering bandwidth, while generic AI code-review bots frequently flood pull requests with noisy, hallucinated comments because they lack deterministic awareness of repository syntax trees, cross-file symbol graphs, and project conventions.',
     approach:
-      'Built and shipped as an independent stable component of TIVs software portfolio, following the engineering principles of being understandable, operable, ownable, and dependable.',
+      'Octate enforces a deterministic pre-analysis first philosophy: Tree-sitter WASM parses concrete syntax trees, extracts cross-file references, and executes local linters before model inference. A multi-stage reviewer DAG (Security, Architecture, Performance, Correctness) analyzes contextual subgraphs in parallel, while a two-stage critic gate filters out hallucinations and low-signal noise. Results are rendered in an interactive React/Ink terminal UI or exported as SARIF v2.1.0 for CI/CD.',
     architecture:
-      'Modular systems design with self-contained execution and deterministic lifecycle management.',
+      'Octate implements a modular 7-layer architecture: 1) Repository Layer (isomorphic-git status and monorepo workspace resolution), 2) Analysis Layer (Tree-sitter WASM AST parsing and static linter discovery), 3) Intelligence Layer (scope-bounded symbol indexes and deterministic cross-file reference graphs), 4) Model Provider (OpenAI-compatible endpoint supporting NVIDIA Nemotron 3 Ultra), 5) Review Engine (multi-stage reviewer DAG with two-stage critic quality gate), 6) Application Layer (8-stage canonical progress streaming with cancellation traps), 7) Presentation Layer (fullscreen React/Ink TUI with alternate screen buffer, SARIF v2.1.0, and JSON output).',
     features: [
-      'Stable release software core',
-      'Self-contained deployment model',
-      'Deterministic execution behavior',
-      'Integrated with TIV software ecosystem',
+      'Interactive terminal UI built with Ink and React 19 featuring diff inspection and in-place re-reviews',
+      'Deterministic pre-analysis with Tree-sitter WASM AST parsing and cross-file reference graphs',
+      'Multi-stage reviewer DAG covering Security, Architecture, Performance, and Correctness',
+      'Two-stage critic quality gate eliminating hallucinations and trivial linter noise',
+      'Local-first execution and smart git diff pruning for zero token waste',
+      'First-class SARIF v2.1.0 output for GitHub Code Scanning and CI/CD pipelines',
+      'Comprehensive octate doctor diagnostics auditing Node.js, git, linters, and model access',
+      'Configurable failure thresholds (--fail-on critical|high|medium|low)',
     ],
     roadmap: [
-      { item: 'Core system implementation', done: true },
-      { item: 'Initial stable release deployment', done: true },
-      { item: 'Operational testing and validation', done: true },
-      { item: 'Modular tooling expansion', done: false },
+      { item: 'Tree-sitter WASM AST parsing and symbol graph engine', done: true },
+      { item: 'Multi-stage reviewer DAG (Security, Architecture, Performance, Correctness)', done: true },
+      { item: 'Two-stage critic quality gate (heuristic floor + LLM critic)', done: true },
+      { item: 'Interactive Ink/React terminal user interface', done: true },
+      { item: 'SARIF v2.1.0 and CI/CD automation pipelines', done: true },
+      { item: 'npm package publication (@tiverse/octate v1.0.0)', done: true },
+      { item: 'Extended multi-language Tree-sitter grammar support', done: false },
+      { item: 'Local quantized model runtime support', done: false },
     ],
     relatedProjects: ['openmail', 'mercura', 'm31a'],
     content: `## Overview
 
-Octate is a TIV software project. The project is built and shipped as a stable release.
+Octate is a developer-first, terminal-native AI code-review CLI tool. It combines deterministic repository intelligence (Tree-sitter WASM AST parsing, cross-file reference graphs, static linters) with multi-stage LLM reasoning and a two-stage critic quality gate.
+
+- **Package**: Published to npm as [\`@tiverse/octate\`](https://www.npmjs.com/package/@tiverse/octate)
+- **Source**: Available on GitHub at [vedanthq/Octate](https://github.com/vedanthq/Octate)
+- **License**: MIT License
+
+### Core Philosophy
+
+Understand the repository first, deterministically, and use AI reasoning over that structured understanding — not the other way around.
+
+Traditional AI review tools send raw diff snippets to an LLM without understanding syntactic hierarchy or project-wide symbol definitions, leading to high false-positive rates and trivial commentary. Octate parses code locally with Tree-sitter, builds dependency reference subgraphs, runs static linters, and feeds enriched context into a specialized reviewer DAG.
+
+---
+
+## Quickstart
+
+Run a code review immediately with zero installation required:
+
+\`\`\`bash
+npx @tiverse/octate review
+\`\`\`
+
+Or install globally via npm:
+
+\`\`\`bash
+npm install -g @tiverse/octate
+\`\`\`
+
+Verify environment readiness, linter discovery, and model connectivity:
+
+\`\`\`bash
+octate doctor
+\`\`\`
+
+Initialize a project configuration file (\`octate.yaml\`):
+
+\`\`\`bash
+octate init
+\`\`\`
+
+---
+
+## CLI Reference
+
+### \`octate review [options] [refs...]\`
+
+Review working tree changes, git refs, commits, or branch revision ranges:
+
+\`\`\`bash
+# Review unstaged and staged working tree changes (default)
+octate review
+
+# Review only staged git changes
+octate review --staged
+
+# Review a specific commit
+octate review --commit HEAD~1
+
+# Review a revision range (PR branch against main)
+octate review --range origin/main..HEAD
+
+# Output SARIF v2.1.0 format for CI/CD integration
+octate review --sarif --no-tui > results.sarif
+
+# Fail CI build if any critical or high findings are detected
+octate review --no-tui --fail-on high
+\`\`\`
+
+#### Key Options
+
+| Flag | Description | Default |
+| :--- | :--- | :--- |
+| \`--staged\` | Review only staged git changes | \`false\` |
+| \`--commit <hash>\` | Review specific commit | \`undefined\` |
+| \`--range <rev..rev>\` | Review revision range (e.g. \`origin/main..HEAD\`) | \`undefined\` |
+| \`--branch <name>\` | Review changes against target branch | \`undefined\` |
+| \`--json\` | Output review results as machine-readable JSON | \`false\` |
+| \`--sarif\` | Output review results as SARIF v2.1.0 | \`false\` |
+| \`-q, --quiet\` | Minimal output (summary counters only) | \`false\` |
+| \`--no-tui\` | Plain-text console output instead of interactive TUI | Auto-detected |
+| \`--fail-on <level>\` | Exit code 1 threshold (\`critical\`, \`high\`, \`medium\`, \`low\`, \`none\`) | \`critical\` |
+| \`-c, --config <path>\` | Custom \`octate.yaml\` configuration path | \`octate.yaml\` |
+| \`-d, --debug\` | Enable verbose debug logging | \`false\` |
+
+---
+
+## Interactive TUI Workspace
+
+When executed in an interactive terminal, Octate launches a full-screen React/Ink terminal UI using an alternate screen buffer:
+
+| Key | Action |
+| :--- | :--- |
+| \`j\` / \`↓\` | Select next finding |
+| \`k\` / \`↑\` | Select previous finding |
+| \`Enter\` / \`Space\` | Expand / collapse finding detail & evidence |
+| \`s\` | Suppress / restore active finding for current session |
+| \`c\` | Copy finding summary and file anchor to clipboard |
+| \`r\` | Re-run review in-place (hot reload with latest edits) |
+| \`?\` | Open interactive keyboard shortcuts modal |
+| \`q\` / \`Esc\` | Exit session (evaluates exit code against unsuppressed blockers) |
+
+---
+
+## 7-Layer Architecture
+
+Octate employs a deterministic 7-layer pipeline:
+
+1. **Repository Layer**: Fast git status discovery via \`isomorphic-git\` and monorepo workspace boundary resolution.
+2. **Analysis Layer**: Concrete syntax trees via Tree-sitter WASM with hybrid fallback to host linters (\`tsc\`, \`biome\`, \`ruff\`, \`mypy\`, \`bandit\`).
+3. **Intelligence Layer**: Scope-bounded symbol indexes and deterministic cross-file reference graphs.
+4. **Model Provider**: OpenAI-compatible endpoint supporting NVIDIA Nemotron 3 Ultra (\`nvidia/nemotron-3-ultra-550b-a55b\`).
+5. **Review Engine**: Parallel DAG scheduling with specialized reviewer roles (Security, Architecture, Performance, Correctness) and a two-stage critic (hard floor heuristics + LLM critic).
+6. **Application Layer**: 8-stage canonical progress streaming with cancellation and exception traps.
+7. **Presentation Layer**: Fullscreen Ink TUI with primary screen restoration and SARIF v2.1.0 export.
+
+---
 
 ## Current Status
 
-Octate is a stable release. The core software is complete and deployed. Active development continues on improvements and new features.
-
-Information about the project's scope, architecture, and technical direction is published here as details are confirmed.`,
-    updatedAt: '2026-09-13',
+Octate \`v1.0.0\` is an existing **Stable Release**. The core CLI engine, TUI, Tree-sitter analysis, and SARIF exporter are complete and deployed. It is actively maintained and published under the MIT license.`,
+    updatedAt: '2026-09-18',
   },
   {
     slug: 'm31genesis',
@@ -1284,15 +1423,15 @@ const repos: Repo[] = [
   {
     slug: 'octate',
     name: 'Octate',
-    description: 'A TIV software project. Shipped stable software.',
-    language: 'Systems',
-    license: 'TBD',
+    description: 'Terminal-native AI code review CLI. Deterministic repository intelligence meets LLM reasoning.',
+    language: 'TypeScript / Node.js',
+    license: 'MIT',
     status: 'Stable Release',
-    repository: '',
+    repository: 'https://github.com/vedanthq/Octate',
     documentation: '/projects/octate',
     latestRelease: 'v1.0.0',
-    platform: 'documentation',
-    artifactType: 'Software System',
+    platform: 'github',
+    artifactType: 'Tool',
     affiliation: 'TIV',
   },
   {
@@ -1423,19 +1562,19 @@ export function getTechnicalArtifacts(): TechnicalArtifact[] {
     {
       slug: 'octate',
       name: 'Octate',
-      description: 'Modular software system built and shipped by TIV.',
-      artifactType: 'Software System',
-      platform: 'documentation',
-      platformType: 'documentation',
+      description: 'Terminal-native AI code review CLI. Deterministic repository intelligence meets LLM reasoning.',
+      artifactType: 'Tool',
+      platform: 'github',
+      platformType: 'repository',
       status: 'Stable Release',
-      language: 'Systems',
-      license: 'TBD',
-      url: '/projects/octate',
+      language: 'TypeScript / Node.js',
+      license: 'MIT',
+      url: 'https://github.com/vedanthq/Octate',
       documentation: '/projects/octate',
       organization: 'Tonmoy Infrastructure & Vision',
       affiliation: 'TIV',
       latestRelease: 'v1.0.0',
-      tags: ['Systems', 'Core Utility'],
+      tags: ['AI Code Review', 'CLI', 'Tree-sitter', 'SARIF', 'Terminal UI'],
       verified: true,
     },
     {
@@ -1464,14 +1603,14 @@ export function getTechnicalArtifacts(): TechnicalArtifact[] {
     {
       slug: 'm31-q',
       name: 'M31 Q // For programmers',
-      description: 'Interactive demonstration Space for programmers on Hugging Face.',
+      description: 'Interactive Hugging Face Space runtime for developer queries and code repair testing.',
       artifactType: 'Space / Demo',
       platform: 'huggingface',
       platformType: 'space',
-      status: 'Experimental',
-      language: 'Python',
+      status: 'Preview',
+      language: 'Gradio / Python',
       license: 'MIT',
-      url: 'https://huggingface.co/spaces/eshanized/M31Q',
+      url: 'https://huggingface.co/spaces/eshanized/m31-q',
       documentation: '/projects/m31-q',
       author: 'eshanized',
       organization: 'Tonmoy Infrastructure & Vision',
@@ -1539,9 +1678,12 @@ export function getTechnicalArtifacts(): TechnicalArtifact[] {
       language: 'TypeScript',
       license: 'MIT',
       url: 'https://github.com/eshanized/MCP-SuperAssistant',
+      documentation: '/projects/mcp-superassistant',
       author: 'eshanized',
-      affiliation: 'Founder',
-      tags: ['MCP', 'LLM Tooling', 'Extension'],
+      organization: 'Tonmoy Infrastructure & Vision',
+      affiliation: 'TIV',
+      latestRelease: 'v0.1.0',
+      tags: ['MCP', 'Model Context Protocol', 'Tooling'],
       verified: true,
     },
     {
@@ -1576,8 +1718,22 @@ export function getTechnicalFootprint(): TechnicalFootprintPlatform[] {
         'Official code repositories, system implementations, and developer tooling developed under TIV and its founder.',
       verified: true,
       resourceTypes: ['Repositories', 'Source Code', 'Issue Tracking', 'Releases'],
-      artifactCount: 2,
-      featuredItems: ['OpenMail', 'M31A', 'MCP-SuperAssistant'],
+      artifactCount: 3,
+      featuredItems: ['OpenMail', 'Octate', 'M31A', 'MCP-SuperAssistant'],
+    },
+    {
+      platform: 'registry',
+      name: 'npm Registry',
+      profileUrl: 'https://www.npmjs.com/package/@tiverse/octate',
+      handle: '@tiverse',
+      organization: 'Tonmoy Infrastructure & Vision',
+      role: 'Package Distribution & CLI Binaries',
+      description:
+        'Official npm packages and terminal-native developer CLI utilities published by TIV.',
+      verified: true,
+      resourceTypes: ['Packages', 'CLI Binaries', 'Release Tarballs'],
+      artifactCount: 1,
+      featuredItems: ['@tiverse/octate'],
     },
     {
       platform: 'huggingface',
