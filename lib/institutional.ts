@@ -86,7 +86,7 @@ const timelineEvents: TimelineEvent[] = [
     month: '09',
     title: 'Octate Released',
     description:
-      'Octate — a TIV software project — is released as a stable release.',
+      'Octate — a terminal-native AI code review CLI combining deterministic repository intelligence with LLM reasoning — is released as a stable release (v1.0.0) on npm (@tiverse/octate) and GitHub.',
     category: 'Software',
     relatedProject: 'octate',
   },
@@ -194,14 +194,17 @@ const rawReleases: Release[] = [
     date: '2026-09-13',
     status: 'Released',
     summary:
-      'Initial stable release of Octate software system.',
+      'Initial stable release of Octate, the terminal-native AI code review CLI.',
     notes: [
       {
         type: 'Added',
         items: [
-          'Core software system implementation',
-          'Modular systems execution engine',
-          'Self-contained deployment architecture',
+          'Deterministic pre-analysis with Tree-sitter WASM AST parsing and symbol graph resolution',
+          'Multi-stage reviewer DAG for Security, Architecture, Performance, and Correctness',
+          'Two-stage critic quality gate with hard floor rules and model cross-examination',
+          'Interactive React/Ink full-screen terminal user interface with alternate buffer',
+          'SARIF v2.1.0 output engine for GitHub Code Scanning CI/CD integration',
+          'Official npm package publication (@tiverse/octate) and octate doctor CLI diagnostics',
         ],
       },
     ],
@@ -325,7 +328,7 @@ const serviceStatuses: ServiceStatus[] = [
   { slug: 'mail', name: 'OpenMail', category: 'Software', status: 'Operational', description: 'Self-hosted email infrastructure. Stable release software.' },
   { slug: 'mercura', name: 'Mercura', category: 'Software', status: 'Operational', description: 'Self-hosted code hosting platform. Stable release software.' },
   { slug: 'm31a', name: 'M31A', category: 'Software', status: 'Operational', description: 'Autonomous developer & AI infrastructure. Stable release software.' },
-  { slug: 'octate', name: 'Octate', category: 'Software', status: 'Operational', description: 'TIV software system. Stable release software.' },
+  { slug: 'octate', name: 'Octate', category: 'Software', status: 'Operational', description: 'Terminal-native AI code review CLI. Deterministic repository intelligence meets LLM reasoning.' },
   { slug: 'compute', name: 'Compute', category: 'Infrastructure', status: 'NotDeployed', description: 'Compute infrastructure. Research phase — no commercial services deployed.' },
   { slug: 'networking', name: 'Networking', category: 'Infrastructure', status: 'NotDeployed', description: 'Networking infrastructure. Research phase — no commercial services deployed.' },
   { slug: 'optical', name: 'Optical Systems', category: 'Infrastructure', status: 'NotDeployed', description: 'Optical networking research. Research phase — no commercial systems deployed.' },
@@ -432,13 +435,13 @@ TIV software is released under open-source licenses where applicable. This direc
 - **OpenMail** — AGPL-3.0
 - **Mercura** — AGPL-3.0
 - **M31A** — License to be determined
-- **Octate** — License to be determined
+- **Octate** — MIT License (https://github.com/vedanthq/Octate)
 
 Projects without a confirmed license are marked as such. No license is assumed until published.
 
 ## Repository Links
 
-Repository links will be added when public repositories are available. The absence of a repository link does not imply a license.`,
+Public repositories for TIV software are linked directly on their respective documentation and open-source directory pages. The absence of a repository link does not imply a license.`,
   },
 ];
 
@@ -553,7 +556,7 @@ const docLinks: DocLink[] = [
     slug: 'octate-docs',
     title: 'Octate Documentation',
     category: 'Software',
-    description: 'Documentation for Octate — systems software. Stable release software.',
+    description: 'Documentation for Octate — terminal-native AI code review CLI. Published on npm as @tiverse/octate.',
     available: true,
     externalUrl: '/projects/octate',
   },
