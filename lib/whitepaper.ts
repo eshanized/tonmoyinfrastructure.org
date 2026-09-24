@@ -29,7 +29,7 @@ This whitepaper explains the principles behind TIV's work, the technical directi
 
 TIV distinguishes between what exists, what is in development, and what is research:
 
-- **Existing Stable Software** — OpenMail (self-hosted email), Mercura (self-hosted code hosting), M31A (autonomous developer infrastructure), Octate (software project)
+- **Existing Stable Software** — OpenMail (self-hosted email), Mercura (self-hosted code hosting), M31A (autonomous developer infrastructure), Octate (terminal-native AI code review CLI)
 - **Existing** — organizational structure, content infrastructure, domain management, basic hosting
 - **Research** — fiber optics, networking architecture, advanced AI systems
 - **Planned** — expanded hosting services, network infrastructure, optical systems
@@ -178,7 +178,7 @@ M31A is a stable release. The core platform is complete and deployed. TIV contin
 
 ### Octate
 
-[Octate](/work/octate) is a TIV software project. It is a stable release. Active development continues on improvements and new features.
+[Octate](/work/octate) is a terminal-native AI code review CLI that combines deterministic repository intelligence (Tree-sitter AST parsing, cross-file reference graphs, static linters) with multi-stage LLM reasoning and a two-stage critic quality gate. Published as \`@tiverse/octate\` on npm with source on GitHub (\`vedanthq/Octate\`), Octate is a stable release supporting interactive terminal inspection and automated CI/CD SARIF v2.1.0 workflows.
 
 ### How These Projects Fit Together
 
@@ -398,7 +398,7 @@ TIV's major software projects are open source:
 - [OpenMail](/work/openmail) — AGPL-3.0
 - [Mercura](/work/mercura) — AGPL-3.0
 - M31A — license to be determined (research phase)
-- Octate — license to be determined (planning phase)
+- [Octate](/work/octate) — MIT License ([GitHub](https://github.com/vedanthq/Octate) / [npm](https://www.npmjs.com/package/@tiverse/octate))
 
 TIV uses copyleft licenses (AGPL) rather than permissive licenses (MIT, Apache) because copyleft ensures that modifications remain open. Permissive licenses allow organizations to close-source modifications, which undermines the goal of ownable infrastructure.
 
@@ -701,7 +701,7 @@ This whitepaper will be updated as TIV's work progresses. The principles will re
     { label: 'OpenMail — Self-hosted email', href: '/work/openmail', type: 'internal' },
     { label: 'Mercura — Self-hosted code hosting', href: '/work/mercura', type: 'internal' },
     { label: 'M31A — Autonomous developer systems', href: '/work/m31a', type: 'internal' },
-    { label: 'Octate — TIV software project', href: '/work/octate', type: 'internal' },
+    { label: 'Octate — Terminal-native AI code review CLI', href: '/work/octate', type: 'internal' },
     { label: 'TIV Research Portal', href: '/research', type: 'internal' },
     { label: 'TIV Publications', href: '/research/publications', type: 'internal' },
     { label: 'TIV Transparency', href: '/transparency', type: 'internal' },
