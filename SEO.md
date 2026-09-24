@@ -44,7 +44,7 @@ Each system is mapped to `schema.org/SoftwareApplication` with `operatingSystem:
 1. **OpenMail** (`/projects/openmail`): Self-hosted email infrastructure and mail queue engine.
 2. **Mercura** (`/projects/mercura`): Local-first code intelligence, repository hosting, and AST exploration.
 3. **M31A** (`/projects/m31a`): Autonomous developer agent and compute runtime engine.
-4. **Octate** (`/projects/octate`): Event pipeline and unified data platform.
+4. **Octate** (`/projects/octate`): Terminal-native AI code review CLI and deterministic repository intelligence platform.
 
 ### Experimental AI Checkpoints & Research Models
 1. **M31Genesis** (`/projects/m31genesis`): 425M-parameter causal language model pre-trained on high-quality code and reasoning tokens.
