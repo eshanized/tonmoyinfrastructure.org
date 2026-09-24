@@ -26,7 +26,7 @@ TIV builds and maintains four foundational software systems, all published as **
 1. **OpenMail** (`v1.0.0`): High-throughput self-hosted email infrastructure daemon with zero-copy queueing, native SPF/DKIM/DMARC signing, and sub-millisecond local deliverability.
 2. **Mercura** (`v1.0.0`): Local-first autonomous developer agent and neural code engine operating completely on-device without cloud exfiltration.
 3. **M31A** (`v1.0.0`): Minimalist sovereign compute engine and container scheduler designed for single-node resilience and micro-cluster orchestration.
-4. **Octate** (`v1.0.0`): High-density distributed telemetry, event processing, and streaming log storage engine.
+4. **Octate** (`v1.0.0`): Terminal-native AI code review CLI combining deterministic repository intelligence (Tree-sitter WASM, symbol graphs) with LLM reasoning and SARIF v2.1.0 automation.
 
 ---
 
