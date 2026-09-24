@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Github, FileText, FlaskConical, Globe, ExternalLink } from 'lucide-react';
+import { Github, FileText, FlaskConical, Globe, ExternalLink, Package } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type {
   SourcePlatform,
@@ -50,6 +50,8 @@ export function PlatformIcon({
       return <FileText className={cn('shrink-0', className)} size={size} />;
     case 'website':
       return <Globe className={cn('shrink-0', className)} size={size} />;
+    case 'registry':
+      return <Package className={cn('shrink-0', className)} size={size} />;
     default:
       return <ExternalLink className={cn('shrink-0', className)} size={size} />;
   }
@@ -73,6 +75,8 @@ export function SourceBadge({
       ? 'Documentation'
       : source.platform === 'research'
       ? 'Research Paper'
+      : source.platform === 'registry'
+      ? 'npm Registry'
       : 'Authoritative Source');
 
   const content = (
