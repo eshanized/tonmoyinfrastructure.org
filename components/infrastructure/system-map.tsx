@@ -27,7 +27,7 @@ const systemTree: SystemNode = {
         { id: 'openmail', label: 'OpenMail', description: 'Self-hosted email infrastructure', projects: ['OpenMail'] },
         { id: 'mercura', label: 'Mercura', description: 'Self-hosted code hosting', projects: ['Mercura'] },
         { id: 'm31a', label: 'M31A', description: 'Autonomous developer infrastructure', projects: ['M31A'] },
-        { id: 'octate', label: 'Octate', description: 'TIV software project', projects: ['Octate'] },
+        { id: 'octate', label: 'Octate', description: 'Terminal-native AI code review CLI', projects: ['Octate'] },
       ],
     },
     {
