@@ -10,6 +10,7 @@ import { ProjectsEconomicsTable } from '@/components/portfolio-economics/project
 import { DataQualityCards } from '@/components/portfolio-economics/data-quality-cards';
 import { PortfolioCharts } from '@/components/portfolio-economics/portfolio-charts';
 import { ReconciliationCard } from '@/components/portfolio-economics/reconciliation-card';
+import { CorporateAssetRegister } from '@/components/portfolio-economics/corporate-asset-register';
 import { ReportPreviewModal } from '@/components/portfolio-economics/report-preview-modal';
 import Link from 'next/link';
 import { BookOpen, ArrowRight, ShieldCheck, FileSpreadsheet } from 'lucide-react';
@@ -98,6 +99,22 @@ export default function PublicPortfolioEconomicsPage() {
             currency={summary.currency}
             isInternal={false}
           />
+        </section>
+
+        {/* Corporate Asset Register & Capital Infrastructure */}
+        <section>
+          <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <span className="tiv-meta text-xs">CAPITAL INFRASTRUCTURE ASSETS</span>
+              <h2 className="font-display text-xl font-bold text-foreground">
+                Corporate Asset Register &amp; Capital Valuation
+              </h2>
+            </div>
+            <span className="text-xs font-mono text-muted-foreground">
+              Audited historical acquisition cost &amp; economic net book value across 16 Data Centers &amp; 17 Courier Hubs
+            </span>
+          </div>
+          <CorporateAssetRegister isInternal={false} />
         </section>
 
         {/* Data Quality & Lineage Breakdown */}

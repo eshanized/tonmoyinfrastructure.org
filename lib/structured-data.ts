@@ -130,15 +130,16 @@ export function generateBreadcrumbSchema(breadcrumbs: BreadcrumbItem[]) {
  */
 export function generateSoftwareApplicationSchema(project: Project) {
   const isModel = project.artifactType === 'AI Model';
+  const canonicalUrl = buildCanonicalUrl(`/projects/${project.slug}`);
 
   const schema: Record<string, unknown> = {
-    '@type': isModel ? 'SoftwareApplication' : 'SoftwareApplication',
-    '@id': `${siteConfig.url}/projects/${project.slug}/#software`,
+    '@type': 'SoftwareApplication',
+    '@id': `${canonicalUrl}#software`,
     name: project.title,
     description: project.description,
     applicationCategory: isModel ? 'DeveloperApplication' : 'InfrastructureApplication',
     operatingSystem: 'Cross-platform, Linux, POSIX',
-    url: `${siteConfig.url}/projects/${project.slug}`,
+    url: canonicalUrl,
     publisher: {
       '@id': `${siteConfig.url}/#organization`,
     },
@@ -174,12 +175,14 @@ export function generateSoftwareApplicationSchema(project: Project) {
  * Generates ScholarlyArticle structured data for research papers.
  */
 export function generateScholarlyArticleSchema(publication: Publication) {
+  const canonicalUrl = buildCanonicalUrl(`/research/publications/${publication.slug}`);
+
   return {
     '@type': 'ScholarlyArticle',
-    '@id': `${siteConfig.url}/research/publications/${publication.slug}/#article`,
+    '@id': `${canonicalUrl}#article`,
     headline: publication.title,
     description: publication.abstract,
-    url: `${siteConfig.url}/research/publications/${publication.slug}`,
+    url: canonicalUrl,
     datePublished: publication.publicationDate || publication.date,
     author: publication.authors.map((author) => {
       if (author === siteConfig.founder.name) {
@@ -202,12 +205,14 @@ export function generateScholarlyArticleSchema(publication: Publication) {
  * Generates NewsArticle structured data for news items.
  */
 export function generateNewsArticleSchema(item: NewsItem) {
+  const canonicalUrl = buildCanonicalUrl(`/news/${item.slug}`);
+
   return {
     '@type': 'NewsArticle',
-    '@id': `${siteConfig.url}/news/${item.slug}/#article`,
+    '@id': `${canonicalUrl}#article`,
     headline: item.title,
     description: item.excerpt,
-    url: `${siteConfig.url}/news/${item.slug}`,
+    url: canonicalUrl,
     datePublished: item.date,
     author: {
       '@id': `${siteConfig.url}/#founder`,
@@ -246,7 +251,7 @@ export function generatePageGraph(options: PageGraphOptions) {
     generateWebSiteSchema(),
     {
       '@type': 'WebPage',
-      '@id': `${canonicalUrl.replace(/\/+$/, '')}/#webpage`,
+      '@id': `${canonicalUrl}#webpage`,
       url: canonicalUrl,
       name: finalTitle,
       description: finalDesc,

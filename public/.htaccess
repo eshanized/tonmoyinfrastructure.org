@@ -8,6 +8,9 @@ Options -Indexes
 # Follow symbolic links
 Options +FollowSymLinks
 
+# Disable automatic mod_dir trailing slash redirects to prevent HTTP downgrade loops behind reverse proxy / CDN
+DirectorySlash Off
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
@@ -42,23 +45,23 @@ Options +FollowSymLinks
     # If accessed directly via main domain path, route email to its subdomain
     RewriteRule ^email(/.*)?$ https://email.tonmoyinfrastructure.org$1 [R=301,L]
 
-    # Legacy product shortcuts
-    RewriteRule ^openmail/?$ /projects/openmail/ [R=301,L]
-    RewriteRule ^mercura/?$ /projects/mercura/ [R=301,L]
-    RewriteRule ^m31a/?$ /projects/m31a/ [R=301,L]
-    RewriteRule ^octate/?$ /projects/octate/ [R=301,L]
-    RewriteRule ^m31genesis/?$ /projects/m31genesis/ [R=301,L]
-    RewriteRule ^m31tesla/?$ /projects/m31tesla/ [R=301,L]
-    RewriteRule ^m31entropy/?$ /projects/m31entropy/ [R=301,L]
+    # Legacy product shortcuts (direct canonical targets with trailing slash and HTTPS)
+    RewriteRule ^openmail/?$ https://%{HTTP_HOST}/projects/openmail/ [R=301,L]
+    RewriteRule ^mercura/?$ https://%{HTTP_HOST}/projects/mercura/ [R=301,L]
+    RewriteRule ^m31a/?$ https://%{HTTP_HOST}/projects/m31a/ [R=301,L]
+    RewriteRule ^octate/?$ https://%{HTTP_HOST}/projects/octate/ [R=301,L]
+    RewriteRule ^m31genesis/?$ https://%{HTTP_HOST}/projects/m31genesis/ [R=301,L]
+    RewriteRule ^m31tesla/?$ https://%{HTTP_HOST}/projects/m31tesla/ [R=301,L]
+    RewriteRule ^m31entropy/?$ https://%{HTTP_HOST}/projects/m31entropy/ [R=301,L]
 
     # --------------------------------------------------------------------------
     # 4. NEXT.JS STATIC ROUTING & TRAILING SLASH (Main domain only)
     # --------------------------------------------------------------------------
     # Next.js export with trailingSlash: true creates folder/index.html.
-    # Enforce trailing slash on directories to prevent 404 or index leak.
+    # Enforce trailing slash on directories with explicit HTTPS to prevent 404, HTTP downgrade or index leak.
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteCond %{REQUEST_URI} !(.*)/$
-    RewriteRule ^(.*)$ /$1/ [L,R=301]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [L,R=301]
 
     # Clean URL fallback to .html file if directory does not exist
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -108,7 +111,7 @@ ErrorDocument 404 /404.html
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
 
-    <FilesMatch "\.(html|txt)$">
+    <FilesMatch "\.(html|txt|xml)$">
         Header set Cache-Control "no-cache, no-store, must-revalidate"
     </FilesMatch>
 
@@ -120,6 +123,7 @@ ErrorDocument 404 /404.html
 
 # Proper MIME types
 <IfModule mod_mime.c>
+    AddType "application/xml; charset=utf-8" .xml
     AddType application/manifest+json .webmanifest
     AddType font/woff2 .woff2
     AddType image/svg+xml .svg

@@ -18,7 +18,7 @@ export const siteConfig = {
   author: 'Tonmoy Infrastructure and Vision',
   logo: '/logo.svg',
   favicon: '/favicon.svg',
-  defaultOgImage: '/api/og',
+  defaultOgImage: '/og.png',
   manifest: '/site.webmanifest',
   founder: {
     name: 'Eshan Roy',

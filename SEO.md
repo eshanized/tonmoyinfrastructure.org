@@ -59,7 +59,7 @@ Each system is mapped to `schema.org/SoftwareApplication` with `operatingSystem:
 Metadata generation is centralized in `lib/seo.ts` and configured via `lib/site-config.ts`.
 
 ### 3.1 Metadata Helper Functions
-* `buildCanonicalUrl(path)`: Normalizes paths, strips trailing slashes and queries, prepending `siteConfig.url`.
+* `buildCanonicalUrl(path)`: Normalizes paths, enforces trailing slashes matching Next.js `trailingSlash: true` static export, strips queries, prepending `siteConfig.url`.
 * `formatTitle(title, override)`: Formats standard title tags (`<Page Title> — Tonmoy Infrastructure and Vision`).
 * `generatePageMetadata(options)`: Generates standard OpenGraph, Twitter cards, meta tags, and canonical links.
 * `generateProjectMetadata(project)`: Customizes metadata for software applications and AI models with tags, repo links, and versioning.
@@ -71,7 +71,7 @@ Metadata generation is centralized in `lib/seo.ts` and configured via `lib/site-
 ### 3.2 Dynamic OpenGraph Images (`/api/og`)
 Located at `app/api/og/route.tsx`, using `@vercel/og` (`ImageResponse` on the Edge runtime):
 * Generates 1200x630 branded social cards featuring the TIV grid, Coral Red (#E5484D) accent pill, entity title, description, and institutional watermark.
-* Static fallback available at `public/og.svg`.
+* Static fallback available at `public/og.png` and `public/og.svg`.
 
 ---
 
@@ -81,19 +81,19 @@ To prevent keyword cannibalization and duplicate content dilution, strict canoni
 
 | Front-Facing Path | Route Function | Canonical Target |
 |---|---|---|
-| `/projects/:slug` | Canonical entity page | `https://tonmoyinfrastructure.org/projects/:slug` |
-| `/products/:slug` | Catalog view | `https://tonmoyinfrastructure.org/projects/:slug` |
-| `/work/:slug` | Portfolio view | `https://tonmoyinfrastructure.org/projects/:slug` |
-| `/:slug` (e.g. `/openmail`) | Direct slug redirect | 308 Permanent Redirect to `/projects/:slug` |
-| `/security` | Canonical security center | `https://tonmoyinfrastructure.org/security` |
-| `/transparency/security` | Transparency portal view | `https://tonmoyinfrastructure.org/security` |
-| `/trust/security` | Trust portal view | `https://tonmoyinfrastructure.org/security` |
-| `/privacy` | Canonical privacy policy | `https://tonmoyinfrastructure.org/privacy` |
-| `/legal/privacy` | Legal section view | `https://tonmoyinfrastructure.org/privacy` |
-| `/terms` | Canonical terms of service | `https://tonmoyinfrastructure.org/terms` |
-| `/legal/terms` | Legal section view | `https://tonmoyinfrastructure.org/terms` |
-| `/accessibility` | Canonical accessibility | `https://tonmoyinfrastructure.org/accessibility` |
-| `/legal/accessibility` | Legal section view | `https://tonmoyinfrastructure.org/accessibility` |
+| `/projects/:slug/` | Canonical entity page | `https://tonmoyinfrastructure.org/projects/:slug/` |
+| `/products/:slug/` | Catalog view | `https://tonmoyinfrastructure.org/projects/:slug/` |
+| `/work/:slug/` | Portfolio view | `https://tonmoyinfrastructure.org/projects/:slug/` |
+| `/:slug` (e.g. `/openmail`) | Direct slug redirect | 308 Permanent Redirect to `/projects/:slug/` |
+| `/security/` | Canonical security center | `https://tonmoyinfrastructure.org/security/` |
+| `/transparency/security/` | Transparency portal view | `https://tonmoyinfrastructure.org/security/` |
+| `/trust/security/` | Trust portal view | `https://tonmoyinfrastructure.org/security/` |
+| `/privacy/` | Canonical privacy policy | `https://tonmoyinfrastructure.org/privacy/` |
+| `/legal/privacy/` | Legal section view | `https://tonmoyinfrastructure.org/privacy/` |
+| `/terms/` | Canonical terms of service | `https://tonmoyinfrastructure.org/terms/` |
+| `/legal/terms/` | Legal section view | `https://tonmoyinfrastructure.org/terms/` |
+| `/accessibility/` | Canonical accessibility | `https://tonmoyinfrastructure.org/accessibility/` |
+| `/legal/accessibility/` | Legal section view | `https://tonmoyinfrastructure.org/accessibility/` |
 
 ---
 

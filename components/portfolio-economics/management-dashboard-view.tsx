@@ -17,6 +17,7 @@ import { ProjectComparison } from './project-comparison';
 import { PeriodComparison } from './period-comparison';
 import { CsvExchangeModal } from './csv-exchange-modal';
 import { ReportPreviewModal } from './report-preview-modal';
+import { CorporateAssetRegister } from './corporate-asset-register';
 import {
   BarChart3,
   Table,
@@ -26,13 +27,14 @@ import {
   FileSpreadsheet,
   FileText,
   UserCheck,
+  Building,
 } from 'lucide-react';
 
 export function ManagementDashboardView() {
   const periods = getFinancialPeriods();
   const [selectedPeriodId, setSelectedPeriodId] = useState(periods[0]?.id || 'fy2026');
   const [activeTab, setActiveTab] = useState<
-    'ledger' | 'comparison' | 'periods' | 'reconciliation' | 'csv' | 'reports'
+    'ledger' | 'assets' | 'comparison' | 'periods' | 'reconciliation' | 'csv' | 'reports'
   >('ledger');
   const [session, setSession] = useState<UserSession>(DEFAULT_ADMIN_SESSION);
   const [refreshKey, setRefreshKey] = useState(0);
@@ -41,6 +43,7 @@ export function ManagementDashboardView() {
 
   const tabs = [
     { id: 'ledger', label: 'Project Ledger', icon: Table },
+    { id: 'assets', label: 'Asset Register', icon: Building },
     { id: 'comparison', label: 'Project Comparison', icon: ArrowLeftRight },
     { id: 'periods', label: 'Period Trends', icon: Calendar },
     { id: 'reconciliation', label: 'Reconciliation', icon: FileCheck },
@@ -134,6 +137,12 @@ export function ManagementDashboardView() {
               />
               <PortfolioCharts summary={summary} />
               <DataQualityCards summary={summary} />
+            </div>
+          )}
+
+          {activeTab === 'assets' && (
+            <div className="space-y-6">
+              <CorporateAssetRegister isInternal={session.isInternal} />
             </div>
           )}
 

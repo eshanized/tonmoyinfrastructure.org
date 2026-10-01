@@ -1,5 +1,17 @@
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Globe, Zap, Truck, Database } from 'lucide-react';
+import {
+  ArrowRight,
+  ShieldCheck,
+  Globe,
+  Zap,
+  Truck,
+  Database,
+  Building,
+  DollarSign,
+  Layers,
+  TrendingDown,
+  Info,
+} from 'lucide-react';
 import { PageHeader } from '@/components/shared/page-header';
 import { SectionHeader } from '@/components/shared/section-header';
 import { Breadcrumbs } from '@/components/shared/breadcrumbs';
@@ -164,6 +176,103 @@ export default function SolutionsPage() {
           </Reveal>
           <div className="mt-10">
             <CourierNetworkExplorer />
+          </div>
+        </div>
+      </section>
+
+      {/* Section 04: Economic Portfolio & Valuation */}
+      <section className="border-b border-border bg-secondary/20">
+        <div className="tiv-container py-16 md:py-24">
+          <Reveal>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div>
+                <SectionHeader
+                  index="04"
+                  label="Economic Portfolio & Valuation"
+                  title="Capital valuation & economic accounting."
+                  description="How TIV accounts for its data centers and courier logistics fleet under our formal Portfolio Economics framework — verified capital asset acquisition cost, straight-line economic depreciation, net book value, and commercial revenue attribution."
+                />
+              </div>
+              <Link
+                href="/transparency/financials/portfolio-economics"
+                className="flex items-center gap-1.5 text-xs font-mono text-brand hover:underline self-start md:self-auto"
+              >
+                Portfolio Economics Dashboard <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </Reveal>
+
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="border border-border bg-card p-5">
+              <div className="flex items-center justify-between text-muted-foreground">
+                <span className="tiv-meta text-[11px]">INFRASTRUCTURE FLEET</span>
+                <Building className="h-4 w-4 text-brand" />
+              </div>
+              <p className="mt-3 font-display text-2xl font-bold text-foreground">
+                33 Facilities
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground font-mono">
+                16 Data Centers + 17 Courier Hubs across 17 countries
+              </p>
+            </div>
+
+            <div className="border border-border bg-card p-5">
+              <div className="flex items-center justify-between text-muted-foreground">
+                <span className="tiv-meta text-[11px]">HISTORICAL COST BASIS</span>
+                <DollarSign className="h-4 w-4 text-muted-foreground" />
+              </div>
+              <p className="mt-3 font-display text-2xl font-bold text-foreground">
+                ₹11,30,000
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground font-mono">
+                Hardware, storage enclosures &amp; sortation telemetry
+              </p>
+            </div>
+
+            <div className="border border-brand/40 bg-brand/5 p-5">
+              <div className="flex items-center justify-between text-brand">
+                <span className="tiv-meta text-[11px] font-semibold">ACCOUNTED BOOK VALUE</span>
+                <ShieldCheck className="h-4 w-4 text-brand" />
+              </div>
+              <p className="mt-3 font-display text-2xl font-bold text-brand">
+                ₹9,50,000
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground font-mono">
+                Audited balance sheet valuation after ₹1.8L depreciation
+              </p>
+            </div>
+
+            <div className="border border-border bg-card p-5">
+              <div className="flex items-center justify-between text-muted-foreground">
+                <span className="tiv-meta text-[11px]">FY2026 COMMERCIAL REVENUE</span>
+                <Layers className="h-4 w-4 text-brand" />
+              </div>
+              <p className="mt-3 font-display text-2xl font-bold text-foreground">
+                ₹9,00,000
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground font-mono">
+                ₹7.2L DC Peering/Hosting + ₹1.8L Courier Logistics
+              </p>
+            </div>
+          </div>
+
+          {/* Anti-Valuation Notice */}
+          <div className="mt-8 border border-border bg-card/80 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <Info className="h-4 w-4 text-brand mt-0.5 shrink-0" />
+              <div className="text-xs text-muted-foreground leading-relaxed">
+                <span className="font-semibold text-foreground">Formal Anti-Valuation Standard: </span>
+                TIV strictly rejects speculative venture-style enterprise multiples or paper valuations.
+                All infrastructure and logistics networks are quoted strictly at verified historical acquisition cost less straight-line economic depreciation (Net Book Value).
+              </div>
+            </div>
+
+            <Link
+              href="/transparency/financials/portfolio-economics/methodology"
+              className="inline-flex items-center gap-1.5 border border-border bg-secondary px-3.5 py-1.5 font-mono text-xs text-foreground hover:border-brand hover:text-brand transition-colors shrink-0"
+            >
+              Read Valuation Policy <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
           </div>
         </div>
       </section>

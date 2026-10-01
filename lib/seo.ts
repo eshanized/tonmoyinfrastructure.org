@@ -11,19 +11,36 @@ import type { Person } from '@/lib/people';
 
 /**
  * Normalizes a route path into an absolute canonical URL using the production site URL.
- * Strips query parameters, trailing slashes (except root), and normalizes leading slashes.
+ * Preserves trailing slashes matching Next.js trailingSlash: true export architecture.
  */
 export function buildCanonicalUrl(path: string = '/'): string {
   // Strip query parameters and fragment identifiers
-  const cleanPath = path.split('?')[0].split('#')[0];
-  
+  let cleanPath = (path || '/').split('?')[0].split('#')[0].trim();
+
+  // If absolute URL provided, extract pathname
+  if (cleanPath.startsWith('http://') || cleanPath.startsWith('https://')) {
+    try {
+      cleanPath = new URL(cleanPath).pathname;
+    } catch {
+      // fallback
+    }
+  }
+
   if (!cleanPath || cleanPath === '/') {
     return siteConfig.canonicalUrl;
   }
 
-  // Ensure leading slash and strip any trailing slashes
-  const normalized = `/${cleanPath.replace(/^\/+/, '').replace(/\/+$/, '')}`;
-  return `${siteConfig.url}${normalized}`;
+  // Ensure clean path without leading/trailing slashes
+  const trimmed = cleanPath.replace(/^\/+/, '').replace(/\/+$/, '');
+
+  // File assets with known extensions (e.g. sitemap.xml, robots.txt, og.png) don't get trailing slash
+  if (/\.(html|xml|txt|png|jpe?g|svg|json|webmanifest|ico|pdf)$/i.test(trimmed)) {
+    return `${siteConfig.url}/${trimmed}`;
+  }
+
+  // Next.js export with trailingSlash: true creates folder/index.html
+  // Enforcing trailing slash prevents circular redirects and canonical mismatches
+  return `${siteConfig.url}/${trimmed}/`;
 }
 
 export interface PageMetadataOptions {
@@ -48,6 +65,7 @@ export function formatTitle(title?: string, override: boolean = false): string {
   if (!title) return `${siteConfig.name} — ${siteConfig.tagline}`;
   if (override) return title;
   if (title.includes('—') || title.includes('–')) return title;
+  if (title.includes(siteConfig.name)) return title;
   return `${title} — ${siteConfig.name}`;
 }
 
@@ -68,13 +86,16 @@ export function generatePageMetadata({
   modifiedTime,
   authors,
 }: PageMetadataOptions = {}): Metadata {
-  const canonicalUrl = canonical || buildCanonicalUrl(path);
+  const canonicalUrl = canonical
+    ? (canonical.startsWith('http') ? buildCanonicalUrl(new URL(canonical).pathname) : buildCanonicalUrl(canonical))
+    : buildCanonicalUrl(path);
   const finalTitle = formatTitle(title, overrideTitle);
-  const defaultOgParams = title ? `?title=${encodeURIComponent(title)}&type=TIV` : '';
-  const finalOgImage = ogImage || `${siteConfig.url}${siteConfig.defaultOgImage}${defaultOgParams}`;
+  const finalOgImage = ogImage || `${siteConfig.url}${siteConfig.defaultOgImage}`;
 
   const metadata: Metadata = {
-    title: finalTitle,
+    title: {
+      absolute: finalTitle,
+    },
     description,
     alternates: {
       canonical: canonicalUrl,
@@ -145,11 +166,7 @@ export function generateProjectMetadata(
   const canonicalPath = `/projects/${project.slug}`;
   const title = `${project.title} — ${siteConfig.name}`;
   const description = project.seoDescription || project.description;
-  const ogImage =
-    project.ogImage ||
-    `${siteConfig.url}/api/og?title=${encodeURIComponent(project.title)}&type=${encodeURIComponent(
-      project.artifactType || 'PROJECT'
-    )}&status=${encodeURIComponent(project.status)}`;
+  const ogImage = project.ogImage || `${siteConfig.url}${siteConfig.defaultOgImage}`;
 
   return generatePageMetadata({
     title,
@@ -175,9 +192,7 @@ export function generateProjectMetadata(
 export function generatePublicationMetadata(publication: Publication): Metadata {
   const canonicalPath = `/research/publications/${publication.slug}`;
   const title = `${publication.title} — TIV Research`;
-  const ogImage = `${siteConfig.url}/api/og?title=${encodeURIComponent(
-    publication.title
-  )}&type=PUBLICATION&status=${encodeURIComponent(publication.status)}`;
+  const ogImage = `${siteConfig.url}${siteConfig.defaultOgImage}`;
 
   return generatePageMetadata({
     title,
@@ -204,7 +219,7 @@ export function generatePublicationMetadata(publication: Publication): Metadata 
 export function generateArticleMetadata(newsItem: NewsItem): Metadata {
   const canonicalPath = `/news/${newsItem.slug}`;
   const title = `${newsItem.title} — ${siteConfig.name}`;
-  const ogImage = `${siteConfig.url}/api/og?title=${encodeURIComponent(newsItem.title)}&type=NEWS`;
+  const ogImage = `${siteConfig.url}${siteConfig.defaultOgImage}`;
 
   return generatePageMetadata({
     title,
@@ -224,9 +239,7 @@ export function generateArticleMetadata(newsItem: NewsItem): Metadata {
 export function generateReportMetadata(report: TransparencyReport): Metadata {
   const canonicalPath = `/transparency/${report.slug}`;
   const title = `${report.title} — TIV Transparency`;
-  const ogImage = `${siteConfig.url}/api/og?title=${encodeURIComponent(
-    report.title
-  )}&type=REPORT&status=${encodeURIComponent(report.status)}`;
+  const ogImage = `${siteConfig.url}${siteConfig.defaultOgImage}`;
 
   return generatePageMetadata({
     title,
@@ -246,9 +259,7 @@ export function generateInfrastructureMetadata(service: InfrastructureService): 
   const canonicalSlug = service.slug === 'optical-systems' ? 'optical' : service.slug;
   const canonicalPath = `/infrastructure/${canonicalSlug}`;
   const title = `${service.title} — TIV Infrastructure`;
-  const ogImage = `${siteConfig.url}/api/og?title=${encodeURIComponent(
-    service.title
-  )}&type=INFRASTRUCTURE&status=${encodeURIComponent(service.status)}`;
+  const ogImage = `${siteConfig.url}${siteConfig.defaultOgImage}`;
 
   return generatePageMetadata({
     title,
