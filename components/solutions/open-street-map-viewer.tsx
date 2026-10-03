@@ -60,6 +60,7 @@ export default function OpenStreetMapViewer() {
         mapInstanceRef.current = null;
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Re-render markers and routes whenever activeLayer changes

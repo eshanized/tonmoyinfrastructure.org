@@ -242,7 +242,7 @@ export default function LeadershipPage() {
                   href="/about/governance"
                   className="group mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand"
                 >
-                  Read about TIV's governance approach
+                  Read about TIV&apos;s governance approach
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>

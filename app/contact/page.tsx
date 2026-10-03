@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { PageHeader } from '@/components/shared/page-header';
 import { Callout } from '@/components/shared/callout';
 import { Breadcrumbs } from '@/components/shared/breadcrumbs';
@@ -200,9 +201,9 @@ export default function ContactPage() {
                     <span className="tiv-meta">Security</span>
                     <p className="mt-1 text-sm">
                       For security disclosures, please see our{' '}
-                      <a href="/trust/security" className="text-brand hover:underline">
+                      <Link href="/trust/security" className="text-brand hover:underline">
                         security center
-                      </a>{' '}
+                      </Link>{' '}
                       for responsible disclosure guidelines.
                     </p>
                   </div>
@@ -210,9 +211,9 @@ export default function ContactPage() {
                     <span className="tiv-meta">Investors</span>
                     <p className="mt-1 text-sm text-muted-foreground">
                       For investor or stakeholder inquiries, visit the{' '}
-                      <a href="/investors" className="text-brand hover:underline">
+                      <Link href="/investors" className="text-brand hover:underline">
                         investors page
-                      </a>
+                      </Link>
                       .
                     </p>
                   </div>

@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { WhitepaperHeader } from '@/components/whitepaper/whitepaper-header';
 import { WhitepaperTOC } from '@/components/whitepaper/whitepaper-toc';
@@ -154,9 +155,9 @@ export default function WhitepaperVersionPage({
               <Callout type="info" title="About This Document">
                 This is version {wp.version} of the TIV Infrastructure Whitepaper.
                 The latest version is always available at{' '}
-                <a href="/research/whitepaper" className="text-brand underline-offset-4 hover:underline">
+                <Link href="/research/whitepaper" className="text-brand underline-offset-4 hover:underline">
                   /research/whitepaper
-                </a>.
+                </Link>.
               </Callout>
 
               {wp.sections.map((section, i) => (

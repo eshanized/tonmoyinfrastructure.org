@@ -127,7 +127,7 @@ export function DataQualityCards({
             <li className="flex items-start gap-2">
               <span className="mt-1 h-1 w-1 rounded-full bg-brand shrink-0" />
               <span>
-                <strong className="text-foreground font-medium">No False Zeroes:</strong> Untracked figures are explicitly preserved as "Not Tracked" or "Not Disclosed".
+                <strong className="text-foreground font-medium">No False Zeroes:</strong> Untracked figures are explicitly preserved as &quot;Not Tracked&quot; or &quot;Not Disclosed&quot;.
               </span>
             </li>
             <li className="flex items-start gap-2">

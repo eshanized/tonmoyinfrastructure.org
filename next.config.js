@@ -1,6 +1,11 @@
-/** @type {import('next').NextConfig} */
+const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined
+  ? process.env.NEXT_PUBLIC_BASE_PATH
+  : (process.env.GITHUB_ACTIONS && !process.env.CUSTOM_DOMAIN ? '/tonmoyinfrastructure.org' : '');
+const basePath = rawBasePath ? `/${rawBasePath.replace(/^\/+|\/+$/g, '')}` : '';
+
 const nextConfig = {
   output: 'export',
+  ...(basePath ? { basePath } : {}),
   trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,

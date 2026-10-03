@@ -132,7 +132,7 @@ export default function GovernancePage() {
               <div className="border-l-2 border-brand pl-6">
                 <h3 className="font-display text-lg tracking-tight">Transparency by default</h3>
                 <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
-                  TIV publishes what it can without exposing what it shouldn't. Governance
+                  TIV publishes what it can without exposing what it shouldn&apos;t. Governance
                   decisions, financial information, and security practices are published by
                   default, not by exception.
                 </p>

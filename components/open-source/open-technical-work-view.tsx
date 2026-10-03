@@ -310,7 +310,7 @@ export function OpenTechnicalWorkView({ artifacts }: OpenTechnicalWorkViewProps)
       ) : (
         <div className="border border-border bg-card p-12 text-center">
           <p className="text-sm text-muted-foreground">
-            No technical artifacts match your filter "{activeFilter}"
+            No technical artifacts match your filter &quot;{activeFilter}&quot;
             {searchQuery ? ` and query "${searchQuery}"` : ''}.
           </p>
           <button

@@ -159,7 +159,7 @@ export default function WhitepaperPage() {
               {/* Callout */}
               <Callout type="info" title="About This Document">
                 This whitepaper is a vision and technical-position document. It
-                describes TIV's philosophy, research direction, and engineering
+                describes TIV&apos;s philosophy, research direction, and engineering
                 principles — not completed capabilities. Most projects described
                 here are in development or research.
               </Callout>

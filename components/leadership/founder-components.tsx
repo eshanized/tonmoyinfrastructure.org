@@ -5,6 +5,7 @@ import { ArrowUpRight, Github, Globe, FlaskConical } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { HuggingFaceIcon } from '@/components/shared/source-badge';
 import type { PersonLink } from '@/lib/people';
+import { siteConfig } from '@/lib/site-config';
 
 const easing = [0.25, 0.1, 0.25, 1] as const;
 
@@ -73,14 +74,15 @@ export function FounderPortrait({ name, photo }: { name: string; photo?: string 
   const prefersReduced = useReducedMotion();
 
   if (photo) {
-    const webpSrc = photo.endsWith('.png') ? photo.replace(/\.png$/, '.webp') : photo;
+    const resolvedPhoto = photo.startsWith('/') ? `${siteConfig.basePath}${photo}` : photo;
+    const webpSrc = resolvedPhoto.endsWith('.png') ? resolvedPhoto.replace(/\.png$/, '.webp') : resolvedPhoto;
     return (
       <div className="relative aspect-[4/5] overflow-hidden border border-border bg-card">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <picture>
           <source srcSet={webpSrc} type="image/webp" />
           <img
-            src={photo}
+            src={resolvedPhoto}
             alt={`${name}, founder of Tonmoy Infrastructure and Vision`}
             className="h-full w-full object-cover"
             loading="lazy"

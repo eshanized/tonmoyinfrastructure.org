@@ -3,11 +3,17 @@
  * Contains verified corporate identity, canonical URLs, and authoritative technical profiles.
  */
 
+const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined
+  ? process.env.NEXT_PUBLIC_BASE_PATH
+  : (process.env.GITHUB_ACTIONS && !process.env.CUSTOM_DOMAIN ? '/tonmoyinfrastructure.org' : '');
+export const basePath = rawBasePath ? `/${rawBasePath.replace(/^\/+|\/+$/g, '')}` : '';
+
 export const siteConfig = {
   name: 'Tonmoy Infrastructure and Vision',
   shortName: 'TIV',
   formalName: 'Tonmoy Infrastructure and Vision (TIV)',
   tagline: 'Technology Infrastructure',
+  basePath,
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://tonmoyinfrastructure.org/').replace(/\/+$/, ''),
   canonicalUrl: `${(process.env.NEXT_PUBLIC_SITE_URL || 'https://tonmoyinfrastructure.org/').replace(/\/+$/, '')}/`,
   description:
@@ -17,9 +23,9 @@ export const siteConfig = {
   locale: 'en_US',
   author: 'Tonmoy Infrastructure and Vision',
   logo: '/logo.svg',
-  favicon: '/favicon.svg',
+  favicon: `${basePath}/favicon.svg`,
   defaultOgImage: '/og.png',
-  manifest: '/site.webmanifest',
+  manifest: `${basePath}/site.webmanifest`,
   founder: {
     name: 'Eshan Roy',
     handle: 'eshanized',

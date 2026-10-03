@@ -214,7 +214,7 @@ export default function SearchPage() {
           {query.trim() && (
             <div className="mt-10">
               <p className="tiv-meta mb-4">
-                {results.length} result{results.length !== 1 ? 's' : ''} for "{query}"
+                {results.length} result{results.length !== 1 ? 's' : ''} for &quot;{query}&quot;
               </p>
 
               {results.length === 0 ? (
