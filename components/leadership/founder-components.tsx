@@ -73,14 +73,22 @@ export function FounderPortrait({ name, photo }: { name: string; photo?: string 
   const prefersReduced = useReducedMotion();
 
   if (photo) {
+    const webpSrc = photo.endsWith('.png') ? photo.replace(/\.png$/, '.webp') : photo;
     return (
       <div className="relative aspect-[4/5] overflow-hidden border border-border bg-card">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={photo}
-          alt={`${name}, founder of Tonmoy Infrastructure and Vision`}
-          className="h-full w-full object-cover"
-        />
+        <picture>
+          <source srcSet={webpSrc} type="image/webp" />
+          <img
+            src={photo}
+            alt={`${name}, founder of Tonmoy Infrastructure and Vision`}
+            className="h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+            width={768}
+            height={960}
+          />
+        </picture>
       </div>
     );
   }

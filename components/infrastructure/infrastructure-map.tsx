@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -114,35 +113,27 @@ export function InfrastructureMap() {
 
           {/* Detail */}
           <div className="flex-1 p-6">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.id}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-brand animate-pulse-dot" />
-                  <span className="tiv-meta-brand">{active.label}</span>
+            <div key={active.id} className="animate-fade-in">
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-brand animate-pulse-dot" />
+                <span className="tiv-meta-brand">{active.label}</span>
+              </div>
+              <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground">
+                {active.description}
+              </p>
+              {active.projects.length > 0 && (
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {active.projects.map((proj) => (
+                    <span
+                      key={proj}
+                      className="border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+                    >
+                      {proj}
+                    </span>
+                  ))}
                 </div>
-                <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground">
-                  {active.description}
-                </p>
-                {active.projects.length > 0 && (
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {active.projects.map((proj) => (
-                      <span
-                        key={proj}
-                        className="border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
-                      >
-                        {proj}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </motion.div>
-            </AnimatePresence>
+              )}
+            </div>
 
             {/* Visual: connecting lines */}
             <div className="mt-8 border-t border-border pt-6">
@@ -202,35 +193,27 @@ export function InfrastructureMap() {
                   )}
                 />
               </button>
-              <AnimatePresence>
-                {activeLayer === layer.id && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-4 pb-4">
-                      <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
-                        {layer.description}
-                      </p>
-                      {layer.projects.length > 0 && (
-                        <div className="mt-3 flex flex-wrap gap-1.5">
-                          {layer.projects.map((proj) => (
-                            <span
-                              key={proj}
-                              className="border border-border px-2 py-0.5 font-mono text-xs text-muted-foreground"
-                            >
-                              {proj}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {activeLayer === layer.id && (
+                <div className="overflow-hidden animate-fade-in">
+                  <div className="px-4 pb-4">
+                    <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                      {layer.description}
+                    </p>
+                    {layer.projects.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-1.5">
+                        {layer.projects.map((proj) => (
+                          <span
+                            key={proj}
+                            className="border border-border px-2 py-0.5 font-mono text-xs text-muted-foreground"
+                          >
+                            {proj}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 interface SystemNode {
@@ -392,35 +391,27 @@ export function SystemMap() {
 
       {/* Detail panel */}
       <div className="mt-8 border-t border-border pt-6">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active.id}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="flex items-center gap-3">
-              <span className="h-2 w-2 rounded-full bg-brand animate-pulse-dot" />
-              <span className="tiv-meta-brand">{active.label}</span>
+        <div key={active.id} className="animate-fade-in">
+          <div className="flex items-center gap-3">
+            <span className="h-2 w-2 rounded-full bg-brand animate-pulse-dot" />
+            <span className="tiv-meta-brand">{active.label}</span>
+          </div>
+          <p className="mt-3 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground">
+            {active.description}
+          </p>
+          {active.projects.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {active.projects.map((proj) => (
+                <span
+                  key={proj}
+                  className="border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
+                >
+                  {proj}
+                </span>
+              ))}
             </div>
-            <p className="mt-3 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground">
-              {active.description}
-            </p>
-            {active.projects.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {active.projects.map((proj) => (
-                  <span
-                    key={proj}
-                    className="border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
-                  >
-                    {proj}
-                  </span>
-                ))}
-              </div>
-            )}
-          </motion.div>
-        </AnimatePresence>
+          )}
+        </div>
       </div>
     </div>
   );

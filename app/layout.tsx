@@ -11,7 +11,7 @@ const dosis = Dosis({
   subsets: ['latin'],
   variable: '--font-dosis',
   display: 'swap',
-  weight: ['200', '300', '400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
 });
 
 const jetbrains = JetBrains_Mono({

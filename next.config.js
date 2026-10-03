@@ -6,6 +6,10 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: { unoptimized: true },
+  swcMinify: true,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'date-fns'],
+  },
   // redirects() cannot be used with output: 'export'. Static redirects are placed in public/_redirects and public/.htaccess
 };
 

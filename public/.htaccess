@@ -112,7 +112,7 @@ ErrorDocument 404 /404.html
     </FilesMatch>
 
     <FilesMatch "\.(html|txt|xml)$">
-        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Cache-Control "public, max-age=0, must-revalidate"
     </FilesMatch>
 
     Header set X-Content-Type-Options "nosniff"

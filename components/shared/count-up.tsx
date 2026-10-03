@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useInView, useReducedMotion, animate } from 'framer-motion';
 
 export function CountUp({
   end,
@@ -19,23 +18,54 @@ export function CountUp({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-50px' });
-  const prefersReduced = useReducedMotion();
-  const [display, setDisplay] = useState(0);
+  // Default to end value so SSR output is immediately accurate and meaningful
+  const [display, setDisplay] = useState(end);
 
   useEffect(() => {
-    if (!inView) return;
-    if (prefersReduced) {
+    const el = ref.current;
+    if (!el || typeof window === 'undefined') return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setDisplay(end);
       return;
     }
-    const controls = animate(0, end, {
-      duration,
-      ease: 'easeOut',
-      onUpdate: (v) => setDisplay(v),
-    });
-    return () => controls.stop();
-  }, [inView, end, duration, prefersReduced]);
+
+    let started = false;
+    let animId: number;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !started) {
+          started = true;
+          observer.disconnect();
+          const startTime = performance.now();
+          const startVal = 0;
+          setDisplay(startVal);
+
+          const animate = (currentTime: number) => {
+            const elapsed = (currentTime - startTime) / 1000;
+            const progress = Math.min(elapsed / duration, 1);
+            // Cubic ease out
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            setDisplay(startVal + (end - startVal) * easeProgress);
+
+            if (progress < 1) {
+              animId = requestAnimationFrame(animate);
+            }
+          };
+
+          animId = requestAnimationFrame(animate);
+        }
+      },
+      { rootMargin: '-40px' }
+    );
+
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      if (animId) cancelAnimationFrame(animId);
+    };
+  }, [end, duration]);
 
   return (
     <span ref={ref} className={className}>

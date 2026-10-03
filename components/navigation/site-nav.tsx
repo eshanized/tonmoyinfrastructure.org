@@ -126,6 +126,7 @@ export function SiteNav() {
                     <li key={child.href}>
                       <Link
                         href={child.href}
+                        prefetch={false}
                         className="flex items-center justify-between px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-brand"
                       >
                         <span>{child.label}</span>

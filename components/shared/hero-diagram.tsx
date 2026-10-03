@@ -1,7 +1,3 @@
-'use client';
-
-import { motion, useReducedMotion } from 'framer-motion';
-
 const nodes = [
   { id: 'tiv', label: 'TIV', x: 400, y: 36, isRoot: true },
   { id: 'software', label: 'Software', x: 160, y: 140 },
@@ -22,8 +18,6 @@ const paths = [
 ];
 
 export function HeroDiagram() {
-  const prefersReduced = useReducedMotion();
-
   return (
     <div className="relative w-full overflow-hidden">
       <svg
@@ -48,7 +42,7 @@ export function HeroDiagram() {
 
         {/* Connection paths */}
         {paths.map((path, i) => (
-          <motion.path
+          <path
             key={i}
             d={path.d}
             fill="none"
@@ -59,35 +53,22 @@ export function HeroDiagram() {
             }
             strokeWidth={i === 1 || i === 4 || i === 6 ? 1.5 : 1}
             strokeLinecap="round"
-            initial={prefersReduced ? { opacity: 1 } : { pathLength: 0, opacity: 0 }}
-            animate={prefersReduced ? {} : { pathLength: 1, opacity: 1 }}
-            transition={{
-              pathLength: { duration: 0.8, delay: path.delay, ease: 'easeOut' },
-              opacity: { duration: 0.3, delay: path.delay },
-            }}
           />
         ))}
 
         {/* Nodes */}
-        {nodes.map((node, i) => (
-          <motion.g
-            key={node.id}
-            initial={prefersReduced ? { opacity: 1 } : { opacity: 0, scale: 0.8 }}
-            animate={prefersReduced ? {} : { opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.15 * i + 0.3, ease: 'easeOut' }}
-            style={{ transformOrigin: `${node.x}px ${node.y}px` }}
-          >
+        {nodes.map((node) => (
+          <g key={node.id}>
             {/* Pulse ring for root */}
-            {node.isRoot && !prefersReduced && (
-              <motion.circle
+            {node.isRoot && (
+              <circle
                 cx={node.x}
                 cy={node.y}
                 r="14"
                 fill="none"
                 stroke="hsl(var(--brand))"
                 strokeWidth="1"
-                animate={{ r: [8, 18], opacity: [0.6, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
+                className="animate-pulse-dot"
               />
             )}
             <circle
@@ -102,7 +83,7 @@ export function HeroDiagram() {
               x={node.x}
               y={node.isRoot ? node.y - 16 : node.y + 22}
               textAnchor="middle"
-              className="font-mono"
+              className="font-mono text-xs"
               fontSize={node.isRoot ? '13' : '11'}
               fill={node.isRoot ? 'hsl(var(--brand))' : 'hsl(var(--muted-foreground))'}
               style={{
@@ -112,7 +93,7 @@ export function HeroDiagram() {
             >
               {node.label}
             </text>
-          </motion.g>
+          </g>
         ))}
       </svg>
     </div>

@@ -89,6 +89,7 @@ export function MobileNav() {
     <>
       <Link
         href="/search"
+        prefetch={false}
         className="flex h-9 w-9 items-center justify-center rounded-sm text-muted-foreground transition-colors hover:text-brand lg:hidden"
         aria-label="Search"
       >
@@ -156,6 +157,7 @@ export function MobileNav() {
                               <li key={child.href}>
                                 <Link
                                   href={child.href}
+                                  prefetch={false}
                                   onClick={() => setOpen(false)}
                                   className="block py-2.5 text-sm text-muted-foreground hover:text-brand"
                                 >
@@ -169,6 +171,7 @@ export function MobileNav() {
                     ) : (
                       <Link
                         href={group.href}
+                        prefetch={false}
                         onClick={() => setOpen(false)}
                         className="block py-3 text-base font-medium hover:text-brand"
                       >
