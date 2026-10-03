@@ -112,7 +112,7 @@ const rawPeople: Person[] = [
       },
       {
         name: 'M31A',
-        description: 'Autonomous developer and AI infrastructure platform.',
+        description: 'Rust-native autonomous software-engineering runtime with non-bypassable policy gates.',
         category: 'TIV Project',
         href: '/projects/m31a',
       },

@@ -36,3 +36,10 @@ if (fs.existsSync(chunksAppDir)) {
   console.log('[postbuild] Mirroring bracketed chunk directories for shared hosting compatibility...');
   duplicateBracketedDirs(chunksAppDir);
 }
+
+// Ensure .nojekyll exists for GitHub Pages compatibility
+const nojekyllPath = path.join(outDir, '.nojekyll');
+if (!fs.existsSync(nojekyllPath)) {
+  fs.writeFileSync(nojekyllPath, '# GitHub Pages\n');
+  console.log('[postbuild] Created .nojekyll for GitHub Pages compatibility.');
+}

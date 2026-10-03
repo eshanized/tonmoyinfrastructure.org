@@ -29,7 +29,7 @@ This whitepaper explains the principles behind TIV's work, the technical directi
 
 TIV distinguishes between what exists, what is in development, and what is research:
 
-- **Existing Stable Software** — OpenMail (self-hosted email), Mercura (self-hosted code hosting), M31A (autonomous developer infrastructure), Octate (terminal-native AI code review CLI)
+- **Existing Stable Software** — OpenMail (self-hosted email), Mercura (self-hosted code hosting), M31A (Rust-native autonomous engineering runtime), Octate (terminal-native AI code review CLI)
 - **Existing** — organizational structure, content infrastructure, domain management, basic hosting
 - **Research** — fiber optics, networking architecture, advanced AI systems
 - **Planned** — expanded hosting services, network infrastructure, optical systems
@@ -172,9 +172,9 @@ Mercura is a stable release. The core platform is complete and deployed. Active 
 
 ### M31A
 
-[M31A](/work/m31a) is an autonomous developer and AI infrastructure platform. It provides systems for building, deploying, and operating AI-driven development tools — from code generation to infrastructure management.
+[M31A](/work/m31a) is a Rust-native autonomous software-engineering runtime. It operates under the core principle: *"The model proposes. The runtime decides."* M31A provides deterministic lifecycle control, an 11-stage non-bypassable policy evaluation gate, resource-bounded execution with OS-level confinement, continuous multi-tier verification, atomic two-phase checkpoints, and local observability for autonomous coding agents.
 
-M31A is a stable release. The core platform is complete and deployed. TIV continues to research and develop advanced autonomous developer systems and related AI infrastructure.
+M31A is a stable release (v0.1.1) dual-licensed under MIT and Apache-2.0. It operates with a dedicated platform website at [m31a.tonmoyinfrastructure.org](https://m31a.tonmoyinfrastructure.org/) and source on GitHub ([eshanized/M31A](https://github.com/eshanized/M31A)).
 
 ### Octate
 
@@ -305,12 +305,14 @@ This simplified path hides significant complexity — amplifiers, multiplexers, 
 
 ### M31A
 
-M31A is TIV's AI infrastructure platform. It is a stable release that provides systems for building, deploying, and operating AI-driven development tools. M31A includes:
+M31A (M31 Autonomous) is TIV's autonomous software-engineering runtime. It is a stable release that provides systems for building, deploying, and operating autonomous coding workflows with non-bypassable policy gates and verifiable execution. M31A includes:
 
-- **Codebase understanding** — systems that can parse and reason about entire codebases
-- **Autonomous operations** — AI agents that can monitor and maintain infrastructure
-- **Safety and control** — ensuring autonomous systems remain auditable and controllable
-- **Human-AI collaboration** — interfaces for productive cooperation between developers and AI
+- **Deterministic runtime authority** — the LLM proposes candidate intents; the single-crate Rust runtime strictly decides and controls execution
+- **11-stage policy gate** — multi-layer security governance producing deterministic ALLOW, DENY, ASK, or ESCALATE decisions
+- **Evidence-based completion** — fail-closed verification requiring verifiable proof before tasks are marked complete
+- **Resilient recovery** — two-phase atomic checkpoints, startup crash scanners, and differential DAG replanning
+- **Multi-tier confinement** — Linux cgroups v2, POSIX rlimits, and Windows Job Objects bounding resource consumption
+- **Terminal cockpit & local observability** — interactive Ratatui TUI cockpit, SQLite state indexes, and NDJSON execution streams
 
 TIV continues to research and develop advanced autonomous developer systems and related AI infrastructure. Ongoing research directions are published through the TIV research portal.
 
@@ -397,7 +399,7 @@ TIV's major software projects are open source:
 
 - [OpenMail](/work/openmail) — AGPL-3.0
 - [Mercura](/work/mercura) — AGPL-3.0
-- M31A — license to be determined (research phase)
+- [M31A](/work/m31a) — MIT License or Apache-2.0 ([Website](https://m31a.tonmoyinfrastructure.org/) / [GitHub](https://github.com/eshanized/M31A))
 - [Octate](/work/octate) — MIT License ([GitHub](https://github.com/vedanthq/Octate) / [npm](https://www.npmjs.com/package/@tiverse/octate))
 
 TIV uses copyleft licenses (AGPL) rather than permissive licenses (MIT, Apache) because copyleft ensures that modifications remain open. Permissive licenses allow organizations to close-source modifications, which undermines the goal of ownable infrastructure.
@@ -555,7 +557,7 @@ TIV publishes research findings through the [Research portal](/research) and the
 
 ### Connection to Products
 
-Research informs what TIV builds. M31A is the clearest example — it is a stable release product with ongoing research into advanced autonomous developer systems. TIV does not present research as production, but research directions often become product directions over time.`,
+Research informs what TIV builds. M31A is the clearest example — it is a stable release product (v0.1.1) with ongoing research into advanced autonomous developer systems. TIV does not present research as production, but research directions often become product directions over time.`,
     },
     {
       id: 'long-term-direction',
@@ -700,7 +702,7 @@ This whitepaper will be updated as TIV's work progresses. The principles will re
   references: [
     { label: 'OpenMail — Self-hosted email', href: '/work/openmail', type: 'internal' },
     { label: 'Mercura — Self-hosted code hosting', href: '/work/mercura', type: 'internal' },
-    { label: 'M31A — Autonomous developer systems', href: '/work/m31a', type: 'internal' },
+    { label: 'M31A — Autonomous engineering runtime', href: '/work/m31a', type: 'internal' },
     { label: 'Octate — Terminal-native AI code review CLI', href: '/work/octate', type: 'internal' },
     { label: 'TIV Research Portal', href: '/research', type: 'internal' },
     { label: 'TIV Publications', href: '/research/publications', type: 'internal' },

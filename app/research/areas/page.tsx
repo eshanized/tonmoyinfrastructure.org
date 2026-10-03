@@ -97,7 +97,7 @@ const areaDetails: Record<
       'Static binary distribution and deterministic containerless deploys',
     ],
     systems: [
-      { label: 'M31A (Compute Engine)', href: '/projects/m31a' },
+      { label: 'M31A (Autonomous Runtime)', href: '/projects/m31a' },
       { label: 'OpenMail (Core Daemon)', href: '/projects/openmail' },
     ],
     objectives:

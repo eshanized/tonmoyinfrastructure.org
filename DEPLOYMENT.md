@@ -33,6 +33,17 @@ When hosting on shared Linux platforms (e.g. 20i StackCP, cPanel, DirectAdmin):
    - `public/.htaccess` is pre-configured with proxy-aware HTTPS redirection (`X-Forwarded-Proto`) to prevent `ERR_TOO_MANY_REDIRECTS` loops when behind StackCDN or Cloudflare.
 4. **Recommended Architecture**: In 20i StackCP or cPanel "Subdomains", map subdomain Document Roots outside `/public_html` (e.g. `/email` and `/openmail`) for total file isolation.
 
+### Option D: GitHub Pages (Automated GitHub Actions)
+The repository includes automated CI/CD for continuous GitHub Pages static deployment (`.github/workflows/deploy.yml`):
+1. **GitHub Repository Settings**:
+   - Go to **Settings > Pages**.
+   - Under **Build and deployment > Source**, select **GitHub Actions**.
+2. **Automated Pipeline**:
+   - Every push to `master` (or manual trigger via `Actions > Deploy to GitHub Pages > Run workflow`) triggers `.github/workflows/deploy.yml`.
+   - The workflow runs `npm test` and `npm run typecheck`, compiles the Next.js static export (`out/`), preserves `.nojekyll` to enable `_next/static` assets, and publishes via `actions/deploy-pages@v4`.
+3. **Custom Domain**:
+   - If using a custom domain (e.g. `tonmoyinfrastructure.org`), configure it in GitHub Pages settings or add a `public/CNAME` file.
+
 ---
 
 ## 2. Environment Variables

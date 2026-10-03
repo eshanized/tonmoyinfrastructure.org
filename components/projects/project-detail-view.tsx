@@ -104,15 +104,27 @@ export function ProjectDetailView({
                 </span>
               )}
 
-              {project.documentation && (
-                <Link
-                  href={project.documentation}
-                  className="inline-flex items-center gap-2 border border-border bg-card px-4 py-2 text-sm transition-colors hover:border-brand hover:text-brand"
-                >
-                  <FileText className="h-4 w-4" />
-                  Documentation
-                </Link>
-              )}
+              {project.documentation &&
+                (project.documentation.startsWith('http') ? (
+                  <a
+                    href={project.documentation}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-border bg-card px-4 py-2 text-sm transition-colors hover:border-brand hover:text-brand"
+                  >
+                    <FileText className="h-4 w-4" />
+                    Documentation
+                    <ExternalLink className="h-3.5 w-3.5 opacity-60" />
+                  </a>
+                ) : (
+                  <Link
+                    href={project.documentation}
+                    className="inline-flex items-center gap-2 border border-border bg-card px-4 py-2 text-sm transition-colors hover:border-brand hover:text-brand"
+                  >
+                    <FileText className="h-4 w-4" />
+                    Documentation
+                  </Link>
+                ))}
 
               <Link
                 href="#releases"

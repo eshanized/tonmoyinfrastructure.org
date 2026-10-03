@@ -25,7 +25,7 @@ const systemTree: SystemNode = {
       children: [
         { id: 'openmail', label: 'OpenMail', description: 'Self-hosted email infrastructure', projects: ['OpenMail'] },
         { id: 'mercura', label: 'Mercura', description: 'Self-hosted code hosting', projects: ['Mercura'] },
-        { id: 'm31a', label: 'M31A', description: 'Autonomous developer infrastructure', projects: ['M31A'] },
+        { id: 'm31a', label: 'M31A', description: 'Autonomous software-engineering runtime', projects: ['M31A'] },
         { id: 'octate', label: 'Octate', description: 'Terminal-native AI code review CLI', projects: ['Octate'] },
       ],
     },
@@ -45,7 +45,7 @@ const systemTree: SystemNode = {
       description: 'AI, distributed systems, and systems engineering research.',
       projects: ['M31A', 'Publications'],
       children: [
-        { id: 'ai', label: 'AI', description: 'Autonomous development systems', projects: ['M31A'] },
+        { id: 'ai', label: 'AI', description: 'Autonomous engineering runtime & models', projects: ['M31A'] },
         { id: 'optics', label: 'Optics', description: 'Optical communication research', projects: ['Optical Systems'] },
       ],
     },

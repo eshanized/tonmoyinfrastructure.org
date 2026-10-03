@@ -253,24 +253,33 @@ Mercura is a stable release. The core platform is complete and deployed. Active 
     status: 'Stable Release',
     category: 'Software',
     shortDescription:
-      'Autonomous developer and AI infrastructure platform.',
+      'Rust-native autonomous software-engineering runtime with non-bypassable policy gates and verifiable execution.',
     description:
-      'Autonomous developer and AI infrastructure. A platform for building, deploying, and operating AI-driven development systems.',
-    version: '1.0.0',
-    releaseDate: '2026-09-12',
+      'Single-crate, high-assurance, Rust-native autonomous software engineering runtime. It provides deterministic lifecycle control, strict multi-layer security policies, resource-bounded execution, continuous verification, crash-resilient checkpoints, and local observability for autonomous coding agents.',
+    version: '0.1.1',
+    releaseDate: '2026-10-02',
     featured: true,
-    technology: ['AI', 'LLM', 'Rust', 'Python'],
+    technology: ['Rust', 'Tokio', 'SQLite', 'Ratatui', 'NVIDIA NIM', 'cgroups v2', 'POSIX rlimits'],
     repository: 'https://github.com/eshanized/M31A',
-    documentation: '/projects/m31a',
-    website: '',
-    license: 'TBD',
+    documentation: 'https://m31a.tonmoyinfrastructure.org/',
+    website: 'https://m31a.tonmoyinfrastructure.org/',
+    license: 'MIT OR Apache-2.0',
     artifactType: 'Software System',
     owner: 'eshanized',
     organization: 'Tonmoy Infrastructure & Vision',
     affiliation: 'TIV',
     ecosystem: 'm31',
-    ecosystemRole: 'Autonomous developer and AI infrastructure platform',
+    ecosystemRole: 'Autonomous software-engineering runtime',
     sources: [
+      {
+        platform: 'website',
+        type: 'website',
+        url: 'https://m31a.tonmoyinfrastructure.org/',
+        label: 'Dedicated Website',
+        affiliation: 'TIV',
+        organization: 'Tonmoy Infrastructure & Vision',
+        verified: true,
+      },
       {
         platform: 'github',
         type: 'repository',
@@ -283,82 +292,167 @@ Mercura is a stable release. The core platform is complete and deployed. Active 
       {
         platform: 'documentation',
         type: 'documentation',
-        url: '/projects/m31a',
-        label: 'Platform Overview',
+        url: 'https://m31a.tonmoyinfrastructure.org/',
+        label: 'Runtime Manual & Architecture',
         affiliation: 'TIV',
         organization: 'Tonmoy Infrastructure & Vision',
         verified: true,
       },
     ],
     problem:
-      'AI-assisted development is increasingly common, but truly autonomous development infrastructure — systems that can understand, maintain, and operate codebases independently with verifiable safety boundaries — has been largely unexplored. M31A addresses this foundational gap.',
+      'Autonomous coding agents traditionally delegate execution authority to non-deterministic large language models, resulting in hallucinations, runaway processes, unconstrained shell execution, path traversal vulnerabilities, leaked credentials, unverified completion claims, and catastrophic execution drift. Existing agent frameworks lack deterministic lifecycle boundaries, hard OS-level confinement, and non-bypassable policy gates.',
     approach:
-      'M31A provides codebase understanding, autonomous operations, safety boundaries, tool execution sandboxing, and human-AI collaboration interfaces. The product is an existing stable release, with ongoing advanced research conducted separately.',
+      'M31A operates on the core invariant: "The model proposes. The runtime decides." Large language models are treated as untrusted reasoning components that generate structured candidate intents, while the single-crate Rust runtime strictly owns scheduling, resource allocation, policy evaluation, OS-level sandbox isolation, continuous multi-tier verification, and atomic checkpoints. Production inference is powered by NVIDIA NIM with SSE streaming, paired with an interactive Ratatui terminal cockpit.',
     architecture:
-      'M31A is built as a modular platform with components for codebase representation models, action planning and execution, tool sandboxing, deterministic audit trails, and rigorous evaluation frameworks.',
+      'M31A enforces a strict downward-dependency layered hierarchy across 10 layers (L0–L9): L0 Kernel (strongly typed domain IDs and shared errors), L1 Security (11-stage policy gate, ASVS L1 threat mitigations, and SSRF blocking), L2 Capability Providers (28 core tools across 15 families, Linux cgroups v2 / POSIX rlimits / Windows Job Objects confinement), L3 Intelligence Boundary (NVIDIA NIM SSE streaming, token budgeting, multi-tier SecretRedactor, XML trust envelopes), L4 Agent Coordination (8 canonical agent roles with role state machines), L5 Planning Engine (acyclic task DAG reconciler), L6 Execution Engine (process supervisor, streaming spools, immutable artifacts), L7 Verification & Recovery (multi-tier validation, 15 failure classifications, 2-phase checkpoints), L8 Autonomy Controller (12-stage mission execution loop, 10 budget dimensions), and L9 Terminal Cockpit (interactive Ratatui TUI and CLI).',
     features: [
-      'Autonomous developer workflows and task execution',
-      'Repository intelligence and codebase AST reasoning',
-      'Model interaction runtime with tool orchestration',
-      'Isolated sandboxing for safe execution of automated actions',
-      'Deterministic audit logging for full accountability',
-      'Evaluation frameworks for measuring agent precision',
+      'Deterministic runtime authority ("The model proposes. The runtime decides.")',
+      '11-stage non-bypassable policy evaluation gate with ALLOW, DENY, ASK, and ESCALATE decisions',
+      'ASVS L1 compliance mitigating 11 canonical threat vectors including path traversal, secret leaks, and prompt injection',
+      'Dual deployment channels: production (m31a) and development (m31a-dev) with compile-time isolation',
+      'Evidence-based completion gating requiring multi-tier verification proof before marking tasks complete',
+      'Two-phase atomic checkpoints, startup crash scanners, and differential DAG replanning',
+      'Multi-tier confinement via Linux cgroups v2, POSIX rlimits, and Windows Job Objects',
+      'Multi-tier secret redaction preventing credentials from reaching SQLite, NDJSON telemetry, or TUI buffers',
+      '8 specialized canonical agent roles (Planner, Researcher, Architect, Implementer, Reviewer, Verifier, Diagnostician, Integrator)',
+      'Interactive terminal cockpit built with Ratatui and Crossterm (m31a tui)',
+      'Local observability with embedded SQLite state indexes and append-only NDJSON execution streams',
+      'Production NVIDIA NIM inference with SSE streaming and token-bounded context management',
     ],
     roadmap: [
-      { item: 'Research direction definition', done: true },
-      { item: 'Literature review and framework architecture', done: true },
-      { item: 'Codebase understanding prototype', done: true },
-      { item: 'Action planning engine implementation', done: true },
-      { item: 'Safety framework and sandboxing verification', done: true },
-      { item: 'Evaluation methodology', done: true },
-      { item: 'Research publication release', done: true },
-      { item: 'Advanced multi-agent orchestration research', done: false },
-      { item: 'Extended codebase contextual understanding', done: false },
+      { item: 'Single-crate Rust runtime layered architecture (L0–L9)', done: true },
+      { item: '11-stage policy evaluation gate and ASVS L1 hardening', done: true },
+      { item: '8 canonical agent roles and 12-stage autonomy controller', done: true },
+      { item: 'Two-phase atomic checkpoints and crash-resilient recovery', done: true },
+      { item: 'Production NVIDIA NIM provider integration with SSE streaming', done: true },
+      { item: 'Terminal-native Ratatui cockpit and CLI subcommand suite', done: true },
+      { item: 'Multi-platform confinement (cgroups v2, POSIX rlimits, Windows Job Objects)', done: true },
+      { item: 'Dual deployment channels (production vs development)', done: true },
+      { item: 'Linux x86_64 verified and supported platform qualification', done: true },
+      { item: 'Native qualification and runner verification for macOS and Windows targets', done: false },
     ],
     relatedResearch: ['autonomous-development-systems'],
     relatedProjects: ['openmail', 'mercura', 'octate'],
-    content: `## Overview
+    content: `> **"The model proposes. The runtime decides."**
 
-M31A is an autonomous developer and AI infrastructure platform. It provides systems for building, deploying, and operating AI-driven development tools — from code generation to infrastructure management.
+**Website:** [https://m31a.tonmoyinfrastructure.org/](https://m31a.tonmoyinfrastructure.org/) &bull; **Repository:** [https://github.com/eshanized/M31A/](https://github.com/eshanized/M31A/)
 
-## Problem
+M31A (M31 Autonomous) is a single-crate, high-assurance, Rust-native autonomous software engineering runtime. It provides deterministic lifecycle control, strict multi-layer security policies, resource-bounded execution, continuous verification, crash-resilient checkpoints, and local observability for autonomous coding agents.
 
-AI-assisted development is increasingly common, but truly autonomous development infrastructure — systems that can understand, maintain, and operate codebases independently — has been largely unexplored. M31A addresses this gap.
+Unlike ad-hoc agent scripts or loose orchestration frameworks that delegate execution authority to non-deterministic large language models, M31A treats the LLM as an untrusted reasoning component. The runtime strictly owns state, scheduling, file access, command execution, policies, verification, and completion criteria.
 
-## Approach
+---
 
-M31A provides:
+## Architectural Principles
 
-- **Codebase understanding** — systems that can parse and reason about entire codebases
-- **Autonomous operations** — AI agents that can monitor and maintain infrastructure
-- **Safety and control** — ensuring autonomous systems remain auditable and controllable
-- **Human-AI collaboration** — interfaces for productive cooperation between developers and AI
+1. **Single Trusted Kernel**: Implemented as a single, clean Rust crate without foreign runtime dependencies (no Node.js, Python, or GPU required for core runtime execution).
+2. **Deterministic Governance**: Every side effect (file writes, process spawning, Git operations, network requests) passes through an 11-stage policy evaluation gate.
+3. **Evidence-Based Completion**: No mission or task is marked complete without deterministic, multi-tier verification evidence (fail-closed).
+4. **Resilient Recovery**: Two-phase atomic checkpoints, startup crash scanners, and differential DAG replanners preserve completed work across crashes.
+5. **Bounded Confinement**: Multi-dimensional budget models (10 hard resource dimensions) and platform-aware confinement (Linux cgroups v2, POSIX rlimits, Windows Job Objects) prevent runaway execution.
+6. **Local Observability**: SQLite compact event indexes, append-only NDJSON execution streams, and zero-leak secret redaction before durable storage.
 
-## Architecture
+---
 
-M31A is built as a modular platform with components for:
+## Layered Hierarchy (L0–L9)
 
-- Codebase representation models
-- Action planning and execution
-- Safety boundaries and audit trails
-- Evaluation frameworks
+The M31A runtime enforces a strict downward-dependency layered hierarchy across 10 layers:
 
-## Current Status
+| Layer | Subsystem | Scope & Guarantees |
+|:---|:---|:---|
+| **L9** | CLI / TUI Cockpit | Command parsing, Ratatui interactive cockpit, telemetry inspection, JSON export, evaluation runner. |
+| **L8** | Autonomy Controller | 12-stage mission execution loop, budget tracker, sliding-window loop detector, completion gates. |
+| **L7** | Verification & Recovery | Multi-tier test validation, 15 failure classifications, differential DAG replanner, two-phase atomic checkpoints. |
+| **L6** | Execution Engine | Job manager, process tree supervisor, streaming output spools, immutable artifact store. |
+| **L5** | Planning / DAG Engine | TaskGraph reconciler, topological scheduler, candidate plan validator, task state machines. |
+| **L4** | Agent Coordination | 8 canonical agent roles, role state machines, context window compilers, token allocators. |
+| **L3** | Intelligence Boundary | NVIDIA NIM SSE streaming, structural proposal introspection, multi-tier SecretRedactor, XML trust envelopes. |
+| **L2** | Capabilities & Tools | 28 core tools across 15 families, Linux cgroups v2 / POSIX rlimits / Windows Job Objects confinement, deny-by-default environment builder. |
+| **L1** | Security & Policy | 11-stage policy gate (ALLOW / DENY / ASK / ESCALATE), ASVS L1 threat mitigations, NetworkDestinationPolicy SSRF blocking, worktree isolation. |
+| **L0** | Runtime Kernel | Strongly typed domain IDs (MissionId, TaskId, JobId), shared error model, base kernel traits. |
 
-M31A is a stable release. The core platform is complete and deployed. TIV continues to research and develop advanced autonomous developer systems and related AI infrastructure.
+---
 
-## Roadmap
+## Security Governance & 11-Stage Policy Gate
 
-- [x] Research direction definition
-- [x] Initial literature review
-- [x] Codebase understanding prototype
-- [x] Action planning experiments
-- [x] Safety framework
-- [x] Evaluation methodology
-- [x] Research publication
-- [ ] Advanced multi-agent orchestration
-- [ ] Extended codebase understanding`,
-    updatedAt: '2026-09-12',
+Security decisions are computed deterministically across a 10-layer authority stack where higher authority always wins. Lower layers can only restrict, never expand, permissions.
+
+When an action or tool call is evaluated by \`PolicyGate\`, it produces one of four mutually exclusive decisions:
+- **\`ALLOW\`**: Permitted unconditionally; execution proceeds immediately within sandbox limits.
+- **\`DENY\`**: Forbidden fail-closed; execution is aborted with zero side effects.
+- **\`ASK\`**: Requires human operator authorization; converts to \`DENY\` fail-closed in unattended mode.
+- **\`ESCALATE\`**: Requires elevated administrative consent; routes approval or halts execution.
+
+### ASVS L1 Hardening Matrix
+M31A explicitly mitigates 11 canonical threat vectors validated continuously:
+- **Path Traversal**: Canonical path verification strictly prevents escaping the workspace root.
+- **Command Injection**: Subprocesses spawn via direct \`execve\` with dangerous loader hooks stripped.
+- **Secret Redaction**: 4-tier scrubber redacts API keys, bearer tokens, and credentials before persistence.
+- **Prompt Injection**: Untrusted inputs are wrapped in XML trust envelopes with closing-tag escaping and SHA-256 digests.
+- **Process Confinement**: Linux cgroups v2 (\`cpu.max\`, \`memory.max\`), POSIX rlimits, and process group isolation.
+
+---
+
+## Canonical Agent Roles
+
+M31A partitions autonomous engineering tasks across 8 specialized agent roles:
+1. **Planner (\`AgentRole::Planner\`)**: Analyzes high-level objectives, decomposes requirements, and generates acyclic candidate task DAGs.
+2. **Researcher (\`AgentRole::Researcher\`)**: Explores codebase structure, indexes symbols, reads documentation, and surveys dependencies.
+3. **Architect (\`AgentRole::Architect\`)**: Defines cross-module interfaces, contract types, API boundaries, and patterns.
+4. **Implementer (\`AgentRole::Implementer\`)**: Authors concrete source code modifications, writes tests, and applies targeted patches.
+5. **Reviewer (\`AgentRole::Reviewer\`)**: Performs semantic code reviews, auditing proposed diffs for security and regressions.
+6. **Verifier (\`AgentRole::Verifier\`)**: Executes automated test suites, type checking, and linters; generates cryptographic verification evidence.
+7. **Diagnostician (\`AgentRole::Diagnostician\`)**: Analyzes failed verification runs, compiler diagnostics, and classifies failure modes.
+8. **Integrator (\`AgentRole::Integrator\`)**: Consolidates verified worktrees, stages changes, and generates RFC-compliant commit trailers.
+
+---
+
+## Deployment Channels & Platform Qualification
+
+M31A features two compile-time isolated deployment channels:
+- **Production (\`m31a\`)**: Default build channel for operational deployments.
+- **Development (\`m31a-dev\`)**: Isolated development channel with dedicated state paths.
+
+### Platform Support Matrix
+- **Linux (x86_64)**: \`x86_64-unknown-linux-gnu\` — **SUPPORTED** (Verified native runtime evidence)
+- **macOS (Intel x86_64)**: \`x86_64-apple-darwin\` — **CONDITIONALLY SUPPORTED**
+- **Linux (ARM64)**: \`aarch64-unknown-linux-gnu\` — **COMPILE-ONLY**
+- **macOS (Apple Silicon)**: \`aarch64-apple-darwin\` — **COMPILE-ONLY**
+- **Windows (x86_64 / ARM64)**: \`x86_64-pc-windows-msvc\` — **COMPILE-ONLY**
+
+---
+
+## Installation & Quickstart
+
+### Automated One-Liner Install
+
+\`\`\`bash
+# Linux / macOS
+curl -fsSL https://raw.githubusercontent.com/eshanized/M31A/master/scripts/install.sh | bash
+
+# Windows PowerShell
+irm https://raw.githubusercontent.com/eshanized/M31A/master/scripts/install.ps1 | iex
+\`\`\`
+
+### Quickstart Workflow
+
+\`\`\`bash
+# 1. Set NVIDIA NIM credentials
+export NVIDIA_API_KEY="nvapi-..."
+
+# 2. Launch an autonomous guided coding mission
+m31a mission run "Refactor database queries to use parameterized statements" --profile coding
+
+# 3. Launch interactive terminal cockpit
+m31a tui
+
+# 4. Inspect execution telemetry and resource metrics
+m31a telemetry inspect <mission-id> --summary --spans --metrics
+
+# 5. Run unattended evaluation benchmarks
+m31a eval run --all
+\`\`\``,
+    updatedAt: '2026-10-02',
   },
   {
     slug: 'octate',
@@ -1498,13 +1592,13 @@ const repos: Repo[] = [
   {
     slug: 'm31a',
     name: 'M31A',
-    description: 'Autonomous developer and AI infrastructure.',
+    description: 'Rust-native autonomous software-engineering runtime with non-bypassable policy gates and verifiable execution.',
     language: 'Rust',
-    license: 'TBD',
+    license: 'MIT OR Apache-2.0',
     status: 'Stable Release',
     repository: 'https://github.com/eshanized/M31A',
-    documentation: '/projects/m31a',
-    latestRelease: 'v1.0.0',
+    documentation: 'https://m31a.tonmoyinfrastructure.org/',
+    latestRelease: 'v0.1.1',
     platform: 'github',
     artifactType: 'Software System',
     affiliation: 'TIV',
@@ -1630,22 +1724,22 @@ export function getTechnicalArtifacts(): TechnicalArtifact[] {
     {
       slug: 'm31a',
       name: 'M31A',
-      description: 'Autonomous developer and AI infrastructure platform.',
+      description: 'Rust-native autonomous software-engineering runtime with non-bypassable policy gates and verifiable execution.',
       artifactType: 'Software System',
       platform: 'github',
       platformType: 'repository',
       status: 'Stable Release',
-      language: 'Rust / Python',
-      license: 'TBD',
-      url: 'https://github.com/eshanized/M31A',
-      documentation: '/projects/m31a',
+      language: 'Rust',
+      license: 'MIT OR Apache-2.0',
+      url: 'https://m31a.tonmoyinfrastructure.org/',
+      documentation: 'https://m31a.tonmoyinfrastructure.org/',
       author: 'eshanized',
       organization: 'Tonmoy Infrastructure & Vision',
       affiliation: 'TIV',
       ecosystem: 'm31',
-      ecosystemRole: 'Autonomous developer platform',
-      latestRelease: 'v1.0.0',
-      tags: ['AI Agent', 'Terminal-Native', 'Rust'],
+      ecosystemRole: 'Autonomous software-engineering runtime',
+      latestRelease: 'v0.1.1',
+      tags: ['Autonomous Agent', 'Runtime', 'Terminal Cockpit', 'Rust', 'Security'],
       verified: true,
     },
     {
@@ -1882,16 +1976,16 @@ export function getM31Ecosystem(): M31Node[] {
     {
       id: 'm31a',
       name: 'M31A',
-      title: 'M31A Autonomous Developer Platform',
-      role: 'Autonomous developer & AI infrastructure platform',
+      title: 'M31A Autonomous Engineering Runtime',
+      role: 'Rust-native autonomous software-engineering runtime',
       status: 'Stable Release',
       artifactType: 'Software System',
       lifecycle: 'Production / Stable Release',
       platform: 'github',
-      url: 'https://github.com/eshanized/M31A',
+      url: 'https://m31a.tonmoyinfrastructure.org/',
       href: '/projects/m31a',
       description:
-        'The terminal-native AI coding agent that ships, not just suggests. Autonomous workflows and tool orchestration.',
+        'Single-crate, high-assurance Rust runtime with deterministic lifecycle control, 11-stage non-bypassable policy gates, evidence-based completion, and terminal cockpit.',
     },
     {
       id: 'm31genesis',

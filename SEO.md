@@ -43,7 +43,7 @@ The semantic knowledge graph is built around the following verified entities:
 Each system is mapped to `schema.org/SoftwareApplication` with `operatingSystem: "Cross-platform, Linux, POSIX"`:
 1. **OpenMail** (`/projects/openmail`): Self-hosted email infrastructure and mail queue engine.
 2. **Mercura** (`/projects/mercura`): Local-first code intelligence, repository hosting, and AST exploration.
-3. **M31A** (`/projects/m31a`): Autonomous developer agent and compute runtime engine.
+3. **M31A** (`/projects/m31a`): Rust-native autonomous software-engineering runtime with non-bypassable policy gates and verifiable execution.
 4. **Octate** (`/projects/octate`): Terminal-native AI code review CLI and deterministic repository intelligence platform.
 
 ### Experimental AI Checkpoints & Research Models

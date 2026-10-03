@@ -73,10 +73,10 @@ const timelineEvents: TimelineEvent[] = [
   {
     id: 'm31a-research',
     year: '2026',
-    month: '09',
+    month: '10',
     title: 'M31A Released',
     description:
-      'M31A — an autonomous developer and AI infrastructure platform — is released as a stable release. TIV continues to research and develop advanced autonomous developer systems.',
+      'M31A (M31 Autonomous) — a Rust-native autonomous software-engineering runtime with non-bypassable policy gates and verifiable execution — is released as a stable release (v0.1.1) on GitHub with its dedicated platform website (https://m31a.tonmoyinfrastructure.org/).',
     category: 'Software',
     relatedProject: 'm31a',
   },
@@ -167,22 +167,46 @@ const rawReleases: Release[] = [
     ],
   },
   {
-    slug: 'm31a-1-0-0',
+    slug: 'm31a-0-1-1',
     project: 'm31a',
-    version: '1.0.0',
-    date: '2026-09-12',
+    version: '0.1.1',
+    date: '2026-10-02',
     status: 'Released',
     summary:
-      'Initial stable release of M31A autonomous developer and AI infrastructure platform.',
+      'M31A v0.1.1 release introducing compile-time isolated deployment channels (production vs development) and transactional installer.',
     notes: [
       {
         type: 'Added',
         items: [
-          'Codebase understanding engine for repository AST and semantic analysis',
-          'Autonomous developer workflow engine and task execution runtime',
-          'Safety boundaries and sandbox controls for safe execution',
-          'Deterministic audit logging for autonomous actions',
-          'Evaluation framework for assessing agent performance',
+          'Dual deployment channels: production (m31a) and development (m31a-dev) with compile-time artifact identity',
+          'Deployment subsystem featuring DeploymentContext, ReleaseArtifact, and DeploymentManifest v1 schema',
+          'Transactional Installer with stage -> verify -> atomic replace lifecycle and previous binary preservation',
+          'Channel-safe update discovery with rollback seam and DeploymentPaths isolation',
+          'CLI subcommands: m31a version [--verbose], m31a deployment [--verbose], and m31a update check',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'm31a-0-1-0',
+    project: 'm31a',
+    version: '0.1.0',
+    date: '2026-10-01',
+    status: 'Released',
+    summary:
+      'Initial release of M31 Autonomous (M31A) — Rust-native autonomous software-engineering runtime.',
+    notes: [
+      {
+        type: 'Added',
+        items: [
+          'Layered architecture (L0–L9) with downward-dependency boundaries in a single clean Rust crate',
+          'Non-bypassable 11-stage policy gate with ALLOW, DENY, ASK, and ESCALATE decision matrix',
+          'ASVS L1 compliance mitigating 11 threat vectors with multi-tier SecretRedactor and XML trust envelopes',
+          'Platform confinement with Linux cgroups v2, POSIX rlimits, and Windows Job Objects',
+          'NVIDIA NIM inference provider integration with SSE streaming and token budgeting',
+          '8 canonical agent roles with role state machines and bounded step budgets',
+          'Deterministic verification engine with two-phase atomic checkpoints and 15 failure classifications',
+          'Interactive Ratatui terminal cockpit (m31a tui) and full CLI subcommand suite',
         ],
       },
     ],
@@ -327,7 +351,7 @@ const serviceStatuses: ServiceStatus[] = [
   { slug: 'hosting', name: 'Hosting', category: 'Infrastructure', status: 'NotDeployed', description: 'Web hosting and application hosting infrastructure. Planning phase — internal systems operational.' },
   { slug: 'mail', name: 'OpenMail', category: 'Software', status: 'Operational', description: 'Self-hosted email infrastructure. Stable release software.' },
   { slug: 'mercura', name: 'Mercura', category: 'Software', status: 'Operational', description: 'Self-hosted code hosting platform. Stable release software.' },
-  { slug: 'm31a', name: 'M31A', category: 'Software', status: 'Operational', description: 'Autonomous developer & AI infrastructure. Stable release software.' },
+  { slug: 'm31a', name: 'M31A', category: 'Software', status: 'Operational', description: 'Rust-native autonomous software-engineering runtime with non-bypassable policy gates. Stable release software.' },
   { slug: 'octate', name: 'Octate', category: 'Software', status: 'Operational', description: 'Terminal-native AI code review CLI. Deterministic repository intelligence meets LLM reasoning.' },
   { slug: 'compute', name: 'Compute', category: 'Infrastructure', status: 'NotDeployed', description: 'Compute infrastructure. Research phase — no commercial services deployed.' },
   { slug: 'networking', name: 'Networking', category: 'Infrastructure', status: 'NotDeployed', description: 'Networking infrastructure. Research phase — no commercial services deployed.' },
@@ -434,7 +458,7 @@ TIV software is released under open-source licenses where applicable. This direc
 
 - **OpenMail** — AGPL-3.0
 - **Mercura** — AGPL-3.0
-- **M31A** — License to be determined
+- **M31A** — MIT License or Apache-2.0 (Dual licensed: https://github.com/eshanized/M31A)
 - **Octate** — MIT License (https://github.com/vedanthq/Octate)
 
 Projects without a confirmed license are marked as such. No license is assumed until published.
@@ -548,9 +572,9 @@ const docLinks: DocLink[] = [
     slug: 'm31a-docs',
     title: 'M31A Documentation',
     category: 'Software',
-    description: 'Documentation for M31A — autonomous developer and AI infrastructure. Stable release software.',
+    description: 'Documentation for M31A — Rust-native autonomous software-engineering runtime. Stable release software.',
     available: true,
-    externalUrl: '/projects/m31a',
+    externalUrl: 'https://m31a.tonmoyinfrastructure.org/',
   },
   {
     slug: 'octate-docs',

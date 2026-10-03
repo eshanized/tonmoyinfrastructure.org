@@ -1,0 +1,42 @@
+name: Bug Report
+description: File a bug or unexpected behavior report
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue with the TIV platform.
+  - type: input
+    id: url
+    attributes:
+      label: Affected Page URL or Route
+      description: Where did you encounter the issue?
+      placeholder: e.g. https://tonmoyinfrastructure.org/projects/m31a
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the Bug
+      description: A clear and concise description of what happened.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: How can someone reproduce this behavior?
+      placeholder: |
+        1. Navigate to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser & Operating System
+      placeholder: e.g. Chrome 129 on Linux x86_64
+    validations:
+      required: false
