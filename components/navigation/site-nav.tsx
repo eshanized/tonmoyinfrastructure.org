@@ -54,6 +54,10 @@ const navItems: NavItem[] = [
     ],
   },
   {
+    label: 'TIV I/O',
+    href: '/io',
+  },
+  {
     label: 'Open Source',
     href: '/open-source',
   },

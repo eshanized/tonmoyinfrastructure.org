@@ -7,6 +7,7 @@ const footerNav = {
     { label: 'Projects', href: '/projects' },
     { label: 'Releases', href: '/releases' },
     { label: 'Open Source', href: '/open-source' },
+    { label: 'TIV I/O', href: '/io' },
   ],
   Infrastructure: [
     { label: 'Solutions Hub', href: '/solutions' },

@@ -51,6 +51,7 @@ const navGroups: NavGroup[] = [
       { label: 'Publications', href: '/research/publications' },
     ],
   },
+  { label: 'TIV I/O', href: '/io' },
   { label: 'Open Source', href: '/open-source' },
   {
     label: 'Transparency',
