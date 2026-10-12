@@ -80,3 +80,27 @@ Releases must conform to `ReleaseSchema`:
 - **Headings**: Sentence case for headings ("Vulnerability disclosure policy", not "Vulnerability Disclosure Policy").
 - **Icons**: Use Lucide React icons through `@/components/shared/tiv-icon` or direct imports. No emoji characters allowed in UI text.
 - **Numbers**: Use SI units and explicit currency markings (e.g., `₹18.4L`).
+
+---
+
+## 4. Corporate Address & Contact Integrity
+
+The official office address and contact coordinates are centralized in `lib/site-config.ts` and validated via `lib/schemas.ts`:
+- **Street**: `Pusat Bisnis Jayapura, Jl. Pasifik Permai`
+- **City**: `Jayapura`
+- **Region / Province**: `Papua`
+- **Postal Code**: `99111`
+- **Country**: `Indonesia`
+- **Phone**: `(0967) 551888` (`tel:+62967551888`)
+- **Coordinates**: `-2.543186, 140.714993`
+- **Privacy Guarantee**: Private recipient email addresses are not exposed in the frontend source.
+
+---
+
+## 5. TIV I/O Event Identity & Disclosure Rules
+
+- **Event Name**: Tonmoy Infrastructure and Vision I/O (display name: **TIV I/O**)
+- **Category**: Technology, software, developer infrastructure, networking, and research
+- **Organizer**: Tonmoy Infrastructure and Vision
+- **No Speculative Fabrication**: Dates, venue, registration availability, ticket prices, attendance figures, and session rosters remain unannounced until officially verified. Truthful wording such as "To be announced" must be used.
+- **Independent Identity**: TIV I/O is an independent developer conference for TIV engineering work. It is never portrayed as a Google affiliate or Google I/O clone.

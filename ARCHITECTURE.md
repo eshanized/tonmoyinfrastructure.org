@@ -18,7 +18,7 @@ This document details the architectural principles, component models, and data p
 The repository uses Next.js 13 App Router conventions:
 
 - `app/(routes)`: Route segment configuration.
-  - Sub-segments provide dedicated landing pages and dynamic detail parameters (e.g. `/products/[slug]`, `/projects/[slug]`, `/infrastructure/[slug]`, `/research/publications/[slug]`).
+  - Sub-segments provide dedicated landing pages and dynamic detail parameters (e.g. `/io` for TIV I/O, `/products/[slug]`, `/projects/[slug]`, `/infrastructure/[slug]`, `/research/publications/[slug]`).
   - Strict static parameter generators ensure 100% static coverage.
 - `components/`: Modular presentation components organized by domain:
   - `components/shared`: Core design primitives (PageHeader, SectionHeader, StatusBadge, Callout, Motion, Markdown).

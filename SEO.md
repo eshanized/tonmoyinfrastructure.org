@@ -25,6 +25,9 @@ The semantic knowledge graph is built around the following verified entities:
 * **Formal Name**: Tonmoy Infrastructure and Vision
 * **Canonical URI**: `https://tonmoyinfrastructure.org/`
 * **Brand Color**: `#E5484D` (Coral Red)
+* **Official Office Address**: `Pusat Bisnis Jayapura, Jl. Pasifik Permai, Jayapura, Papua 99111, Indonesia`
+* **Telephone**: `(0967) 551888` (`tel:+62967551888`)
+* **GeoCoordinates**: `latitude: -2.543186`, `longitude: 140.714993`
 * **Profiles**:
   * GitHub: `https://github.com/eshanized`
   * Hugging Face: `https://huggingface.co/eshanized`
@@ -85,6 +88,7 @@ To prevent keyword cannibalization and duplicate content dilution, strict canoni
 | `/products/:slug/` | Catalog view | `https://tonmoyinfrastructure.org/projects/:slug/` |
 | `/work/:slug/` | Portfolio view | `https://tonmoyinfrastructure.org/projects/:slug/` |
 | `/:slug` (e.g. `/openmail`) | Direct slug redirect | 308 Permanent Redirect to `/projects/:slug/` |
+| `/io/` | TIV I/O event landing page | `https://tonmoyinfrastructure.org/io/` |
 | `/security/` | Canonical security center | `https://tonmoyinfrastructure.org/security/` |
 | `/transparency/security/` | Transparency portal view | `https://tonmoyinfrastructure.org/security/` |
 | `/trust/security/` | Trust portal view | `https://tonmoyinfrastructure.org/security/` |
@@ -102,7 +106,7 @@ To prevent keyword cannibalization and duplicate content dilution, strict canoni
 Structured data is generated via `lib/structured-data.ts` and rendered server-side via `components/shared/json-ld.tsx`.
 
 Every indexed page contains a linked `@graph` structure connecting:
-* `Organization`: Tonmoy Infrastructure and Vision with founder node, official logo, and social profiles.
+* `Organization`: Tonmoy Infrastructure and Vision with founder node, official logo, official office `PostalAddress`, telephone, `GeoCoordinates`, and social profiles.
 * `WebSite`: SearchAction schema enabling search box discovery.
 * `WebPage`: Canonical URL, title, description, and site membership.
 * `BreadcrumbList`: Positioned ListItem sequence corresponding directly to the visual navigation hierarchy.

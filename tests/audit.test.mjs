@@ -78,6 +78,7 @@ test('3. Canonical Routes Coverage', () => {
     'app/about/leadership/page.tsx',
     'app/technology/page.tsx',
     'app/contact/page.tsx',
+    'app/io/page.tsx',
   ];
 
   for (const route of requiredRoutes) {
@@ -162,6 +163,8 @@ test('8. Navigation & Footer Route Integrity', () => {
   assert.match(footerNavExtract(footerFile), /\/projects/, 'Footer must link to /projects');
   assert.match(footerNavExtract(footerFile), /\/research\/areas/, 'Footer must link to /research/areas');
   assert.match(footerNavExtract(footerFile), /\/security/, 'Footer must link to /security');
+  assert.match(footerNavExtract(footerFile), /\/io/, 'Footer must link to /io');
+  assert.match(navFile, /\/io/, 'SiteNav must link to /io');
 });
 
 test('9. SEO, Canonical, Sitemap & Structured Data Architecture', () => {
@@ -194,6 +197,7 @@ test('9. SEO, Canonical, Sitemap & Structured Data Architecture', () => {
   const sitemapFile = fs.readFileSync(path.join(ROOT, 'app/sitemap.ts'), 'utf8');
   assert.doesNotMatch(sitemapFile, /'\/search'/, 'Sitemap must exclude /search');
   assert.match(sitemapFile, /\/projects\/\$\{p\.slug\}/, 'Sitemap must index canonical project routes');
+  assert.match(sitemapFile, /\/io/, 'Sitemap must index /io route');
 
   // 5. Canonical Consolidation on Project Detail Variants
   assert.match(seoFile, /\/projects\/\$\{project\.slug\}/, 'SEO helper must enforce canonical path /projects/${project.slug}');
@@ -207,6 +211,45 @@ test('9. SEO, Canonical, Sitemap & Structured Data Architecture', () => {
   // 6. Search Page NoIndex
   const searchLayout = fs.readFileSync(path.join(ROOT, 'app/search/layout.tsx'), 'utf8');
   assert.match(searchLayout, /noIndex:\s*true/, 'Search layout must enforce noIndex: true');
+});
+
+test('10. Official Office Address & TIV I/O Verification', () => {
+  // 1. Centralized Office Address
+  const siteConfigFile = fs.readFileSync(path.join(ROOT, 'lib/site-config.ts'), 'utf8');
+  assert.match(siteConfigFile, /Pusat Bisnis Jayapura, Jl\. Pasifik Permai/, 'Street address must match exactly');
+  assert.match(siteConfigFile, /Jayapura/, 'City must be Jayapura');
+  assert.match(siteConfigFile, /Papua/, 'Region must be Papua');
+  assert.match(siteConfigFile, /99111/, 'Postal code must be 99111');
+  assert.match(siteConfigFile, /Indonesia/, 'Country must be Indonesia');
+  assert.match(siteConfigFile, /\(0967\)\s*551888/, 'Phone must be (0967) 551888');
+  assert.match(siteConfigFile, /-2\.543186/, 'Latitude must be -2.543186');
+  assert.match(siteConfigFile, /140\.714993/, 'Longitude must be 140.714993');
+
+  // 2. Structured Data Schema Organization Address
+  const sdFile = fs.readFileSync(path.join(ROOT, 'lib/structured-data.ts'), 'utf8');
+  assert.match(sdFile, /PostalAddress/, 'Organization schema must include PostalAddress');
+  assert.match(sdFile, /GeoCoordinates/, 'Organization schema must include GeoCoordinates');
+  assert.match(sdFile, /telephone/, 'Organization schema must include telephone');
+
+  // 3. Contact page & Corporate identity page address presentation
+  const contactFile = fs.readFileSync(path.join(ROOT, 'app/contact/page.tsx'), 'utf8');
+  assert.match(contactFile, /Official Office Address/, 'Contact page must render office address block');
+  assert.match(contactFile, /getOfficeAddress/, 'Contact page must reuse getOfficeAddress');
+
+  const companyFile = fs.readFileSync(path.join(ROOT, 'app/about/company/page.tsx'), 'utf8');
+  assert.match(companyFile, /Official Office & Coordinates/, 'Company page must display office address and coordinates');
+
+  // 4. TIV I/O Route Integrity
+  const ioFile = fs.readFileSync(path.join(ROOT, 'app/io/page.tsx'), 'utf8');
+  assert.match(ioFile, /Tonmoy Infrastructure and Vision I\/O/, 'TIV I/O page must declare official event name');
+  assert.match(ioFile, /TIV I\/O/, 'TIV I/O page must declare display name');
+  assert.match(ioFile, /To be announced/, 'TIV I/O page must truthfully state unannounced dates');
+  assert.doesNotMatch(ioFile, /Google I\/O clone/i, 'Must not claim to be a Google clone');
+
+  // 5. Homepage TIV I/O Section
+  const homeFile = fs.readFileSync(path.join(ROOT, 'app/page.tsx'), 'utf8');
+  assert.match(homeFile, /Tonmoy Infrastructure and Vision I\/O/, 'Homepage must include TIV I/O section');
+  assert.match(homeFile, /href="\/io"/, 'Homepage must link to /io');
 });
 
 function footerNavExtract(file) {
