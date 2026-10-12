@@ -366,6 +366,20 @@ export interface Whitepaper {
 
 // ─── Company Info ───────────────────────────────────────────
 
+export interface OfficeAddress {
+  street: string;
+  city: string;
+  state: string;
+  region: string;
+  postalCode: string;
+  country: string;
+  phone: string;
+  telephoneUri: string;
+  latitude: number;
+  longitude: number;
+  mapUrl: string;
+}
+
 export interface CompanyInfo {
   legalName: string;
   brandName: string;
@@ -375,6 +389,7 @@ export interface CompanyInfo {
   incorporationDate?: string;
   registrationInfo?: string;
   registeredOffice?: string;
+  officeAddress?: OfficeAddress;
   officialContact: string;
   officialWebsite: string;
   primaryDomains: string[];

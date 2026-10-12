@@ -1,5 +1,6 @@
 import type {
   CompanyInfo,
+  OfficeAddress,
   TimelineEvent,
   Release,
   TechnologyLayer,
@@ -11,22 +12,31 @@ import type {
   DocLink,
   ContactCategory,
 } from '@/lib/types';
-import { validateReleases } from '@/lib/schemas';
+import { validateReleases, validateCompanyInfo } from '@/lib/schemas';
+import { siteConfig } from '@/lib/site-config';
 
 // ─── Company Info ───────────────────────────────────────────
 
-const companyInfo: CompanyInfo = {
+const rawCompanyInfo: CompanyInfo = {
   legalName: 'Tonmoy Infrastructure and Vision',
   brandName: 'TIV',
   description:
     'Tonmoy Infrastructure and Vision is an organization building practical infrastructure across software, internet infrastructure, networking, fiber optics, artificial intelligence, and systems engineering.',
+  registeredOffice: 'Pusat Bisnis Jayapura, Jl. Pasifik Permai, Jayapura, Papua 99111, Indonesia',
+  officeAddress: siteConfig.address,
   officialContact: 'https://tonmoyinfrastructure.org/contact',
   officialWebsite: 'https://tonmoyinfrastructure.org/',
   primaryDomains: ['tonmoyinfrastructure.org'],
 };
 
+const companyInfo: CompanyInfo = validateCompanyInfo(rawCompanyInfo);
+
 export function getCompanyInfo(): CompanyInfo {
   return companyInfo;
+}
+
+export function getOfficeAddress(): OfficeAddress {
+  return siteConfig.address;
 }
 
 // ─── Timeline Events ────────────────────────────────────────

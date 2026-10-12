@@ -6,6 +6,8 @@ import type {
   Publication,
   Release,
   NewsArticle,
+  OfficeAddress,
+  CompanyInfo,
 } from '@/lib/types';
 import type { Person } from '@/lib/people';
 
@@ -439,4 +441,56 @@ export function validateNews(data: unknown[]): NewsArticle[] {
       throw err;
     }
   });
+}
+
+// ─── Office Address & Company Schema ────────────────────────────────
+export const OfficeAddressSchema = z.object({
+  street: z.string().min(1),
+  city: z.string().min(1),
+  state: z.string().min(1),
+  region: z.string().min(1),
+  postalCode: z.string().min(1),
+  country: z.string().min(1),
+  phone: z.string().min(1),
+  telephoneUri: z.string().min(1),
+  latitude: z.number(),
+  longitude: z.number(),
+  mapUrl: z.string().url(),
+});
+
+export type OfficeAddressInput = z.infer<typeof OfficeAddressSchema>;
+
+export const CompanyInfoSchema = z.object({
+  legalName: z.string().min(1),
+  brandName: z.string().min(1),
+  description: z.string().min(1),
+  type: z.string().optional(),
+  jurisdiction: z.string().optional(),
+  incorporationDate: z.string().optional(),
+  registrationInfo: z.string().optional(),
+  registeredOffice: z.string().optional(),
+  officeAddress: OfficeAddressSchema.optional(),
+  officialContact: z.string().min(1),
+  officialWebsite: z.string().url(),
+  primaryDomains: z.array(z.string()),
+});
+
+export type CompanyInfoInput = z.infer<typeof CompanyInfoSchema>;
+
+export function validateOfficeAddress(data: unknown): OfficeAddress {
+  try {
+    return OfficeAddressSchema.parse(data) as OfficeAddress;
+  } catch (err) {
+    console.error('Invalid OfficeAddress:', err);
+    throw err;
+  }
+}
+
+export function validateCompanyInfo(data: unknown): CompanyInfo {
+  try {
+    return CompanyInfoSchema.parse(data) as CompanyInfo;
+  } catch (err) {
+    console.error('Invalid CompanyInfo:', err);
+    throw err;
+  }
 }

@@ -20,6 +20,20 @@ export function generateOrganizationSchema() {
       caption: `${siteConfig.name} Logo`,
     },
     description: siteConfig.description,
+    telephone: siteConfig.address.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: siteConfig.address.street,
+      addressLocality: siteConfig.address.city,
+      addressRegion: siteConfig.address.region,
+      postalCode: siteConfig.address.postalCode,
+      addressCountry: siteConfig.address.country,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: siteConfig.address.latitude,
+      longitude: siteConfig.address.longitude,
+    },
     sameAs: [
       siteConfig.social.github,
       siteConfig.social.huggingFace,
