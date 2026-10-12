@@ -25,6 +25,7 @@ const sections = [
       { label: 'Governance Principles', href: '/about/governance' },
       { label: 'Organizational Timeline', href: '/about/timeline' },
       { label: 'Careers', href: '/careers' },
+      { label: 'TIV I/O (Technology Event)', href: '/io' },
       { label: 'Contact Directory', href: '/contact' },
       { label: 'Media Kit', href: '/media' },
       { label: 'Investor Relations', href: '/investors' },

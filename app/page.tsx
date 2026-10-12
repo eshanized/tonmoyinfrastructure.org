@@ -472,6 +472,98 @@ export default function HomePage() {
         </section>
       )}
 
+      {/* TIV I/O — TECHNOLOGY EVENT */}
+      <section className="border-b border-border">
+        <div className="tiv-container py-16 md:py-24">
+          <Reveal>
+            <SectionHeader
+              index="I/O"
+              label="Developer Event"
+              title="Tonmoy Infrastructure and Vision I/O."
+              description="A company-led technology and developer conference presenting TIV's engineering work across software systems, internet infrastructure, networking, and research."
+              link={{ label: 'Explore TIV I/O', href: '/io' }}
+            />
+          </Reveal>
+          <Reveal delay={0.1} className="mt-12">
+            <div className="grid grid-cols-1 gap-px border border-border bg-border lg:grid-cols-[1.4fr_1fr]">
+              <div className="bg-card p-8 md:p-10">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="font-display text-3xl font-bold tracking-tight text-brand">
+                    TIV I/O
+                  </span>
+                  <span className="border border-border px-2.5 py-0.5 font-mono text-xs text-muted-foreground">
+                    TECHNOLOGY & DEVELOPER CONFERENCE
+                  </span>
+                </div>
+                <h3 className="mt-4 font-display text-2xl tracking-tight">
+                  Engineering depth, open architecture, and system demonstrations.
+                </h3>
+                <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground">
+                  Tonmoy Infrastructure and Vision I/O (TIV I/O) is designed to present verified
+                  technical milestones, architectural decisions, and live system demonstrations
+                  across developer tools, autonomous software runtimes, network infrastructure, and
+                  open research.
+                </p>
+                <div className="mt-8 grid grid-cols-2 gap-4 border-t border-border pt-6 text-sm">
+                  <div>
+                    <span className="tiv-meta">COVERAGE</span>
+                    <p className="mt-1 font-medium text-foreground">Software, Networks & AI</p>
+                  </div>
+                  <div>
+                    <span className="tiv-meta">ORGANIZER</span>
+                    <p className="mt-1 font-medium text-foreground">Tonmoy Infrastructure & Vision</p>
+                  </div>
+                </div>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    href="/io"
+                    className="group inline-flex items-center gap-2 bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-opacity hover:opacity-90"
+                  >
+                    Explore TIV I/O
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-brand hover:text-brand"
+                  >
+                    Event inquiries
+                  </Link>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-between bg-card p-8 md:p-10">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="tiv-meta">EVENT STATUS</span>
+                    <span className="inline-flex items-center gap-1.5 border border-brand/30 bg-brand/10 px-2.5 py-0.5 font-mono text-xs text-brand">
+                      In Planning
+                    </span>
+                  </div>
+                  <div className="mt-6 space-y-4">
+                    <div className="border-b border-border pb-3">
+                      <span className="tiv-meta">DATES & SCHEDULE</span>
+                      <p className="mt-1 font-display text-lg text-foreground">To be announced</p>
+                    </div>
+                    <div className="border-b border-border pb-3">
+                      <span className="tiv-meta">LOCATION & VENUE</span>
+                      <p className="mt-1 font-display text-lg text-foreground">To be announced</p>
+                    </div>
+                    <div>
+                      <span className="tiv-meta">REGISTRATION & ATTENDANCE</span>
+                      <p className="mt-1 font-display text-lg text-foreground">To be announced</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-6 text-xs leading-relaxed text-muted-foreground/80">
+                  Event dates, program agenda, and registration details will be published once
+                  finalized. Follow official updates via TIV News.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* 11 — LATEST NEWS */}
       <section className="border-b border-border bg-secondary/30">
         <div className="tiv-container py-16 md:py-24">

@@ -5,11 +5,12 @@ import Link from 'next/link';
 import { PageHeader } from '@/components/shared/page-header';
 import { Callout } from '@/components/shared/callout';
 import { Breadcrumbs } from '@/components/shared/breadcrumbs';
-import { Send, CheckCircle } from 'lucide-react';
-import { getContactCategories } from '@/lib/institutional';
+import { Send, CheckCircle, MapPin, ExternalLink, Navigation } from 'lucide-react';
+import { getContactCategories, getOfficeAddress } from '@/lib/institutional';
 
 export default function ContactPage() {
   const categories = getContactCategories();
+  const office = getOfficeAddress();
   const [submitted, setSubmitted] = useState(false);
   const [category, setCategory] = useState('general');
   const [name, setName] = useState('');
@@ -188,7 +189,7 @@ export default function ContactPage() {
             </div>
 
             {/* Sidebar */}
-            <aside>
+            <aside className="space-y-6">
               <div className="border border-border p-6">
                 <span className="tiv-meta mb-4 block">Contact Information</span>
                 <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
@@ -227,7 +228,52 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="mt-6">
+              {/* Official Office Address */}
+              <div className="border border-border p-6">
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4 text-brand" aria-hidden="true" />
+                  <span className="tiv-meta">Official Office Address</span>
+                </div>
+                <div className="mt-4 space-y-1 text-sm leading-relaxed">
+                  <p className="font-medium text-foreground">
+                    {office.street}
+                  </p>
+                  <p className="text-muted-foreground">
+                    {office.city}, {office.region} {office.postalCode}
+                  </p>
+                  <p className="text-muted-foreground">
+                    {office.country}
+                  </p>
+                </div>
+
+                <div className="mt-5 space-y-3 border-t border-border pt-4">
+                  <div>
+                    <span className="tiv-meta">Telephone</span>
+                    <p className="mt-1">
+                      <a
+                        href={office.telephoneUri}
+                        className="font-mono text-sm text-foreground transition-colors hover:text-brand"
+                      >
+                        {office.phone}
+                      </a>
+                    </p>
+                  </div>
+                  <div className="pt-1">
+                    <a
+                      href={office.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:underline"
+                    >
+                      <Navigation className="h-3.5 w-3.5" aria-hidden="true" />
+                      View map & directions
+                      <ExternalLink className="h-3 w-3 opacity-70" aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div>
                 <Callout type="info" title="Privacy">
                   Your message is processed to route it to the right team. We do not
                   share your information with third parties. No tracking or

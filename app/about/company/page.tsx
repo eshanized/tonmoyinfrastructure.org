@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Globe, Mail, Building2, Calendar, FileText, MapPin } from 'lucide-react';
+import { ArrowRight, Globe, Mail, Building2, Calendar, FileText, MapPin, Phone, Navigation, ExternalLink } from 'lucide-react';
 import { PageHeader } from '@/components/shared/page-header';
 import { SectionHeader } from '@/components/shared/section-header';
 import { Callout } from '@/components/shared/callout';
@@ -133,6 +133,48 @@ export default function CompanyPage() {
               </div>
             </div>
           </Reveal>
+
+          {company.officeAddress && (
+            <Reveal delay={0.18} className="mt-px">
+              <div className="border border-border bg-card p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-brand" aria-hidden="true" />
+                    <span className="tiv-meta">Official Office & Coordinates</span>
+                  </div>
+                  <span className="font-mono text-xs text-muted-foreground">
+                    {company.officeAddress.latitude}, {company.officeAddress.longitude}
+                  </span>
+                </div>
+                <div className="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div>
+                    <p className="font-medium text-foreground">{company.officeAddress.street}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {company.officeAddress.city}, {company.officeAddress.region} {company.officeAddress.postalCode}, {company.officeAddress.country}
+                    </p>
+                  </div>
+                  <div className="flex flex-col justify-center gap-2 md:items-end">
+                    <a
+                      href={company.officeAddress.telephoneUri}
+                      className="font-mono text-sm text-muted-foreground hover:text-brand"
+                    >
+                      Tel: {company.officeAddress.phone}
+                    </a>
+                    <a
+                      href={company.officeAddress.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:underline"
+                    >
+                      <Navigation className="h-3.5 w-3.5" aria-hidden="true" />
+                      View map & directions
+                      <ExternalLink className="h-3 w-3 opacity-70" aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          )}
 
           {company.primaryDomains.length > 0 && (
             <Reveal delay={0.2} className="mt-px">

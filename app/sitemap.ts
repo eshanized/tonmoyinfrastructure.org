@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: buildCanonicalUrl('/projects'), lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: buildCanonicalUrl('/releases'), lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
     { url: buildCanonicalUrl('/open-source'), lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: buildCanonicalUrl('/io'), lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: buildCanonicalUrl('/technology'), lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: buildCanonicalUrl('/technology/ai'), lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: buildCanonicalUrl('/technology/architecture'), lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
