@@ -117,7 +117,7 @@ export default function OpenStreetMapViewer() {
               <div><span style="opacity: 0.6;">Power:</span> <strong>${dc.powerCapacity} MW</strong></div>
               <div><span style="opacity: 0.6;">Redundancy:</span> <strong>${dc.redundancy}</strong></div>
               <div><span style="opacity: 0.6;">Load:</span> <strong style="color: ${loadColor};">${dc.load}%</strong></div>
-              <div><span style="opacity: 0.6;">Storage:</span> <strong>${(dc.totalStorage / 1000).toFixed(1)} PB</strong></div>
+              <div><span style="opacity: 0.6;">Storage:</span> <strong>${dc.totalStorage >= 1000 ? (dc.totalStorage / 1000).toFixed(1) + ' PB' : dc.totalStorage + ' TB'}</strong></div>
             </div>
 
             <div style="margin-top: 6px;">
@@ -190,7 +190,7 @@ export default function OpenStreetMapViewer() {
                 <h4 style="font-size: 15px; font-weight: 700; margin: 2px 0 0 0; color: currentColor;">${hub.name}</h4>
                 <span style="font-size: 11px; opacity: 0.7;">${hub.country} · ${hub.region}</span>
               </div>
-              <span style="font-size: 11px; background: rgba(16,185,129,0.15); color: #10b981; padding: 2px 6px; border-radius: 2px; font-weight: 600;">48h SLA</span>
+              <span style="font-size: 11px; background: rgba(16,185,129,0.15); color: #10b981; padding: 2px 6px; border-radius: 2px; font-weight: 600;">Active Corridor</span>
             </div>
 
             <div style="margin: 8px 0; padding: 6px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.1); font-size: 11px;">
@@ -274,7 +274,7 @@ export default function OpenStreetMapViewer() {
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              Data Centers (16)
+              Data Centers ({DATA_CENTERS.length})
             </button>
             <button
               onClick={() => setActiveLayer('courier')}
