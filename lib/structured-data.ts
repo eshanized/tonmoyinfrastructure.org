@@ -202,6 +202,9 @@ export function generateScholarlyArticleSchema(publication: Publication) {
       if (author === siteConfig.founder.name) {
         return { '@id': `${siteConfig.url}/#founder` };
       }
+      if (author === siteConfig.name || author === 'Tonmoy Infrastructure and Vision') {
+        return { '@id': `${siteConfig.url}/#organization` };
+      }
       return {
         '@type': 'Person',
         name: author,
