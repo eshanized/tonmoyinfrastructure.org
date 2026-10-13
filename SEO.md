@@ -53,7 +53,13 @@ Each system is mapped to `schema.org/SoftwareApplication` with `operatingSystem:
 1. **M31Genesis** (`/projects/m31genesis`): 425M-parameter causal language model pre-trained on high-quality code and reasoning tokens.
 2. **M31Tesla** (`/projects/m31tesla`): 228.9M-parameter autonomous agent runtime model.
 3. **M31Entropy** (`/projects/m31entropy`): 314M-parameter vocabulary-focused language model.
-4. **M31 Q // For programmers**: Hugging Face Space runtime for developer query testing.
+### Sovereign Physical Infrastructure
+* **Confirmed Primary Data Center**: Jayapura Sovereign Facility
+* **Location**: Jayapura, Papua, Indonesia (`Pusat Bisnis Jayapura, Jl. Pasifik Permai`)
+* **Status**: Operational / Production Facility
+* **Classification**: Internal Sovereign Infrastructure
+* **Operational Scope**: Hosts TIV software platforms (OpenMail, Mercura, M31A, Octate), authoritative DNS, and core daemons.
+* **Commercial Policy**: Private enterprise inquiries and dedicated hosting handled by direct contact; no public self-serve retail colocation portal.
 
 ---
 
@@ -98,6 +104,7 @@ To prevent keyword cannibalization and duplicate content dilution, strict canoni
 | `/legal/terms/` | Legal section view | `https://tonmoyinfrastructure.org/terms/` |
 | `/accessibility/` | Canonical accessibility | `https://tonmoyinfrastructure.org/accessibility/` |
 | `/legal/accessibility/` | Legal section view | `https://tonmoyinfrastructure.org/accessibility/` |
+| `/infrastructure/optical-systems/` | Service alias | 301 Permanent Redirect to `https://tonmoyinfrastructure.org/infrastructure/optical/` |
 
 ---
 
@@ -118,12 +125,12 @@ Every indexed page contains a linked `@graph` structure connecting:
 
 * **Robots Configuration** (`app/robots.ts`):
   * Allows all search engine crawlers (`*`).
-  * Disallows non-indexable utility endpoints: `/api/`, `/admin/`, `/private/`.
+  * Disallows non-indexable utility endpoints: `/api/`, `/admin/`, `/private/`, `/internal/`.
   * Points directly to the absolute sitemap URL: `https://tonmoyinfrastructure.org/sitemap.xml`.
 * **Sitemap Generation** (`app/sitemap.ts`):
   * Automatically crawls static routes, active projects, publications, transparency reports, and news.
-  * Explicitly excludes query search (`/search`).
-  * Incorporates real publication and update timestamps (`lastModified`).
+  * Explicitly excludes query search (`/search`) and internal management views (`/internal/portfolio-economics`).
+  * Employs authentic content modification dates (`lastModified`), strictly omitting timestamps for unchanged static pages to prevent build-time date churn.
   * Sets change frequencies (`weekly`, `monthly`, `yearly`) and priority weightings (`1.0` for home, `0.9` for core projects, `0.8` for research).
 
 ---
