@@ -172,6 +172,28 @@ export interface Publication {
   content: string;
 }
 
+export interface InfrastructureGalleryItem {
+  id: string;
+  title: string;
+  category: string;
+  src: string;
+  alt: string;
+  caption: string;
+  description: string;
+  technicalDetails?: string[];
+  disclaimer?: string;
+}
+
+export interface InfrastructureArea {
+  id: string;
+  title: string;
+  iconName?: string;
+  purpose: string;
+  principles: string[];
+  operationalConsiderations: string[];
+  confirmedScope?: string;
+}
+
 export interface InfrastructureService {
   slug: string;
   title: string;
@@ -180,7 +202,11 @@ export interface InfrastructureService {
   description: string;
   classification: 'Commercial' | 'Internal' | 'Experimental' | 'Research';
   content: string;
+  location?: string;
+  gallery?: InfrastructureGalleryItem[];
+  areas?: InfrastructureArea[];
 }
+
 
 export interface NewsArticle {
   slug: string;

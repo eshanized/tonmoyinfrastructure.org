@@ -1311,6 +1311,199 @@ TIV is researching optical networking and fiber optics — from transmission sys
     description:
       'TIV operates a sovereign data center facility in Jayapura, Papua, Indonesia — engineered for internal platform workloads, high-density compute, and resilient sovereign systems.',
     classification: 'Internal',
+    location: 'Jayapura, Papua, Indonesia',
+    gallery: [
+      {
+        id: 'exterior',
+        title: 'The data center',
+        category: 'Exterior view',
+        src: '/images/infrastructure/datacenter/exterior.png',
+        alt: 'Exterior view of the TIV data center in Jayapura, Papua, Indonesia.',
+        caption: 'Exterior visualization of the TIV data center in Jayapura, Papua, Indonesia.',
+        description:
+          'Shows the facility external environment, perimeter envelope, and physical infrastructure situated in Jayapura, Papua, Indonesia. Demonstrates regional deployment context, structural perimeter boundaries, and dedicated sovereign digital hosting.',
+        technicalDetails: [
+          'Location: Jayapura, Papua, Indonesia (Pusat Bisnis Jayapura)',
+          'Perimeter: Physical security boundaries and controlled building ingress',
+          'Deployment: Regional sovereign digital facility for internal TIV workloads',
+        ],
+        disclaimer:
+          'Visual representation is an AI-generated render and does not constitute a documentary photograph of the physical facility.',
+      },
+      {
+        id: 'server-room',
+        title: 'Computing infrastructure',
+        category: 'Server room',
+        src: '/images/infrastructure/datacenter/server-room.png',
+        alt: 'Server room with equipment racks, network cabling, and status lights.',
+        caption: 'View of server racks, network cabling, and supporting data center equipment.',
+        description:
+          'Shows server racks, network equipment, structured cabling, and equipment-room organization without asserting that every visible piece of equipment exists at the physical site. Highlights high-density compute nodes hosting TIV platforms including OpenMail, Mercura, M31A, and Octate.',
+        technicalDetails: [
+          'Workloads: OpenMail email daemon, Mercura code intelligence, M31A autonomous runtime, Octate review engine',
+          'White Space: Modular equipment racks, hot/cold aisle thermal discipline, and overhead cable trays',
+          'Storage & Compute: Isolated execution nodes with Linux cgroups v2 resource ceilings and ZFS pools',
+        ],
+        disclaimer:
+          'Visual representation of data center white space. Does not imply every specific item of equipment pictured is installed in the physical room.',
+      },
+      {
+        id: 'firewall-monitoring',
+        title: 'Network security and monitoring',
+        category: 'Firewall monitoring',
+        src: '/images/infrastructure/datacenter/firewall-monitoring.png',
+        alt: 'Firewall monitoring dashboard with network traffic and security panels.',
+        caption: 'Firewall monitoring interface showing sample security and network telemetry.',
+        description:
+          'Depicts firewall monitoring, traffic visibility, threat detection, rule management, and network security operations. Visualizes perimeter packet filtering, interface telemetry, and multi-tier defense topologies.',
+        technicalDetails: [
+          'Perimeter Defense: Stateful packet inspection, ingress/egress filtering, and DDoS mitigation topologies',
+          'Route Security: BGP routing controls, authoritative DNS protection, and localized syslog observability',
+          'Standards Alignment: Security operations aligned with ISO 27001 physical and SOC 2 security principles',
+        ],
+        disclaimer:
+          'The generated dashboard contains sample values, including traffic statistics, uptime, blocked-threat counts, and rule totals. These values are simulated and are not live operational measurements.',
+      },
+      {
+        id: 'technician-maintenance',
+        title: 'Infrastructure maintenance',
+        category: 'Technician maintenance',
+        src: '/images/infrastructure/datacenter/technician-maintenance.png',
+        alt: 'Technician inspecting network cabling in a server rack.',
+        caption: 'Maintenance scene showing a technician working on server-rack cabling.',
+        description:
+          'Depicts equipment inspection, structured cable management, routine maintenance procedures, and controlled physical access. Regular verification ensures optical transceiver health, cable bend radius integrity, and airflow hygiene.',
+        technicalDetails: [
+          'Inspection Regimes: Scheduled patch cord integrity audits, optical transceiver verification, and port labeling',
+          'Thermal Hygiene: Airflow filter maintenance, fan assembly inspection, and cold-aisle intake checking',
+          'Access Governance: Dual-custody physical access logging and strict hardware change verification',
+        ],
+        disclaimer:
+          'Maintenance scene visualization. The technician depicted is a generated character and does not represent an actual TIV employee.',
+      },
+    ],
+    areas: [
+      {
+        id: 'compute',
+        title: 'Computing and server infrastructure',
+        iconName: 'server',
+        purpose:
+          'White-space compute nodes hosting TIV core software platforms (OpenMail, Mercura, M31A, Octate), authoritative DNS daemons, and internal build services.',
+        principles: [
+          'Modular equipment rack deployment designed for scalable compute and storage expansion',
+          'Linux cgroups v2 resource ceilings (cpu.max, memory.max) and POSIX rlimits process confinement',
+          'ZFS and NVMe storage pools for durable repository mirrors and cryptographic state records',
+          'Out-of-band serial and IPMI hardware monitoring interfaces',
+        ],
+        operationalConsiderations: [
+          'Proactive processor temperature profiling and ECC memory error logging',
+          'Cold-restart runbooks and reproducible system image configurations',
+          'Thermal intake monitoring to prevent component hotspots',
+        ],
+        confirmedScope:
+          'Host environment for TIV software platforms and sovereign services in Jayapura, Papua, Indonesia.',
+      },
+      {
+        id: 'networking',
+        title: 'Network connectivity and cabling',
+        iconName: 'network',
+        purpose:
+          'High-throughput data transport linking computing clusters, local aggregation switches, and regional carrier interconnects.',
+        principles: [
+          'Structured Cat6A and multimode/singlemode fiber patch cabling with strict bend-radius management',
+          'Top-of-Rack (ToR) switching architecture minimizing intra-rack cross-talk and latency',
+          'Color-coded patch discipline separating management, storage, and public transit paths',
+          'Carrier fiber demarcation into regional Indonesian telecommunications backbones',
+        ],
+        operationalConsiderations: [
+          'Scheduled optical budget and attenuation inspections',
+          'Automated link flapping alerts and interface error tracking',
+          'Dual upstream routing paths to prevent single points of network failure',
+        ],
+        confirmedScope:
+          'Carrier fiber demarcation supporting TIV authoritative DNS and mail routing.',
+      },
+      {
+        id: 'security',
+        title: 'Security and monitoring',
+        iconName: 'shield',
+        purpose:
+          'Multi-tier perimeter defense, traffic anomaly detection, access control, and continuous security observability.',
+        principles: [
+          'Stateful Layer 3/4 firewall policy enforcement with strict default-deny ingress and egress gating',
+          'Cryptographic authentication (SSH hardware keys, TLS 1.3) required for all administrative sessions',
+          'BGP route validation and DNS query rate limiting',
+          'Alignment with ISO 27001 physical security controls and SOC 2 security principles',
+        ],
+        operationalConsiderations: [
+          'Centralized syslog retention and immutable audit trail snapshots',
+          'Vulnerability disclosure policy and rapid kernel/firmware patch verification',
+          'Sample dashboard values reflect architectural concepts rather than live public telemetry',
+        ],
+        confirmedScope:
+          'Perimeter security and host monitoring dedicated to sovereign TIV platforms.',
+      },
+      {
+        id: 'power',
+        title: 'Power protection and distribution',
+        iconName: 'zap',
+        purpose:
+          'Conditioned, continuous electrical supply to protect computing hardware against utility fluctuations and outages.',
+        principles: [
+          'Dual independent distribution paths (A/B feeds) to every equipment rack',
+          'Online double-conversion UPS battery systems to absorb utility transients without transfer delay',
+          'On-site auxiliary backup power generation with automatic transfer switching (ATS)',
+          'Granular in-rack power distribution units (ePDUs) with real-time per-outlet metering',
+        ],
+        operationalConsiderations: [
+          'Regular battery impedance and discharge calibration cycles under maintenance runbooks',
+          'Auxiliary generator testing under controlled operational procedures',
+          'Phase load balancing across three-phase distribution panels',
+        ],
+        confirmedScope:
+          'Dual independent power paths and auxiliary power generation supporting continuous facility operations.',
+      },
+      {
+        id: 'cooling',
+        title: 'Cooling and environmental management',
+        iconName: 'thermometer',
+        purpose:
+          'Thermal dissipation and environmental regulation engineered for Jayapura equatorial coastal climate.',
+        principles: [
+          'Hot/cold aisle containment to eliminate hot air recirculation into server intakes',
+          'Precision computer room cooling with variable-speed fan assemblies',
+          'Continuous temperature and relative humidity telemetry across all rack faces',
+          'High-efficiency particulate filtration to resist ambient humidity and salt-mist ingress',
+        ],
+        operationalConsiderations: [
+          'Maintaining server inlet temperatures within ASHRAE recommended ranges (18°C–27°C)',
+          'Dew point and humidity tracking to prevent electrostatic discharge or moisture condensation',
+          'Sensors positioned at rack bottom, middle, and top to identify stratification',
+        ],
+        confirmedScope:
+          'Thermal dissipation engineered for local equatorial climatic conditions.',
+      },
+      {
+        id: 'maintenance',
+        title: 'Physical security and maintenance',
+        iconName: 'wrench',
+        purpose:
+          'Safeguarding physical computing hardware, preventing unauthorized access, and preserving equipment longevity.',
+        principles: [
+          'Multi-factor physical authentication at facility perimeter and server room access points',
+          'Continuous electronic access logging and visitor escort requirements',
+          'Structured cleanroom discipline and dust containment protocols during hardware servicing',
+          'Cryptographic custody and tamper-evident tracking for hardware transit and component replacements',
+        ],
+        operationalConsiderations: [
+          'Scheduled preventive maintenance windows for fan cleaning, optical transceiver checks, and cabling hygiene',
+          'Mandatory documentation of all physical rack openings and hardware changes',
+          'Personnel depictions represent maintenance concepts and do not depict actual TIV staff members',
+        ],
+        confirmedScope:
+          'Controlled physical access and sovereign facility maintenance in Jayapura, Papua, Indonesia.',
+      },
+    ],
     content: `## Overview
 
 Tonmoy Infrastructure and Vision operates an established sovereign data center facility associated with Jayapura, Papua, Indonesia. The facility serves as the foundational physical host for TIV's core systems, powering our stable software platforms (OpenMail, Mercura, M31A, and Octate), authoritative DNS resolution, and internal services.
@@ -1328,13 +1521,13 @@ Tonmoy Infrastructure and Vision operates an established sovereign data center f
 The Jayapura facility is architected around modular infrastructure standards designed for regional network resilience and continuous availability:
 
 ### Power & Backup Topologies
-- Dual power distribution paths (A/B feeds) with online double-conversion UPS systems to guarantee zero transfer interruption during power events.
-- On-site diesel generator backup with automated transfer switching (ATS) to provide sustained operational runtime.
+- Dual power distribution paths (A/B feeds) with online double-conversion UPS systems to guarantee power conditioning during utility fluctuations.
+- On-site auxiliary generator backup with automated transfer switching (ATS) to provide sustained operational runtime.
 - Energy-efficient thermal dissipation with hot/cold aisle containment suited to equatorial climate profiles.
 
 ### Rack Density & Modular Deployment
-- Initial operational deployment engineered around a modular 3–5 rack topology with expansion capacity.
-- Dedicated compute nodes, high-density ZFS/NVMe storage pools, and network ingress equipment.
+- Modular equipment rack topology with scalable expansion capacity.
+- Dedicated compute nodes, high-density storage pools, and network ingress equipment.
 - In-rack power distribution units (ePDUs) with granular per-outlet power metering and environmental telemetry.
 
 ### Connectivity & Network Interconnect

@@ -261,7 +261,10 @@ export function generateInfrastructureMetadata(service: InfrastructureService): 
   const canonicalSlug = service.slug === 'optical-systems' ? 'optical' : service.slug;
   const canonicalPath = `/infrastructure/${canonicalSlug}`;
   const title = `${service.title} — TIV Infrastructure`;
-  const ogImage = `${siteConfig.url}${siteConfig.defaultOgImage}`;
+  const ogImage =
+    service.slug === 'data-centers'
+      ? `${siteConfig.url}/images/infrastructure/datacenter/exterior.png`
+      : `${siteConfig.url}${siteConfig.defaultOgImage}`;
 
   return generatePageMetadata({
     title,
@@ -269,7 +272,15 @@ export function generateInfrastructureMetadata(service: InfrastructureService): 
     path: canonicalPath,
     ogImage,
     overrideTitle: true,
-    keywords: [service.category, service.title, 'Infrastructure', 'TIV'],
+    keywords: [
+      service.category,
+      service.title,
+      'Infrastructure',
+      'TIV',
+      ...(service.slug === 'data-centers'
+        ? ['Jayapura', 'Papua', 'Indonesia', 'Sovereign Data Center']
+        : []),
+    ],
   });
 }
 

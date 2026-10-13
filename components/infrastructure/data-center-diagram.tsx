@@ -42,7 +42,7 @@ export function DataCenterDiagram() {
             Dual Independent 33kV Lines
           </text>
           <text x="110" y="60" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
-            2N+2 Concurrent Maintainability
+            Dual Substation Feeds
           </text>
         </g>
 
@@ -50,10 +50,10 @@ export function DataCenterDiagram() {
           <rect width="220" height="75" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
           <rect x="0" y="0" width="220" height="3" fill="hsl(var(--brand))" />
           <text x="110" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
-            On-Site Turbine Generators
+            Auxiliary Backup Generation
           </text>
           <text x="110" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
-            N+2 Diesel Turbo Arrays (72h Fuel)
+            On-Site Emergency Power Systems
           </text>
           <text x="110" y="60" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-jetbrains)">
             Automatic Transfer Switches (ATS)
@@ -74,7 +74,7 @@ export function DataCenterDiagram() {
             0ms Transfer Time · Isolated Power Distribution Units (PDUs) · A/B Bus
           </text>
           <text x="220" y="60" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
-            Power Density: Up to 35kW per rack
+            Concurrently Maintainable A/B Bus Distribution
           </text>
         </g>
 
@@ -118,22 +118,22 @@ export function DataCenterDiagram() {
             Meet-Me Room (MMR)
           </text>
           <text x="115" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
-            Diverse Carrier Trench Ingress
+            Carrier Demarcation & Ingress
           </text>
           <text x="115" y="62" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
-            Tier-1 BGP Upstreams + Direct IX
+            Upstream Connectivity & Regional Peering
           </text>
           <text x="115" y="80" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
             Redundant Cross-Connects
           </text>
           <text x="115" y="98" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="8" fontFamily="var(--font-jetbrains)">
-            Latency: &lt;1.2ms Metropolitan SLA
+            Direct Optical Patch Demarcation
           </text>
         </g>
       </svg>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-4 text-xs text-muted-foreground font-mono">
-        <span>Power: Concurrently Maintainable Dual Paths (A/B Feeds & On-Site Generator)</span>
+        <span>Power: Dual Independent Distribution Paths (A/B Feeds & Auxiliary Generator)</span>
         <span>Security: Aligned with ISO 27001 & SOC 2 Security Principles</span>
         <span>Location: Jayapura Sovereign Data Center Facility (Papua, Indonesia)</span>
       </div>

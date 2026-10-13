@@ -10,6 +10,7 @@ import { NetworkDiagram } from '@/components/infrastructure/network-diagram';
 import { OpticalPath } from '@/components/infrastructure/optical-path';
 import { CourierDiagram } from '@/components/infrastructure/courier-diagram';
 import { DataCenterDiagram } from '@/components/infrastructure/data-center-diagram';
+import { DataCenterDetail } from '@/components/infrastructure/data-center-detail';
 import { getInfrastructureService, getInfrastructureServices } from '@/lib/content';
 import { generateInfrastructureMetadata } from '@/lib/seo';
 import { generatePageGraph } from '@/lib/structured-data';
@@ -56,6 +57,22 @@ export default async function InfrastructureServicePage({
     pageDescription: service.description,
     breadcrumbs,
   });
+
+  if (slug === 'data-centers') {
+    return (
+      <>
+        <JsonLd data={pageGraph} />
+        <DataCenterDetail
+          service={service}
+          breadcrumbs={[
+            { label: 'Home', href: '/' },
+            { label: 'Infrastructure', href: '/infrastructure' },
+            { label: service.title },
+          ]}
+        />
+      </>
+    );
+  }
 
   const isPlanning = service.status === 'Planning';
   const isResearch = service.status === 'Research';
