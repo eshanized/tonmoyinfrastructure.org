@@ -6,10 +6,8 @@ import { DATA_CENTERS } from '@/lib/solutions-data';
 export function FleetMetrics() {
   const totalStorageTB = DATA_CENTERS.reduce((acc, dc) => acc + dc.totalStorage, 0);
   const usedStorageTB = DATA_CENTERS.reduce((acc, dc) => acc + dc.usedStorage, 0);
-  const totalStoragePB = (totalStorageTB / 1000).toFixed(1);
-  const usedStoragePB = (usedStorageTB / 1000).toFixed(1);
   const averageLoad = Math.round(
-    DATA_CENTERS.reduce((acc, dc) => acc + dc.load, 0) / DATA_CENTERS.length
+    DATA_CENTERS.reduce((acc, dc) => acc + dc.load, 0) / (DATA_CENTERS.length || 1)
   );
 
   return (
@@ -32,32 +30,32 @@ export function FleetMetrics() {
           </span>
         </div>
         <p className="mt-2 text-xs font-mono text-muted-foreground">
-          16 of 16 Facilities Online · Continuous Monitoring
+          {DATA_CENTERS.length} of {DATA_CENTERS.length} Sovereign Facility Online · Continuous Telemetry
         </p>
       </div>
 
-      {/* 2. Total Fleet Capacity */}
+      {/* 2. Total Facility Capacity */}
       <div className="bg-card p-6 md:p-8">
         <div className="flex items-center justify-between">
-          <span className="tiv-meta">STORAGE FLEET</span>
+          <span className="tiv-meta">STORAGE POOL</span>
           <div className="flex h-8 w-8 items-center justify-center border border-border text-brand">
             <TivIcon name="database" size={16} />
           </div>
         </div>
         <div className="mt-4">
           <span className="font-display text-3xl font-bold tracking-tight text-foreground">
-            {totalStoragePB} <span className="text-xl font-normal text-muted-foreground">PB</span>
+            {totalStorageTB} <span className="text-xl font-normal text-muted-foreground">TB</span>
           </span>
         </div>
         <p className="mt-2 text-xs font-mono text-muted-foreground">
-          {usedStoragePB} PB Active ({Math.round((usedStorageTB / totalStorageTB) * 100)}% Alloc.)
+          {usedStorageTB} TB Active ({Math.round((usedStorageTB / (totalStorageTB || 1)) * 100)}% Allocated)
         </p>
       </div>
 
-      {/* 3. Fleet Utilization */}
+      {/* 3. Facility Utilization */}
       <div className="bg-card p-6 md:p-8">
         <div className="flex items-center justify-between">
-          <span className="tiv-meta">LOAD BALANCING</span>
+          <span className="tiv-meta">NODE UTILIZATION</span>
           <div className="flex h-8 w-8 items-center justify-center border border-border text-brand">
             <TivIcon name="chart" size={16} />
           </div>
@@ -66,7 +64,7 @@ export function FleetMetrics() {
           <span className="font-display text-3xl font-bold tracking-tight text-foreground">
             {averageLoad}%
           </span>
-          <span className="text-xs font-mono text-muted-foreground">Mean Fleet Load</span>
+          <span className="text-xs font-mono text-muted-foreground">Operational Load</span>
         </div>
         <div className="mt-3 h-1.5 w-full overflow-hidden bg-secondary">
           <div
@@ -76,21 +74,21 @@ export function FleetMetrics() {
         </div>
       </div>
 
-      {/* 4. Network Uptime */}
+      {/* 4. Power & Redundancy */}
       <div className="bg-card p-6 md:p-8">
         <div className="flex items-center justify-between">
-          <span className="tiv-meta">RELIABILITY SLA</span>
+          <span className="tiv-meta">POWER & RESILIENCE</span>
           <div className="flex h-8 w-8 items-center justify-center border border-border text-brand">
             <TivIcon name="network" size={16} />
           </div>
         </div>
         <div className="mt-4">
           <span className="font-display text-3xl font-bold tracking-tight text-foreground font-mono">
-            99.999%
+            2N + N+1
           </span>
         </div>
         <p className="mt-2 text-xs font-mono text-muted-foreground">
-          Past 30-Day Rolling Ingress/Egress Availability
+          Dual Bus Power & On-Site Generator Backup
         </p>
       </div>
     </div>
