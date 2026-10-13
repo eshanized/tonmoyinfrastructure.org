@@ -622,7 +622,7 @@ export function ProjectDetailView({
                     {related.slice(0, 5).map((rel) => (
                       <li key={rel.slug}>
                         <Link
-                          href={`/${basePath}/${rel.slug}`}
+                          href={`/projects/${rel.slug}`}
                           className="group flex items-center justify-between text-sm transition-colors hover:text-brand"
                         >
                           <span>{rel.title}</span>
@@ -651,7 +651,7 @@ export function ProjectDetailView({
             </Link>
             {related[0] && (
               <Link
-                href={`/${basePath}/${related[0].slug}`}
+                href={`/projects/${related[0].slug}`}
                 className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-brand"
               >
                 Next: {related[0].title}
