@@ -104,7 +104,7 @@ export function DataCenterExplorer() {
             viewBox={`0 0 ${mapWidth} ${mapHeight}`}
             className="h-auto w-full select-none"
             role="img"
-            aria-label="Interactive world map showing 16 global enterprise data center locations"
+            aria-label="Interactive world map showing TIV Jayapura sovereign data center location"
           >
             {/* Latitude and Longitude Grid Lines */}
             {[-60, -30, 0, 30, 60].map((lat) => {
@@ -251,7 +251,9 @@ export function DataCenterExplorer() {
                 <div>
                   <span className="text-muted-foreground">Storage:</span>{' '}
                   <span className="text-foreground">
-                    {(activeFacility.totalStorage / 1000).toFixed(1)} PB
+                    {activeFacility.totalStorage >= 1000
+                      ? `${(activeFacility.totalStorage / 1000).toFixed(1)} PB`
+                      : `${activeFacility.totalStorage} TB`}
                   </span>
                 </div>
               </div>
@@ -364,7 +366,9 @@ export function DataCenterExplorer() {
                 <div className="flex justify-between text-muted-foreground">
                   <span>Capacity Allocation</span>
                   <span className="text-foreground">
-                    {(dc.usedStorage / 1000).toFixed(1)} / {(dc.totalStorage / 1000).toFixed(1)} PB
+                    {dc.totalStorage >= 1000
+                      ? `${(dc.usedStorage / 1000).toFixed(1)} / ${(dc.totalStorage / 1000).toFixed(1)} PB`
+                      : `${dc.usedStorage} / ${dc.totalStorage} TB`}
                   </span>
                 </div>
                 <div className="mt-1.5 h-1.5 w-full bg-secondary">
