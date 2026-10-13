@@ -26,6 +26,9 @@ const rawProjects: Project[] = [
   {
     slug: 'openmail',
     title: 'OpenMail',
+    seoTitle: 'OpenMail — Self-Hosted Email & Communication Infrastructure',
+    seoDescription:
+      'Self-hosted email and communication infrastructure platform. Single-binary mail server with integrated SMTP, IMAP, automated TLS, and local data ownership.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -141,6 +144,9 @@ OpenMail is a stable release. The core platform is complete and deployed. Active
   {
     slug: 'mercura',
     title: 'Mercura',
+    seoTitle: 'Mercura — Self-Hosted Mercurial Code Hosting & Management',
+    seoDescription:
+      'Self-hosted code hosting platform built around Mercurial distributed version control. Features web code review, read-only Git mirror, and granular access control.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -246,6 +252,9 @@ Mercura is a stable release. The core platform is complete and deployed. Active 
   {
     slug: 'm31a',
     title: 'M31A',
+    seoTitle: 'M31A — Autonomous Software Engineering Runtime in Rust',
+    seoDescription:
+      'High-assurance, Rust-native autonomous software-engineering runtime. Deterministic lifecycle control, non-bypassable policy gates, resource bounds via cgroups v2, and continuous verification.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -457,6 +466,9 @@ m31a eval run --all
   {
     slug: 'octate',
     title: 'Octate',
+    seoTitle: 'Octate — Terminal-Native AI Code Review CLI & AST Intelligence',
+    seoDescription:
+      'Terminal-native AI code review CLI. Combines local Tree-sitter WASM AST parsing and cross-file reference graphs with multi-stage LLM review DAGs and SARIF export.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -1297,89 +1309,74 @@ TIV is researching optical networking and fiber optics — from transmission sys
     category: 'Data Centers',
     status: 'Production',
     description:
-      'State-of-the-art global data center infrastructure across 16 facilities offering Tier 3 and Tier 4 redundancy, carrier-neutral transit, and multi-petabyte storage.',
-    classification: 'Commercial',
+      'TIV operates a sovereign data center facility in Jayapura, Papua, Indonesia — engineered for internal platform workloads, high-density compute, and resilient sovereign systems.',
+    classification: 'Internal',
     content: `## Overview
 
-TIV operates and connects a distributed fleet of 16 mission-critical data center facilities across North America, Europe, East Asia, South Asia, Southeast Asia, and Oceania. Engineered for high-density compute, resilient storage, and low-latency global peering, our infrastructure guarantees continuous uptime for mission-critical enterprise workloads.
+Tonmoy Infrastructure and Vision operates an established sovereign data center facility associated with Jayapura, Papua, Indonesia. The facility serves as the foundational physical host for TIV's core systems, powering our stable software platforms (OpenMail, Mercura, M31A, and Octate), authoritative DNS resolution, and internal services.
 
-## Fleet Specifications & Capacity
+## Operational Status & Deployment Scope
 
-- **Global Facilities**: 16 dedicated sites across 11 countries
-- **Total Storage Fleet**: Over 845 PB aggregate storage capacity
-- **Average Utilization**: 86% monitored system load with dynamic load-balancing
-- **Power & Density**: Up to 75 MW per facility with dedicated dual-substation feeds
-- **Uptime Record**: 99.999% network availability maintained across primary nodes
+- **Status**: Production Facility
+- **Location**: Jayapura, Papua, Indonesia
+- **Classification**: Internal Sovereign Infrastructure
+- **Workload Scope**: Host environment for TIV software platforms, cryptographic telemetry, repository mirrors, and internal engineering daemons.
+- **Commercial Colocation Notice**: TIV does not operate a public retail self-service colocation storefront or public cloud portal. Physical hosting is dedicated to TIV operations; private enterprise arrangements and sovereign infrastructure inquiries are evaluated by direct inquiry.
 
-## Architectural Standards
+## Facility Engineering & Resilience
 
-### Power & Mechanical Redundancy
-Facilities comply with Uptime Institute Tier 4 standards with 2N+2 or 2N+1 concurrent maintainability across all electrical and mechanical topologies. Dual-feed utility transformers, continuous online UPS arrays, and on-site diesel turbine backup generators ensure uninterruptible operations.
+The Jayapura facility is architected around modular infrastructure standards designed for regional network resilience and continuous availability:
 
-### Carrier-Neutral Connectivity
-Direct low-latency interconnects with primary Tier 1 transit and regional telco carriers (AT&T, Verizon, CenturyLink, BT, Deutsche Telekom, KPN, NTT, SoftBank, Singtel, Airtel, Tata, BTCL, Telstra, Optus). Multi-path DWDM fiber routes ensure seamless failover.
+### Power & Backup Topologies
+- Dual power distribution paths (A/B feeds) with online double-conversion UPS systems to guarantee zero transfer interruption during power events.
+- On-site diesel generator backup with automated transfer switching (ATS) to provide sustained operational runtime.
+- Energy-efficient thermal dissipation with hot/cold aisle containment suited to equatorial climate profiles.
 
-### Certifications & Enterprise Compliance
-- **ISO 27001** Information Security Management
-- **SOC 2 Type II** Security, Availability, and Confidentiality
-- **PCI DSS** Level 1 Payment Card Industry Compliance
-- **HIPAA** Health Insurance Portability and Accountability Act
-- **GDPR** European Union Data Protection Compliance
-- **SS 564** Green Data Center Standard (Singapore)
+### Rack Density & Modular Deployment
+- Initial operational deployment engineered around a modular 3–5 rack topology with expansion capacity.
+- Dedicated compute nodes, high-density ZFS/NVMe storage pools, and network ingress equipment.
+- In-rack power distribution units (ePDUs) with granular per-outlet power metering and environmental telemetry.
 
-## Facility Locations
+### Connectivity & Network Interconnect
+- Carrier fiber demarcation into regional Indonesian telecommunications backbones.
+- BGP routing and redundant upstream connectivity supporting TIV mail routing and DNS authority.
+- Meet-me demarcation supporting private cross-connects and dedicated enterprise interconnects.
 
-- **North America**: New York (70 MW, Tier 4), Silicon Valley (75 MW, Tier 4), Dallas (65 MW, Tier 4)
-- **Europe**: London (65 MW, Tier 4), Frankfurt (60 MW, Tier 4), Amsterdam (55 MW, Tier 4)
-- **East Asia**: Tokyo (55 MW, Tier 4), Seoul (50 MW, Tier 4)
-- **Southeast Asia**: Singapore Central (60 MW, Tier 4)
-- **South Asia**: Mumbai (50 MW, Tier 4), Bangalore (45 MW, Tier 4), Dhaka (40 MW, Tier 3), Chittagong (35 MW, Tier 3), Satkhira (30 MW, Tier 3)
-- **Oceania**: Sydney (45 MW, Tier 4), Melbourne (40 MW, Tier 4)`,
+## Local Sovereign Facility vs. Global Blueprints
+
+TIV clearly distinguishes its physical operational reality from broader architectural blueprints:
+- **Operational Reality**: TIV's confirmed operational data center is the sovereign facility in Jayapura, Papua, Indonesia.
+- **Global Footprint**: TIV does not operate an owned fleet of 16 hyperscale facilities across 11 countries, nor do we assert unverified claims of 845 PB storage fleets or 99.999% global SLAs. Broader geographic presence relies on partner edge peering and reference research topologies.
+- **Compliance & Security**: Facility operations align with ISO 27001 physical security controls and SOC 2 security principles for data integrity and access control.`,
   },
   {
     slug: 'courier',
-    title: 'Global Courier Network',
+    title: 'Logistics Architecture',
     category: 'Logistics',
-    status: 'Production',
+    status: 'Research',
     description:
-      'Seamless logistics and courier solutions connecting 17 countries with reliable, 48-hour guaranteed delivery services.',
-    classification: 'Commercial',
+      'Logistics systems architecture and supply chain telemetry research — evaluating cross-border hardware distribution, tracking protocols, and custody verification.',
+    classification: 'Research',
     content: `## Overview
 
-The TIV Global Courier Network is an enterprise-grade international logistics and distribution service connecting 17 key economic nations. Built for high-reliability hardware supply chains, secure documentation, and rapid commercial freight, the network operates active hubs linked by guaranteed 48-hour transit corridors.
+TIV researches distributed logistics architecture, supply chain telemetry, and automated verification protocols designed for secure hardware distribution, server component transit, and cryptographic chain-of-custody tracking.
 
-## Key Metrics & Operating Scale
+## Status
 
-- **Daily Shipments**: 50,000+ parcels and freight units processed daily
-- **Hub Countries**: 17 directly operated and partner-integrated national distribution hubs
-- **Transit Standard**: 48-hour delivery SLA across major global metropolitan centers
-- **Fulfillment Reliability**: 99.9% on-time delivery and handling verification rate
+**Research & Systems Design** — Logistics models and telemetry verification protocols are currently in architecture and research design. TIV does not operate an independent commercial freight airline or public courier dispatch service. Logistics research supports internal infrastructure equipment movements and partner-integrated distribution corridors.
 
-## Core Service Offerings
+## Research & Architecture Scope
 
-### 1. Express Delivery
-Guaranteed 48-hour delivery turnaround to major international metropolitan areas. Includes door-to-door courier service, cryptographic milestone tracking, automated dispatch scheduling, and full comprehensive transit replacement insurance.
+### Hardware Chain of Custody
+Cryptographic milestone verification and tamper-evident tracking models for server and networking hardware transit.
 
-### 2. Customs Clearance
-Frictionless cross-border clearance managed by dedicated in-house clearance agents. Features automated Harmonized Tariff Schedule (HTS) classification, real-time duty and tax computation, and full regulatory compliance handling for complex multi-jurisdiction shipping.
+### Logistics Telemetry Protocols
+Real-time dispatch telemetry and milestone tracking models for resilient equipment transport.
 
-### 3. Specialized Handling
-Custom protocols for sensitive and high-value infrastructure assets. Includes temperature-controlled cold chain logistics for pharmaceutical and semiconductor components, anti-static certified hardware packaging, oversized server and rack transport, and tamper-evident physical security sealing.
-
-## Global Hub Coverage (17 Countries)
-
-- **North America**: United States (New York Hub), Canada (Toronto Pearson Hub)
-- **Europe**: United Kingdom (London Heathrow Gateway), Germany (Frankfurt Central Hub), France (Paris Charles de Gaulle Node), Spain (Madrid Barajas Facility), Italy (Milan Malpensa Hub)
-- **East & Southeast Asia**: Japan (Tokyo Narita Hub), South Korea (Seoul Incheon Logistics Center), China (Shanghai Pudong Hub), Singapore (Singapore Changi Air Cargo Hub)
-- **South Asia**: India (Mumbai International Freight Center), Bangladesh (Dhaka Shahjalal Cargo Hub)
-- **Middle East & Africa**: United Arab Emirates (Dubai Al Maktoum Logistics Hub), South Africa (Johannesburg O.R. Tambo Facility)
-- **Oceania**: Australia (Sydney Kingsford Gateway)
-- **South America**: Brazil (São Paulo Viracopos Node)
-
-## Quality & Regulatory Compliance
-
-All primary hubs and transfer centers maintain **ISO 9001** Quality Management certification and **GDP** (Good Distribution Practice) compliance for sensitive goods, audited on an annual cycle with local partner carrier integrations.`,
+### Regulatory & Quality Frameworks
+Operational alignment research targeting ISO 9001 and Good Distribution Practice (GDP) standards for sensitive hardware components.`,
   },
+
 ];
 
 export function getInfrastructureServices(): InfrastructureService[] {
