@@ -111,7 +111,7 @@ export default function PublicPortfolioEconomicsPage() {
               </h2>
             </div>
             <span className="text-xs font-mono text-muted-foreground">
-              Audited historical acquisition cost &amp; economic net book value across 16 Data Centers &amp; 17 Courier Hubs
+              Audited historical acquisition cost &amp; economic net book value across Jayapura Sovereign Facility &amp; Regional Infrastructure
             </span>
           </div>
           <CorporateAssetRegister isInternal={false} />
