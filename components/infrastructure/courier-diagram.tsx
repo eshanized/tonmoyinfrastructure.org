@@ -143,7 +143,7 @@ export function CourierDiagram() {
             Automated Conveyor Sortation
           </text>
           <text x="100" y="58" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
-            T+36h Routing Clear
+            Transit Verification
           </text>
         </g>
 
@@ -158,15 +158,15 @@ export function CourierDiagram() {
             Secure Signature & Geotag
           </text>
           <text x="100" y="58" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
-            Guaranteed T+48h Delivery
+            Verified Milestone Delivery
           </text>
         </g>
       </svg>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-4 text-xs text-muted-foreground font-mono">
-        <span>SLA: 48 Hours Worldwide Turnaround</span>
-        <span>Daily Volume: 50,000+ Shipments</span>
-        <span>Accuracy: 99.9% Delivery Success</span>
+        <span>Architecture: Logistics Telemetry & Cryptographic Verification Research</span>
+        <span>Focus: Server Hardware Transit & Secure Equipment Movement</span>
+        <span>Standard: Aligned with Good Distribution Practice (GDP) Principles</span>
       </div>
     </div>
   );
