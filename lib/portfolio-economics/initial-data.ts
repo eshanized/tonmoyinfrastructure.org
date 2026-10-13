@@ -791,7 +791,7 @@ export const initialRevenue: ProjectRevenue[] = [
     approvalStatus: 'Published',
     visibility: 'public',
     notes:
-      'Global Data Center fleet (16 facilities) enterprise colocation, high-density compute rack hosting, and transit peering agreements.',
+      'Jayapura Sovereign Data Center facility hosting, internal compute cluster infrastructure, and transit peering agreements.',
   },
   {
     id: 'rev-courier-freight-01',
@@ -805,7 +805,7 @@ export const initialRevenue: ProjectRevenue[] = [
     approvalStatus: 'Published',
     visibility: 'public',
     notes:
-      'Global Courier Network commercial cargo contracts, scheduled express air charter slots, and specialized GDP cold-chain handling.',
+      'Hardware logistics coordination, server transit telemetry protocols, and equipment movement agreements.',
   },
   {
     id: 'rev-corp-unatt-01',
@@ -892,7 +892,7 @@ export const initialAssets: Asset[] = [
   },
   {
     id: 'ast-dc-fleet-01',
-    name: 'Tier 3 & Tier 4 Fleet Server & Rack Infrastructure (16 Facilities)',
+    name: 'Sovereign Data Center Server & Modular Rack Infrastructure (Jayapura)',
     assetType: 'Server',
     acquisitionDate: '2025-06-15',
     acquisitionCost: 450000,
@@ -901,14 +901,14 @@ export const initialAssets: Asset[] = [
     residualValue: 50000,
     bookValue: 380000,
     estimatedEconomicDepreciation: 70000,
-    location: 'Global Fleet (16 Facilities across 11 Countries)',
+    location: 'Jayapura Sovereign Facility, Papua, Indonesia',
     owner: 'Tonmoy Infrastructure and Vision',
     status: 'Active',
-    notes: 'High-density multi-tenant rack infrastructure, 2N+2 power distribution units, dual-substation feeds, and continuous online UPS nodes.',
+    notes: 'Modular server and rack infrastructure, dual power distribution units, online double-conversion UPS, and dedicated hardware hosting TIV core platforms.',
   },
   {
     id: 'ast-dc-str-01',
-    name: 'Multi-Petabyte High-Density Storage Enclosures (SAN Fleet)',
+    name: 'High-Density Storage Enclosures (SAN & NVMe Storage Pool)',
     assetType: 'Storage',
     acquisitionDate: '2025-07-20',
     acquisitionCost: 320000,
@@ -917,14 +917,14 @@ export const initialAssets: Asset[] = [
     residualValue: 40000,
     bookValue: 260000,
     estimatedEconomicDepreciation: 60000,
-    location: 'Global Fleet (Singapore, Frankfurt, Silicon Valley, Mumbai)',
+    location: 'Jayapura Sovereign Facility, Papua, Indonesia',
     owner: 'Tonmoy Infrastructure and Vision',
     status: 'Active',
-    notes: 'High-capacity NVMe and SAS storage arrays backing 845 PB distributed storage fleet and checkpoint archives.',
+    notes: 'High-capacity NVMe and ZFS storage arrays backing TIV software platforms, model checkpoints, and repository archives.',
   },
   {
     id: 'ast-courier-mesh-01',
-    name: 'Courier Hub Sortation Automation & Optical Dimensioning Scanners',
+    name: 'Logistics Telemetry & Hardware Transit Verification Nodes',
     assetType: 'Other Equipment',
     acquisitionDate: '2025-09-01',
     acquisitionCost: 210000,
@@ -933,14 +933,14 @@ export const initialAssets: Asset[] = [
     residualValue: 30000,
     bookValue: 180000,
     estimatedEconomicDepreciation: 30000,
-    location: 'Regional Sorting Hubs (Dhaka, Singapore, Frankfurt, Dubai, Kolkata)',
+    location: 'Regional Logistics Corridors (Jayapura, Jakarta, Singapore, Kolkata)',
     owner: 'Tonmoy Infrastructure and Vision',
     status: 'Active',
-    notes: 'Automated conveyor belts, barcode/RFID scanners, in-line volumetric scales, and mesh GPS nodes handling 50k+ daily shipments.',
+    notes: 'Hardware telemetry nodes, barcode/RFID scanners, and cryptographic verification points tracking equipment transit.',
   },
   {
     id: 'ast-courier-cold-01',
-    name: 'Specialized GDP Active Cold-Chain Containers & Telemetry Fleet',
+    name: 'Specialized Hardware Transit Containers & Telemetry Enclosures',
     assetType: 'Other Equipment',
     acquisitionDate: '2025-10-10',
     acquisitionCost: 150000,
@@ -949,10 +949,10 @@ export const initialAssets: Asset[] = [
     residualValue: 20000,
     bookValue: 130000,
     estimatedEconomicDepreciation: 20000,
-    location: 'International Transit Mesh (17 Countries)',
+    location: 'Regional Logistics Corridors',
     owner: 'Tonmoy Infrastructure and Vision',
     status: 'Active',
-    notes: 'Active temperature-controlled containers for pharmaceutical and sensitive cargo with continuous cellular/satellite data loggers.',
+    notes: 'Active climate-controlled containers and tamper-evident telemetry sensors for sensitive optical and compute hardware transport.',
   },
 ];
 
@@ -1091,7 +1091,7 @@ export const initialAssetAllocations: AssetAllocation[] = [
     notes: '128k vocabulary tokenizer training and compression measurements.',
   },
 
-  // Tier 3 & 4 Data Center Fleet Infrastructure (ast-dc-fleet-01) - sum = 100%
+  // Sovereign Data Center Infrastructure (ast-dc-fleet-01) - sum = 100%
   {
     id: 'ast-alloc-dc-m31a',
     assetId: 'ast-dc-fleet-01',
@@ -1099,7 +1099,7 @@ export const initialAssetAllocations: AssetAllocation[] = [
     periodId: 'fy2026',
     allocationPercentage: 40,
     allocationBasis: 'Compute',
-    notes: 'High-density multi-region agent evaluation and simulation runtime across global fleet nodes.',
+    notes: 'Autonomous agent evaluation and simulation runtime hosted at Jayapura sovereign facility.',
   },
   {
     id: 'ast-alloc-dc-om',
