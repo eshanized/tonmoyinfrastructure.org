@@ -20,6 +20,12 @@ TIV enforces strict content integrity across all published pages:
    - Do not invent fictional board members, executive teams, or employee headcounts.
 4. **No Vanity Metrics**:
    - Do not publish fictional uptime percentages (e.g. "99.999%"), invented enterprise customer counts, or fabricated industry awards.
+5. **Infrastructure & Operational Claims**:
+   - **TIV Data Center Ground Truth**: Tonmoy Infrastructure and Vision operates an **existing, physical sovereign data center facility** located in **Jayapura, Papua, Indonesia**. The facility physically exists and is actively operational—it must **never** be downgraded to "planned", "proposed", or "research".
+   - **Operational Scope vs. Commercial Offering**: The Jayapura facility hosts TIV's internal infrastructure, authoritative DNS, and software platforms (OpenMail, Mercura, M31A, Octate). TIV does not operate a public retail self-service colocation portal; enterprise hosting and sovereign infrastructure capacity are evaluated via private inquiry.
+   - **Local Operational Facility vs. Global Blueprints**: The confirmed physical facility in Jayapura must not be conflated with unverified global hyperscale claims. Do not claim TIV owns or operates 16 data centers across 11 countries, 845 PB of aggregate storage, or 99.999% SLAs unless verified by authoritative operational evidence.
+   - **Logistics & Courier Architecture**: Logistics systems and freight corridors are modeled as systems architecture, cryptographic custody verification, and hardware transit telemetry research.
+   - **Certifications & Compliance**: Do not claim accredited third-party compliance certifications (e.g. ISO 27001, SOC 2 Type II, PCI DSS, HIPAA, GDP) unless external audit certificates exist; describe architectures as aligned with recognized security and distribution principles.
 
 ---
 
