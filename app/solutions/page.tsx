@@ -19,6 +19,7 @@ import { Reveal } from '@/components/shared/motion';
 import { FleetMetrics } from '@/components/solutions/fleet-metrics';
 import { DataCenterExplorer } from '@/components/solutions/data-center-explorer';
 import { CourierNetworkExplorer } from '@/components/solutions/courier-network-explorer';
+import { Callout } from '@/components/shared/callout';
 import dynamic from 'next/dynamic';
 import { generatePageMetadata } from '@/lib/seo';
 import { generatePageGraph } from '@/lib/structured-data';
@@ -40,27 +41,25 @@ const OpenStreetMapViewer = dynamic(
 );
 
 export const metadata = generatePageMetadata({
-  title: 'Global Infrastructure & Logistics Solutions',
+  title: 'Infrastructure Solutions & Architectural Models',
   description:
-    'Enterprise infrastructure solutions: 16 Tier 3 & Tier 4 data center facilities, high-density compute capacity, and global courier logistics connecting 17 countries with guaranteed 48-hour delivery.',
+    'Enterprise infrastructure solutions and architectural reference models: Tier 3 & Tier 4 facility topologies, high-density compute planning, and secure logistics telemetry.',
   path: '/solutions',
   keywords: [
     'TIV solutions',
-    'enterprise infrastructure',
-    'data centers',
-    'global courier network',
-    'express delivery',
-    'international logistics',
-    'tier 4 data center',
-    'carrier neutral',
+    'infrastructure architecture',
+    'data center topologies',
+    'logistics telemetry',
+    'tier 4 reference model',
+    'carrier neutral design',
   ],
 });
 
 export default function SolutionsPage() {
   const pageGraph = generatePageGraph({
-    title: 'Global Infrastructure & Logistics Solutions — TIV',
+    title: 'Infrastructure Solutions & Architectural Models — TIV',
     description:
-      'Enterprise infrastructure solutions: 16 Tier 3 & Tier 4 data center facilities, high-density compute capacity, and global courier logistics connecting 17 countries.',
+      'Enterprise infrastructure solutions and architectural reference models: Tier 3 & Tier 4 facility topologies, high-density compute planning, and secure logistics telemetry.',
     path: '/solutions',
     breadcrumbs: [
       { name: 'Home', item: '/' },
@@ -73,18 +72,18 @@ export default function SolutionsPage() {
       <JsonLd data={pageGraph} />
       <PageHeader
         index="SOLUTIONS"
-        label="Enterprise & Logistics"
-        title="Global Infrastructure & Logistics Solutions."
-        description="Experience unparalleled security and performance with our worldwide network of 16 mission-critical data center facilities and our international courier logistics network connecting 17 countries."
+        label="Architecture & Systems Engineering"
+        title="Infrastructure & Logistics Architecture."
+        description="Explore TIV reference architectures, facility topologies, and logistics telemetry models. Operational parameters represent architectural planning baselines."
         meta={[
-          { label: 'DATA CENTERS', value: '16 Facilities' },
-          { label: 'COURIER REACH', value: '17 Nations' },
-          { label: 'SLA STANDARD', value: '48h Transit' },
-          { label: 'UPTIME SLA', value: '99.999%' },
+          { label: 'TOPOLOGY', value: 'Reference Model' },
+          { label: 'FACILITY NODES', value: '16 Reference Sites' },
+          { label: 'LOGISTICS NODES', value: '17 Corridors' },
+          { label: 'ARCHITECTURE', value: 'Tier 3/4 Aligned' },
         ]}
       />
 
-      {/* Breadcrumbs */}
+      {/* Breadcrumbs & Architectural Disclaimer */}
       <section className="border-b border-border bg-background">
         <div className="tiv-container py-6">
           <Breadcrumbs
@@ -93,6 +92,11 @@ export default function SolutionsPage() {
               { label: 'Solutions' },
             ]}
           />
+          <div className="mt-6">
+            <Callout type="info" title="Architectural Reference Modeling">
+              These interactive maps, node distributions, and capacity figures demonstrate TIV&apos;s architectural reference topologies, systems resilience standards, and simulation telemetry. Commercial deployments and dedicated enterprise hosting are evaluated via private inquiry.
+            </Callout>
+          </div>
         </div>
       </section>
 
@@ -119,7 +123,7 @@ export default function SolutionsPage() {
             <SectionHeader
               label="Live Cartography"
               title="OpenStreetMap Global Telemetry Grid."
-              description="Interactive global telemetry rendered on OpenStreetMap tiles — inspect our 16 mission-critical data center facilities, 17 international courier gateway hubs, and connected 48-hour flight corridors in real time."
+              description="Interactive global telemetry rendered on OpenStreetMap tiles — inspect our sovereign Jayapura data center facility, regional logistics corridors, and edge telemetry in real time."
             />
           </Reveal>
           <Reveal delay={0.1} className="mt-10">
@@ -128,7 +132,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* Global Data Center Fleet Section */}
+      {/* Sovereign Data Center Facility Section */}
       <section id="data-centers" className="border-b border-border">
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
@@ -136,8 +140,8 @@ export default function SolutionsPage() {
               <div>
                 <SectionHeader
                   label="Compute & Facilities"
-                  title="Global Data Center Fleet."
-                  description="Strategically positioned Tier 3 and Tier 4 facilities engineered for high-density compute, multi-petabyte storage, and carrier-neutral peering."
+                  title="Sovereign Data Center & Facility Architecture."
+                  description="Modular high-density facility in Jayapura, Papua, Indonesia engineered for sovereign compute, high-reliability storage, and carrier-neutral peering."
                 />
               </div>
               <Link
@@ -154,7 +158,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* Global Courier Network Section */}
+      {/* Logistics Architecture Section */}
       <section id="courier" className="border-b border-border bg-secondary/10">
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
@@ -162,8 +166,8 @@ export default function SolutionsPage() {
               <div>
                 <SectionHeader
                   label="Physical Logistics & Supply Chain"
-                  title="Global Courier Network."
-                  description="Seamless logistics solutions connecting 17 countries with reliable, 48-hour delivery guarantees, full customs clearance, and specialized handling."
+                  title="Logistics Systems Architecture."
+                  description="Supply chain telemetry and hardware transit architecture connecting regional partner corridors with cryptographic custody verification and specialized handling."
                 />
               </div>
               <Link
@@ -209,10 +213,10 @@ export default function SolutionsPage() {
                 <Building className="h-4 w-4 text-brand" />
               </div>
               <p className="mt-3 font-display text-2xl font-bold text-foreground">
-                33 Facilities
+                Sovereign Facility &amp; Corridors
               </p>
               <p className="mt-1 text-xs text-muted-foreground font-mono">
-                16 Data Centers + 17 Courier Hubs across 17 countries
+                Jayapura Sovereign Node + 17 Partner Transit Corridors
               </p>
             </div>
 
@@ -286,24 +290,24 @@ export default function SolutionsPage() {
             <div className="max-w-2xl">
               <span className="tiv-meta">ENGAGEMENT & ENTERPRISE CONTRACTS</span>
               <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-                Ready to scale your infrastructure or global logistics?
+                Ready to evaluate our infrastructure or logistics systems?
               </h2>
               <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground md:text-base">
-                Whether deploying mission-critical compute across our 16 data center facilities or securing rapid 48-hour hardware courier transit across 17 countries, our engineering team is ready to assist.
+                Whether evaluating sovereign infrastructure at our Jayapura facility, discussing specialized hardware transit, or integrating with TIV software platforms, our engineering team is ready to assist.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-6 text-xs font-mono text-muted-foreground">
                 <span className="flex items-center gap-2">
                   <ShieldCheck className="h-4 w-4 text-brand" />
-                  Enterprise Security & ISO 27001
+                  ISO 27001 Aligned Controls
                 </span>
                 <span className="flex items-center gap-2">
                   <Globe className="h-4 w-4 text-brand" />
-                  17 International Gateway Hubs
+                  Regional Logistics Corridors
                 </span>
                 <span className="flex items-center gap-2">
                   <Zap className="h-4 w-4 text-brand" />
-                  48-Hour Worldwide Turnaround
+                  Cryptographic Chain of Custody
                 </span>
               </div>
 
