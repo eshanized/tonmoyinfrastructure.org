@@ -23,10 +23,10 @@ import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata = generatePageMetadata({
   path: '/',
-  title: 'Tonmoy Infrastructure and Vision — Technology Infrastructure',
+  title: 'Enterprise Infrastructure & Systems Engineering — Tonmoy Infrastructure and Vision',
   overrideTitle: true,
   description:
-    'Tonmoy Infrastructure and Vision builds practical software, internet infrastructure, networking systems, and emerging technologies that people can deploy, operate, and depend on.',
+    'Tonmoy Infrastructure and Vision (TIV) engineers sovereign software platforms, verifiable developer runtimes, and distributed infrastructure architecture. Explore stable releases including OpenMail, Mercura, M31A, and Octate.',
 });
 
 const categoryIcons: Record<string, string> = {
@@ -66,27 +66,60 @@ export default function HomePage() {
               </Reveal>
               <Reveal delay={0.2}>
                 <p className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-                  Tonmoy Infrastructure and Vision builds practical software,
-                  internet infrastructure, networking systems, and emerging
-                  technologies that people can deploy, operate, and depend on.
+                  Tonmoy Infrastructure and Vision (TIV) builds practical software systems,
+                  sovereign mail infrastructure, and high-assurance developer runtimes.
+                  Engineered for operators, developers, and organizations who prioritize
+                  data ownership, deterministic execution, and verifiable systems.
                 </p>
               </Reveal>
               <Reveal delay={0.3}>
-                <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <div className="mt-10 flex flex-wrap gap-4">
                   <Link
-                    href="/work"
+                    href="/products"
                     className="group inline-flex items-center justify-center gap-2 bg-brand px-6 py-3 font-medium text-brand-foreground transition-opacity hover:opacity-90"
                   >
-                    Explore our work
+                    Explore products
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
-                    href="/research"
+                    href="/infrastructure"
                     className="group inline-flex items-center justify-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand"
                   >
-                    Explore research
+                    Infrastructure systems
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
+                  <Link
+                    href="/contact"
+                    className="group inline-flex items-center justify-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand"
+                  >
+                    Business inquiries
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.35}>
+                <div className="mt-12 grid grid-cols-2 gap-4 border-t border-border pt-8 sm:grid-cols-4">
+                  <div>
+                    <span className="tiv-meta">SHIPPED SOFTWARE</span>
+                    <p className="mt-1 font-display text-base font-semibold text-foreground">4 Stable Platforms</p>
+                    <p className="text-xs text-muted-foreground">OpenMail, Mercura, M31A, Octate</p>
+                  </div>
+                  <div>
+                    <span className="tiv-meta">SYSTEM DESIGN</span>
+                    <p className="mt-1 font-display text-base font-semibold text-foreground">Self-Reliant</p>
+                    <p className="text-xs text-muted-foreground">Local-first, vendor free</p>
+                  </div>
+                  <div>
+                    <span className="tiv-meta">OPEN RESEARCH</span>
+                    <p className="mt-1 font-display text-base font-semibold text-foreground">M31 AI Models</p>
+                    <p className="text-xs text-muted-foreground">Causal models & papers</p>
+                  </div>
+                  <div>
+                    <span className="tiv-meta">GOVERNANCE</span>
+                    <p className="mt-1 font-display text-base font-semibold text-foreground">Transparency</p>
+                    <p className="text-xs text-muted-foreground">Public financial records</p>
+                  </div>
                 </div>
               </Reveal>
             </div>
