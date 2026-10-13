@@ -30,12 +30,13 @@ export function generateStaticParams() {
   return getProjects().map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const project = getProject(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project) return {};
 
   return generatePageMetadata({
@@ -46,12 +47,13 @@ export function generateMetadata({
   });
 }
 
-export default function ProjectEconomicsPage({
+export default async function ProjectEconomicsPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const project = getProject(params.slug);
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project) notFound();
 
   const defaultPeriod = getDefaultFinancialPeriod();

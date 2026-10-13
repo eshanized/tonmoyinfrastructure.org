@@ -16,22 +16,24 @@ export function generateStaticParams() {
   return getPublications().map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const pub = getPublication(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const pub = getPublication(slug);
   if (!pub) return {};
   return generatePublicationMetadata(pub);
 }
 
-export default function PublicationPage({
+export default async function PublicationPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const pub = getPublication(params.slug);
+  const { slug } = await params;
+  const pub = getPublication(slug);
   if (!pub) notFound();
 
   const breadcrumbs = [

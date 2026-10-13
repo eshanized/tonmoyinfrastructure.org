@@ -11,7 +11,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: { unoptimized: true },
-  swcMinify: true,
   experimental: {
     optimizePackageImports: ['lucide-react', 'date-fns'],
   },

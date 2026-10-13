@@ -23,12 +23,13 @@ export function generateStaticParams() {
   return wp.versions.map((v) => ({ version: `v${v.version}` }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { version: string };
-}): Metadata {
-  const wp = getWhitepaperVersion(params.version);
+  params: Promise<{ version: string }>;
+}): Promise<Metadata> {
+  const { version } = await params;
+  const wp = getWhitepaperVersion(version);
   if (!wp) return {};
   return generatePageMetadata({
     path: `/research/whitepaper/v${wp.version}`,
@@ -39,12 +40,13 @@ export function generateMetadata({
   });
 }
 
-export default function WhitepaperVersionPage({
+export default async function WhitepaperVersionPage({
   params,
 }: {
-  params: { version: string };
+  params: Promise<{ version: string }>;
 }) {
-  const wp = getWhitepaperVersion(params.version);
+  const { version } = await params;
+  const wp = getWhitepaperVersion(version);
   if (!wp) notFound();
 
   const breadcrumbs = [

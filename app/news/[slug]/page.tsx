@@ -14,22 +14,24 @@ export function generateStaticParams() {
   return getNews().map((a) => ({ slug: a.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const article = getNewsArticle(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getNewsArticle(slug);
   if (!article) return {};
   return generateArticleMetadata(article);
 }
 
-export default function NewsArticlePage({
+export default async function NewsArticlePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const article = getNewsArticle(params.slug);
+  const { slug } = await params;
+  const article = getNewsArticle(slug);
   if (!article) notFound();
 
   const breadcrumbs = [

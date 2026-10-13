@@ -20,25 +20,10 @@ import { FleetMetrics } from '@/components/solutions/fleet-metrics';
 import { DataCenterExplorer } from '@/components/solutions/data-center-explorer';
 import { CourierNetworkExplorer } from '@/components/solutions/courier-network-explorer';
 import { Callout } from '@/components/shared/callout';
-import dynamic from 'next/dynamic';
+import { OpenStreetMapViewer } from '@/components/solutions/open-street-map-wrapper';
 import { generatePageMetadata } from '@/lib/seo';
 import { generatePageGraph } from '@/lib/structured-data';
 import { JsonLd } from '@/components/shared/json-ld';
-
-const OpenStreetMapViewer = dynamic(
-  () => import('@/components/solutions/open-street-map-viewer'),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex h-[550px] w-full items-center justify-center border border-border bg-card font-mono text-xs text-muted-foreground">
-        <span className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-brand animate-ping" />
-          Loading OpenStreetMap Live Telemetry Layer...
-        </span>
-      </div>
-    ),
-  }
-);
 
 export const metadata = generatePageMetadata({
   title: 'Infrastructure Solutions & Architectural Models',

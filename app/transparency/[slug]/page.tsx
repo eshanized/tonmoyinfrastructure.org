@@ -13,22 +13,24 @@ export function generateStaticParams() {
   return getTransparencyReports().map((r) => ({ slug: r.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const report = getTransparencyReport(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const report = getTransparencyReport(slug);
   if (!report) return {};
   return generateReportMetadata(report);
 }
 
-export default function TransparencyReportPage({
+export default async function TransparencyReportPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const report = getTransparencyReport(params.slug);
+  const { slug } = await params;
+  const report = getTransparencyReport(slug);
   if (!report) notFound();
 
   const breadcrumbs = [

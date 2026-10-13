@@ -8,22 +8,24 @@ export function generateStaticParams() {
   return getProjects().map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const project = getProject(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project) return {};
   return generateProjectMetadata(project, { basePath: 'work' });
 }
 
-export default function WorkProjectPage({
+export default async function WorkProjectPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const project = getProject(params.slug);
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project) notFound();
 
   return <ProjectDetailView project={project} basePath="work" />;

@@ -1,6 +1,7 @@
-import { ImageResponse } from 'next/server';
+import { ImageResponse } from 'next/og';
 import type { NextRequest } from 'next/server';
 
+export const dynamic = 'force-static';
 export const runtime = 'edge';
 
 export async function GET(request: NextRequest) {

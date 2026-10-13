@@ -22,34 +22,36 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const slug = params.slug === 'optical' ? 'optical-systems' : params.slug;
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug: rawSlug } = await params;
+  const slug = rawSlug === 'optical' ? 'optical-systems' : rawSlug;
   const svc = getInfrastructureService(slug);
   if (!svc) return {};
   return generateInfrastructureMetadata(svc);
 }
 
-export default function InfrastructureServicePage({
+export default async function InfrastructureServicePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const slug = params.slug === 'optical' ? 'optical-systems' : params.slug;
+  const { slug: rawSlug } = await params;
+  const slug = rawSlug === 'optical' ? 'optical-systems' : rawSlug;
   const service = getInfrastructureService(slug);
   if (!service) notFound();
 
   const breadcrumbs = [
     { name: 'Home', path: '/' },
     { name: 'Infrastructure', path: '/infrastructure' },
-    { name: service.title, path: `/infrastructure/${params.slug}` },
+    { name: service.title, path: `/infrastructure/${rawSlug}` },
   ];
 
   const pageGraph = generatePageGraph({
-    pagePath: `/infrastructure/${params.slug}`,
+    pagePath: `/infrastructure/${rawSlug}`,
     pageTitle: `${service.title} — TIV Infrastructure`,
     pageDescription: service.description,
     breadcrumbs,
