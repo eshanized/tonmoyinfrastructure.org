@@ -80,7 +80,7 @@ export function CorporateAssetRegister({
             {assets.length} Units
           </p>
           <p className="mt-1 text-xs text-muted-foreground font-mono">
-            Across 16 Data Centers &amp; 17 Logistics Hubs
+            Across Sovereign Jayapura Data Center &amp; Regional Corridors
           </p>
         </div>
 
@@ -248,7 +248,7 @@ export function CorporateAssetRegister({
           <p className="leading-relaxed">
             <strong className="text-foreground">Formal Economic Accounting Principle:</strong> Under
             TIV&apos;s Portfolio Economics specification (Section 1), physical infrastructure —
-            including the 16 Tier 3/4 Data Center facilities and 17 Courier Sortation Hubs — is
+            including the Jayapura Sovereign Data Center facility and regional logistics equipment — is
             valued strictly at historical acquisition cost less accumulated economic depreciation
             (Net Book Value). Speculative venture-style enterprise multiples, goodwill, or
             paper valuations are strictly prohibited across all TIV disclosures.
