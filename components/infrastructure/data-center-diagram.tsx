@@ -4,10 +4,10 @@ export function DataCenterDiagram() {
       <div className="mb-4 flex items-center justify-between">
         <div>
           <span className="tiv-meta">FACILITY ARCHITECTURE</span>
-          <h4 className="font-display text-base font-semibold mt-0.5">Tier 4 High-Density Facility Topology</h4>
+          <h4 className="font-display text-base font-semibold mt-0.5">Sovereign Data Center Facility Topology</h4>
         </div>
         <span className="font-mono text-xs text-muted-foreground border border-border px-2 py-0.5">
-          2N+2 Redundancy · 16 Global Nodes · 845 PB Fleet
+          Dual Power Feeds · Jayapura Facility · Modular Racks
         </span>
       </div>
 
@@ -15,7 +15,7 @@ export function DataCenterDiagram() {
         viewBox="0 0 800 420"
         className="w-full min-w-[650px] h-auto"
         role="img"
-        aria-label="TIV Tier 4 data center architecture schematic showing 2N+2 power distribution, redundant cooling loops, server rack pods, and carrier-neutral meet-me rooms"
+        aria-label="TIV Jayapura sovereign data center architecture schematic showing dual power paths, online UPS systems, modular server racks, and carrier fiber interconnect"
       >
         <defs>
           <marker
@@ -92,10 +92,10 @@ export function DataCenterDiagram() {
           {/* Racks graphic */}
           <g transform="translate(20, 36)">
             {[
-              { label: 'Rack 01-10', sub: 'Compute A' },
-              { label: 'Rack 11-20', sub: 'Compute B' },
-              { label: 'Rack 21-30', sub: 'Storage A' },
-              { label: 'Rack 31-40', sub: 'Storage B' },
+              { label: 'Rack 01', sub: 'Compute Node' },
+              { label: 'Rack 02', sub: 'Core Storage' },
+              { label: 'Rack 03', sub: 'Mail & DNS' },
+              { label: 'Rack 04-05', sub: 'Expansion' },
             ].map((rack, idx) => (
               <g key={rack.label} transform={`translate(${idx * 105}, 0)`}>
                 <rect width="95" height="60" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
@@ -133,9 +133,9 @@ export function DataCenterDiagram() {
       </svg>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-4 text-xs text-muted-foreground font-mono">
-        <span>Uptime Institute: Tier 4 Concurrently Maintainable</span>
-        <span>Certifications: ISO 27001 · PCI DSS · SOC 2 · HIPAA · GDPR</span>
-        <span>Availability: 99.999% Fault Tolerant</span>
+        <span>Power: Concurrently Maintainable Dual Paths (A/B Feeds & On-Site Generator)</span>
+        <span>Security: Aligned with ISO 27001 & SOC 2 Security Principles</span>
+        <span>Location: Jayapura Sovereign Data Center Facility (Papua, Indonesia)</span>
       </div>
     </div>
   );
