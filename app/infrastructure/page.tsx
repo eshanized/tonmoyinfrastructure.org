@@ -14,9 +14,9 @@ import { JsonLd } from '@/components/shared/json-ld';
 export const metadata = generatePageMetadata({
   title: 'Infrastructure Services & Systems',
   description:
-    'TIV infrastructure activities across global data center facilities, 17-country courier logistics, domains, bare-metal hosting, compute clusters, low-latency networking, and optical systems.',
+    'TIV infrastructure activities across our Jayapura sovereign data center, logistics architecture research, domains, bare-metal hosting, compute clusters, low-latency networking, and optical systems.',
   path: '/infrastructure',
-  keywords: ['TIV infrastructure', 'data centers', 'courier network', 'global logistics', 'server hosting', 'cloud compute', 'optical networking', 'domain infrastructure'],
+  keywords: ['TIV infrastructure', 'Jayapura data center', 'logistics architecture', 'server hosting', 'cloud compute', 'optical networking', 'domain infrastructure'],
 });
 
 const serviceIcons: Record<string, string> = {
