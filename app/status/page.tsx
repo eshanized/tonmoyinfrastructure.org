@@ -9,14 +9,14 @@ import { JsonLd } from '@/components/shared/json-ld';
 export const metadata = generatePageMetadata({
   title: 'Real-Time Server & System Status',
   description:
-    'Live operational telemetry, availability, latency, and system health for TIV global data centers, core infrastructure, and software platforms.',
+    'Live operational telemetry, availability, latency, and system health for TIV Jayapura sovereign data center, edge nodes, and core software platforms.',
   path: '/status',
   keywords: [
     'TIV status',
     'server status',
     'system telemetry',
     'live latency',
-    'data center uptime',
+    'Jayapura data center uptime',
     'service availability',
     'network status',
   ],
@@ -26,7 +26,7 @@ export default function StatusPage() {
   const pageGraph = generatePageGraph({
     title: 'Real-Time Server & System Status — Tonmoy Infrastructure and Vision',
     description:
-      'Live operational telemetry, availability, latency, and system health for TIV global data centers, core infrastructure, and software platforms.',
+      'Live operational telemetry, availability, latency, and system health for TIV Jayapura sovereign data center, edge nodes, and core software platforms.',
     path: '/status',
     breadcrumbs: [
       { name: 'Home', item: '/' },
@@ -41,12 +41,12 @@ export default function StatusPage() {
         index="STATUS"
         label="Operational Health"
         title="Live Server & System Status."
-        description="Continuous operational telemetry, availability metrics, and dynamic latency monitoring for TIV's 16 global data center servers, core networking fabric, and software platforms."
+        description="Operational telemetry, availability metrics, and dynamic latency monitoring for TIV software platforms, public endpoints, and reference infrastructure nodes."
         meta={[
-          { label: 'FLEET AVAILABILITY', value: '99.999%' },
-          { label: 'ACTIVE SERVERS', value: '16 Facilities' },
-          { label: 'MONITORED TARGETS', value: '24 Systems' },
-          { label: 'SYNC CADENCE', value: '5s Dynamic' },
+          { label: 'SYSTEM HEALTH', value: 'Operational' },
+          { label: 'EDGE NODES', value: 'Monitored' },
+          { label: 'SOFTWARE STATUS', value: '4 Stable Platforms' },
+          { label: 'TELEMETRY CADENCE', value: '5s Dynamic' },
         ]}
       />
 
@@ -74,17 +74,17 @@ export default function StatusPage() {
                 First-Principles Telemetry
               </h4>
               <p className="mt-2 text-xs font-mono leading-relaxed text-muted-foreground">
-                All status indicators reflect live network heartbeat pings, memory/load allocations, and BGP session states across our 16 data centers.
+                All status indicators reflect live network heartbeat pings, memory/load allocations, and session states across our infrastructure services and reference nodes.
               </p>
             </div>
 
             <div className="bg-card p-6 md:p-8">
-              <span className="tiv-meta">SLA COMMITMENT</span>
+              <span className="tiv-meta">RELIABILITY STANDARDS</span>
               <h4 className="mt-2 font-display text-lg font-bold text-foreground">
-                Tier 4 Concurrency
+                Sovereign Architecture
               </h4>
               <p className="mt-2 text-xs font-mono leading-relaxed text-muted-foreground">
-                Our global facilities guarantee 99.999% availability via 2N+2 power paths, dual online UPS arrays, and carrier-neutral multi-homed BGP transit.
+                TIV software platforms (OpenMail, Mercura, M31A, Octate) and services are engineered for sovereign, high-assurance operations without dependency on closed external providers.
               </p>
             </div>
 
