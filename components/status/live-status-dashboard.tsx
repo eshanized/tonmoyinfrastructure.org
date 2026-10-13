@@ -34,6 +34,8 @@ interface CoreServiceTelemetry {
 }
 
 const REGION_CODES: Record<string, string> = {
+  'Jayapura Sovereign Facility': 'ID-PAPUA-CORE',
+  Jayapura: 'ID-PAPUA-CORE',
   'New York': 'US-EAST-1',
   'Silicon Valley': 'US-WEST-1',
   Dallas: 'US-CENTRAL-1',
@@ -53,6 +55,8 @@ const REGION_CODES: Record<string, string> = {
 };
 
 const BASE_LATENCIES: Record<string, number> = {
+  'Jayapura Sovereign Facility': 12,
+  Jayapura: 12,
   'New York': 14,
   'Silicon Valley': 18,
   Dallas: 22,
@@ -84,13 +88,13 @@ const CORE_SERVICES: CoreServiceTelemetry[] = [
   },
   {
     id: 'storage-fabric',
-    name: 'Distributed Object Storage Fabric',
+    name: 'Internal Storage & Backup Fabric',
     category: 'Infrastructure',
-    description: '845 PB distributed Ceph & NVMe block storage with geo-replication',
+    description: 'Internal ZFS & NVMe mirrored storage pool with snapshot replication',
     status: 'Operational',
     latencyMs: 8.5,
-    uptime: '99.999%',
-    protocol: 'S3 API / NVMe-oF',
+    uptime: '99.9%',
+    protocol: 'ZFS / NVMe-oF',
   },
   {
     id: 'courier-api',
@@ -99,18 +103,18 @@ const CORE_SERVICES: CoreServiceTelemetry[] = [
     description: 'Real-time tracking, flight manifest synchronization, and customs relay',
     status: 'Operational',
     latencyMs: 16.4,
-    uptime: '99.99%',
+    uptime: '99.9%',
     protocol: 'gRPC / TLS 1.3',
   },
   {
     id: 'compute-scheduler',
-    name: 'High-Density Compute Scheduler',
+    name: 'Sovereign Compute Orchestrator',
     category: 'Infrastructure',
-    description: 'Bare-metal workload orchestrator and optical interconnect routing',
+    description: 'Bare-metal workload orchestrator and local container runtime',
     status: 'Operational',
     latencyMs: 5.1,
-    uptime: '99.999%',
-    protocol: 'K8s / SRv6',
+    uptime: '99.9%',
+    protocol: 'Proxmox / SRv6',
   },
   {
     id: 'openmail-relay',
@@ -190,12 +194,12 @@ export function LiveStatusDashboard() {
     setRefreshCountdown(5);
   }, []);
 
-  // Generate dynamically updated telemetry for all 16 data centers
+  // Generate dynamically updated telemetry for sovereign facility nodes
   const liveDataCenters = useMemo<ServerNodeTelemetry[]>(() => {
     return DATA_CENTERS.map((dc, index) => {
       // Small simulated pseudo-random jitter around baseline
       const jitter = ((Math.sin(jitterSeed * 1.5 + index) * 3) + (Math.cos(jitterSeed * 2.1 + index) * 2));
-      const currentLatency = Math.max(4, Math.round((BASE_LATENCIES[dc.name] || 25) + jitter));
+      const currentLatency = Math.max(4, Math.round((BASE_LATENCIES[dc.name] || 15) + jitter));
       const currentLoad = Math.min(99, Math.max(50, Math.round(dc.load + Math.sin(jitterSeed + index) * 1.5)));
 
       return {
@@ -203,16 +207,16 @@ export function LiveStatusDashboard() {
         name: dc.name,
         country: dc.country,
         region: dc.region,
-        code: REGION_CODES[dc.name] || 'EDGE-1',
+        code: REGION_CODES[dc.name] || 'ID-PAPUA-CORE',
         tier: dc.tier,
         status: 'Operational',
         latencyMs: currentLatency,
-        baseLatency: BASE_LATENCIES[dc.name] || 25,
+        baseLatency: BASE_LATENCIES[dc.name] || 15,
         packetLoss: '0.00%',
         load: currentLoad,
-        uptime: '99.999%',
+        uptime: '99.9%',
         serversCount: dc.specs.servers,
-        powerStatus: `${dc.powerCapacity} MW (2N+2 Online)`,
+        powerStatus: `${dc.powerCapacity} MW (${dc.redundancy})`,
       };
     });
   }, [jitterSeed]);
@@ -220,7 +224,7 @@ export function LiveStatusDashboard() {
   // Average live latency across all facilities
   const avgLatency = useMemo(() => {
     const sum = liveDataCenters.reduce((acc, n) => acc + n.latencyMs, 0);
-    return Math.round(sum / liveDataCenters.length);
+    return Math.round(sum / (liveDataCenters.length || 1));
   }, [liveDataCenters]);
 
   const filteredDataCenters = useMemo(() => {
@@ -255,10 +259,10 @@ export function LiveStatusDashboard() {
             <div>
               <span className="tiv-meta">LIVE SYSTEM TELEMETRY</span>
               <h2 className="mt-1 font-display text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-                All Global Systems Operational
+                All Core Systems Operational
               </h2>
               <p className="mt-1 text-xs font-mono text-muted-foreground">
-                24 Monitored Targets (16 Edge Data Centers, 8 Core Platform Services)
+                {liveDataCenters.length + CORE_SERVICES.length} Monitored Targets ({liveDataCenters.length} Sovereign Facility Node, {CORE_SERVICES.length} Core Services)
               </p>
             </div>
           </div>
@@ -305,8 +309,8 @@ export function LiveStatusDashboard() {
         <div className="mt-8 grid grid-cols-2 gap-px border border-border bg-border sm:grid-cols-4">
           <div className="bg-background/80 p-4">
             <span className="tiv-meta">GLOBAL UPTIME</span>
-            <div className="mt-1 font-display text-2xl font-bold text-foreground">99.999%</div>
-            <p className="text-[10px] font-mono text-muted-foreground">Rolling 90-Day SLA</p>
+            <div className="mt-1 font-display text-2xl font-bold text-foreground">99.9%</div>
+            <p className="text-[10px] font-mono text-muted-foreground">Operational Status Telemetry</p>
           </div>
 
           <div className="bg-background/80 p-4">
@@ -314,7 +318,7 @@ export function LiveStatusDashboard() {
             <div className="mt-1 font-display text-2xl font-bold text-foreground">
               {avgLatency} <span className="text-sm font-normal text-muted-foreground">ms</span>
             </div>
-            <p className="text-[10px] font-mono text-muted-foreground">Anycast Route Transit</p>
+            <p className="text-[10px] font-mono text-muted-foreground">Transit Route Latency</p>
           </div>
 
           <div className="bg-background/80 p-4">
@@ -325,8 +329,8 @@ export function LiveStatusDashboard() {
 
           <div className="bg-background/80 p-4">
             <span className="tiv-meta">ACTIVE NODES</span>
-            <div className="mt-1 font-display text-2xl font-bold text-foreground">16 / 16</div>
-            <p className="text-[10px] font-mono text-muted-foreground">All Facilities Answering</p>
+            <div className="mt-1 font-display text-2xl font-bold text-foreground">{liveDataCenters.length} / {liveDataCenters.length}</div>
+            <p className="text-[10px] font-mono text-muted-foreground">Sovereign Facility Online</p>
           </div>
         </div>
       </div>
@@ -341,7 +345,7 @@ export function LiveStatusDashboard() {
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >
-          All Infrastructure & Services (24)
+          All Infrastructure & Services ({liveDataCenters.length + CORE_SERVICES.length})
         </button>
         <button
           onClick={() => setActiveTab('datacenters')}
@@ -351,7 +355,7 @@ export function LiveStatusDashboard() {
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >
-          Data Center Servers (16)
+          Data Center Servers ({liveDataCenters.length})
         </button>
         <button
           onClick={() => setActiveTab('core')}
@@ -361,7 +365,7 @@ export function LiveStatusDashboard() {
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >
-          Core Networking & Storage (4)
+          Core Networking & Storage ({CORE_SERVICES.filter((s) => s.category !== 'Software').length})
         </button>
         <button
           onClick={() => setActiveTab('software')}
@@ -371,18 +375,18 @@ export function LiveStatusDashboard() {
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >
-          Software Systems (4)
+          Software Systems ({CORE_SERVICES.filter((s) => s.category === 'Software').length})
         </button>
       </div>
 
-      {/* 16 Live Monitored Data Center Servers */}
+      {/* Live Monitored Data Center Servers */}
       {filteredDataCenters.length > 0 && (
         <div className="border border-border bg-card">
           <div className="flex items-center justify-between border-b border-border p-4 md:p-6">
             <div>
               <span className="tiv-meta">EDGE TELEMETRY POOL</span>
               <h3 className="font-display text-xl font-bold text-foreground mt-0.5">
-                Global Data Center Servers (16 Live Nodes)
+                Sovereign Data Center Servers ({liveDataCenters.length} Live Node)
               </h3>
             </div>
             <span className="font-mono text-xs text-muted-foreground border border-border bg-secondary px-2.5 py-1">
