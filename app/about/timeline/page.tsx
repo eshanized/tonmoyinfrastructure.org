@@ -121,7 +121,7 @@ export default function TimelinePage() {
                       </p>
                       {project && (
                         <Link
-                          href={`/work/${project.slug}`}
+                          href={`/projects/${project.slug}`}
                           className="group mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-brand"
                         >
                           {project.title}

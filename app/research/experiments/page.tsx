@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Activity, Terminal, Shield, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { ArrowRight, Activity, Terminal, Shield, CheckCircle2, AlertTriangle, Cpu } from 'lucide-react';
 import { PageHeader } from '@/components/shared/page-header';
 import { SectionHeader } from '@/components/shared/section-header';
 import { StatusBadge } from '@/components/shared/status-badge';
@@ -18,54 +18,78 @@ export const metadata = generatePageMetadata({
   keywords: ['TIV experiments', 'research methodology', 'systems benchmarks', 'empirical computer science'],
 });
 
-const experiments = [
+interface ExperimentItem {
+  id: string;
+  title: string;
+  domain: string;
+  status: 'Completed' | 'In Progress' | 'Planning';
+  executionEnvironment: 'Synthetic Benchmark on Bare-Metal Linux' | 'Local Workstation Hardware' | 'Optical Lab Simulation Testbed' | 'Emulated Network Cluster';
+  hypothesis: string;
+  methodology: string;
+  findings: string;
+  limitations: string;
+}
+
+const experiments: ExperimentItem[] = [
   {
     id: 'EXP-001',
     title: 'Zero-Copy Queue Pipeline Throughput',
     domain: 'Systems Engineering / OpenMail',
-    status: 'Completed' as const,
+    status: 'Completed',
+    executionEnvironment: 'Synthetic Benchmark on Bare-Metal Linux',
     hypothesis:
       'Replacing intermediate heap copies with memory-mapped buffers and io_uring submissions in OpenMail yields a 3.4x throughput increase on multi-core Linux hosts.',
     methodology:
       'Synthetic benchmark harness generating 100,000 synthetic MIME payloads per second across 32 concurrent worker threads on bare-metal x86_64 nodes.',
     findings:
       'Achieved sustained 92,400 msgs/sec with p99.9 latency under 4.2ms. Memory consumption stabilized at 1.8GB with zero garbage-collection latency spikes.',
+    limitations:
+      'Synthetic MIME payloads generated in memory without disk I/O persistence bottlenecks; real-world disk write sync and anti-spam scanning will lower aggregate message rates.',
   },
   {
     id: 'EXP-002',
     title: 'Sub-50ms Context Retrieval for Local AI Assistants',
     domain: 'Artificial Intelligence / Mercura',
-    status: 'In Progress' as const,
+    status: 'In Progress',
+    executionEnvironment: 'Local Workstation Hardware',
     hypothesis:
       'Hierarchical index caching of abstract syntax trees (ASTs) on NVMe storage allows local LLM agent loops to parse 500k-line codebases without cloud vector databases.',
     methodology:
       'Continuous execution of real-world refactor workflows on 12 open-source repositories using Mercura running on consumer hardware (Apple M-series & Linux RTX 4090).',
     findings:
       'Initial benchmarks demonstrate cold-start context lookup of 38ms and warm query resolution under 12ms with strict deterministic reproducibility.',
+    limitations:
+      'Evaluated on single-user local developer workstations. Multi-tenant concurrent indexing under contention has not yet been benchmarked.',
   },
   {
     id: 'EXP-003',
     title: 'Wavelength Attenuation in Urban Dark Fiber Conduits',
     domain: 'Fiber Optics / Physical Infrastructure',
-    status: 'Planning' as const,
+    status: 'Planning',
+    executionEnvironment: 'Optical Lab Simulation Testbed',
     hypothesis:
       'Standard CWDM/DWDM optical transceivers operated across high-vibration municipal conduits can maintain Bit Error Rates (BER) below 10^-12 without active amplification.',
     methodology:
-      'Optical Time Domain Reflectometer (OTDR) profiling across 15km passive single-mode fiber links simulating temperature and traffic-induced conduit movement.',
+      'Optical Time Domain Reflectometer (OTDR) profiling across 15km passive single-mode fiber links simulating temperature and traffic-induced conduit movement in laboratory spool racks.',
     findings:
       'Baseline calibration complete; physical carrier testing scheduled for deployment in Phase 2 field infrastructure tests.',
+    limitations:
+      'Preliminary data derived from laboratory spools with simulated mechanical oscillation; real municipal duct environmental factors may introduce unmodeled dispersion.',
   },
   {
     id: 'EXP-004',
     title: 'Asymmetric Latency Tolerant Peer Consensus',
     domain: 'Distributed Systems / Networking',
-    status: 'In Progress' as const,
+    status: 'In Progress',
+    executionEnvironment: 'Emulated Network Cluster',
     hypothesis:
       'A quorum-based gossip mesh with adaptive leader lease time reduces commit stall during trans-continental transit jitter spikes.',
     methodology:
-      '10-node geo-distributed cluster across 5 continents running simulated packet drops (2-8%) and latency spikes up to 400ms.',
+      '10-node cluster running Linux network emulation (tc/netem) injecting synthetic packet drops (2-8%) and simulated geo-distributed latency spikes up to 400ms.',
     findings:
       'Eliminated 94% of election churn during simulated trans-oceanic fiber degradation events.',
+    limitations:
+      'Simulated via software packet drop and latency injection on a local test cluster, not trans-oceanic physical undersea cables.',
   },
 ];
 
@@ -103,19 +127,19 @@ export default function ResearchExperimentsPage() {
         </div>
       </section>
 
-      {/* Methodology Section */}
+      {/* Methodology Principles */}
       <section className="border-b border-border">
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
             <SectionHeader
               index="01"
-              label="The Scientific Standard"
-              title="Methodological principles."
-              description="How TIV constructs, executes, and validates experimental work."
+              label="Scientific Integrity"
+              title="Methodological commitments."
+              description="How TIV designs, isolates, and documents experimental systems research."
             />
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-3">
             <div className="border border-border bg-card p-6">
               <div className="flex h-10 w-10 items-center justify-center border border-border text-brand">
                 <Terminal className="h-5 w-5" />
@@ -171,17 +195,22 @@ export default function ResearchExperimentsPage() {
                       <span className="text-muted-foreground font-mono text-xs">/</span>
                       <span className="tiv-meta">{exp.domain}</span>
                     </div>
-                    <span
-                      className={`inline-flex items-center px-2.5 py-0.5 font-mono text-xs font-medium border ${
-                        exp.status === 'Completed'
-                          ? 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10'
-                          : exp.status === 'In Progress'
-                            ? 'border-brand/30 text-brand bg-brand/10'
-                            : 'border-border text-muted-foreground bg-muted/20'
-                      }`}
-                    >
-                      {exp.status}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="border border-border bg-secondary px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                        {exp.executionEnvironment}
+                      </span>
+                      <span
+                        className={`inline-flex items-center px-2.5 py-0.5 font-mono text-xs font-medium border ${
+                          exp.status === 'Completed'
+                            ? 'border-emerald-500/30 text-emerald-500 bg-emerald-500/10'
+                            : exp.status === 'In Progress'
+                              ? 'border-brand/30 text-brand bg-brand/10'
+                              : 'border-border text-muted-foreground bg-muted/20'
+                        }`}
+                      >
+                        {exp.status}
+                      </span>
+                    </div>
                   </div>
 
                   <h3 className="mt-4 font-display text-xl">{exp.title}</h3>
@@ -192,7 +221,7 @@ export default function ResearchExperimentsPage() {
                       <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{exp.hypothesis}</p>
                     </div>
                     <div>
-                      <span className="tiv-meta">TEST HARNESS & METHOD</span>
+                      <span className="tiv-meta">TEST HARNESS &amp; METHOD</span>
                       <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{exp.methodology}</p>
                     </div>
                     <div>
@@ -201,6 +230,13 @@ export default function ResearchExperimentsPage() {
                         {exp.findings}
                       </p>
                     </div>
+                  </div>
+
+                  <div className="mt-4 border-t border-border pt-3">
+                    <span className="tiv-meta text-[10px] text-amber-400">KNOWN CONSTRAINTS &amp; LIMITATIONS</span>
+                    <p className="mt-1 text-xs font-mono text-muted-foreground leading-relaxed">
+                      {exp.limitations}
+                    </p>
                   </div>
                 </div>
               </StaggerItem>
@@ -221,76 +257,15 @@ export default function ResearchExperimentsPage() {
             />
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
-            <div className="border border-border bg-card p-6 md:p-8">
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                <h4 className="font-display text-lg">What TIV Validates</h4>
-              </div>
-              <ul className="mt-4 space-y-2 text-xs text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Throughput and latency on specified hardware baselines.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Memory-safety guarantees in high-concurrency environments.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Resilience against simulated network splits and clock drift.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Open-source protocol conformance (RFC 5321, RFC 5322, BGP-4).
-                </li>
-              </ul>
-            </div>
+          <div className="mt-12 space-y-4">
+            <Callout type="warning" title="Negative Results and Failures Are Published">
+              If an architecture hypothesis fails under benchmark stress or does not deliver expected performance improvements, we document the negative finding rather than discarding the test. Honest engineering requires recording architectural dead ends.
+            </Callout>
 
-            <div className="border border-border bg-card p-6 md:p-8">
-              <div className="flex items-center gap-3">
-                <AlertTriangle className="h-5 w-5 text-amber-500" />
-                <h4 className="font-display text-lg">Experimental Constraints</h4>
-              </div>
-              <ul className="mt-4 space-y-2 text-xs text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-500">!</span>
-                  Benchmarks reflect our specific hardware configurations and workloads.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-500">!</span>
-                  Preliminary optical results are based on simulated municipal conduits.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-500">!</span>
-                  We do not publish comparative competitive claims without verified test reproductions.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-500">!</span>
-                  Research systems are marked as experimental until formal stable release.
-                </li>
-              </ul>
-            </div>
+            <Callout type="info" title="Simulation vs Physical Deployment Distinction">
+              Simulated workloads and network emulation (such as netem packet drop testing) are clearly identified. We never represent laboratory simulations as observations made on physical multi-continent undersea fiber.
+            </Callout>
           </div>
-        </div>
-      </section>
-
-      {/* Navigation Footer */}
-      <section className="bg-secondary/30">
-        <div className="tiv-container py-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link
-            href="/research/areas"
-            className="group inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-brand transition-colors"
-          >
-            ← View Research Areas
-          </Link>
-          <Link
-            href="/research/publications"
-            className="group inline-flex items-center gap-2 text-sm font-medium text-brand hover:underline"
-          >
-            Read Published Research Papers
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
         </div>
       </section>
     </>

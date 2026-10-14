@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { Search, ArrowRight, ExternalLink } from 'lucide-react';
+import { Search, ArrowRight, ExternalLink, X } from 'lucide-react';
 import { PageHeader } from '@/components/shared/page-header';
 import { Breadcrumbs } from '@/components/shared/breadcrumbs';
 import {
@@ -56,7 +56,7 @@ export default function SearchPage() {
         addResult({
           title: p.title,
           type: `${p.artifactType || 'Project'} · ${p.status}`,
-          href: p.type === 'software' ? `/products/${p.slug}` : `/projects/${p.slug}`,
+          href: `/projects/${p.slug}`,
           description: p.description,
           status: p.status,
           artifactType: p.artifactType,
@@ -177,6 +177,101 @@ export default function SearchPage() {
       }
     });
 
+    // 10. Institutional & Core Architecture Pages
+    const institutionalPages: SearchResult[] = [
+      {
+        title: 'TIV Whitepaper — Ownable Architecture for the Physical and Digital Internet',
+        type: 'Whitepaper',
+        href: '/whitepaper',
+        description: 'Foundational whitepaper outlining TIV philosophy, self-hosted software stack, physical infrastructure, optical systems, and long-term sovereignty.',
+        isExternal: false,
+      },
+      {
+        title: 'About Tonmoy Infrastructure and Vision',
+        type: 'Overview',
+        href: '/about',
+        description: 'Mission, core philosophy, and foundational background of Tonmoy Infrastructure and Vision.',
+        isExternal: false,
+      },
+      {
+        title: 'System Health & Operational Status',
+        type: 'Status',
+        href: '/status',
+        description: 'Authoritative operational status and verification telemetry for the Jayapura sovereign facility and core platforms.',
+        isExternal: false,
+      },
+      {
+        title: 'Infrastructure & Sovereign Solutions',
+        type: 'Solutions',
+        href: '/solutions',
+        description: 'Overview of sovereign infrastructure, data centers, logistics corridors, and technical solutions.',
+        isExternal: false,
+      },
+      {
+        title: 'Open Source Repositories & Licenses',
+        type: 'Open Source',
+        href: '/open-source',
+        description: 'Direct access to TIV open-source projects, AGPL-3.0 and MIT licensed codebases, and GitHub organizations.',
+        isExternal: false,
+      },
+      {
+        title: 'Financial Transparency & Capital Allocation',
+        type: 'Transparency',
+        href: '/transparency/financials',
+        description: 'Audited financial disclosures, asset registers, capital efficiency reports, and revenue reconciliation.',
+        isExternal: false,
+      },
+      {
+        title: 'Security Architecture & Vulnerability Disclosure',
+        type: 'Security',
+        href: '/security',
+        description: 'Security commitments, cryptographic verification protocols, and responsible vulnerability reporting.',
+        isExternal: false,
+      },
+      {
+        title: 'Corporate Governance & Legal Structure',
+        type: 'Governance',
+        href: '/governance',
+        description: 'Organizational bylaws, supervisory board oversight, and legal commitments to open infrastructure.',
+        isExternal: false,
+      },
+      {
+        title: 'Contact & Institutional Inquiries',
+        type: 'Contact',
+        href: '/contact',
+        description: 'Direct institutional contact channels, physical office details in Jayapura, and encrypted communications.',
+        isExternal: false,
+      },
+      {
+        title: 'Terms of Service & Usage Policies',
+        type: 'Legal',
+        href: '/terms',
+        description: 'Terms governing public website access, API usage, and infrastructure interaction guidelines.',
+        isExternal: false,
+      },
+      {
+        title: 'Privacy Policy & Data Sovereignty',
+        type: 'Legal',
+        href: '/privacy',
+        description: 'Zero third-party tracking policy, local data retention guarantees, and user privacy protections.',
+        isExternal: false,
+      },
+      {
+        title: 'Software Licenses & Open Source Compliance',
+        type: 'Legal',
+        href: '/licenses',
+        description: 'Open source licensing framework including AGPL-3.0, MIT, and Apache-2.0 declarations.',
+        isExternal: false,
+      },
+    ];
+
+    institutionalPages.forEach((p) => {
+      const matchText = `${p.title} ${p.type} ${p.description}`.toLowerCase();
+      if (matchText.includes(q)) {
+        addResult(p);
+      }
+    });
+
     return results;
   }, [query]);
 
@@ -205,9 +300,19 @@ export default function SearchPage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search projects, publications, news..."
-                className="w-full border border-border bg-card py-3 pl-12 pr-4 text-sm outline-none transition-colors focus:border-brand"
+                className="w-full border border-border bg-card py-3 pl-12 pr-10 text-sm outline-none transition-colors focus:border-brand"
                 aria-label="Search TIV content"
               />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery('')}
+                  aria-label="Clear search query"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground focus:outline-none focus:text-foreground"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
             </div>
           </div>
 

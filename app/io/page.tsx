@@ -30,7 +30,7 @@ export const metadata = generatePageMetadata({
   overrideTitle: true,
   description:
     'Tonmoy Infrastructure and Vision I/O (TIV I/O) is an independent technology and developer event bringing together software systems, internet infrastructure, networking, and research.',
-  ogImage: `${siteConfig.url}/IO.png`,
+  ogImage: `${siteConfig.url}/IO.webp`,
   keywords: [
     'TIV I/O',
     'Tonmoy Infrastructure and Vision I/O',
@@ -222,8 +222,11 @@ export default function IoPage() {
                 <div className="overflow-hidden border border-border bg-black">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={`${siteConfig.basePath}/IO.png`}
+                    src={`${siteConfig.basePath}/IO.webp`}
                     alt="Tonmoy Infrastructure and Vision I/O"
+                    width={1200}
+                    height={630}
+                    loading="lazy"
                     className="h-auto w-full object-cover"
                   />
                 </div>

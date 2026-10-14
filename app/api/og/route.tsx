@@ -1,15 +1,13 @@
 import { ImageResponse } from 'next/og';
-import type { NextRequest } from 'next/server';
 
 export const dynamic = 'force-static';
-export const runtime = 'edge';
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const title = searchParams.get('title') || 'Tonmoy Infrastructure and Vision';
-  const type = (searchParams.get('type') || 'TECHNOLOGY INFRASTRUCTURE').toUpperCase();
-  const status = searchParams.get('status') || '';
-  const description = searchParams.get('description') || '';
+export async function GET() {
+  const title = 'Tonmoy Infrastructure and Vision';
+  const type = 'TECHNOLOGY INFRASTRUCTURE';
+  const status = 'STABLE';
+  const description =
+    'Practical software systems, sovereign mail infrastructure, and high-assurance developer runtimes.';
 
   return new ImageResponse(
     (

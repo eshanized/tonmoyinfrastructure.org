@@ -7,30 +7,29 @@ import { generatePageGraph } from '@/lib/structured-data';
 import { JsonLd } from '@/components/shared/json-ld';
 
 export const metadata = generatePageMetadata({
-  title: 'Real-Time Server & System Status',
+  title: 'System Health & Operational Status',
   description:
-    'Live operational telemetry, availability, latency, and system health for TIV Jayapura sovereign data center, edge nodes, and core software platforms.',
+    'Verified operational status, facility infrastructure, and system health for TIV Jayapura sovereign data center and core software platforms.',
   path: '/status',
   keywords: [
     'TIV status',
-    'server status',
-    'system telemetry',
-    'live latency',
-    'Jayapura data center uptime',
+    'system health',
+    'Jayapura data center',
+    'operational status',
     'service availability',
-    'network status',
+    'infrastructure health',
   ],
 });
 
 export default function StatusPage() {
   const pageGraph = generatePageGraph({
-    title: 'Real-Time Server & System Status — Tonmoy Infrastructure and Vision',
+    title: 'System Health & Operational Status — Tonmoy Infrastructure and Vision',
     description:
-      'Live operational telemetry, availability, latency, and system health for TIV Jayapura sovereign data center, edge nodes, and core software platforms.',
+      'Verified operational status, facility infrastructure, and system health for TIV Jayapura sovereign data center and core software platforms.',
     path: '/status',
     breadcrumbs: [
       { name: 'Home', item: '/' },
-      { name: 'Server Status', item: '/status' },
+      { name: 'System Status', item: '/status' },
     ],
   });
 
@@ -40,19 +39,19 @@ export default function StatusPage() {
       <PageHeader
         index="STATUS"
         label="Operational Health"
-        title="Live Server & System Status."
-        description="Operational telemetry, availability metrics, and dynamic latency monitoring for TIV software platforms, public endpoints, and reference infrastructure nodes."
+        title="System Health & Operational Status."
+        description="Verified operational deployment records, infrastructure status, and platform health for TIV sovereign data center assets and software releases."
         meta={[
-          { label: 'SYSTEM HEALTH', value: 'Operational' },
-          { label: 'EDGE NODES', value: 'Monitored' },
-          { label: 'SOFTWARE STATUS', value: '4 Stable Platforms' },
-          { label: 'TELEMETRY CADENCE', value: '5s Dynamic' },
+          { label: 'SOVEREIGN FACILITY', value: 'Jayapura (Operational)' },
+          { label: 'SOFTWARE RELEASES', value: '4 Stable Platforms' },
+          { label: 'COMMERCIAL ACCESS', value: 'Private Inquiry' },
+          { label: 'MONITORING BASIS', value: 'Verified Milestones' },
         ]}
       />
 
       <section className="border-b border-border bg-background">
         <div className="tiv-container py-6">
-          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Server Status' }]} />
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'System Status' }]} />
         </div>
       </section>
 
@@ -71,20 +70,23 @@ export default function StatusPage() {
             <div className="bg-card p-6 md:p-8">
               <span className="tiv-meta">DATA FIDELITY</span>
               <h4 className="mt-2 font-display text-lg font-bold text-foreground">
-                First-Principles Telemetry
+                First-Principles Integrity
               </h4>
               <p className="mt-2 text-xs font-mono leading-relaxed text-muted-foreground">
-                All status indicators reflect live network heartbeat pings, memory/load allocations, and session states across our infrastructure services and reference nodes.
+                All status indicators reflect verified facility deployments and software releases.
+                TIV does not fabricate live telemetry readings or synthetic latency numbers.
               </p>
             </div>
 
             <div className="bg-card p-6 md:p-8">
-              <span className="tiv-meta">RELIABILITY STANDARDS</span>
+              <span className="tiv-meta">SOVEREIGN FACILITY</span>
               <h4 className="mt-2 font-display text-lg font-bold text-foreground">
-                Sovereign Architecture
+                Confirmed Physical Asset
               </h4>
               <p className="mt-2 text-xs font-mono leading-relaxed text-muted-foreground">
-                TIV software platforms (OpenMail, Mercura, M31A, Octate) and services are engineered for sovereign, high-assurance operations without dependency on closed external providers.
+                TIV operates a physical sovereign data center in Jayapura, Papua, Indonesia.
+                The facility powers internal services, while commercial colocation is handled strictly
+                via private inquiry.
               </p>
             </div>
 
@@ -94,7 +96,8 @@ export default function StatusPage() {
                 Public Transparency
               </h4>
               <p className="mt-2 text-xs font-mono leading-relaxed text-muted-foreground">
-                In the event of degradation or emergency maintenance, detailed post-mortems and remediation timelines are published directly to our transparency reports.
+                In the event of degradation or maintenance, factual post-mortems and remediation
+                timelines are published directly to our transparency reports without vanity metrics.
               </p>
             </div>
           </div>

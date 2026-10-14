@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Github, FileText, Shield, Activity } from 'lucide-react';
+import { ArrowRight, Github, FileText, Shield, Activity, Building, Mail, Sparkles } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/section-header';
 import { ProjectCard } from '@/components/shared/project-card';
 import { StatusBadge } from '@/components/shared/status-badge';
@@ -9,10 +9,8 @@ import { CountUp } from '@/components/shared/count-up';
 import { HeroDiagram } from '@/components/shared/hero-diagram';
 import { SystemMap } from '@/components/infrastructure/system-map';
 import { InfrastructureMap } from '@/components/infrastructure/infrastructure-map';
-import { TechnologyStackDiagram } from '@/components/technology/technology-stack-diagram';
 import {
   getFeaturedProjects,
-  getWorkCategories,
   getResearchAreas,
   getRepos,
   getNews,
@@ -29,16 +27,8 @@ export const metadata = generatePageMetadata({
     'Tonmoy Infrastructure and Vision (TIV) engineers sovereign software platforms, verifiable developer runtimes, and distributed infrastructure architecture. Explore stable releases including OpenMail, Mercura, M31A, and Octate.',
 });
 
-const categoryIcons: Record<string, string> = {
-  Software: 'code',
-  'Internet Infrastructure': 'globe',
-  'Network Infrastructure': 'network',
-  Research: 'flask',
-};
-
 export default function HomePage() {
   const projects = getFeaturedProjects();
-  const workCategories = getWorkCategories();
   const researchAreas = getResearchAreas();
   const repos = getRepos();
   const news = getNews().slice(0, 3);
@@ -47,7 +37,7 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 01 — HERO */}
+      {/* 01 — HERO / COMPANY PROPOSITION */}
       <section className="relative overflow-hidden border-b border-border tiv-grid">
         <div className="tiv-container relative py-20 md:py-32 lg:py-40">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.2fr_1fr] lg:items-center">
@@ -138,82 +128,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 02 — TIV SYSTEM MAP */}
-      <section className="border-b border-border">
-        <div className="tiv-container py-16 md:py-24">
-          <Reveal>
-            <SectionHeader
-              index="02"
-              label="TIV System Map"
-              title="One ecosystem, interconnected."
-              description="TIV operates as a single system — software, networks, and research feed into each other. Explore the connections."
-            />
-          </Reveal>
-          <Reveal delay={0.1} className="mt-12">
-            <SystemMap />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 03 — WHAT WE BUILD */}
+      {/* 02 — SHIPPED PRODUCTS (SOFTWARE) */}
       <section className="border-b border-border bg-secondary/30">
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
             <SectionHeader
-              index="03"
-              label="What We Build"
-              title="Four categories of work."
-              description="TIV builds and ships practical software infrastructure, operates services, and researches next-generation infrastructure across the full stack."
-            />
-          </Reveal>
-          <StaggerContainer className="mt-12 grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2" stagger={0.08}>
-            {workCategories.map((cat) => (
-              <StaggerItem key={cat.number}>
-                <Link
-                  href="/work"
-                  className="group relative flex h-full flex-col bg-card p-8 transition-colors hover:bg-card/80"
-                >
-                  {/* Accent line */}
-                  <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-500 group-hover:w-full" />
-
-                  <div className="flex items-baseline justify-between">
-                    <div className="flex items-center gap-4">
-                      <span className="font-display text-5xl font-bold tracking-tight text-muted-foreground/20 transition-colors group-hover:text-brand">
-                        {cat.number}
-                      </span>
-                      <div className="flex h-10 w-10 items-center justify-center border border-border text-muted-foreground transition-all group-hover:border-brand/40 group-hover:text-brand">
-                        <TivIcon name={categoryIcons[cat.title] || 'code'} size={18} />
-                      </div>
-                    </div>
-                    <StatusBadge status={cat.status} />
-                  </div>
-                  <h3 className="mt-6 font-display text-2xl tracking-tight transition-colors group-hover:text-brand">
-                    {cat.title}
-                  </h3>
-                  <p className="mt-3 flex-1 text-pretty text-sm leading-relaxed text-muted-foreground">
-                    {cat.description}
-                  </p>
-                  <div className="mt-4 flex items-center gap-1.5 text-sm font-medium text-brand">
-                    View work
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1.5" />
-                  </div>
-                </Link>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* 04 — FEATURED PROJECTS */}
-      <section className="border-b border-border">
-        <div className="tiv-container py-16 md:py-24">
-          <Reveal>
-            <SectionHeader
-              index="04"
-              label="Shipped Systems"
+              index="02"
+              label="Shipped Software"
               title="Software we've built and shipped."
-              description="Four stable release systems — each addressing a real infrastructure problem."
-              link={{ label: 'All projects', href: '/work' }}
+              description="Four stable release platforms — engineered for self-hosting, developer autonomy, and operational sovereignty."
+              link={{ label: 'All projects', href: '/projects' }}
             />
           </Reveal>
           <StaggerContainer className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2" stagger={0.1}>
@@ -226,23 +150,71 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 05 — INFRASTRUCTURE */}
-      <section className="border-b border-border bg-secondary/30">
+      {/* 03 — INFRASTRUCTURE & SOVEREIGN FACILITY */}
+      <section className="border-b border-border">
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
             <SectionHeader
-              index="05"
-              label="Infrastructure"
-              title="From software to physical layer."
-              description="TIV's infrastructure spans the full stack — from applications down to optical links."
+              index="03"
+              label="Infrastructure & Facilities"
+              title="From Jayapura to the optical layer."
+              description="TIV operates an authentic physical facility in Jayapura for sovereign internal systems, offering enterprise hosting capacity via private inquiry alongside active optical network research."
               link={{ label: 'Explore infrastructure', href: '/infrastructure' }}
             />
           </Reveal>
-          <Reveal delay={0.1} className="mt-12">
+
+          {/* Sovereign Facility Ground Truth Callout */}
+          <Reveal delay={0.05} className="mt-8">
+            <div className="border border-border bg-card p-6 md:p-8">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-border pb-6">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <Building className="h-4 w-4 text-brand" />
+                    <span className="tiv-meta text-brand">CONFIRMED OPERATIONAL FACILITY</span>
+                  </div>
+                  <h3 className="mt-2 font-display text-xl tracking-tight">
+                    Jayapura Sovereign Data Center — Papua, Indonesia
+                  </h3>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center gap-1.5 border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-xs text-emerald-400">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    Operational (Internal)
+                  </span>
+                  <Link
+                    href="/contact"
+                    className="border border-border px-3 py-1 font-mono text-xs hover:border-brand hover:text-brand transition-colors"
+                  >
+                    Inquire for Capacity
+                  </Link>
+                </div>
+              </div>
+              <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4 text-sm">
+                <div>
+                  <span className="tiv-meta">FACILITY SCOPE</span>
+                  <p className="mt-1 font-medium text-foreground">Internal Systems & Private Inquiry</p>
+                </div>
+                <div>
+                  <span className="tiv-meta">POWER ARCHITECTURE</span>
+                  <p className="mt-1 font-medium text-foreground">2N Redundant Feeds</p>
+                </div>
+                <div>
+                  <span className="tiv-meta">STORAGE POOL</span>
+                  <p className="mt-1 font-medium text-foreground">120 TB Verified Pool</p>
+                </div>
+                <div>
+                  <span className="tiv-meta">COLOCATION POLICY</span>
+                  <p className="mt-1 font-medium text-foreground">No Public Self-Service</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1} className="mt-8">
             <InfrastructureMap />
           </Reveal>
 
-          {/* Infrastructure categories */}
+          {/* Infrastructure services overview */}
           <StaggerContainer className="mt-8 grid grid-cols-2 gap-px border border-border bg-border md:grid-cols-5" stagger={0.06}>
             {infraServices.map((svc) => (
               <StaggerItem key={svc.slug}>
@@ -265,18 +237,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 06 — RESEARCH */}
+      {/* 04 — ENGINEERING EVIDENCE & SYSTEM TOPOLOGY */}
+      <section className="border-b border-border bg-secondary/30">
+        <div className="tiv-container py-16 md:py-24">
+          <Reveal>
+            <SectionHeader
+              index="04"
+              label="System Architecture"
+              title="One unified engineering ecosystem."
+              description="TIV operates as an integrated system — applications, runtime gates, network protocols, and hardware custody interact across deterministic boundaries."
+              link={{ label: 'Explore architecture', href: '/technology' }}
+            />
+          </Reveal>
+          <Reveal delay={0.1} className="mt-12">
+            <SystemMap />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 05 — OPEN RESEARCH & OPEN SOURCE */}
       <section className="border-b border-border">
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
             <SectionHeader
-              index="06"
-              label="Research"
-              title="Research as a first-class activity."
-              description="TIV treats research as fundamental, not peripheral. We publish openly and build from first principles."
+              index="05"
+              label="Research & Open Source"
+              title="Research from first principles, built in the open."
+              description="TIV conducts empirical systems research across optical networking, autonomous engineering runtimes, and causal AI models, distributing software under transparent copyleft and permissive licenses."
               link={{ label: 'Research portal', href: '/research' }}
             />
           </Reveal>
+
+          {/* Research Areas */}
           <StaggerContainer className="mt-12 grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
             {researchAreas.map((area) => (
               <StaggerItem key={area.slug}>
@@ -298,85 +290,60 @@ export default function HomePage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
-        </div>
-      </section>
 
-      {/* 07 — TECHNOLOGY ARCHITECTURE */}
-      <section className="border-b border-border bg-secondary/30">
-        <div className="tiv-container py-16 md:py-24">
-          <Reveal>
-            <SectionHeader
-              index="07"
-              label="Technology Architecture"
-              title="A coherent six-layer stack."
-              description="TIV organizes technology into six architectural layers from physical infrastructure to user applications. Each layer builds upon the one below."
-              link={{ label: 'Explore architecture', href: '/technology' }}
-            />
-          </Reveal>
-          <Reveal delay={0.1} className="mt-12">
-            <div className="border border-border bg-card p-6 md:p-10">
-              <TechnologyStackDiagram />
+          {/* Repositories */}
+          <div className="mt-12">
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <span className="tiv-meta">OPEN-SOURCE CODEBASES</span>
+              <Link href="/open-source" className="text-xs font-mono text-brand hover:underline">
+                View all repositories &rarr;
+              </Link>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 08 — OPEN SOURCE */}
-      <section className="border-b border-border">
-        <div className="tiv-container py-16 md:py-24">
-          <Reveal>
-            <SectionHeader
-              index="08"
-              label="Open Source"
-              title="Built in the open."
-              description="TIV's software is open source. We believe infrastructure should be inspectable and ownable."
-              link={{ label: 'Open source', href: '/open-source' }}
-            />
-          </Reveal>
-          <StaggerContainer className="mt-12 grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-3" stagger={0.08}>
-            {repos.map((repo) => (
-              <StaggerItem key={repo.slug}>
-                <div className="group relative flex h-full flex-col bg-card p-6">
-                  <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
-                  <div className="flex items-start justify-between">
-                    <Github className="h-5 w-5 text-muted-foreground" aria-hidden="true" />
-                    <StatusBadge status={repo.status} />
+            <StaggerContainer className="mt-6 grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-3" stagger={0.08}>
+              {repos.map((repo) => (
+                <StaggerItem key={repo.slug}>
+                  <div className="group relative flex h-full flex-col bg-card p-6">
+                    <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
+                    <div className="flex items-start justify-between">
+                      <Github className="h-5 w-5 text-muted-foreground" aria-hidden="true" />
+                      <StatusBadge status={repo.status} />
+                    </div>
+                    <h3 className="mt-4 font-display text-lg font-medium transition-colors group-hover:text-brand">
+                      {repo.name}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {repo.description}
+                    </p>
+                    <dl className="mt-4 space-y-2 border-t border-border pt-4">
+                      <div className="flex justify-between">
+                        <dt className="tiv-meta">Language</dt>
+                        <dd className="font-mono text-xs">{repo.language}</dd>
+                      </div>
+                      <div className="flex justify-between">
+                        <dt className="tiv-meta">License</dt>
+                        <dd className="font-mono text-xs">{repo.license}</dd>
+                      </div>
+                    </dl>
                   </div>
-                  <h3 className="mt-4 font-display text-lg font-medium transition-colors group-hover:text-brand">
-                    {repo.name}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {repo.description}
-                  </p>
-                  <dl className="mt-4 space-y-2 border-t border-border pt-4">
-                    <div className="flex justify-between">
-                      <dt className="tiv-meta">Language</dt>
-                      <dd className="font-mono text-xs">{repo.language}</dd>
-                    </div>
-                    <div className="flex justify-between">
-                      <dt className="tiv-meta">License</dt>
-                      <dd className="font-mono text-xs">{repo.license}</dd>
-                    </div>
-                  </dl>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
         </div>
       </section>
 
-      {/* 09 — TRANSPARENCY */}
+      {/* 06 — FINANCIAL TRANSPARENCY & GOVERNANCE */}
       <section className="border-b border-border bg-secondary/30">
         <div className="tiv-container py-16 md:py-24">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
             <Reveal>
               <div>
                 <SectionHeader
-                  index="09"
-                  label="Transparency"
-                  title="Building in public."
-                  description="TIV publishes what it can without exposing what it shouldn't. Financial reports, governance, and security — all visible."
-                  link={{ label: 'Transparency', href: '/transparency' }}
+                  index="06"
+                  label="Transparency & Governance"
+                  title="Building in public with structural accountability."
+                  description="TIV publishes what it can without exposing what it shouldn't. Financial estimates, asset registers, governance structures, and security commitments remain fully visible."
+                  link={{ label: 'Transparency portal', href: '/transparency' }}
                 />
                 <div className="mt-8 space-y-4">
                   <Link
@@ -385,8 +352,8 @@ export default function HomePage() {
                   >
                     <FileText className="h-5 w-5 text-brand" aria-hidden="true" />
                     <div className="flex-1">
-                      <p className="font-medium text-sm">Financial Reports</p>
-                      <p className="text-xs text-muted-foreground">Annual summaries and statements</p>
+                      <p className="font-medium text-sm">Financial Disclosures</p>
+                      <p className="text-xs text-muted-foreground">Annual reports, balance sheets, and capital reconciliation</p>
                     </div>
                     <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
                   </Link>
@@ -396,8 +363,19 @@ export default function HomePage() {
                   >
                     <Shield className="h-5 w-5 text-brand" aria-hidden="true" />
                     <div className="flex-1">
-                      <p className="font-medium text-sm">Security</p>
-                      <p className="text-xs text-muted-foreground">Disclosure policy and advisories</p>
+                      <p className="font-medium text-sm">Security & Vulnerability Disclosure</p>
+                      <p className="text-xs text-muted-foreground">PGP key, reporting channels, and security advisory policy</p>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <Link
+                    href="/governance"
+                    className="group flex items-center gap-3 border border-border p-4 transition-colors hover:border-brand/40"
+                  >
+                    <Building className="h-5 w-5 text-brand" aria-hidden="true" />
+                    <div className="flex-1">
+                      <p className="font-medium text-sm">Corporate Governance</p>
+                      <p className="text-xs text-muted-foreground">Institutional bylaws, oversight, and operational independence</p>
                     </div>
                     <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
                   </Link>
@@ -409,7 +387,7 @@ export default function HomePage() {
             <Reveal delay={0.15}>
               <div className="border border-border bg-card p-8">
                 <div className="flex items-center justify-between">
-                  <span className="tiv-meta">FY2026</span>
+                  <span className="tiv-meta">FY2026 CAPITAL DISCLOSURE</span>
                   <Activity className="h-4 w-4 text-brand" aria-hidden="true" />
                 </div>
                 <div className="mt-8 space-y-6">
@@ -460,13 +438,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10 — FOUNDER REFERENCE */}
+      {/* 07 — LEADERSHIP */}
       {founder && (
         <section className="border-b border-border">
           <div className="tiv-container py-16 md:py-24">
             <Reveal>
               <SectionHeader
-                index="10"
+                index="07"
                 label="Leadership"
                 title="Founded by Eshan Roy."
                 description="TIV is an independent infrastructure and research initiative founded by Eshan Roy (eshanized), focused on long-term engineering depth, open systems, and structural self-reliance."
@@ -505,12 +483,12 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* TIV I/O — TECHNOLOGY EVENT */}
-      <section className="border-b border-border">
+      {/* 08 — DEVELOPER EVENT (TIV I/O) */}
+      <section className="border-b border-border bg-secondary/30">
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
             <SectionHeader
-              index="I/O"
+              index="08"
               label="Developer Event"
               title="Tonmoy Infrastructure and Vision I/O."
               description="A company-led technology and developer conference presenting TIV's engineering work across software systems, internet infrastructure, networking, and research."
@@ -597,13 +575,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 11 — LATEST NEWS */}
-      <section className="border-b border-border bg-secondary/30">
+      {/* 09 — LATEST DISPATCHES */}
+      <section className="border-b border-border">
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
             <SectionHeader
-              index="11"
-              label="Latest"
+              index="09"
+              label="Latest Dispatches"
               title="News and updates."
               link={{ label: 'All news', href: '/news' }}
             />
@@ -640,12 +618,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 12 — FINAL STATEMENT */}
-      <section className="relative overflow-hidden tiv-grid">
+      {/* 10 — BUSINESS CONVERSION & FINAL STATEMENT */}
+      <section className="relative overflow-hidden tiv-grid bg-secondary/30">
         <div className="tiv-container relative py-24 md:py-32 lg:py-40">
           <div className="max-w-4xl">
             <Reveal>
-              <span className="tiv-section-marker">12 / FINAL STATEMENT</span>
+              <span className="tiv-section-marker">10 / BUSINESS CONVERSION & DIRECTION</span>
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="mt-6 text-balance font-display text-5xl leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
@@ -656,16 +634,31 @@ export default function HomePage() {
             <Reveal delay={0.2}>
               <p className="mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
                 Software, systems, networks, and research for infrastructure that
-                can be understood, owned, and built to last.
+                can be understood, owned, and built to last. Partner with us for
+                dedicated compute deployments, research initiatives, or enterprise integrations.
               </p>
             </Reveal>
             <Reveal delay={0.3}>
-              <div className="mt-10">
+              <div className="mt-10 flex flex-wrap gap-4">
                 <Link
-                  href="/about"
+                  href="/contact"
                   className="group inline-flex items-center gap-2 bg-brand px-6 py-3 font-medium text-brand-foreground transition-opacity hover:opacity-90"
                 >
-                  Explore TIV
+                  Initiate institutional inquiry
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/about"
+                  className="group inline-flex items-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand"
+                >
+                  Explore organization
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/security"
+                  className="group inline-flex items-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand"
+                >
+                  Security reporting
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>

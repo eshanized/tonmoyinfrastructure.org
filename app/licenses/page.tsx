@@ -112,7 +112,7 @@ export default function LicensesPage() {
                   </div>
                   <div className="mt-4">
                     <Link
-                      href={`/work/${repo.slug}`}
+                      href={`/projects/${repo.slug}`}
                       className="group inline-flex items-center gap-1.5 text-sm font-medium text-brand"
                     >
                       View project
