@@ -8,7 +8,7 @@ const nextConfig = {
   ...(basePath ? { basePath } : {}),
   trailingSlash: true,
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
   images: { unoptimized: true },
   experimental: {

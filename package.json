@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "node --test tests/audit.test.mjs tests/portfolio-economics.test.mjs tests/seo-recovery.test.mjs"
+    "test": "node --test tests/audit.test.mjs tests/portfolio-economics.test.mjs tests/seo-recovery.test.mjs tests/contact-delivery.test.mjs tests/status-telemetry.test.mjs tests/security-portfolio.test.mjs tests/navigation-accessibility.test.mjs tests/canonical-redirects.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

@@ -4,3 +4,8 @@ publish = ".next"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+from = "/api/contact"
+to = "/.netlify/functions/contact"
+status = 200

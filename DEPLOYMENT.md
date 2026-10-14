@@ -54,6 +54,15 @@ The core platform is intentionally static and does not depend on secret database
 | :--- | :--- | :--- |
 | `NODE_ENV` | Optional | Set to `production` in build pipelines. |
 | `NEXT_PUBLIC_SITE_URL` | Recommended | Canonical URL (`https://tonmoyinfrastructure.org/` or similar) for OpenGraph and sitemap generation. |
+| `NEXT_PUBLIC_CONTACT_ENDPOINT` | Optional | Custom or external serverless endpoint for contact submissions (defaults to `/api/contact`). |
+| `CONTACT_FORWARD_WEBHOOK_URL` | Server Secret | Webhook destination URL (e.g. Slack, Discord, internal ticketing service) for message dispatch. Kept strictly on server. |
+| `RESEND_API_KEY` | Server Secret | API key for Resend email dispatch provider. Never exposed in frontend client bundles. |
+| `CONTACT_RECIPIENT_EMAIL` | Server Secret | Notification destination mailbox for contact submissions. |
+
+### Contact Delivery Serverless Architecture
+- **Netlify**: Native Netlify Function implemented at `netlify/functions/contact.ts`. `netlify.toml` proxies `/api/contact` requests seamlessly.
+- **Cloudflare Pages**: Native Pages Function implemented at `functions/api/contact.ts`. Automatically handles `/api/contact` POST payloads with rate limiting and abuse defense.
+- **Static Hosting (cPanel / Nginx / GitHub Pages)**: Set `NEXT_PUBLIC_CONTACT_ENDPOINT` to an external serverless function URL, or configure reverse proxy rewrite for `/api/contact`. If unconfigured, the form safely displays an explicit notification and provides verified direct office telephone and street coordinates.
 
 ---
 

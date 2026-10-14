@@ -52,6 +52,7 @@ export async function GET() {
             </div>
             <div
               style={{
+                display: 'flex',
                 fontSize: '22px',
                 fontWeight: 700,
                 letterSpacing: '0.05em',
@@ -70,6 +71,7 @@ export async function GET() {
           >
             <div
               style={{
+                display: 'flex',
                 fontSize: '14px',
                 fontFamily: 'monospace',
                 letterSpacing: '0.15em',
@@ -84,6 +86,7 @@ export async function GET() {
             {status ? (
               <div
                 style={{
+                  display: 'flex',
                   fontSize: '14px',
                   fontFamily: 'monospace',
                   letterSpacing: '0.1em',
@@ -102,6 +105,7 @@ export async function GET() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div
             style={{
+              display: 'flex',
               fontSize: title.length > 35 ? '48px' : '58px',
               fontWeight: 700,
               lineHeight: 1.15,
@@ -115,18 +119,19 @@ export async function GET() {
           {description ? (
             <div
               style={{
+                display: 'flex',
                 fontSize: '20px',
                 color: '#a1a1aa',
                 lineHeight: 1.4,
                 maxWidth: '900px',
               }}
             >
-              {description.slice(0, 140)}
-              {description.length > 140 ? '...' : ''}
+              {description.length > 140 ? `${description.slice(0, 140)}...` : description}
             </div>
           ) : (
             <div
               style={{
+                display: 'flex',
                 fontSize: '20px',
                 color: '#71717a',
                 lineHeight: 1.4,
@@ -149,6 +154,7 @@ export async function GET() {
         >
           <div
             style={{
+              display: 'flex',
               fontSize: '15px',
               fontFamily: 'monospace',
               color: '#71717a',
@@ -158,6 +164,7 @@ export async function GET() {
           </div>
           <div
             style={{
+              display: 'flex',
               fontSize: '14px',
               fontFamily: 'monospace',
               color: '#a1a1aa',
