@@ -20,10 +20,10 @@ const nodes: MapNode[] = [
   { id: 'software', label: 'Software', x: 120, y: 130, type: 'branch' },
   { id: 'infrastructure', label: 'Infrastructure', x: 300, y: 130, type: 'branch' },
   { id: 'research', label: 'Research', x: 480, y: 130, type: 'branch' },
-  { id: 'openmail', label: 'OpenMail', x: 50, y: 230, type: 'leaf', href: '/work/openmail', meta: 'Stable', maturity: 'stable' },
-  { id: 'mercura', label: 'Mercura', x: 130, y: 230, type: 'leaf', href: '/work/mercura', meta: 'Stable', maturity: 'stable' },
-  { id: 'm31a', label: 'M31A', x: 210, y: 230, type: 'leaf', href: '/work/m31a', meta: 'Stable', maturity: 'stable' },
-  { id: 'octate', label: 'Octate', x: 290, y: 290, type: 'leaf', href: '/work/octate', meta: 'Stable', maturity: 'stable' },
+  { id: 'openmail', label: 'OpenMail', x: 50, y: 230, type: 'leaf', href: '/projects/openmail', meta: 'Stable', maturity: 'stable' },
+  { id: 'mercura', label: 'Mercura', x: 130, y: 230, type: 'leaf', href: '/projects/mercura', meta: 'Stable', maturity: 'stable' },
+  { id: 'm31a', label: 'M31A', x: 210, y: 230, type: 'leaf', href: '/projects/m31a', meta: 'Stable', maturity: 'stable' },
+  { id: 'octate', label: 'Octate', x: 290, y: 290, type: 'leaf', href: '/projects/octate', meta: 'Stable', maturity: 'stable' },
   { id: 'hosting', label: 'Hosting', x: 260, y: 230, type: 'leaf', href: '/infrastructure/hosting', meta: 'Planned', maturity: 'planned' },
   { id: 'network', label: 'Networking', x: 340, y: 230, type: 'leaf', href: '/infrastructure/networking', meta: 'Research', maturity: 'research' },
   { id: 'optical', label: 'Optical', x: 420, y: 230, type: 'leaf', href: '/infrastructure/optical', meta: 'Research', maturity: 'research' },
@@ -99,7 +99,18 @@ export function TechnologyMap() {
             return (
               <g
                 key={node.id}
+                role="button"
+                tabIndex={0}
+                aria-label={`${node.label} (${node.type}${node.meta ? `, ${node.meta}` : ''})`}
+                aria-pressed={isSelected}
                 onClick={() => setSelected(isSelected ? null : node.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelected(isSelected ? null : node.id);
+                  }
+                }}
+                className="outline-none focus:outline-none"
                 style={{ cursor: 'pointer', opacity, transition: 'opacity 0.2s' }}
               >
                 <rect

@@ -3,7 +3,8 @@
 import { useState, useMemo } from 'react';
 import { DATA_CENTERS, type DataCenterFacility } from '@/lib/solutions-data';
 import { TivIcon } from '@/components/shared/tiv-icon';
-import { Search } from 'lucide-react';
+import { Search, Info, Shield, CheckCircle2 } from 'lucide-react';
+import Link from 'next/link';
 
 export function DataCenterExplorer() {
   const [selectedCountry, setSelectedCountry] = useState<string>('All');
@@ -44,6 +45,17 @@ export function DataCenterExplorer() {
 
   return (
     <div className="space-y-10">
+      {/* Ground Truth Operational Disclosure */}
+      <div className="border border-brand/30 bg-card p-4 sm:p-5 flex items-start gap-3">
+        <Info className="h-5 w-5 text-brand shrink-0 mt-0.5" />
+        <div className="text-xs font-mono leading-relaxed text-muted-foreground">
+          <strong className="text-foreground">Sovereign Facility Ground Truth:</strong> TIV operates a confirmed physical sovereign
+          facility located in <strong>Jayapura, Papua, Indonesia</strong> hosting TIV software platforms (OpenMail, Mercura, M31A,
+          Octate) and authoritative DNS. Public self-serve retail colocation is not offered; sovereign enterprise capacity is evaluated
+          exclusively via <Link href="/contact" className="text-brand hover:underline">private inquiry</Link>.
+        </div>
+      </div>
+
       {/* Filter and Search Bar */}
       <div className="flex flex-col gap-4 border border-border bg-card p-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-1.5">
@@ -69,10 +81,11 @@ export function DataCenterExplorer() {
           <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
           <input
             type="text"
-            placeholder="Search city, carrier, region..."
+            placeholder="Search facility, carrier, region..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full border border-border bg-background py-1.5 pl-8 pr-3 text-xs font-mono text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none"
+            aria-label="Filter data center facilities"
           />
         </div>
       </div>
@@ -81,20 +94,20 @@ export function DataCenterExplorer() {
       <div className="border border-border bg-card p-4 md:p-6">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
           <div className="flex items-center gap-2">
-            <span className="tiv-meta">GLOBAL GEODESIC GRID</span>
+            <span className="tiv-meta">SOVEREIGN FACILITY GEODESIC GRID</span>
             <span className="font-mono text-xs text-muted-foreground">
-              ({filteredDataCenters.length} Active Nodes Displayed)
+              ({filteredDataCenters.length} Operational Facility Plotted)
             </span>
           </div>
           <div className="flex items-center gap-4 text-xs font-mono text-muted-foreground">
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" /> &lt;80% Load
+              <span className="h-2 w-2 rounded-full bg-emerald-500" /> Operational (&lt;80% Load)
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-amber-500" /> 80-87% Load
+              <span className="h-2 w-2 rounded-full bg-amber-500" /> Moderate (80-87% Load)
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-brand" /> 88%+ Load
+              <span className="h-2 w-2 rounded-full bg-brand" /> High Allocation (88%+)
             </span>
           </div>
         </div>
@@ -138,28 +151,7 @@ export function DataCenterExplorer() {
               );
             })}
 
-            {/* Connecting Peering Backbones (Inter-node transit lines) */}
-            {filteredDataCenters.map((fromDc, i) => {
-              const from = projectCoords(fromDc.lat, fromDc.lng);
-              return filteredDataCenters.slice(i + 1, i + 3).map((toDc) => {
-                const to = projectCoords(toDc.lat, toDc.lng);
-                return (
-                  <line
-                    key={`link-${fromDc.name}-${toDc.name}`}
-                    x1={from.x}
-                    y1={from.y}
-                    x2={to.x}
-                    y2={to.y}
-                    stroke="hsl(var(--border))"
-                    strokeWidth="1"
-                    strokeDasharray="2 4"
-                    opacity="0.4"
-                  />
-                );
-              });
-            })}
-
-            {/* Plotted Data Center Facility Pins */}
+            {/* Plotted Data Center Facility Pins with Keyboard Accessibility */}
             {filteredDataCenters.map((dc) => {
               const { x, y } = projectCoords(dc.lat, dc.lng);
               const isSelected = activeFacility?.name === dc.name;
@@ -169,8 +161,18 @@ export function DataCenterExplorer() {
                 <g
                   key={dc.name}
                   transform={`translate(${x}, ${y})`}
-                  className="cursor-pointer transition-transform duration-200"
+                  className="cursor-pointer transition-transform duration-200 focus:outline-none"
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`${dc.name}, ${dc.region}, ${dc.country} (${dc.status})`}
+                  aria-pressed={isSelected}
                   onClick={() => setActiveFacility(dc)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActiveFacility(dc);
+                    }
+                  }}
                 >
                   {/* Ping effect on selected or active node */}
                   {isSelected && (
@@ -205,7 +207,11 @@ export function DataCenterExplorer() {
 
           {/* Active Facility Focus Card (Overlay when node selected) */}
           {activeFacility && (
-            <div className="absolute bottom-4 left-4 right-4 z-20 border border-brand bg-card/95 p-4 backdrop-blur sm:bottom-6 sm:left-auto sm:right-6 sm:w-96">
+            <div
+              className="absolute bottom-4 left-4 right-4 z-20 border border-brand bg-card/95 p-4 backdrop-blur sm:bottom-6 sm:left-auto sm:right-6 sm:w-96"
+              role="region"
+              aria-label={`Details for ${activeFacility.name}`}
+            >
               <div className="flex items-start justify-between">
                 <div>
                   <span className="font-mono text-[10px] text-brand tracking-widest uppercase">
@@ -217,7 +223,8 @@ export function DataCenterExplorer() {
                 </div>
                 <button
                   onClick={() => setActiveFacility(null)}
-                  className="font-mono text-xs text-muted-foreground hover:text-foreground"
+                  className="font-mono text-xs text-muted-foreground hover:text-foreground p-1"
+                  aria-label="Close facility details"
                 >
                   ✕
                 </button>
@@ -225,8 +232,12 @@ export function DataCenterExplorer() {
 
               <div className="mt-3 grid grid-cols-2 gap-2 border-t border-border pt-3 text-xs font-mono">
                 <div>
-                  <span className="text-muted-foreground">Tier:</span>{' '}
+                  <span className="text-muted-foreground">Class:</span>{' '}
                   <span className="text-foreground font-semibold">{activeFacility.tier}</span>
+                </div>
+                <div>
+                  <span className="text-muted-foreground">Offering:</span>{' '}
+                  <span className="text-brand">Private Inquiry</span>
                 </div>
                 <div>
                   <span className="text-muted-foreground">Redundancy:</span>{' '}
@@ -237,7 +248,7 @@ export function DataCenterExplorer() {
                   <span className="text-foreground">{activeFacility.powerCapacity} MW</span>
                 </div>
                 <div>
-                  <span className="text-muted-foreground">Load:</span>{' '}
+                  <span className="text-muted-foreground">Allocation:</span>{' '}
                   <span style={{ color: getLoadColor(activeFacility.load) }}>
                     {activeFacility.load}%
                   </span>
@@ -245,15 +256,13 @@ export function DataCenterExplorer() {
                 <div>
                   <span className="text-muted-foreground">Servers:</span>{' '}
                   <span className="text-foreground">
-                    {activeFacility.specs.servers.toLocaleString()}
+                    {activeFacility.specs.servers.toLocaleString()} Nodes
                   </span>
                 </div>
-                <div>
-                  <span className="text-muted-foreground">Storage:</span>{' '}
+                <div className="col-span-2">
+                  <span className="text-muted-foreground">Storage Pool:</span>{' '}
                   <span className="text-foreground">
-                    {activeFacility.totalStorage >= 1000
-                      ? `${(activeFacility.totalStorage / 1000).toFixed(1)} PB`
-                      : `${activeFacility.totalStorage} TB`}
+                    {activeFacility.usedStorage} TB allocated / {activeFacility.totalStorage} TB capacity
                   </span>
                 </div>
               </div>
@@ -348,7 +357,7 @@ export function DataCenterExplorer() {
             <div className="mt-5 space-y-3 border-t border-border pt-4 text-xs font-mono">
               <div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span>System Load</span>
+                  <span>Workload Allocation</span>
                   <span className="text-foreground font-semibold">{dc.load}%</span>
                 </div>
                 <div className="mt-1.5 h-1.5 w-full bg-secondary">
@@ -364,11 +373,9 @@ export function DataCenterExplorer() {
 
               <div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Capacity Allocation</span>
+                  <span>Storage Pool Allocation</span>
                   <span className="text-foreground">
-                    {dc.totalStorage >= 1000
-                      ? `${(dc.usedStorage / 1000).toFixed(1)} / ${(dc.totalStorage / 1000).toFixed(1)} PB`
-                      : `${dc.usedStorage} / ${dc.totalStorage} TB`}
+                    {dc.usedStorage} / {dc.totalStorage} TB
                   </span>
                 </div>
                 <div className="mt-1.5 h-1.5 w-full bg-secondary">
@@ -383,7 +390,7 @@ export function DataCenterExplorer() {
             {/* Network Providers */}
             <div className="mt-4 border-t border-border pt-3">
               <span className="text-[10px] font-mono text-muted-foreground block mb-1.5 uppercase tracking-wider">
-                Transit Carriers
+                Carrier Transit
               </span>
               <div className="flex flex-wrap gap-1">
                 {dc.networkProviders.map((p) => (
@@ -397,10 +404,10 @@ export function DataCenterExplorer() {
               </div>
             </div>
 
-            {/* Compliance Badges */}
+            {/* Compliance Alignment Badges */}
             <div className="mt-3">
               <span className="text-[10px] font-mono text-muted-foreground block mb-1.5 uppercase tracking-wider">
-                Certifications
+                Security Principles Alignment
               </span>
               <div className="flex flex-wrap gap-1">
                 {dc.certifications.map((c) => (

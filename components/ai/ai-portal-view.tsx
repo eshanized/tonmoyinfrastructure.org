@@ -292,7 +292,7 @@ export function AIPortalView({ basePath }: AIPortalViewProps) {
                     ))}
                   </div>
                   <Link
-                    href={`/products/${system.slug}`}
+                    href={`/projects/${system.slug}`}
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:underline"
                   >
                     View Product Architecture

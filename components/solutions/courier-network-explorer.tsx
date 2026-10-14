@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { COURIER_HUBS, COURIER_METRICS, COURIER_SERVICES, type CourierHub } from '@/lib/solutions-data';
 import { TivIcon } from '@/components/shared/tiv-icon';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Info } from 'lucide-react';
 import Link from 'next/link';
 
 export function CourierNetworkExplorer() {
@@ -19,6 +19,17 @@ export function CourierNetworkExplorer() {
 
   return (
     <div className="space-y-12">
+      {/* Research Model Disclosure Callout */}
+      <div className="border border-brand/30 bg-card p-4 sm:p-5 flex items-start gap-3">
+        <Info className="h-5 w-5 text-brand shrink-0 mt-0.5" />
+        <div className="text-xs font-mono leading-relaxed text-muted-foreground">
+          <strong className="text-foreground">Logistics Systems Architecture &amp; Research Model:</strong> The transit corridors,
+          airport nodes, and milestone specifications below represent TIV systems engineering models for hardware custody
+          verification, tamper-evident telemetry, and packaging research. TIV does not operate a commercial parcel or retail freight
+          airline; physical deliveries rely on third-party commercial logistics carriers.
+        </div>
+      </div>
+
       {/* 4 Performance Metrics Grid */}
       <div className="grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
         {COURIER_METRICS.map((kpi) => (
@@ -40,13 +51,13 @@ export function CourierNetworkExplorer() {
       <div className="border border-border bg-card p-4 md:p-6">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
           <div>
-            <span className="tiv-meta">INTER-HUB AIR & FREIGHT CORRIDORS</span>
+            <span className="tiv-meta">INTER-HUB AIR &amp; FREIGHT CORRIDORS</span>
             <h3 className="font-display text-lg font-semibold text-foreground mt-0.5">
-              17-Nation Direct Transit Network
+              17-Nation Logistics Reference Network
             </h3>
           </div>
           <span className="font-mono text-xs text-muted-foreground border border-border px-2.5 py-1">
-            GDP & ISO 9001 Audited Facilities
+            GDP &amp; ISO 9001 Architectural Alignment
           </span>
         </div>
 
@@ -55,7 +66,7 @@ export function CourierNetworkExplorer() {
             viewBox={`0 0 ${mapWidth} ${mapHeight}`}
             className="h-auto w-full select-none"
             role="img"
-            aria-label="Interactive world map showing 17 TIV international courier logistics hubs and connected flight transit corridors"
+            aria-label="Interactive world map showing 17 international logistics reference corridors and connected flight transit paths"
           >
             <defs>
               <linearGradient id="corridorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -122,7 +133,7 @@ export function CourierNetworkExplorer() {
               });
             })}
 
-            {/* Hub Pins */}
+            {/* Hub Pins with full keyboard accessibility */}
             {COURIER_HUBS.map((hub) => {
               const { x, y } = projectCoords(hub.lat, hub.lng);
               const isSelected = selectedHub?.name === hub.name;
@@ -131,8 +142,18 @@ export function CourierNetworkExplorer() {
                 <g
                   key={hub.name}
                   transform={`translate(${x}, ${y})`}
-                  className="cursor-pointer"
+                  className="cursor-pointer focus:outline-none"
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`${hub.name}, ${hub.country} (${hub.status})`}
+                  aria-pressed={isSelected}
                   onClick={() => setSelectedHub(hub)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setSelectedHub(hub);
+                    }
+                  }}
                 >
                   {isSelected && (
                     <circle r="12" fill="hsl(var(--brand))" opacity="0.3" className="animate-ping" />
@@ -141,7 +162,7 @@ export function CourierNetworkExplorer() {
                     r={isSelected ? 7 : 4.5}
                     fill="hsl(var(--card))"
                     stroke="hsl(var(--brand))"
-                    strokeWidth={isSelected ? 2 : 1.2}
+                    strokeWidth={isSelected ? 2.5 : 1.2}
                   />
                   <circle r={isSelected ? 3.5 : 2} fill="hsl(var(--brand))" />
                   <text
@@ -162,11 +183,15 @@ export function CourierNetworkExplorer() {
 
           {/* Active Hub Card Overlay */}
           {selectedHub && (
-            <div className="absolute bottom-4 left-4 right-4 z-20 border border-brand bg-card/95 p-4 backdrop-blur sm:bottom-6 sm:left-auto sm:right-6 sm:w-96">
+            <div
+              className="absolute bottom-4 left-4 right-4 z-20 border border-brand bg-card/95 p-4 backdrop-blur sm:bottom-6 sm:left-auto sm:right-6 sm:w-96"
+              role="region"
+              aria-label={`Details for ${selectedHub.name}`}
+            >
               <div className="flex items-start justify-between">
                 <div>
                   <span className="font-mono text-[10px] text-brand tracking-widest uppercase">
-                    {selectedHub.region} Gateway
+                    {selectedHub.region} Gateway (Reference Model)
                   </span>
                   <h4 className="font-display text-lg font-bold text-foreground">
                     {selectedHub.name}
@@ -175,7 +200,8 @@ export function CourierNetworkExplorer() {
                 </div>
                 <button
                   onClick={() => setSelectedHub(null)}
-                  className="font-mono text-xs text-muted-foreground hover:text-foreground"
+                  className="font-mono text-xs text-muted-foreground hover:text-foreground p-1"
+                  aria-label="Close corridor details"
                 >
                   ✕
                 </button>
@@ -183,18 +209,18 @@ export function CourierNetworkExplorer() {
 
               <div className="mt-3 grid grid-cols-2 gap-2 border-t border-border pt-3 text-xs font-mono">
                 <div>
-                  <span className="text-muted-foreground">Status:</span>{' '}
-                  <span className="text-emerald-400 font-semibold">{selectedHub.status}</span>
+                  <span className="text-muted-foreground">Classification:</span>{' '}
+                  <span className="text-brand font-semibold">{selectedHub.status}</span>
                 </div>
                 <div>
-                  <span className="text-muted-foreground">Hub Load:</span>{' '}
-                  <span className="text-foreground">{selectedHub.load}%</span>
+                  <span className="text-muted-foreground">Modeled Target:</span>{' '}
+                  <span className="text-foreground">48h SLA</span>
                 </div>
               </div>
 
               <div className="mt-3 border-t border-border pt-2">
                 <span className="text-[10px] font-mono text-muted-foreground block mb-1">
-                  Local Delivery Partners:
+                  Carrier Interconnect Architecture:
                 </span>
                 <div className="flex flex-wrap gap-1">
                   {selectedHub.partners.map((p) => (
@@ -208,13 +234,13 @@ export function CourierNetworkExplorer() {
                 </div>
               </div>
 
-              <div className="mt-3 flex gap-1 border-t border-border pt-2">
+              <div className="mt-3 flex flex-wrap gap-1 border-t border-border pt-2">
                 {selectedHub.certifications.map((cert) => (
                   <span
                     key={cert}
                     className="border border-emerald-900/40 bg-emerald-950/20 px-2 py-0.5 text-[9px] font-mono text-emerald-400"
                   >
-                    {cert} Certified
+                    {cert}
                   </span>
                 ))}
               </div>
@@ -228,7 +254,7 @@ export function CourierNetworkExplorer() {
         <div className="mb-6">
           <span className="tiv-meta">SERVICE ARCHITECTURE</span>
           <h3 className="font-display text-2xl font-bold tracking-tight text-foreground mt-1">
-            Global Logistics Pillars
+            Logistics Systems Architecture Pillars
           </h3>
         </div>
 
@@ -271,14 +297,14 @@ export function CourierNetworkExplorer() {
           <div>
             <span className="tiv-meta">DISTRIBUTION DIRECTORY</span>
             <h4 className="font-display text-lg font-semibold text-foreground mt-0.5">
-              17 Operational Hub Facilities
+              17 Modeled Transit Corridors
             </h4>
           </div>
           <Link
             href="/contact"
             className="flex items-center gap-1.5 text-xs font-mono text-brand hover:underline"
           >
-            Custom Route Logistics <ArrowRight className="h-3.5 w-3.5" />
+            Custom Route Inquiry <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
@@ -286,13 +312,13 @@ export function CourierNetworkExplorer() {
           <table className="w-full text-left font-mono text-xs">
             <thead className="border-b border-border bg-secondary/50 text-muted-foreground">
               <tr>
-                <th className="py-3 px-4 font-medium">Facility / Hub</th>
+                <th className="py-3 px-4 font-medium">Node / Corridor</th>
                 <th className="py-3 px-4 font-medium">Country</th>
                 <th className="py-3 px-4 font-medium">Region</th>
-                <th className="py-3 px-4 font-medium">SLA Standard</th>
-                <th className="py-3 px-4 font-medium">Status</th>
-                <th className="py-3 px-4 font-medium">Primary Carrier Partners</th>
-                <th className="py-3 px-4 font-medium text-right">Audit Standards</th>
+                <th className="py-3 px-4 font-medium">Modeled Target</th>
+                <th className="py-3 px-4 font-medium">Classification</th>
+                <th className="py-3 px-4 font-medium">Carrier Interconnect Architecture</th>
+                <th className="py-3 px-4 font-medium text-right">Standard Alignment</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -301,14 +327,21 @@ export function CourierNetworkExplorer() {
                   key={hub.name}
                   onClick={() => setSelectedHub(hub)}
                   className="cursor-pointer transition-colors hover:bg-secondary/40"
+                  tabIndex={0}
+                  role="button"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setSelectedHub(hub);
+                    }
+                  }}
                 >
                   <td className="py-3 px-4 font-medium text-foreground">{hub.name}</td>
                   <td className="py-3 px-4 text-muted-foreground">{hub.country}</td>
                   <td className="py-3 px-4 text-muted-foreground">{hub.region}</td>
-                  <td className="py-3 px-4 text-brand font-semibold">48h SLA</td>
-                  <td className="py-3 px-4 text-emerald-400">
-                    <span className="inline-flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <td className="py-3 px-4 text-brand font-semibold">48h Target</td>
+                  <td className="py-3 px-4 text-foreground">
+                    <span className="border border-border bg-secondary px-2 py-0.5 text-[10px]">
                       {hub.status}
                     </span>
                   </td>

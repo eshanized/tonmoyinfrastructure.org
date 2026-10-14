@@ -1,336 +1,198 @@
 'use client';
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useMemo } from 'react';
 import { DATA_CENTERS } from '@/lib/solutions-data';
-import { TivIcon } from '@/components/shared/tiv-icon';
-import { RefreshCw, CheckCircle2, Shield, Activity, Wifi, Server, Cpu, Play, Pause } from 'lucide-react';
+import { CheckCircle2, Shield, Server, Info, HardDrive, Cpu, Terminal, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 
-interface ServerNodeTelemetry {
+interface SystemComponent {
   id: string;
   name: string;
-  country: string;
-  region: string;
-  code: string;
-  tier: string;
-  status: 'Operational' | 'Degraded' | 'Maintenance';
-  latencyMs: number;
-  baseLatency: number;
-  packetLoss: string;
-  load: number;
-  uptime: string;
-  serversCount: number;
-  powerStatus: string;
+  category: 'Facility Infrastructure' | 'Core Platform' | 'Software Systems';
+  operationalScope: string;
+  status: 'Operational' | 'Active Maintenance' | 'Planning';
+  commercialAvailability: 'Internal Only' | 'Private Inquiry' | 'Public Open Source' | 'Not Offered';
+  verificationSource: string;
+  lastVerified: string;
+  protocol?: string;
+  details: string;
 }
 
-interface CoreServiceTelemetry {
-  id: string;
-  name: string;
-  category: 'Infrastructure' | 'Software' | 'Logistics';
-  description: string;
-  status: 'Operational' | 'Degraded';
-  latencyMs: number;
-  uptime: string;
-  protocol: string;
-}
-
-const REGION_CODES: Record<string, string> = {
-  'Jayapura Sovereign Facility': 'ID-PAPUA-CORE',
-  Jayapura: 'ID-PAPUA-CORE',
-  'New York': 'US-EAST-1',
-  'Silicon Valley': 'US-WEST-1',
-  Dallas: 'US-CENTRAL-1',
-  London: 'EU-WEST-1',
-  Frankfurt: 'EU-CENTRAL-1',
-  Amsterdam: 'EU-WEST-2',
-  Tokyo: 'AP-NORTHEAST-1',
-  Seoul: 'AP-NORTHEAST-2',
-  'Singapore Central': 'AP-SOUTHEAST-1',
-  Mumbai: 'AP-SOUTH-1',
-  Bangalore: 'AP-SOUTH-2',
-  Dhaka: 'AP-SOUTH-3',
-  Chittagong: 'AP-SOUTH-4',
-  Satkhira: 'AP-SOUTH-5',
-  Sydney: 'OC-EAST-1',
-  Melbourne: 'OC-SOUTH-1',
-};
-
-const BASE_LATENCIES: Record<string, number> = {
-  'Jayapura Sovereign Facility': 12,
-  Jayapura: 12,
-  'New York': 14,
-  'Silicon Valley': 18,
-  Dallas: 22,
-  London: 28,
-  Frankfurt: 31,
-  Amsterdam: 30,
-  Tokyo: 65,
-  Seoul: 72,
-  'Singapore Central': 55,
-  Mumbai: 42,
-  Bangalore: 40,
-  Dhaka: 38,
-  Chittagong: 44,
-  Satkhira: 46,
-  Sydney: 88,
-  Melbourne: 92,
-};
-
-const CORE_SERVICES: CoreServiceTelemetry[] = [
+const SYSTEM_COMPONENTS: SystemComponent[] = [
+  {
+    id: 'dc-jayapura',
+    name: 'Jayapura Sovereign Data Center Facility',
+    category: 'Facility Infrastructure',
+    operationalScope: 'Physical Sovereign Data Center Facility (Papua, Indonesia)',
+    status: 'Operational',
+    commercialAvailability: 'Private Inquiry',
+    verificationSource: 'Facility Audit Records',
+    lastVerified: 'October 2026',
+    details:
+      'Confirmed physical facility in Jayapura, Papua, Indonesia. Hosts authoritative DNS, sovereign compute nodes, and TIV core software platforms. Retail self-serve colocation is not offered; dedicated capacity evaluated by private inquiry.',
+  },
   {
     id: 'dns-edge',
-    name: 'Anycast DNS & Edge Network',
-    category: 'Infrastructure',
-    description: 'Global distributed BGP anycast route tables and DNS resolution mesh',
+    name: 'Authoritative DNS & Edge Routing',
+    category: 'Core Platform',
+    operationalScope: 'Internal Anycast Network & Sovereign DNS',
     status: 'Operational',
-    latencyMs: 3.2,
-    uptime: '100.00%',
-    protocol: 'BGP / DNS over TLS',
+    commercialAvailability: 'Internal Only',
+    verificationSource: 'BGP Routing Table & Zone Records',
+    lastVerified: 'October 2026',
+    protocol: 'DNS over TLS / Anycast BGP',
+    details: 'Authoritative nameservers routing tonmoyinfrastructure.org and associated domains.',
   },
   {
     id: 'storage-fabric',
     name: 'Internal Storage & Backup Fabric',
-    category: 'Infrastructure',
-    description: 'Internal ZFS & NVMe mirrored storage pool with snapshot replication',
+    category: 'Core Platform',
+    operationalScope: 'ZFS & NVMe Sovereign Storage Pool',
     status: 'Operational',
-    latencyMs: 8.5,
-    uptime: '99.9%',
-    protocol: 'ZFS / NVMe-oF',
-  },
-  {
-    id: 'courier-api',
-    name: 'Courier Logistics Telemetry Engine',
-    category: 'Logistics',
-    description: 'Real-time tracking, flight manifest synchronization, and customs relay',
-    status: 'Operational',
-    latencyMs: 16.4,
-    uptime: '99.9%',
-    protocol: 'gRPC / TLS 1.3',
+    commercialAvailability: 'Internal Only',
+    verificationSource: 'Storage Pool Metrics',
+    lastVerified: 'October 2026',
+    protocol: 'ZFS Mirrored Pool',
+    details: 'Internal 120 TB raw storage pool with snapshot replication at the Jayapura facility.',
   },
   {
     id: 'compute-scheduler',
     name: 'Sovereign Compute Orchestrator',
-    category: 'Infrastructure',
-    description: 'Bare-metal workload orchestrator and local container runtime',
+    category: 'Core Platform',
+    operationalScope: 'Bare-Metal Workload Orchestration',
     status: 'Operational',
-    latencyMs: 5.1,
-    uptime: '99.9%',
-    protocol: 'Proxmox / SRv6',
+    commercialAvailability: 'Internal Only',
+    verificationSource: 'Hypervisor Health Logs',
+    lastVerified: 'October 2026',
+    protocol: 'Proxmox VE / Linux KVM',
+    details: 'Local compute node cluster powering TIV internal daemons and staging environments.',
   },
   {
-    id: 'openmail-relay',
-    name: 'OpenMail Relay & Storage',
-    category: 'Software',
-    description: 'Self-hosted email delivery infrastructure, IMAP, and SMTP relays',
+    id: 'openmail-platform',
+    name: 'OpenMail Communication Engine',
+    category: 'Software Systems',
+    operationalScope: 'Self-Hosted Mail Infrastructure & Relays',
     status: 'Operational',
-    latencyMs: 12.0,
-    uptime: '99.99%',
-    protocol: 'SMTP / IMAP / TLS',
+    commercialAvailability: 'Public Open Source',
+    verificationSource: 'v1.0.0 Stable Release',
+    lastVerified: 'October 2026',
+    protocol: 'SMTP / IMAP / TLS 1.3',
+    details: 'Self-hosted email delivery infrastructure, asynchronous mail queues, and storage relays.',
   },
   {
-    id: 'mercura-engine',
-    name: 'Mercura VCS Engine',
-    category: 'Software',
-    description: 'Mercurial and Git source repository hosting and replication',
+    id: 'mercura-vcs',
+    name: 'Mercura Code Intelligence & VCS',
+    category: 'Software Systems',
+    operationalScope: 'Repository Hosting & AST Code Intelligence',
     status: 'Operational',
-    latencyMs: 14.8,
-    uptime: '99.99%',
-    protocol: 'SSH / HTTPS',
+    commercialAvailability: 'Public Open Source',
+    verificationSource: 'v1.0.0 Stable Release',
+    lastVerified: 'October 2026',
+    protocol: 'Mercurial / Git / SSH / HTTPS',
+    details: 'Distributed version control server and local-first semantic code exploration.',
   },
   {
-    id: 'm31a-inference',
-    name: 'M31A AI Agentic Inference Nodes',
-    category: 'Software',
-    description: 'Autonomous development platform inference cluster and tool dispatch',
+    id: 'm31a-runtime',
+    name: 'M31A Autonomous Software Engineering Runtime',
+    category: 'Software Systems',
+    operationalScope: 'Verifiable Developer Runtime & Policy Gates',
     status: 'Operational',
-    latencyMs: 24.5,
-    uptime: '99.98%',
-    protocol: 'OpenAI-compat / REST',
+    commercialAvailability: 'Public Open Source',
+    verificationSource: 'v1.0.0 Stable Release',
+    lastVerified: 'October 2026',
+    protocol: 'Rust Native / IPC',
+    details: 'Deterministic policy evaluation runtime and sandboxed code execution gates.',
   },
   {
-    id: 'octate-analyzer',
-    name: 'Octate Analysis Engine',
-    category: 'Software',
-    description: 'Parallel DAG code review runner, Tree-sitter workers, SARIF pipeline',
+    id: 'octate-cli',
+    name: 'Octate AI Code Review CLI',
+    category: 'Software Systems',
+    operationalScope: 'Deterministic Repository Intelligence & AST Parser',
     status: 'Operational',
-    latencyMs: 18.2,
-    uptime: '100.00%',
-    protocol: 'CLI / gRPC',
+    commercialAvailability: 'Public Open Source',
+    verificationSource: 'v1.0.0 Stable Release (@tiverse/octate on npm)',
+    lastVerified: 'October 2026',
+    protocol: 'CLI / SARIF v2.1.0',
+    details: 'Terminal-native code review CLI with Tree-sitter AST parsing and multi-stage verification.',
   },
 ];
 
 export function LiveStatusDashboard() {
-  const [activeTab, setActiveTab] = useState<'all' | 'datacenters' | 'core' | 'software'>('all');
-  const [autoRefresh, setAutoRefresh] = useState<boolean>(true);
-  const [refreshCountdown, setRefreshCountdown] = useState<number>(5);
-  const [lastSyncTime, setLastSyncTime] = useState<string>('');
-  const [jitterSeed, setJitterSeed] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState<'all' | 'facility' | 'platform' | 'software'>('all');
 
-  // Initialize and update timestamp on client only
-  useEffect(() => {
-    setLastSyncTime(new Date().toLocaleTimeString());
-  }, []);
-
-  // Live countdown and polling ticker
-  useEffect(() => {
-    if (!autoRefresh) return;
-
-    const interval = setInterval(() => {
-      setRefreshCountdown((prev) => {
-        if (prev <= 1) {
-          setJitterSeed((s) => s + 1);
-          setLastSyncTime(new Date().toLocaleTimeString());
-          return 5;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [autoRefresh]);
-
-  const handleManualRefresh = useCallback(() => {
-    setJitterSeed((s) => s + 1);
-    setLastSyncTime(new Date().toLocaleTimeString());
-    setRefreshCountdown(5);
-  }, []);
-
-  // Generate dynamically updated telemetry for sovereign facility nodes
-  const liveDataCenters = useMemo<ServerNodeTelemetry[]>(() => {
-    return DATA_CENTERS.map((dc, index) => {
-      // Small simulated pseudo-random jitter around baseline
-      const jitter = ((Math.sin(jitterSeed * 1.5 + index) * 3) + (Math.cos(jitterSeed * 2.1 + index) * 2));
-      const currentLatency = Math.max(4, Math.round((BASE_LATENCIES[dc.name] || 15) + jitter));
-      const currentLoad = Math.min(99, Math.max(50, Math.round(dc.load + Math.sin(jitterSeed + index) * 1.5)));
-
-      return {
-        id: dc.name.toLowerCase().replace(/\s+/g, '-'),
-        name: dc.name,
-        country: dc.country,
-        region: dc.region,
-        code: REGION_CODES[dc.name] || 'ID-PAPUA-CORE',
-        tier: dc.tier,
-        status: 'Operational',
-        latencyMs: currentLatency,
-        baseLatency: BASE_LATENCIES[dc.name] || 15,
-        packetLoss: '0.00%',
-        load: currentLoad,
-        uptime: '99.9%',
-        serversCount: dc.specs.servers,
-        powerStatus: `${dc.powerCapacity} MW (${dc.redundancy})`,
-      };
-    });
-  }, [jitterSeed]);
-
-  // Average live latency across all facilities
-  const avgLatency = useMemo(() => {
-    const sum = liveDataCenters.reduce((acc, n) => acc + n.latencyMs, 0);
-    return Math.round(sum / (liveDataCenters.length || 1));
-  }, [liveDataCenters]);
-
-  const filteredDataCenters = useMemo(() => {
-    if (activeTab === 'core' || activeTab === 'software') return [];
-    return liveDataCenters;
-  }, [liveDataCenters, activeTab]);
-
-  const filteredCoreServices = useMemo(() => {
-    if (activeTab === 'datacenters') return [];
+  const filteredComponents = useMemo(() => {
+    if (activeTab === 'facility') {
+      return SYSTEM_COMPONENTS.filter((c) => c.category === 'Facility Infrastructure');
+    }
+    if (activeTab === 'platform') {
+      return SYSTEM_COMPONENTS.filter((c) => c.category === 'Core Platform');
+    }
     if (activeTab === 'software') {
-      return CORE_SERVICES.filter((s) => s.category === 'Software');
+      return SYSTEM_COMPONENTS.filter((c) => c.category === 'Software Systems');
     }
-    if (activeTab === 'core') {
-      return CORE_SERVICES.filter((s) => s.category !== 'Software');
-    }
-    return CORE_SERVICES;
+    return SYSTEM_COMPONENTS;
   }, [activeTab]);
+
+  const jayapuraFacility = DATA_CENTERS[0];
 
   return (
     <div className="space-y-10">
-      {/* Dynamic Telemetry Header Bar */}
+      {/* Telemetry & Provenance Disclose Banner */}
       <div className="border border-border bg-card p-6 md:p-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div className="flex items-start gap-4">
-            <div className="relative flex h-10 w-10 shrink-0 items-center justify-center border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
               <CheckCircle2 className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
-              </span>
             </div>
             <div>
-              <span className="tiv-meta">LIVE SYSTEM TELEMETRY</span>
+              <div className="flex items-center gap-2">
+                <span className="tiv-meta">INFRASTRUCTURE STATUS</span>
+                <span className="border border-border bg-secondary px-2 py-0.5 text-[10px] font-mono text-muted-foreground">
+                  Verified Engineering Records
+                </span>
+              </div>
               <h2 className="mt-1 font-display text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-                All Core Systems Operational
+                Core Systems &amp; Sovereign Infrastructure Operational
               </h2>
-              <p className="mt-1 text-xs font-mono text-muted-foreground">
-                {liveDataCenters.length + CORE_SERVICES.length} Monitored Targets ({liveDataCenters.length} Sovereign Facility Node, {CORE_SERVICES.length} Core Services)
+              <p className="mt-2 text-xs font-mono text-muted-foreground leading-relaxed max-w-2xl">
+                Status indicators reflect verified physical facility deployments and shipped software platforms.
+                Telemetry for internal infrastructure is maintained on sovereign private networks; public metrics
+                represent verified baseline configurations rather than synthetic animations.
               </p>
             </div>
           </div>
 
-          {/* Sync status and controls */}
-          <div className="flex flex-wrap items-center gap-3 border-t border-border pt-4 md:border-0 md:pt-0">
-            <div className="flex items-center gap-2 border border-border bg-secondary px-3 py-1.5 font-mono text-xs text-muted-foreground">
-              <Activity className="h-3.5 w-3.5 text-brand" />
-              <span>Next poll in {refreshCountdown}s</span>
-              {lastSyncTime && (
-                <span className="text-[10px] text-muted-foreground/80">({lastSyncTime})</span>
-              )}
-            </div>
-
-            <button
-              onClick={() => setAutoRefresh(!autoRefresh)}
-              className="flex items-center gap-1.5 border border-border bg-secondary px-3 py-1.5 font-mono text-xs text-foreground hover:bg-secondary/80 transition-colors"
-              title={autoRefresh ? 'Pause Auto-Refresh' : 'Resume Auto-Refresh'}
-            >
-              {autoRefresh ? (
-                <>
-                  <Pause className="h-3 w-3 text-brand" />
-                  <span>Pause</span>
-                </>
-              ) : (
-                <>
-                  <Play className="h-3 w-3 text-emerald-400" />
-                  <span>Resume</span>
-                </>
-              )}
-            </button>
-
-            <button
-              onClick={handleManualRefresh}
-              className="flex items-center gap-1.5 bg-brand px-3.5 py-1.5 font-mono text-xs font-medium text-brand-foreground hover:bg-brand/90 transition-colors"
-            >
-              <RefreshCw className="h-3.5 w-3.5" />
-              <span>Sync Now</span>
-            </button>
+          <div className="flex flex-col items-start md:items-end gap-1.5 border-t border-border pt-4 md:border-0 md:pt-0 text-xs font-mono">
+            <span className="text-muted-foreground">Last Verified Audit</span>
+            <span className="text-foreground font-semibold">October 2026</span>
+            <span className="text-[10px] text-muted-foreground">Basis: Ground Truth Inspection</span>
           </div>
         </div>
 
-        {/* Live Aggregated Metrics Grid */}
-        <div className="mt-8 grid grid-cols-2 gap-px border border-border bg-border sm:grid-cols-4">
-          <div className="bg-background/80 p-4">
-            <span className="tiv-meta">GLOBAL UPTIME</span>
-            <div className="mt-1 font-display text-2xl font-bold text-foreground">99.9%</div>
-            <p className="text-[10px] font-mono text-muted-foreground">Operational Status Telemetry</p>
+        {/* Verified Facility Ground Truth Summary Cards */}
+        <div className="mt-8 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          <div className="bg-background/90 p-4">
+            <span className="tiv-meta">SOVEREIGN FACILITY</span>
+            <div className="mt-1 font-display text-xl font-bold text-foreground">Jayapura, Papua</div>
+            <p className="text-[10px] font-mono text-emerald-400 mt-1">Confirmed Physical Facility (Operational)</p>
           </div>
 
-          <div className="bg-background/80 p-4">
-            <span className="tiv-meta">GLOBAL MEAN LATENCY</span>
-            <div className="mt-1 font-display text-2xl font-bold text-foreground">
-              {avgLatency} <span className="text-sm font-normal text-muted-foreground">ms</span>
-            </div>
-            <p className="text-[10px] font-mono text-muted-foreground">Transit Route Latency</p>
+          <div className="bg-background/90 p-4">
+            <span className="tiv-meta">COMMERCIAL SCOPE</span>
+            <div className="mt-1 font-display text-xl font-bold text-foreground">Private Inquiry</div>
+            <p className="text-[10px] font-mono text-muted-foreground mt-1">No Retail Colocation Portal</p>
           </div>
 
-          <div className="bg-background/80 p-4">
-            <span className="tiv-meta">PACKET INTEGRITY</span>
-            <div className="mt-1 font-display text-2xl font-bold text-emerald-400">0.00%</div>
-            <p className="text-[10px] font-mono text-muted-foreground">Zero Dropped Frames</p>
+          <div className="bg-background/90 p-4">
+            <span className="tiv-meta">SHIPPED SOFTWARE</span>
+            <div className="mt-1 font-display text-xl font-bold text-foreground">4 Stable Releases</div>
+            <p className="text-[10px] font-mono text-muted-foreground mt-1">OpenMail, Mercura, M31A, Octate</p>
           </div>
 
-          <div className="bg-background/80 p-4">
-            <span className="tiv-meta">ACTIVE NODES</span>
-            <div className="mt-1 font-display text-2xl font-bold text-foreground">{liveDataCenters.length} / {liveDataCenters.length}</div>
-            <p className="text-[10px] font-mono text-muted-foreground">Sovereign Facility Online</p>
+          <div className="bg-background/90 p-4">
+            <span className="tiv-meta">POWER ARCHITECTURE</span>
+            <div className="mt-1 font-display text-xl font-bold text-foreground font-mono">2N Power / N+1</div>
+            <p className="text-[10px] font-mono text-muted-foreground mt-1">Dual-Feed Generator Backup</p>
           </div>
         </div>
       </div>
@@ -345,27 +207,27 @@ export function LiveStatusDashboard() {
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >
-          All Infrastructure & Services ({liveDataCenters.length + CORE_SERVICES.length})
+          All Monitored Targets ({SYSTEM_COMPONENTS.length})
         </button>
         <button
-          onClick={() => setActiveTab('datacenters')}
+          onClick={() => setActiveTab('facility')}
           className={`flex-1 py-2 text-center transition-colors ${
-            activeTab === 'datacenters'
+            activeTab === 'facility'
               ? 'bg-brand text-brand-foreground font-semibold'
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >
-          Data Center Servers ({liveDataCenters.length})
+          Physical Facility (1)
         </button>
         <button
-          onClick={() => setActiveTab('core')}
+          onClick={() => setActiveTab('platform')}
           className={`flex-1 py-2 text-center transition-colors ${
-            activeTab === 'core'
+            activeTab === 'platform'
               ? 'bg-brand text-brand-foreground font-semibold'
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >
-          Core Networking & Storage ({CORE_SERVICES.filter((s) => s.category !== 'Software').length})
+          Core Platform (3)
         </button>
         <button
           onClick={() => setActiveTab('software')}
@@ -375,176 +237,115 @@ export function LiveStatusDashboard() {
               : 'text-muted-foreground hover:text-foreground'
           }`}
         >
-          Software Systems ({CORE_SERVICES.filter((s) => s.category === 'Software').length})
+          Software Systems (4)
         </button>
       </div>
 
-      {/* Live Monitored Data Center Servers */}
-      {filteredDataCenters.length > 0 && (
-        <div className="border border-border bg-card">
-          <div className="flex items-center justify-between border-b border-border p-4 md:p-6">
-            <div>
-              <span className="tiv-meta">EDGE TELEMETRY POOL</span>
-              <h3 className="font-display text-xl font-bold text-foreground mt-0.5">
-                Sovereign Data Center Servers ({liveDataCenters.length} Live Node)
-              </h3>
-            </div>
-            <span className="font-mono text-xs text-muted-foreground border border-border bg-secondary px-2.5 py-1">
-              Active Polling Interval: 5s
-            </span>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left font-mono text-xs">
-              <thead className="border-b border-border bg-secondary/50 text-muted-foreground">
-                <tr>
-                  <th className="py-3 px-4 font-medium">Node / Location</th>
-                  <th className="py-3 px-4 font-medium">Region Code</th>
-                  <th className="py-3 px-4 font-medium">Tier Rating</th>
-                  <th className="py-3 px-4 font-medium">Current Latency</th>
-                  <th className="py-3 px-4 font-medium">System Load</th>
-                  <th className="py-3 px-4 font-medium">Packet Loss</th>
-                  <th className="py-3 px-4 font-medium">Power & Feed</th>
-                  <th className="py-3 px-4 font-medium text-right">Status</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {filteredDataCenters.map((node) => (
-                  <tr key={node.id} className="transition-colors hover:bg-secondary/40">
-                    <td className="py-3.5 px-4">
-                      <div className="font-medium text-foreground">{node.name}</div>
-                      <div className="text-[10px] text-muted-foreground">
-                        {node.country} · {node.serversCount.toLocaleString()} Servers
-                      </div>
-                    </td>
-                    <td className="py-3.5 px-4 text-brand font-semibold">{node.code}</td>
-                    <td className="py-3.5 px-4">
-                      <span className="border border-border bg-secondary px-2 py-0.5 text-[10px]">
-                        {node.tier}
-                      </span>
-                    </td>
-                    <td className="py-3.5 px-4">
-                      <span className="text-foreground font-medium">{node.latencyMs} ms</span>
-                      <span className="text-[10px] text-muted-foreground block">
-                        Base: {node.baseLatency}ms
-                      </span>
-                    </td>
-                    <td className="py-3.5 px-4">
-                      <div className="flex items-center gap-2">
-                        <div className="h-1.5 w-16 bg-secondary overflow-hidden">
-                          <div
-                            className="h-full bg-brand transition-all duration-300"
-                            style={{ width: `${node.load}%` }}
-                          />
-                        </div>
-                        <span className="text-[11px] text-foreground">{node.load}%</span>
-                      </div>
-                    </td>
-                    <td className="py-3.5 px-4 text-emerald-400">{node.packetLoss}</td>
-                    <td className="py-3.5 px-4 text-muted-foreground text-[11px]">
-                      {node.powerStatus}
-                    </td>
-                    <td className="py-3.5 px-4 text-right">
-                      <span className="inline-flex items-center gap-1.5 text-emerald-400 font-medium">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        {node.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
-
-      {/* Core Infrastructure & Software Services */}
-      {filteredCoreServices.length > 0 && (
-        <div className="border border-border bg-card">
-          <div className="flex items-center justify-between border-b border-border p-4 md:p-6">
-            <div>
-              <span className="tiv-meta">CORE PLATFORM SERVICES</span>
-              <h3 className="font-display text-xl font-bold text-foreground mt-0.5">
-                Infrastructure & Software Services
-              </h3>
-            </div>
-            <span className="font-mono text-xs text-emerald-400 border border-emerald-900/30 bg-emerald-950/20 px-2.5 py-1">
-              8 of 8 Operational
-            </span>
-          </div>
-
-          <div className="divide-y divide-border font-mono text-xs">
-            {filteredCoreServices.map((svc) => (
-              <div
-                key={svc.id}
-                className="flex flex-col gap-3 p-4 transition-colors hover:bg-secondary/40 sm:flex-row sm:items-center sm:justify-between sm:p-5"
-              >
-                <div>
-                  <div className="flex items-center gap-2.5">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                    <h4 className="font-display text-base font-semibold text-foreground">
-                      {svc.name}
-                    </h4>
-                    <span className="border border-border bg-secondary px-2 py-0.5 text-[10px] text-muted-foreground">
-                      {svc.category}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-muted-foreground text-xs leading-relaxed max-w-2xl">
-                    {svc.description}
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-6 self-end sm:self-auto">
-                  <div className="text-right">
-                    <span className="text-[10px] text-muted-foreground block uppercase">Protocol</span>
-                    <span className="text-foreground">{svc.protocol}</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-[10px] text-muted-foreground block uppercase">Uptime</span>
-                    <span className="text-emerald-400 font-semibold">{svc.uptime}</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-[10px] text-muted-foreground block uppercase">Status</span>
-                    <span className="text-emerald-400 font-medium">{svc.status}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* 90-Day Rolling Uptime Visualization */}
-      <div className="border border-border bg-card p-6 md:p-8">
-        <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+      {/* Component Status Registry */}
+      <div className="border border-border bg-card">
+        <div className="flex items-center justify-between border-b border-border p-4 md:p-6">
           <div>
-            <span className="tiv-meta">OPERATIONAL HISTORY</span>
-            <h4 className="font-display text-base font-semibold text-foreground mt-0.5">
-              90-Day Global System Availability
-            </h4>
+            <span className="tiv-meta">VERIFIED OPERATIONAL REGISTRY</span>
+            <h3 className="font-display text-xl font-bold text-foreground mt-0.5">
+              Infrastructure Components &amp; Software Health
+            </h3>
           </div>
-          <span className="font-mono text-xs text-muted-foreground">
-            100.00% Operational Timeline
+          <span className="font-mono text-xs text-muted-foreground border border-border bg-secondary px-2.5 py-1">
+            {filteredComponents.length} Records Shown
           </span>
         </div>
 
-        {/* 90 Bars Representing 90 Days */}
-        <div className="flex items-center gap-1 overflow-x-auto py-2">
-          {Array.from({ length: 90 }).map((_, i) => (
+        <div className="divide-y divide-border font-mono text-xs">
+          {filteredComponents.map((component) => (
             <div
-              key={i}
-              className="h-9 w-full min-w-[6px] rounded-[1px] bg-emerald-500/80 hover:bg-emerald-400 transition-colors cursor-pointer"
-              title={`Day -${90 - i}: 100% Uptime (0 Incidents)`}
-            />
+              key={component.id}
+              className="flex flex-col gap-3 p-4 transition-colors hover:bg-secondary/40 sm:p-5"
+            >
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                    <h4 className="font-display text-base font-semibold text-foreground">
+                      {component.name}
+                    </h4>
+                    <span className="border border-border bg-secondary px-2 py-0.5 text-[10px] text-muted-foreground">
+                      {component.category}
+                    </span>
+                    {component.protocol && (
+                      <span className="border border-border/80 bg-background px-2 py-0.5 text-[10px] text-muted-foreground">
+                        {component.protocol}
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-1 text-muted-foreground text-xs leading-relaxed max-w-3xl">
+                    {component.details}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4 self-start sm:self-auto shrink-0 pt-2 sm:pt-0">
+                  <div className="text-left sm:text-right">
+                    <span className="text-[10px] text-muted-foreground block uppercase">Offering</span>
+                    <span className="text-foreground">{component.commercialAvailability}</span>
+                  </div>
+                  <div className="text-left sm:text-right">
+                    <span className="text-[10px] text-muted-foreground block uppercase">Source</span>
+                    <span className="text-muted-foreground">{component.verificationSource}</span>
+                  </div>
+                  <div className="text-left sm:text-right">
+                    <span className="text-[10px] text-muted-foreground block uppercase">Status</span>
+                    <span className="text-emerald-400 font-semibold">{component.status}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
-
-        <div className="mt-3 flex items-center justify-between text-xs font-mono text-muted-foreground">
-          <span>90 days ago</span>
-          <span className="text-emerald-400 font-medium">No outages recorded</span>
-          <span>Today</span>
-        </div>
       </div>
+
+      {/* Ground Truth Facility Specification Panel */}
+      {jayapuraFacility && (
+        <div className="border border-border bg-card p-6 md:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <div>
+              <span className="tiv-meta">OPERATIONAL PHYSICAL ASSET</span>
+              <h4 className="font-display text-lg font-bold text-foreground mt-0.5">
+                Jayapura Sovereign Facility Ground Truth
+              </h4>
+            </div>
+            <Link
+              href="/infrastructure/data-centers"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-brand hover:underline"
+            >
+              Facility Specification <ExternalLink className="h-3 w-3" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-2 gap-px border border-border bg-border sm:grid-cols-4 text-xs font-mono">
+            <div className="bg-background/90 p-3.5">
+              <span className="text-muted-foreground block text-[10px] uppercase">Facility Class</span>
+              <span className="font-semibold text-foreground text-sm">{jayapuraFacility.tier} Architecture</span>
+            </div>
+            <div className="bg-background/90 p-3.5">
+              <span className="text-muted-foreground block text-[10px] uppercase">Storage Capacity</span>
+              <span className="font-semibold text-foreground text-sm">{jayapuraFacility.totalStorage} TB Storage Pool</span>
+            </div>
+            <div className="bg-background/90 p-3.5">
+              <span className="text-muted-foreground block text-[10px] uppercase">Node Density</span>
+              <span className="font-semibold text-foreground text-sm">{jayapuraFacility.specs.servers} Rackmount Servers</span>
+            </div>
+            <div className="bg-background/90 p-3.5">
+              <span className="text-muted-foreground block text-[10px] uppercase">Carrier Transit</span>
+              <span className="font-semibold text-foreground text-sm">Telkom / Indosat / Carrier Fiber</span>
+            </div>
+          </div>
+
+          <p className="mt-4 text-xs font-mono text-muted-foreground leading-relaxed">
+            <strong>Operational Scope vs Commercial Availability:</strong> The Jayapura facility hosts TIV internal infrastructure,
+            mail servers, and authoritative domain services. No public colocation or retail self-service is offered; dedicated capacity
+            for sovereign enterprise workloads is evaluated exclusively via <Link href="/contact" className="text-brand hover:underline">direct inquiry</Link>.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

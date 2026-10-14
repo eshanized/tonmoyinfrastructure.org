@@ -159,7 +159,7 @@ export function DataCenterDetail({ service, breadcrumbs }: DataCenterDetailProps
                 </div>
                 <div className="relative aspect-[16/10] overflow-hidden border border-border bg-black">
                   <Image
-                    src="/images/infrastructure/datacenter/exterior.png"
+                    src="/images/infrastructure/datacenter/exterior.webp"
                     alt="Exterior view of the TIV data center in Jayapura, Papua, Indonesia."
                     width={1672}
                     height={941}
