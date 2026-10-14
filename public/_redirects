@@ -5,4 +5,6 @@
 /m31genesis  /projects/m31genesis/  301
 /m31tesla    /projects/m31tesla/    301
 /m31entropy  /projects/m31entropy/  301
+/products/:slug  /projects/:slug/      301
+/work/:slug      /projects/:slug/      301
 /infrastructure/optical-systems  /infrastructure/optical/  301

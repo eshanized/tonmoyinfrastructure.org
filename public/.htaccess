@@ -53,6 +53,8 @@ DirectorySlash Off
     RewriteRule ^m31genesis/?$ https://%{HTTP_HOST}/projects/m31genesis/ [R=301,L]
     RewriteRule ^m31tesla/?$ https://%{HTTP_HOST}/projects/m31tesla/ [R=301,L]
     RewriteRule ^m31entropy/?$ https://%{HTTP_HOST}/projects/m31entropy/ [R=301,L]
+    RewriteRule ^products/([^/]+)/?$ https://%{HTTP_HOST}/projects/$1/ [R=301,L]
+    RewriteRule ^work/([^/]+)/?$ https://%{HTTP_HOST}/projects/$1/ [R=301,L]
     RewriteRule ^infrastructure/optical-systems/?$ https://%{HTTP_HOST}/infrastructure/optical/ [R=301,L]
 
     # --------------------------------------------------------------------------
