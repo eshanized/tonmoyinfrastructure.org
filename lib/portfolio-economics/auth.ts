@@ -11,7 +11,7 @@ export interface UserSession {
   isInternal: boolean;
 }
 
-// Default public session
+// Safe public default session for all public code paths
 export const PUBLIC_SESSION: UserSession = {
   userId: 'public-anonymous',
   name: 'Public Visitor',
@@ -19,12 +19,12 @@ export const PUBLIC_SESSION: UserSession = {
   isInternal: false,
 };
 
-// Default management session for internal use
-export const DEFAULT_ADMIN_SESSION: UserSession = {
-  userId: 'eshan-roy',
-  name: 'Eshan Roy',
-  role: 'Financial Administrator',
-  isInternal: true,
+// Local development only session (active only during offline development execution)
+export const LOCAL_DEV_SESSION: UserSession = {
+  userId: 'local-dev-operator',
+  name: 'Local Developer',
+  role: 'Management',
+  isInternal: false,
 };
 
 export const AVAILABLE_ROLES: { role: UserRole; description: string; permissions: string[] }[] = [

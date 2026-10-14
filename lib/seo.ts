@@ -263,7 +263,7 @@ export function generateInfrastructureMetadata(service: InfrastructureService): 
   const title = `${service.title} — TIV Infrastructure`;
   const ogImage =
     service.slug === 'data-centers'
-      ? `${siteConfig.url}/images/infrastructure/datacenter/exterior.png`
+      ? `${siteConfig.url}/images/infrastructure/datacenter/exterior.webp`
       : `${siteConfig.url}${siteConfig.defaultOgImage}`;
 
   return generatePageMetadata({

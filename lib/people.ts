@@ -64,7 +64,7 @@ const rawPeople: Person[] = [
     type: 'Founder',
     status: 'active',
     public: true,
-    photo: '/eshanized.png',
+    photo: '/eshanized.webp',
     summary:
       'Building infrastructure that should exist. Eshan works across systems engineering, software infrastructure, Linux, developer tooling, autonomous software, and open-source technology.',
     areas: [

@@ -1317,7 +1317,7 @@ TIV is researching optical networking and fiber optics — from transmission sys
         id: 'exterior',
         title: 'The data center',
         category: 'Exterior view',
-        src: '/images/infrastructure/datacenter/exterior.png',
+        src: '/images/infrastructure/datacenter/exterior.webp',
         alt: 'Exterior view of the TIV data center in Jayapura, Papua, Indonesia.',
         caption: 'Exterior visualization of the TIV data center in Jayapura, Papua, Indonesia.',
         description:
@@ -1334,7 +1334,7 @@ TIV is researching optical networking and fiber optics — from transmission sys
         id: 'server-room',
         title: 'Computing infrastructure',
         category: 'Server room',
-        src: '/images/infrastructure/datacenter/server-room.png',
+        src: '/images/infrastructure/datacenter/server-room.webp',
         alt: 'Server room with equipment racks, network cabling, and status lights.',
         caption: 'View of server racks, network cabling, and supporting data center equipment.',
         description:
@@ -1351,7 +1351,7 @@ TIV is researching optical networking and fiber optics — from transmission sys
         id: 'firewall-monitoring',
         title: 'Network security and monitoring',
         category: 'Firewall monitoring',
-        src: '/images/infrastructure/datacenter/firewall-monitoring.png',
+        src: '/images/infrastructure/datacenter/firewall-monitoring.webp',
         alt: 'Firewall monitoring dashboard with network traffic and security panels.',
         caption: 'Firewall monitoring interface showing sample security and network telemetry.',
         description:
@@ -1368,7 +1368,7 @@ TIV is researching optical networking and fiber optics — from transmission sys
         id: 'technician-maintenance',
         title: 'Infrastructure maintenance',
         category: 'Technician maintenance',
-        src: '/images/infrastructure/datacenter/technician-maintenance.png',
+        src: '/images/infrastructure/datacenter/technician-maintenance.webp',
         alt: 'Technician inspecting network cabling in a server rack.',
         caption: 'Maintenance scene showing a technician working on server-rack cabling.',
         description:
