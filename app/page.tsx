@@ -6,7 +6,8 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { TivIcon, getResearchAreaIcon } from '@/components/shared/tiv-icon';
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/shared/motion';
 import { CountUp } from '@/components/shared/count-up';
-import { HeroDiagram } from '@/components/shared/hero-diagram';
+import { HeroInfrastructureVisual } from '@/components/home/hero-infrastructure-visual';
+import { HeroCredibilityStrip } from '@/components/home/hero-credibility-strip';
 import { SystemMap } from '@/components/infrastructure/system-map';
 import { InfrastructureMap } from '@/components/infrastructure/infrastructure-map';
 import {
@@ -38,94 +39,71 @@ export default function HomePage() {
   return (
     <>
       {/* 01 — HERO / COMPANY PROPOSITION */}
-      <section className="relative overflow-hidden border-b border-border tiv-grid">
-        <div className="tiv-container relative py-20 md:py-32 lg:py-40">
-          <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+      <section className="relative overflow-hidden border-b border-border tiv-grid tiv-hero-glow">
+        <div className="tiv-container relative py-16 sm:py-20 md:py-24 lg:py-28">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-12 xl:gap-16 items-center">
             <div className="max-w-2xl">
               <Reveal>
-                <div className="mb-8 flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-brand animate-pulse-dot" />
-                  <span className="tiv-meta-brand">Tonmoy Infrastructure and Vision</span>
+                <div className="mb-6 flex flex-wrap items-center gap-3">
+                  <span className="flex items-center gap-2 border border-border/80 bg-secondary/50 px-2.5 py-1 text-xs font-mono">
+                    <span className="h-2 w-2 rounded-full bg-brand animate-pulse-dot" aria-hidden="true" />
+                    <span className="tiv-meta text-[11px] font-semibold text-foreground">Tonmoy Infrastructure and Vision</span>
+                  </span>
+                  <span className="hidden sm:inline-flex border border-border/60 bg-card/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    SYSTEMS &bull; RUNTIMES &bull; RESEARCH
+                  </span>
                 </div>
               </Reveal>
-              <Reveal delay={0.1}>
-                <h1 className="text-balance font-display text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+              <Reveal delay={0.08}>
+                <h1 className="text-balance font-display text-4xl leading-[1.04] tracking-tight sm:text-5xl md:text-6xl lg:text-[3.75rem] xl:text-[4.25rem]">
                   Infrastructure for a more{' '}
                   <span className="text-brand">self-reliant</span> internet.
                 </h1>
               </Reveal>
-              <Reveal delay={0.2}>
-                <p className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-                  Tonmoy Infrastructure and Vision (TIV) builds practical software systems,
-                  sovereign mail infrastructure, and high-assurance developer runtimes.
-                  Engineered for operators, developers, and organizations who prioritize
-                  data ownership, deterministic execution, and verifiable systems.
+              <Reveal delay={0.16}>
+                <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
+                  TIV builds software platforms, internet infrastructure, and high-assurance developer systems designed for operational control and long-term independence.
                 </p>
               </Reveal>
-              <Reveal delay={0.3}>
-                <div className="mt-10 flex flex-wrap gap-4">
+              <Reveal delay={0.24}>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
                   <Link
                     href="/products"
-                    className="group inline-flex items-center justify-center gap-2 bg-brand px-6 py-3 font-medium text-brand-foreground transition-opacity hover:opacity-90"
+                    className="group inline-flex items-center justify-center gap-2 bg-brand px-6 py-3.5 text-sm font-medium text-brand-foreground transition-all duration-200 hover:opacity-95 hover:shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
-                    Explore products
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    Explore our systems
+                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </Link>
                   <Link
                     href="/infrastructure"
-                    className="group inline-flex items-center justify-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand"
+                    className="group inline-flex items-center justify-center gap-2 border border-border bg-card/60 px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-200 hover:border-brand/60 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
-                    Infrastructure systems
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="group inline-flex items-center justify-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand"
-                  >
-                    Business inquiries
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    Explore infrastructure
+                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </Link>
                 </div>
-              </Reveal>
-
-              <Reveal delay={0.35}>
-                <div className="mt-12 grid grid-cols-2 gap-4 border-t border-border pt-8 sm:grid-cols-4">
-                  <div>
-                    <span className="tiv-meta">SHIPPED SOFTWARE</span>
-                    <p className="mt-1 font-display text-base font-semibold text-foreground">4 Stable Platforms</p>
-                    <p className="text-xs text-muted-foreground">OpenMail, Mercura, M31A, Octate</p>
-                  </div>
-                  <div>
-                    <span className="tiv-meta">SYSTEM DESIGN</span>
-                    <p className="mt-1 font-display text-base font-semibold text-foreground">Self-Reliant</p>
-                    <p className="text-xs text-muted-foreground">Local-first, vendor free</p>
-                  </div>
-                  <div>
-                    <span className="tiv-meta">OPEN RESEARCH</span>
-                    <p className="mt-1 font-display text-base font-semibold text-foreground">M31 AI Models</p>
-                    <p className="text-xs text-muted-foreground">Causal models & papers</p>
-                  </div>
-                  <div>
-                    <span className="tiv-meta">GOVERNANCE</span>
-                    <p className="mt-1 font-display text-base font-semibold text-foreground">Transparency</p>
-                    <p className="text-xs text-muted-foreground">Public financial records</p>
-                  </div>
+                <div className="mt-6 flex flex-wrap items-center gap-2 font-mono text-xs text-muted-foreground">
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand/60" aria-hidden="true" />
+                  <span>Institutional & commercial deployment:</span>
+                  <Link
+                    href="/contact"
+                    className="text-foreground underline decoration-border hover:decoration-brand hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand"
+                  >
+                    Direct inquiries &rarr;
+                  </Link>
                 </div>
               </Reveal>
             </div>
 
-            {/* Hero infrastructure diagram */}
-            <Reveal delay={0.4} className="hidden lg:block">
-              <div className="border border-border bg-card/50 p-6">
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="tiv-meta">SYSTEM TOPOLOGY</span>
-                  <span className="tiv-meta-brand">TIV</span>
-                </div>
-                <HeroDiagram />
-              </div>
+            {/* Distinctive Hero Infrastructure Visual */}
+            <Reveal delay={0.28} className="w-full">
+              <HeroInfrastructureVisual />
             </Reveal>
           </div>
         </div>
+
+        {/* Integrated Credibility & Proof Strip at Fold Transition */}
+        <HeroCredibilityStrip />
       </section>
 
       {/* 02 — SHIPPED PRODUCTS (SOFTWARE) */}
@@ -167,14 +145,14 @@ export default function HomePage() {
                 <div className="flex flex-wrap items-center gap-3 shrink-0">
                   <Link
                     href="/projects/runstead"
-                    className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors"
+                    className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     View Venture Profile
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
                     href="/projects/runstead#financial-model"
-                    className="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors"
+                    className="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     Financial Model
                     <ArrowRight className="h-4 w-4" />
@@ -219,7 +197,7 @@ export default function HomePage() {
                   </span>
                   <Link
                     href="/contact"
-                    className="border border-border px-3 py-1 font-mono text-xs hover:border-brand hover:text-brand transition-colors"
+                    className="border border-border px-3 py-1 font-mono text-xs hover:border-brand hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   >
                     Inquire for Capacity
                   </Link>
@@ -256,7 +234,7 @@ export default function HomePage() {
               <StaggerItem key={svc.slug}>
                 <Link
                   href={`/infrastructure/${svc.slug === 'optical-systems' ? 'optical' : svc.slug}`}
-                  className="group relative flex h-full flex-col bg-card p-5 transition-colors hover:bg-card/80"
+                  className="group relative flex h-full flex-col bg-card p-5 transition-colors hover:bg-card/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                 >
                   <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
                   <span className="tiv-meta block">{svc.classification}</span>
@@ -310,7 +288,7 @@ export default function HomePage() {
               <StaggerItem key={area.slug}>
                 <Link
                   href="/research"
-                  className="group relative flex h-full flex-col bg-card p-6 transition-colors hover:bg-card/80"
+                  className="group relative flex h-full flex-col bg-card p-6 transition-colors hover:bg-card/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                 >
                   <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
                   <div className="flex items-center gap-3">
@@ -331,7 +309,7 @@ export default function HomePage() {
           <div className="mt-12">
             <div className="flex items-center justify-between border-b border-border pb-4">
               <span className="tiv-meta">OPEN-SOURCE CODEBASES</span>
-              <Link href="/open-source" className="text-xs font-mono text-brand hover:underline">
+              <Link href="/open-source" className="text-xs font-mono text-brand hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand">
                 View all repositories &rarr;
               </Link>
             </div>
@@ -384,7 +362,7 @@ export default function HomePage() {
                 <div className="mt-8 space-y-4">
                   <Link
                     href="/transparency/financials"
-                    className="group flex items-center gap-3 border border-border p-4 transition-colors hover:border-brand/40"
+                    className="group flex items-center gap-3 border border-border p-4 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   >
                     <FileText className="h-5 w-5 text-brand" aria-hidden="true" />
                     <div className="flex-1">
@@ -395,7 +373,7 @@ export default function HomePage() {
                   </Link>
                   <Link
                     href="/security"
-                    className="group flex items-center gap-3 border border-border p-4 transition-colors hover:border-brand/40"
+                    className="group flex items-center gap-3 border border-border p-4 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   >
                     <Shield className="h-5 w-5 text-brand" aria-hidden="true" />
                     <div className="flex-1">
@@ -406,7 +384,7 @@ export default function HomePage() {
                   </Link>
                   <Link
                     href="/governance"
-                    className="group flex items-center gap-3 border border-border p-4 transition-colors hover:border-brand/40"
+                    className="group flex items-center gap-3 border border-border p-4 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   >
                     <Building className="h-5 w-5 text-brand" aria-hidden="true" />
                     <div className="flex-1">
@@ -500,14 +478,14 @@ export default function HomePage() {
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href="/about"
-                    className="group inline-flex items-center gap-1.5 text-sm font-medium border border-border px-5 py-2.5 hover:border-brand hover:text-brand transition-colors"
+                    className="group inline-flex items-center gap-1.5 text-sm font-medium border border-border px-5 py-2.5 hover:border-brand hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     About TIV
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
                     href="/about/leadership"
-                    className="group inline-flex items-center gap-1.5 text-sm font-medium bg-brand text-brand-foreground px-5 py-2.5 hover:opacity-90 transition-opacity"
+                    className="group inline-flex items-center gap-1.5 text-sm font-medium bg-brand text-brand-foreground px-5 py-2.5 hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     Leadership Profile
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -564,14 +542,14 @@ export default function HomePage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/io"
-                    className="group inline-flex items-center gap-2 bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-opacity hover:opacity-90"
+                    className="group inline-flex items-center gap-2 bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     Explore TIV I/O
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-brand hover:text-brand"
+                    className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     Event inquiries
                   </Link>
@@ -627,7 +605,7 @@ export default function HomePage() {
               <StaggerItem key={article.slug}>
                 <Link
                   href={`/news/${article.slug}`}
-                  className="group relative flex flex-col gap-2 border border-border bg-card p-6 transition-colors hover:border-brand/40 md:flex-row md:items-center md:justify-between"
+                  className="group relative flex flex-col gap-2 border border-border bg-card p-6 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand md:flex-row md:items-center md:justify-between"
                 >
                   <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
                   <div className="flex items-center gap-4">
@@ -678,21 +656,21 @@ export default function HomePage() {
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-2 bg-brand px-6 py-3 font-medium text-brand-foreground transition-opacity hover:opacity-90"
+                  className="group inline-flex items-center gap-2 bg-brand px-6 py-3 font-medium text-brand-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
                   Initiate institutional inquiry
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   href="/about"
-                  className="group inline-flex items-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand"
+                  className="group inline-flex items-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
                   Explore organization
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   href="/security"
-                  className="group inline-flex items-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand"
+                  className="group inline-flex items-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
                   Security reporting
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

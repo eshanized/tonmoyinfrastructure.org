@@ -17,7 +17,7 @@ export function ProjectCard({
   return (
     <Link
       href={targetHref}
-      className="group relative flex flex-col border border-border bg-card p-6 transition-all duration-300 hover:border-brand/40 md:p-8"
+      className="group relative flex flex-col border border-border bg-card p-6 transition-all duration-300 hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand md:p-8"
     >
       {/* Accent line that expands on hover */}
       <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />

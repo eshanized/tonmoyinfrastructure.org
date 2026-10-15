@@ -50,7 +50,7 @@ export function SectionHeader({
       {link && (
         <Link
           href={link.href}
-          className="group inline-flex items-center gap-1.5 text-sm font-medium text-brand"
+          className="group inline-flex items-center gap-1.5 text-sm font-medium text-brand focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand"
         >
           {link.label}
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

@@ -71,7 +71,7 @@
     --chart-4: 40 25% 60%;
     --chart-5: 220 8% 50%;
 
-    --grid-line: 0 0% 0% / 0.15;
+    --grid-line: 0 0% 100% / 0.04;
     --grid-line-dark: 0 0% 100% / 0.04;
     --surface-elevated: 220 14% 11%;
     --code-bg: 220 12% 12%;
@@ -106,6 +106,14 @@
       linear-gradient(hsl(var(--grid-line)) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--grid-line)) 1px, transparent 1px);
     background-size: 24px 24px;
+  }
+
+  .tiv-hero-glow {
+    background: radial-gradient(
+      60% 45% at 50% 0%,
+      hsl(var(--brand) / 0.05) 0%,
+      transparent 100%
+    );
   }
 
   .tiv-container {
