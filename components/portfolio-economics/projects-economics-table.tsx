@@ -240,7 +240,7 @@ export function ProjectsEconomicsTable({
           </span>
         </div>
         <div className="font-mono text-[10px]">
-          7 Initiatives • Currency: INR (₹)
+          {projects.length} Initiatives • Currency: INR (₹)
         </div>
       </div>
     </div>

@@ -29,6 +29,7 @@ import {
 } from '@/components/shared/source-badge';
 import { getProjects } from '@/lib/content';
 import { getReleasesForProject } from '@/lib/institutional';
+import { RunsteadInvestmentCase } from '@/components/projects/runstead-investment-case';
 import type { Project, Release, ReleaseNote } from '@/lib/types';
 
 interface ProjectDetailViewProps {
@@ -141,6 +142,23 @@ export function ProjectDetailView({
                 <BarChart3 className="h-4 w-4" />
                 Portfolio Economics
               </Link>
+
+              {project.slug === 'runstead' && (
+                <>
+                  <Link
+                    href="#investment-thesis"
+                    className="inline-flex items-center gap-2 border border-border bg-card px-4 py-2 text-sm transition-colors hover:border-brand hover:text-brand"
+                  >
+                    Investment Thesis
+                  </Link>
+                  <Link
+                    href="#financial-model"
+                    className="inline-flex items-center gap-2 border border-brand/40 bg-brand/5 px-4 py-2 text-sm font-medium text-brand transition-colors hover:bg-brand/10"
+                  >
+                    Financial Model
+                  </Link>
+                </>
+              )}
             </div>
           </Reveal>
         </div>
@@ -149,6 +167,18 @@ export function ProjectDetailView({
       {/* 02 — STATUS & LIFECYCLE AUDIT (Section 3, 4, 12, 15) */}
       <section className="border-b border-border bg-secondary/20">
         <div className="tiv-container py-12">
+          {project.slug === 'runstead' && (
+            <div className="mb-6 border-l-4 border-brand bg-brand/5 p-5">
+              <div className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-brand">
+                <Shield className="h-4 w-4" />
+                Venture In Development Notice
+              </div>
+              <p className="mt-1 text-sm text-foreground/90 leading-relaxed">
+                Runstead is an active TIV software venture featuring a verified browser-first interactive demonstration and a production PostgreSQL schema with Row-Level Security (RLS) accepted in Phase 2. Credit card payment transactions, physical hypervisor provisioning, and public DNS root updates are simulated within the demonstration.
+              </p>
+            </div>
+          )}
+
           {project.checkpointsNote && (
             <div className="mb-6 border-l-4 border-amber-500 bg-amber-500/10 p-5">
               <div className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
@@ -344,6 +374,15 @@ export function ProjectDetailView({
                         </div>
                       </div>
                     )}
+                  </div>
+                </Reveal>
+              )}
+
+              {/* Runstead Venture Investment Case & Interactive Financial Model */}
+              {project.slug === 'runstead' && (
+                <Reveal delay={0.22}>
+                  <div className="border-t border-border pt-12">
+                    <RunsteadInvestmentCase />
                   </div>
                 </Reveal>
               )}

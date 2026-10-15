@@ -23,6 +23,7 @@ const navItems: NavItem[] = [
       { label: 'Mercura', href: '/projects/mercura' },
       { label: 'M31A', href: '/projects/m31a' },
       { label: 'Octate', href: '/projects/octate' },
+      { label: 'Runstead (Venture)', href: '/projects/runstead', meta: 'Venture' },
       { label: 'Releases', href: '/releases' },
     ],
   },
