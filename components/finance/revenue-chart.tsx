@@ -10,22 +10,36 @@ import {
   Cell,
 } from 'recharts';
 import type { RevenueStream } from '@/lib/types';
+import type { SupportedCurrency } from '@/lib/portfolio-economics/decimal';
 
 interface RevenueChartProps {
   data: RevenueStream[];
   currencySymbol: string;
+  currency?: SupportedCurrency;
 }
 
-function formatLakh(value: number, symbol: string): string {
-  const lakh = value / 100000;
-  return `${symbol}${lakh.toFixed(1)}L`;
+function formatChartValue(value: number, symbol: string, currency?: SupportedCurrency): string {
+  const isSouthAsian = currency === 'INR' || currency === 'BDT' || symbol === '₹' || symbol === '৳';
+  if (isSouthAsian) {
+    const lakh = value / 100000;
+    return `${symbol}${lakh.toFixed(1)}L`;
+  }
+  if (value >= 1000000) {
+    return `${symbol}${(value / 1000000).toFixed(1)}M`;
+  }
+  if (value >= 1000) {
+    return `${symbol}${(value / 1000).toFixed(0)}K`;
+  }
+  return `${symbol}${value}`;
 }
 
-export function RevenueChart({ data, currencySymbol }: RevenueChartProps) {
+export function RevenueChart({ data, currencySymbol, currency = 'INR' }: RevenueChartProps) {
   const chartData = data.map((d) => ({
     ...d,
     label: d.label.length > 25 ? d.label.slice(0, 25) + '...' : d.label,
   }));
+
+  const isSouthAsian = currency === 'INR' || currency === 'BDT' || currencySymbol === '₹' || currencySymbol === '৳';
 
   return (
     <div className="h-[300px] w-full">
@@ -37,7 +51,7 @@ export function RevenueChart({ data, currencySymbol }: RevenueChartProps) {
         >
           <XAxis
             type="number"
-            tickFormatter={(v) => formatLakh(v, currencySymbol)}
+            tickFormatter={(v) => formatChartValue(v, currencySymbol, currency)}
             stroke="hsl(var(--muted-foreground))"
             fontSize={11}
             fontFamily="var(--font-jetbrains)"
@@ -62,7 +76,9 @@ export function RevenueChart({ data, currencySymbol }: RevenueChartProps) {
               fontSize: '12px',
             }}
             formatter={(value: number) => [
-              `${currencySymbol}${(value / 100000).toFixed(2)} lakh`,
+              isSouthAsian
+                ? `${currencySymbol}${(value / 100000).toFixed(2)} lakh`
+                : `${currencySymbol}${Math.round(value).toLocaleString('en-US')}`,
               'Revenue',
             ]}
           />

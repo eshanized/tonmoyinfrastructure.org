@@ -7,12 +7,17 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { Calendar, ShieldAlert, BarChart3, ArrowUpRight, BookOpen } from 'lucide-react';
 import type { FinancialPeriod, PortfolioEconomicsSummary } from '@/lib/portfolio-economics/types';
 
+import { CurrencySelector } from './currency-selector';
+import { getCurrencySymbol, type SupportedCurrency } from '@/lib/portfolio-economics/decimal';
+
 interface EconomicsHeaderProps {
   summary: PortfolioEconomicsSummary;
   periods: FinancialPeriod[];
   selectedPeriodId: string;
   onSelectPeriod?: (periodId: string) => void;
   isInternal?: boolean;
+  currency?: SupportedCurrency;
+  onCurrencyChange?: (currency: SupportedCurrency) => void;
 }
 
 export function EconomicsHeader({
@@ -21,6 +26,8 @@ export function EconomicsHeader({
   selectedPeriodId,
   onSelectPeriod,
   isInternal = false,
+  currency,
+  onCurrencyChange,
 }: EconomicsHeaderProps) {
   return (
     <div className="border-b border-border bg-gradient-to-b from-card/60 via-card/20 to-transparent">
@@ -83,6 +90,14 @@ export function EconomicsHeader({
                 </span>
               )}
             </div>
+
+            {/* Currency Selector */}
+            <CurrencySelector
+              value={currency}
+              onChange={onCurrencyChange}
+              compact={false}
+              showDisclosure={false}
+            />
 
             <Link
               href="/transparency/financials/portfolio-economics/methodology"
@@ -147,10 +162,10 @@ export function EconomicsHeader({
           <div>
             <span className="tiv-meta text-[10px]">CURRENCY STANDARD</span>
             <p className="mt-1 font-mono text-sm font-medium text-foreground">
-              {summary.currency} (₹)
+              {summary.currency} ({getCurrencySymbol(summary.currency)})
             </p>
             <span className="text-[11px] text-muted-foreground">
-              Safe Decimal Arithmetic
+              Safe Multi-Currency Arithmetic
             </span>
           </div>
 

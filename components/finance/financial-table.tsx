@@ -1,23 +1,30 @@
 import { cn } from '@/lib/utils';
+import type { SupportedCurrency } from '@/lib/portfolio-economics/decimal';
 
 interface FinancialTableProps {
   headers: string[];
   rows: { label: string; amount: number; bold?: boolean }[];
   currencySymbol: string;
+  currency?: SupportedCurrency;
   totalLabel?: string;
   totalAmount?: number;
   className?: string;
 }
 
-function formatAmount(amount: number, symbol: string): string {
-  const lakh = amount / 100000;
-  return `${symbol}${lakh.toFixed(1)} lakh`;
+function formatAmount(amount: number, symbol: string, currency?: SupportedCurrency): string {
+  const isSouthAsian = currency === 'INR' || currency === 'BDT' || symbol === '₹' || symbol === '৳';
+  if (isSouthAsian) {
+    const lakh = amount / 100000;
+    return `${symbol}${lakh.toFixed(1)} lakh`;
+  }
+  return `${symbol}${Math.round(amount).toLocaleString('en-US')}`;
 }
 
 export function FinancialTable({
   headers,
   rows,
   currencySymbol,
+  currency = 'INR',
   totalLabel,
   totalAmount,
   className,
@@ -63,7 +70,7 @@ export function FinancialTable({
                   row.bold ? 'text-foreground' : 'text-muted-foreground'
                 )}
               >
-                {formatAmount(row.amount, currencySymbol)}
+                {formatAmount(row.amount, currencySymbol, currency)}
               </td>
             </tr>
           ))}
@@ -73,7 +80,7 @@ export function FinancialTable({
                 {totalLabel}
               </td>
               <td className="pt-3 text-right font-mono text-base font-semibold tabular-nums text-brand">
-                {formatAmount(totalAmount, currencySymbol)}
+                {formatAmount(totalAmount, currencySymbol, currency)}
               </td>
             </tr>
           )}

@@ -8,6 +8,13 @@ import {
   type ScenarioId,
   type FinancialModelResults,
 } from '@/lib/runstead-financial-model';
+import { CurrencySelector } from '@/components/portfolio-economics/currency-selector';
+import {
+  formatCurrency,
+  convertCurrency,
+  getCurrencySymbol,
+  type SupportedCurrency,
+} from '@/lib/portfolio-economics/decimal';
 import {
   TrendingUp,
   DollarSign,
@@ -23,6 +30,24 @@ import {
 
 export function RunsteadFinancialModelView() {
   const [selectedScenario, setSelectedScenario] = useState<ScenarioId>('base');
+  const [currency, setCurrency] = useState<SupportedCurrency>('USD');
+
+  const sym = getCurrencySymbol(currency);
+  const convertAndFormat = (amountInUSD: number): string => {
+    const converted = convertCurrency(amountInUSD, 'USD', currency);
+    return formatCurrency(converted, currency);
+  };
+
+  const formatSigned = (amountInUSD: number): string => {
+    const converted = convertCurrency(amountInUSD, 'USD', currency);
+    if (converted === null || converted === undefined) {
+      return '—';
+    }
+    if (converted >= 0) {
+      return formatCurrency(converted, currency);
+    }
+    return `(${formatCurrency(Math.abs(converted), currency)})`;
+  };
 
   const modelResults: FinancialModelResults = useMemo(() => {
     return calculateFinancialModel(selectedScenario);
@@ -68,26 +93,29 @@ export function RunsteadFinancialModelView() {
             </h3>
           </div>
 
-          {/* Scenario Selector Tabs */}
-          <div className="flex items-center border border-border bg-card p-1">
-            {(['conservative', 'base', 'upside'] as ScenarioId[]).map((scId) => {
-              const sc = SCENARIO_ASSUMPTIONS[scId];
-              const isActive = selectedScenario === scId;
-              return (
-                <button
-                  key={scId}
-                  type="button"
-                  onClick={() => setSelectedScenario(scId)}
-                  className={`px-3 py-1.5 text-xs font-mono transition-all ${
-                    isActive
-                      ? 'bg-brand text-brand-foreground font-semibold shadow-sm'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
-                  }`}
-                >
-                  {sc.name.replace(' Scenario', '')}
-                </button>
-              );
-            })}
+          {/* Controls: Currency Toggle & Scenario Selector Tabs */}
+          <div className="flex flex-wrap items-center gap-3">
+            <CurrencySelector value={currency} onChange={setCurrency} compact={true} />
+            <div className="flex items-center border border-border bg-card p-1">
+              {(['conservative', 'base', 'upside'] as ScenarioId[]).map((scId) => {
+                const sc = SCENARIO_ASSUMPTIONS[scId];
+                const isActive = selectedScenario === scId;
+                return (
+                  <button
+                    key={scId}
+                    type="button"
+                    onClick={() => setSelectedScenario(scId)}
+                    className={`px-3 py-1.5 text-xs font-mono transition-all ${
+                      isActive
+                        ? 'bg-brand text-brand-foreground font-semibold shadow-sm'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                    }`}
+                  >
+                    {sc.name.replace(' Scenario', '')}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -114,10 +142,10 @@ export function RunsteadFinancialModelView() {
         <div className="border border-border bg-card p-4">
           <span className="tiv-meta text-[10px] block">YEAR 3 ARR</span>
           <p className="mt-1 font-display text-xl font-bold text-foreground">
-            ${endingYear3ARR.toLocaleString()}
+            {convertAndFormat(endingYear3ARR)}
           </p>
           <span className="mt-0.5 text-[10px] font-mono text-muted-foreground block">
-            Annualized Recurring
+            {currency !== 'USD' ? `USD $${endingYear3ARR.toLocaleString()} • Annualized` : 'Annualized Recurring'}
           </span>
         </div>
 
@@ -137,17 +165,17 @@ export function RunsteadFinancialModelView() {
             {breakEvenMonth ? `Month ${breakEvenMonth}` : 'Over 36m'}
           </p>
           <span className="mt-0.5 text-[10px] font-mono text-muted-foreground block">
-            Net Cash Flow &gt;= $0
+            Net Cash Flow &gt;= {sym}0
           </span>
         </div>
 
         <div className="border border-border bg-card p-4">
           <span className="tiv-meta text-[10px] block">PEAK CAPITAL NEED</span>
           <p className="mt-1 font-display text-xl font-bold text-amber-600 dark:text-amber-400">
-            ${peakFundingRequirement.toLocaleString()}
+            {convertAndFormat(peakFundingRequirement)}
           </p>
           <span className="mt-0.5 text-[10px] font-mono text-muted-foreground block">
-            Max Cumulative Drawdown
+            {currency !== 'USD' ? `USD $${peakFundingRequirement.toLocaleString()} • Peak` : 'Max Cumulative Drawdown'}
           </span>
         </div>
 
@@ -167,7 +195,7 @@ export function RunsteadFinancialModelView() {
             {ltvToCacRatio}x
           </p>
           <span className="mt-0.5 text-[10px] font-mono text-muted-foreground block">
-            LTV: ${estimatedLTV} • CAC: ${blendedCAC}
+            LTV: {convertAndFormat(estimatedLTV)} • CAC: {convertAndFormat(blendedCAC)}
           </span>
         </div>
       </div>
@@ -181,7 +209,14 @@ export function RunsteadFinancialModelView() {
               3-Year Financial Trajectory ({scenario.name})
             </h4>
           </div>
-          <span className="font-mono text-xs text-muted-foreground">Currency: USD ($)</span>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3">
+            <span className="font-mono text-xs text-muted-foreground">
+              Currency: {currency} ({sym})
+            </span>
+            <span className="text-[10px] font-mono text-muted-foreground hidden sm:inline">
+              (1 USD = 84.00 INR = 120.00 BDT)
+            </span>
+          </div>
         </div>
 
         <div className="overflow-x-auto">
@@ -212,7 +247,7 @@ export function RunsteadFinancialModelView() {
                 </td>
                 {annualSummaries.map((yr) => (
                   <td key={yr.year} className="px-4 py-2.5 text-right text-foreground">
-                    ${yr.endingMRR.toLocaleString()}
+                    {convertAndFormat(yr.endingMRR)}
                   </td>
                 ))}
               </tr>
@@ -223,7 +258,7 @@ export function RunsteadFinancialModelView() {
                 </td>
                 {annualSummaries.map((yr) => (
                   <td key={yr.year} className="px-4 py-2.5 text-right font-bold text-brand">
-                    ${yr.endingARR.toLocaleString()}
+                    {convertAndFormat(yr.endingARR)}
                   </td>
                 ))}
               </tr>
@@ -234,7 +269,7 @@ export function RunsteadFinancialModelView() {
                 </td>
                 {annualSummaries.map((yr) => (
                   <td key={yr.year} className="px-4 py-2.5 text-right text-foreground">
-                    ${yr.blendedARPU}
+                    {convertAndFormat(yr.blendedARPU)}
                   </td>
                 ))}
               </tr>
@@ -245,7 +280,7 @@ export function RunsteadFinancialModelView() {
                 </td>
                 {annualSummaries.map((yr) => (
                   <td key={yr.year} className="px-4 py-2.5 text-right font-medium text-foreground">
-                    ${yr.totalAnnualRevenue.toLocaleString()}
+                    {convertAndFormat(yr.totalAnnualRevenue)}
                   </td>
                 ))}
               </tr>
@@ -256,7 +291,7 @@ export function RunsteadFinancialModelView() {
                 </td>
                 {annualSummaries.map((yr) => (
                   <td key={yr.year} className="px-4 py-2.5 text-right text-muted-foreground">
-                    (${yr.totalAnnualCOGS.toLocaleString()})
+                    ({convertAndFormat(yr.totalAnnualCOGS)})
                   </td>
                 ))}
               </tr>
@@ -267,7 +302,7 @@ export function RunsteadFinancialModelView() {
                 </td>
                 {annualSummaries.map((yr) => (
                   <td key={yr.year} className="px-4 py-2.5 text-right font-medium text-foreground">
-                    ${yr.annualGrossProfit.toLocaleString()} ({yr.annualGrossMarginPercent}%)
+                    {convertAndFormat(yr.annualGrossProfit)} ({yr.annualGrossMarginPercent}%)
                   </td>
                 ))}
               </tr>
@@ -278,7 +313,7 @@ export function RunsteadFinancialModelView() {
                 </td>
                 {annualSummaries.map((yr) => (
                   <td key={yr.year} className="px-4 py-2.5 text-right text-muted-foreground">
-                    (${yr.totalAnnualOpEx.toLocaleString()})
+                    ({convertAndFormat(yr.totalAnnualOpEx)})
                   </td>
                 ))}
               </tr>
@@ -296,9 +331,7 @@ export function RunsteadFinancialModelView() {
                         : 'text-amber-600 dark:text-amber-400'
                     }`}
                   >
-                    {yr.netAnnualCashFlow >= 0
-                      ? `$${yr.netAnnualCashFlow.toLocaleString()}`
-                      : `($${Math.abs(yr.netAnnualCashFlow).toLocaleString()})`}
+                    {formatSigned(yr.netAnnualCashFlow)}
                   </td>
                 ))}
               </tr>
@@ -328,11 +361,11 @@ export function RunsteadFinancialModelView() {
                 <th className="px-3 py-2.5">Month</th>
                 <th className="px-3 py-2.5 text-right">Free Tenants</th>
                 <th className="px-3 py-2.5 text-right">Paying Resellers</th>
-                <th className="px-3 py-2.5 text-right">MRR</th>
-                <th className="px-3 py-2.5 text-right">ARR</th>
-                <th className="px-3 py-2.5 text-right">Total Op Cost</th>
-                <th className="px-3 py-2.5 text-right">Net Cash Flow</th>
-                <th className="px-3 py-2.5 text-right">Cumulative Flow</th>
+                <th className="px-3 py-2.5 text-right">MRR ({sym})</th>
+                <th className="px-3 py-2.5 text-right">ARR ({sym})</th>
+                <th className="px-3 py-2.5 text-right">Total Op Cost ({sym})</th>
+                <th className="px-3 py-2.5 text-right">Net Cash Flow ({sym})</th>
+                <th className="px-3 py-2.5 text-right">Cumulative Flow ({sym})</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/60">
@@ -348,13 +381,13 @@ export function RunsteadFinancialModelView() {
                     {r.totalPayingCustomers}
                   </td>
                   <td className="px-3 py-2 text-right text-foreground">
-                    ${r.mrr.toLocaleString()}
+                    {convertAndFormat(r.mrr)}
                   </td>
                   <td className="px-3 py-2 text-right font-semibold text-brand">
-                    ${r.arr.toLocaleString()}
+                    {convertAndFormat(r.arr)}
                   </td>
                   <td className="px-3 py-2 text-right text-muted-foreground">
-                    ${r.totalMonthlyOperatingCost.toLocaleString()}
+                    {convertAndFormat(r.totalMonthlyOperatingCost)}
                   </td>
                   <td
                     className={`px-3 py-2 text-right font-medium ${
@@ -363,9 +396,7 @@ export function RunsteadFinancialModelView() {
                         : 'text-amber-600 dark:text-amber-400'
                     }`}
                   >
-                    {r.netCashFlow >= 0
-                      ? `$${r.netCashFlow.toLocaleString()}`
-                      : `($${Math.abs(r.netCashFlow).toLocaleString()})`}
+                    {formatSigned(r.netCashFlow)}
                   </td>
                   <td
                     className={`px-3 py-2 text-right ${
@@ -374,9 +405,7 @@ export function RunsteadFinancialModelView() {
                         : 'text-muted-foreground'
                     }`}
                   >
-                    {r.cumulativeCashFlow >= 0
-                      ? `$${r.cumulativeCashFlow.toLocaleString()}`
-                      : `($${Math.abs(r.cumulativeCashFlow).toLocaleString()})`}
+                    {formatSigned(r.cumulativeCashFlow)}
                   </td>
                 </tr>
               ))}
@@ -395,7 +424,16 @@ export function RunsteadFinancialModelView() {
           <dl className="space-y-2.5 text-xs font-mono">
             <div className="flex justify-between border-b border-border/40 pb-1.5">
               <span className="text-muted-foreground">Indicative Plan Pricing:</span>
-              <span className="text-foreground">$0 / $49 / $149 / $399 / $999</span>
+              <span className="text-foreground">
+                {currency === 'USD' ? (
+                  '$0 / $49 / $149 / $399 / $999'
+                ) : (
+                  <span>
+                    {convertAndFormat(0)} / {convertAndFormat(49)} / {convertAndFormat(149)} / {convertAndFormat(399)} / {convertAndFormat(999)}
+                    <span className="text-muted-foreground ml-1 text-[10px]">($49/$149/$399/$999 USD)</span>
+                  </span>
+                )}
+              </span>
             </div>
             <div className="flex justify-between border-b border-border/40 pb-1.5">
               <span className="text-muted-foreground">Free-to-Paid Conversion Rate:</span>
@@ -413,19 +451,19 @@ export function RunsteadFinancialModelView() {
             </div>
             <div className="flex justify-between border-b border-border/40 pb-1.5">
               <span className="text-muted-foreground">Dedicated Core Engineering:</span>
-              <span className="text-foreground">${scenario.coreEngineeringMonthly.toLocaleString()}/mo</span>
+              <span className="text-foreground">{convertAndFormat(scenario.coreEngineeringMonthly)}/mo</span>
             </div>
             <div className="flex justify-between border-b border-border/40 pb-1.5">
               <span className="text-muted-foreground">Base Infrastructure &amp; Staging:</span>
-              <span className="text-foreground">${scenario.baseClusterInfrastructureMonthly.toLocaleString()}/mo</span>
+              <span className="text-foreground">{convertAndFormat(scenario.baseClusterInfrastructureMonthly)}/mo</span>
             </div>
             <div className="flex justify-between border-b border-border/40 pb-1.5">
               <span className="text-muted-foreground">Variable Unit Server Cost:</span>
-              <span className="text-foreground">${scenario.variableHostingCostPerCustomer.toFixed(2)} / tenant / mo</span>
+              <span className="text-foreground">{convertAndFormat(scenario.variableHostingCostPerCustomer)} / tenant / mo</span>
             </div>
             <div className="flex justify-between pb-1">
               <span className="text-muted-foreground">Third-Party Payment &amp; API:</span>
-              <span className="text-foreground">2.9% + $0.30/txn + ${scenario.thirdPartyApiCostPerCustomer.toFixed(2)}/mo</span>
+              <span className="text-foreground">2.9% + {convertAndFormat(0.30)}/txn + {convertAndFormat(scenario.thirdPartyApiCostPerCustomer)}/mo</span>
             </div>
           </dl>
         </div>

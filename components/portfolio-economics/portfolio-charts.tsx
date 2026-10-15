@@ -14,6 +14,7 @@ import {
   Legend,
 } from 'recharts';
 import type { PortfolioEconomicsSummary } from '@/lib/portfolio-economics/types';
+import { formatCurrency, getCurrencySymbol } from '@/lib/portfolio-economics/decimal';
 
 const COLORS = ['#E5484D', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4'];
 
@@ -71,7 +72,9 @@ export function PortfolioCharts({
             <h3 className="mt-1 font-display text-base font-semibold text-foreground">
               Operating Cost vs Development Investment
             </h3>
-            <span className="text-[11px] font-mono text-muted-foreground">Amounts in INR (₹)</span>
+            <span className="text-[11px] font-mono text-muted-foreground">
+              Amounts in {summary.currency} ({getCurrencySymbol(summary.currency)})
+            </span>
           </div>
 
           <div className="mt-4 h-72 w-full">
@@ -91,10 +94,10 @@ export function PortfolioCharts({
                   stroke="#888"
                   fontSize={10}
                   tickLine={false}
-                  tickFormatter={(val) => `₹${(val / 1000).toFixed(0)}k`}
+                  tickFormatter={(val) => `${getCurrencySymbol(summary.currency)}${(val / 1000).toFixed(0)}k`}
                 />
                 <Tooltip
-                  formatter={(val: number) => [`₹${val.toLocaleString('en-IN')}`, '']}
+                  formatter={(val: number) => [formatCurrency(val, summary.currency), '']}
                   contentStyle={{
                     backgroundColor: 'rgba(20, 20, 20, 0.95)',
                     borderColor: 'rgba(255, 255, 255, 0.1)',

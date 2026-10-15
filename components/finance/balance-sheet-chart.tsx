@@ -12,11 +12,29 @@ import {
 } from 'recharts';
 import type { BalanceSheetItem } from '@/lib/types';
 
+import type { SupportedCurrency } from '@/lib/portfolio-economics/decimal';
+
 interface BalanceSheetChartProps {
   assets: BalanceSheetItem[];
   liabilities: BalanceSheetItem[];
   equity: BalanceSheetItem[];
   currencySymbol: string;
+  currency?: SupportedCurrency;
+}
+
+function formatChartValue(value: number, symbol: string, currency?: SupportedCurrency): string {
+  const isSouthAsian = currency === 'INR' || currency === 'BDT' || symbol === '₹' || symbol === '৳';
+  if (isSouthAsian) {
+    const lakh = value / 100000;
+    return `${symbol}${lakh.toFixed(0)}L`;
+  }
+  if (value >= 1000000) {
+    return `${symbol}${(value / 1000000).toFixed(1)}M`;
+  }
+  if (value >= 1000) {
+    return `${symbol}${(value / 1000).toFixed(0)}K`;
+  }
+  return `${symbol}${value}`;
 }
 
 export function BalanceSheetChart({
@@ -24,6 +42,7 @@ export function BalanceSheetChart({
   liabilities,
   equity,
   currencySymbol,
+  currency = 'INR',
 }: BalanceSheetChartProps) {
   const data = [
     {
@@ -49,6 +68,8 @@ export function BalanceSheetChart({
     color: d.color,
   }));
 
+  const isSouthAsian = currency === 'INR' || currency === 'BDT' || currencySymbol === '₹' || currencySymbol === '৳';
+
   return (
     <div className="h-[280px] w-full">
       <ResponsiveContainer width="100%" height="100%">
@@ -65,7 +86,7 @@ export function BalanceSheetChart({
             axisLine={false}
           />
           <YAxis
-            tickFormatter={(v) => `${currencySymbol}${(v / 100000).toFixed(0)}L`}
+            tickFormatter={(v) => formatChartValue(v, currencySymbol, currency)}
             stroke="hsl(var(--muted-foreground))"
             fontSize={11}
             fontFamily="var(--font-jetbrains)"
@@ -80,7 +101,9 @@ export function BalanceSheetChart({
               fontSize: '12px',
             }}
             formatter={(value: number) => [
-              `${currencySymbol}${(value / 100000).toFixed(2)} lakh`,
+              isSouthAsian
+                ? `${currencySymbol}${(value / 100000).toFixed(2)} lakh`
+                : `${currencySymbol}${Math.round(value).toLocaleString('en-US')}`,
               'Total',
             ]}
           />

@@ -3,15 +3,17 @@
 import { useState } from 'react';
 import { compareFinancialPeriods } from '@/lib/portfolio-economics/calculations';
 import { getFinancialPeriods } from '@/lib/portfolio-economics/periods';
-import { formatCurrency } from '@/lib/portfolio-economics/decimal';
+import { formatCurrency, convertCurrency } from '@/lib/portfolio-economics/decimal';
 import { Calendar, TrendingUp, TrendingDown, Minus, AlertCircle } from 'lucide-react';
 
 export function PeriodComparison({
   initialPeriodA = 'fy2026',
   initialPeriodB = 'fy2027',
+  currency = 'INR',
 }: {
   initialPeriodA?: string;
   initialPeriodB?: string;
+  currency?: string;
 }) {
   const periods = getFinancialPeriods();
   const [periodAId, setPeriodAId] = useState(initialPeriodA);
@@ -107,8 +109,8 @@ export function PeriodComparison({
             {renderGrowth(revenueGrowthPercent)}
           </div>
           <div className="mt-2 text-[11px] font-mono text-muted-foreground flex justify-between">
-            <span>{periodA.fiscalYear}: {formatCurrency(periodA.totalAttributedRevenue, 'INR', '—')}</span>
-            <span>{periodB.fiscalYear}: {formatCurrency(periodB.totalAttributedRevenue, 'INR', '—')}</span>
+            <span>{periodA.fiscalYear}: {formatCurrency(convertCurrency(periodA.totalAttributedRevenue, periodA.currency, currency), currency, '—')}</span>
+            <span>{periodB.fiscalYear}: {formatCurrency(convertCurrency(periodB.totalAttributedRevenue, periodB.currency, currency), currency, '—')}</span>
           </div>
         </div>
 
@@ -119,8 +121,8 @@ export function PeriodComparison({
             {renderGrowth(costGrowthPercent)}
           </div>
           <div className="mt-2 text-[11px] font-mono text-muted-foreground flex justify-between">
-            <span>{periodA.fiscalYear}: {formatCurrency(periodA.totalOperatingCosts, 'INR', '—')}</span>
-            <span>{periodB.fiscalYear}: {formatCurrency(periodB.totalOperatingCosts, 'INR', '—')}</span>
+            <span>{periodA.fiscalYear}: {formatCurrency(convertCurrency(periodA.totalOperatingCosts, periodA.currency, currency), currency, '—')}</span>
+            <span>{periodB.fiscalYear}: {formatCurrency(convertCurrency(periodB.totalOperatingCosts, periodB.currency, currency), currency, '—')}</span>
           </div>
         </div>
 
@@ -131,8 +133,8 @@ export function PeriodComparison({
             {renderGrowth(investmentGrowthPercent)}
           </div>
           <div className="mt-2 text-[11px] font-mono text-muted-foreground flex justify-between">
-            <span>{periodA.fiscalYear}: {formatCurrency(periodA.totalDevelopmentInvestment, 'INR', '—')}</span>
-            <span>{periodB.fiscalYear}: {formatCurrency(periodB.totalDevelopmentInvestment, 'INR', '—')}</span>
+            <span>{periodA.fiscalYear}: {formatCurrency(convertCurrency(periodA.totalDevelopmentInvestment, periodA.currency, currency), currency, '—')}</span>
+            <span>{periodB.fiscalYear}: {formatCurrency(convertCurrency(periodB.totalDevelopmentInvestment, periodB.currency, currency), currency, '—')}</span>
           </div>
         </div>
 
@@ -143,8 +145,8 @@ export function PeriodComparison({
             {renderGrowth(contributionGrowthPercent)}
           </div>
           <div className="mt-2 text-[11px] font-mono text-muted-foreground flex justify-between">
-            <span>{periodA.fiscalYear}: {formatCurrency(periodA.portfolioContribution, 'INR', '—')}</span>
-            <span>{periodB.fiscalYear}: {formatCurrency(periodB.portfolioContribution, 'INR', '—')}</span>
+            <span>{periodA.fiscalYear}: {formatCurrency(convertCurrency(periodA.portfolioContribution, periodA.currency, currency), currency, '—')}</span>
+            <span>{periodB.fiscalYear}: {formatCurrency(convertCurrency(periodB.portfolioContribution, periodB.currency, currency), currency, '—')}</span>
           </div>
         </div>
       </div>

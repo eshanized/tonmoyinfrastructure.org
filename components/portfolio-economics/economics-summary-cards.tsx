@@ -1,6 +1,6 @@
 'use client';
 
-import { formatCurrency, formatHours } from '@/lib/portfolio-economics/decimal';
+import { formatCurrency, formatHours, formatMultiCurrency } from '@/lib/portfolio-economics/decimal';
 import { ConfidenceBadge } from './confidence-badge';
 import type { PortfolioEconomicsSummary } from '@/lib/portfolio-economics/types';
 import { TrendingUp, Clock, Layers, Cpu, Server, DollarSign } from 'lucide-react';
@@ -17,8 +17,9 @@ export function EconomicsSummaryCards({
       label: 'TOTAL ATTRIBUTED REVENUE',
       value: formatCurrency(summary.totalAttributedRevenue, summary.currency, 'Not Tracked'),
       subtext: summary.unattributedRevenue
-        ? `+ ₹${summary.unattributedRevenue.toLocaleString('en-IN')} Corporate Unattributed`
+        ? `+ ${formatCurrency(summary.unattributedRevenue, summary.currency)} Corporate Unattributed`
         : 'Reconciled stream',
+      multi: formatMultiCurrency(summary.totalAttributedRevenue, summary.currency),
       icon: DollarSign,
       confidence: 'Verified' as const,
     },
@@ -26,8 +27,9 @@ export function EconomicsSummaryCards({
       label: 'PROJECT OPERATING COSTS',
       value: formatCurrency(summary.totalOperatingCosts, summary.currency, 'Not Tracked'),
       subtext: summary.totalDirectOperatingCosts
-        ? `Direct: ₹${summary.totalDirectOperatingCosts.toLocaleString('en-IN')} • Shared: ₹${(summary.totalAllocatedSharedCosts || 0).toLocaleString('en-IN')}`
+        ? `Direct: ${formatCurrency(summary.totalDirectOperatingCosts, summary.currency)} • Shared: ${formatCurrency(summary.totalAllocatedSharedCosts, summary.currency)}`
         : 'Direct & Allocated Hosting/Compute',
+      multi: formatMultiCurrency(summary.totalOperatingCosts, summary.currency),
       icon: Server,
       confidence: 'Allocated' as const,
     },
@@ -35,8 +37,9 @@ export function EconomicsSummaryCards({
       label: 'DEVELOPMENT INVESTMENT',
       value: formatCurrency(summary.totalDevelopmentInvestment, summary.currency, 'Not Tracked'),
       subtext: summary.totalDevelopmentInvestmentCash
-        ? `Cash: ₹${summary.totalDevelopmentInvestmentCash.toLocaleString('en-IN')} • Economic: ₹${(summary.totalDevelopmentInvestmentEconomic || 0).toLocaleString('en-IN')}`
+        ? `Cash: ${formatCurrency(summary.totalDevelopmentInvestmentCash, summary.currency)} • Economic: ${formatCurrency(summary.totalDevelopmentInvestmentEconomic, summary.currency)}`
         : 'Cash & Economic Engineering Time',
+      multi: formatMultiCurrency(summary.totalDevelopmentInvestment, summary.currency),
       icon: TrendingUp,
       confidence: 'Calculated' as const,
     },
@@ -44,6 +47,7 @@ export function EconomicsSummaryCards({
       label: 'RESEARCH INVESTMENT',
       value: formatCurrency(summary.totalResearchInvestment, summary.currency, 'Not Tracked'),
       subtext: 'AI Models, Datasets & Lab Equipment',
+      multi: formatMultiCurrency(summary.totalResearchInvestment, summary.currency),
       icon: Cpu,
       confidence: 'Verified' as const,
     },
@@ -51,6 +55,7 @@ export function EconomicsSummaryCards({
       label: 'ENGINEERING EFFORT',
       value: formatHours(summary.totalEngineeringHours, 'Not Tracked'),
       subtext: 'Development, Research & Maintenance',
+      multi: null,
       icon: Clock,
       confidence: 'Verified' as const,
     },
@@ -58,6 +63,7 @@ export function EconomicsSummaryCards({
       label: 'PORTFOLIO INITIATIVES',
       value: `${summary.totalProjectsTracked} Projects`,
       subtext: `${summary.activeProjectsCount} Active Software • ${summary.totalProjectsTracked - summary.activeProjectsCount} Research/Infra`,
+      multi: null,
       icon: Layers,
       confidence: 'Verified' as const,
     },
@@ -87,6 +93,14 @@ export function EconomicsSummaryCards({
             <p className="mt-2 text-xs text-muted-foreground truncate" title={card.subtext}>
               {card.subtext}
             </p>
+
+            {card.multi && card.multi.usd !== 'Not Tracked' && (
+              <div className="mt-3 flex flex-wrap gap-2 text-[10px] font-mono text-muted-foreground border-t border-border/40 pt-2">
+                {summary.currency !== 'USD' && <span>USD: {card.multi.usd}</span>}
+                {summary.currency !== 'INR' && <span>INR: {card.multi.inr}</span>}
+                {summary.currency !== 'BDT' && <span>BDT: {card.multi.bdt}</span>}
+              </div>
+            )}
 
             <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
           </div>

@@ -12,7 +12,7 @@ import { getRegisteredProjects, getRegisteredProject } from './registry';
 import { getFinancialPeriod, getDefaultFinancialPeriod } from './periods';
 import { getFinancialSources } from './sources';
 import { getFinancialReports } from '@/lib/content';
-import { DecimalMoney } from './decimal';
+import { DecimalMoney, convertCurrency, type SupportedCurrency } from './decimal';
 import type {
   ProjectEconomicProfile,
   PortfolioEconomicsSummary,
@@ -604,5 +604,67 @@ export function compareFinancialPeriods(
     investmentGrowthPercent,
     contributionGrowthPercent,
     notes,
+  };
+}
+
+/**
+ * Convert a ProjectEconomicProfile into any target currency (USD, INR, BDT)
+ */
+export function convertProjectProfile(
+  profile: ProjectEconomicProfile,
+  targetCurrency: SupportedCurrency
+): ProjectEconomicProfile {
+  const from = profile.currency || 'INR';
+  if (from.toUpperCase() === targetCurrency.toUpperCase()) {
+    return profile;
+  }
+
+  return {
+    ...profile,
+    currency: targetCurrency,
+    developmentInvestmentCash: convertCurrency(profile.developmentInvestmentCash, from, targetCurrency),
+    developmentInvestmentEconomic: convertCurrency(profile.developmentInvestmentEconomic, from, targetCurrency),
+    totalDevelopmentInvestment: convertCurrency(profile.totalDevelopmentInvestment, from, targetCurrency),
+    researchInvestment: convertCurrency(profile.researchInvestment, from, targetCurrency),
+    directOperatingCosts: convertCurrency(profile.directOperatingCosts, from, targetCurrency),
+    allocatedSharedCosts: convertCurrency(profile.allocatedSharedCosts, from, targetCurrency),
+    totalOperatingCosts: convertCurrency(profile.totalOperatingCosts, from, targetCurrency),
+    directRevenue: convertCurrency(profile.directRevenue, from, targetCurrency),
+    allocatedRevenue: convertCurrency(profile.allocatedRevenue, from, targetCurrency),
+    attributedRevenue: convertCurrency(profile.attributedRevenue, from, targetCurrency),
+    effectiveCostPerHour: convertCurrency(profile.effectiveCostPerHour, from, targetCurrency),
+    portfolioContribution: convertCurrency(profile.portfolioContribution, from, targetCurrency),
+    postInvestmentContribution: convertCurrency(profile.postInvestmentContribution, from, targetCurrency),
+  };
+}
+
+/**
+ * Convert a PortfolioEconomicsSummary into any target currency (USD, INR, BDT)
+ */
+export function convertPortfolioSummary(
+  summary: PortfolioEconomicsSummary,
+  targetCurrency: SupportedCurrency
+): PortfolioEconomicsSummary {
+  const from = summary.currency || 'INR';
+  if (from.toUpperCase() === targetCurrency.toUpperCase()) {
+    return summary;
+  }
+
+  return {
+    ...summary,
+    currency: targetCurrency,
+    totalAttributedRevenue: convertCurrency(summary.totalAttributedRevenue, from, targetCurrency),
+    unattributedRevenue: convertCurrency(summary.unattributedRevenue, from, targetCurrency),
+    totalCorporateRevenue: convertCurrency(summary.totalCorporateRevenue, from, targetCurrency),
+    totalDirectOperatingCosts: convertCurrency(summary.totalDirectOperatingCosts, from, targetCurrency),
+    totalAllocatedSharedCosts: convertCurrency(summary.totalAllocatedSharedCosts, from, targetCurrency),
+    totalUnallocatedCosts: convertCurrency(summary.totalUnallocatedCosts, from, targetCurrency),
+    totalOperatingCosts: convertCurrency(summary.totalOperatingCosts, from, targetCurrency),
+    totalDevelopmentInvestmentCash: convertCurrency(summary.totalDevelopmentInvestmentCash, from, targetCurrency),
+    totalDevelopmentInvestmentEconomic: convertCurrency(summary.totalDevelopmentInvestmentEconomic, from, targetCurrency),
+    totalDevelopmentInvestment: convertCurrency(summary.totalDevelopmentInvestment, from, targetCurrency),
+    totalResearchInvestment: convertCurrency(summary.totalResearchInvestment, from, targetCurrency),
+    portfolioContribution: convertCurrency(summary.portfolioContribution, from, targetCurrency),
+    projects: summary.projects.map((p) => convertProjectProfile(p, targetCurrency)),
   };
 }

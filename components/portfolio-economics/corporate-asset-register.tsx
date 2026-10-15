@@ -2,7 +2,13 @@
 
 import { useState, useMemo } from 'react';
 import { portfolioDataStore } from '@/lib/portfolio-economics/data-store';
-import { formatCurrency } from '@/lib/portfolio-economics/decimal';
+import {
+  formatCurrency,
+  convertCurrency,
+  formatMultiCurrency,
+  type SupportedCurrency,
+} from '@/lib/portfolio-economics/decimal';
+import { CurrencySelector } from './currency-selector';
 import type { Asset, AssetType } from '@/lib/portfolio-economics/types';
 import {
   Server,
@@ -30,8 +36,12 @@ const assetIcons: Record<AssetType, typeof Server> = {
 
 export function CorporateAssetRegister({
   isInternal = false,
+  activeCurrency = 'INR',
+  onCurrencyChange,
 }: {
   isInternal?: boolean;
+  activeCurrency?: SupportedCurrency;
+  onCurrencyChange?: (c: SupportedCurrency) => void;
 }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [typeFilter, setTypeFilter] = useState<string>('all');
@@ -64,8 +74,19 @@ export function CorporateAssetRegister({
       dep += a.estimatedEconomicDepreciation;
       book += a.bookValue;
     }
-    return { cost, dep, book };
-  }, [assets]);
+    return {
+      cost: convertCurrency(cost, 'INR', activeCurrency) ?? cost,
+      dep: convertCurrency(dep, 'INR', activeCurrency) ?? dep,
+      book: convertCurrency(book, 'INR', activeCurrency) ?? book,
+      rawCost: cost,
+      rawDep: dep,
+      rawBook: book,
+    };
+  }, [assets, activeCurrency]);
+
+  const multiCost = useMemo(() => formatMultiCurrency(totals.rawCost, 'INR'), [totals.rawCost]);
+  const multiDep = useMemo(() => formatMultiCurrency(totals.rawDep, 'INR'), [totals.rawDep]);
+  const multiBook = useMemo(() => formatMultiCurrency(totals.rawBook, 'INR'), [totals.rawBook]);
 
   return (
     <div className="space-y-6">
@@ -90,11 +111,16 @@ export function CorporateAssetRegister({
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </div>
           <p className="mt-2 font-display text-2xl font-bold text-foreground">
-            {formatCurrency(totals.cost, 'INR')}
+            {formatCurrency(totals.cost, activeCurrency)}
           </p>
           <p className="mt-1 text-xs text-muted-foreground font-mono">
             Audited initial acquisition cash outlay
           </p>
+          <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-mono text-muted-foreground border-t border-border/40 pt-1.5">
+            {activeCurrency !== 'USD' && <span>USD: {multiCost.usd}</span>}
+            {activeCurrency !== 'INR' && <span>INR: {multiCost.inr}</span>}
+            {activeCurrency !== 'BDT' && <span>BDT: {multiCost.bdt}</span>}
+          </div>
         </div>
 
         <div className="border border-border bg-card p-4">
@@ -103,11 +129,16 @@ export function CorporateAssetRegister({
             <TrendingDown className="h-4 w-4 text-amber-500" />
           </div>
           <p className="mt-2 font-display text-2xl font-bold text-foreground">
-            {formatCurrency(totals.dep, 'INR')}
+            {formatCurrency(totals.dep, activeCurrency)}
           </p>
           <p className="mt-1 text-xs text-muted-foreground font-mono">
             Straight-line useful life wear &amp; obsolescence
           </p>
+          <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-mono text-muted-foreground border-t border-border/40 pt-1.5">
+            {activeCurrency !== 'USD' && <span>USD: {multiDep.usd}</span>}
+            {activeCurrency !== 'INR' && <span>INR: {multiDep.inr}</span>}
+            {activeCurrency !== 'BDT' && <span>BDT: {multiDep.bdt}</span>}
+          </div>
         </div>
 
         <div className="border border-brand/40 bg-brand/5 p-4">
@@ -116,11 +147,16 @@ export function CorporateAssetRegister({
             <ShieldCheck className="h-4 w-4 text-brand" />
           </div>
           <p className="mt-2 font-display text-2xl font-bold text-brand">
-            {formatCurrency(totals.book, 'INR')}
+            {formatCurrency(totals.book, activeCurrency)}
           </p>
           <p className="mt-1 text-xs text-muted-foreground font-mono">
             Accounted balance sheet asset valuation
           </p>
+          <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-mono text-muted-foreground border-t border-brand/20 pt-1.5">
+            {activeCurrency !== 'USD' && <span>USD: {multiBook.usd}</span>}
+            {activeCurrency !== 'INR' && <span>INR: {multiBook.inr}</span>}
+            {activeCurrency !== 'BDT' && <span>BDT: {multiBook.bdt}</span>}
+          </div>
         </div>
       </div>
 
@@ -136,6 +172,12 @@ export function CorporateAssetRegister({
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
+            <CurrencySelector
+              value={activeCurrency}
+              onChange={onCurrencyChange}
+              compact={true}
+            />
+
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-muted-foreground" />
               <input
@@ -170,9 +212,9 @@ export function CorporateAssetRegister({
                 <th className="py-3 px-4 font-semibold">Asset / Infrastructure</th>
                 <th className="py-3 px-4 font-semibold">Category</th>
                 <th className="py-3 px-4 font-semibold">Deployment Location</th>
-                <th className="py-3 px-4 font-semibold text-right">Acquisition</th>
-                <th className="py-3 px-4 font-semibold text-right">Depreciation</th>
-                <th className="py-3 px-4 font-semibold text-right text-brand">Net Book Value</th>
+                <th className="py-3 px-4 font-semibold text-right">Acquisition ({activeCurrency})</th>
+                <th className="py-3 px-4 font-semibold text-right">Depreciation ({activeCurrency})</th>
+                <th className="py-3 px-4 font-semibold text-right text-brand">Net Book Value ({activeCurrency})</th>
                 <th className="py-3 px-4 font-semibold text-center">Status</th>
               </tr>
             </thead>
@@ -187,6 +229,10 @@ export function CorporateAssetRegister({
                 filteredAssets.map((asset) => {
                   const Icon = assetIcons[asset.assetType] || Server;
                   const isExpanded = expandedId === asset.id;
+                  const convertedCost = convertCurrency(asset.acquisitionCost, asset.currency, activeCurrency);
+                  const convertedDep = convertCurrency(asset.estimatedEconomicDepreciation, asset.currency, activeCurrency);
+                  const convertedBook = convertCurrency(asset.bookValue, asset.currency, activeCurrency);
+
                   return (
                     <tr
                       key={asset.id}
@@ -220,13 +266,13 @@ export function CorporateAssetRegister({
                         {asset.location}
                       </td>
                       <td className="py-3 px-4 text-right text-foreground">
-                        {formatCurrency(asset.acquisitionCost, asset.currency)}
+                        {formatCurrency(convertedCost, activeCurrency)}
                       </td>
                       <td className="py-3 px-4 text-right text-amber-600 dark:text-amber-400">
-                        -{formatCurrency(asset.estimatedEconomicDepreciation, asset.currency)}
+                        -{formatCurrency(convertedDep, activeCurrency)}
                       </td>
                       <td className="py-3 px-4 text-right font-bold text-brand">
-                        {formatCurrency(asset.bookValue, asset.currency)}
+                        {formatCurrency(convertedBook, activeCurrency)}
                       </td>
                       <td className="py-3 px-4 text-center">
                         <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5">

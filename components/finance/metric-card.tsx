@@ -2,11 +2,14 @@
 
 import { cn } from '@/lib/utils';
 import { CountUp } from '@/components/shared/count-up';
+import type { SupportedCurrency } from '@/lib/portfolio-economics/decimal';
 
 interface MetricCardProps {
   label: string;
   amount?: number;
   currencySymbol: string;
+  currency?: SupportedCurrency;
+  subtext?: string;
   className?: string;
 }
 
@@ -14,8 +17,38 @@ export function MetricCard({
   label,
   amount,
   currencySymbol,
+  currency = 'INR',
+  subtext,
   className,
 }: MetricCardProps) {
+  const isSouthAsian = currency === 'INR' || currency === 'BDT' || currencySymbol === '₹' || currencySymbol === '৳';
+
+  let endVal = 0;
+  let suffixVal = '';
+  let decimalsVal = 1;
+
+  if (amount !== undefined) {
+    if (isSouthAsian) {
+      endVal = amount / 100000;
+      suffixVal = 'L';
+      decimalsVal = 1;
+    } else {
+      if (amount >= 1000000) {
+        endVal = amount / 1000000;
+        suffixVal = 'M';
+        decimalsVal = 2;
+      } else if (amount >= 1000) {
+        endVal = amount / 1000;
+        suffixVal = 'K';
+        decimalsVal = 1;
+      } else {
+        endVal = amount;
+        suffixVal = '';
+        decimalsVal = 0;
+      }
+    }
+  }
+
   return (
     <div
       className={cn(
@@ -28,19 +61,23 @@ export function MetricCard({
       <p className="mt-3 font-display text-2xl tracking-tight md:text-3xl">
         {amount !== undefined ? (
           <CountUp
-            end={amount / 100000}
+            end={endVal}
             duration={1.5}
             prefix={currencySymbol}
-            suffix="L"
-            decimals={1}
+            suffix={suffixVal}
+            decimals={decimalsVal}
           />
         ) : (
           '—'
         )}
       </p>
-      {amount === undefined && (
+      {subtext ? (
+        <p className="mt-1 text-[11px] font-mono text-muted-foreground truncate" title={subtext}>
+          {subtext}
+        </p>
+      ) : amount === undefined ? (
         <p className="mt-1 text-xs text-muted-foreground">Not available</p>
-      )}
+      ) : null}
     </div>
   );
 }

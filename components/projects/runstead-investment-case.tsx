@@ -233,41 +233,65 @@ export function RunsteadInvestmentCase() {
               <tbody className="divide-y divide-border/60">
                 <tr>
                   <td className="px-4 py-3.5 font-bold text-foreground">Sandbox</td>
-                  <td className="px-4 py-3.5 text-foreground font-semibold">Free ($0)</td>
+                  <td className="px-4 py-3.5 text-foreground font-semibold">Free ($0 • ₹0 • ৳0)</td>
                   <td className="px-4 py-3.5 text-muted-foreground">Developers, pre-launch testing, evaluation</td>
                   <td className="px-4 py-3.5 text-muted-foreground">Up to 3 active clients, simulated billing, test DNS editor, watermarked storefront</td>
                   <td className="px-4 py-3.5 text-emerald-600 dark:text-emerald-400">Available in Demo</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3.5 font-bold text-foreground">Launch</td>
-                  <td className="px-4 py-3.5 text-foreground font-semibold">US$49 / mo</td>
+                  <td className="px-4 py-3.5 text-foreground font-semibold">
+                    <div>US$49 / mo</div>
+                    <div className="text-[11px] font-mono text-muted-foreground font-normal">
+                      ₹4,116 / ৳5,880
+                    </div>
+                  </td>
                   <td className="px-4 py-3.5 text-muted-foreground">Freelance web designers, boutique agencies</td>
                   <td className="px-4 py-3.5 text-muted-foreground">Up to 50 active clients, custom domain, white-label storefront, 1 cPanel/Plesk server</td>
                   <td className="px-4 py-3.5 text-amber-600 dark:text-amber-400">Indicative Pricing</td>
                 </tr>
                 <tr className="bg-brand/5 border-l-2 border-brand">
                   <td className="px-4 py-3.5 font-bold text-foreground">Growth (Popular)</td>
-                  <td className="px-4 py-3.5 text-brand font-bold">US$149 / mo</td>
+                  <td className="px-4 py-3.5 text-brand font-bold">
+                    <div>US$149 / mo</div>
+                    <div className="text-[11px] font-mono text-brand/80 font-normal">
+                      ₹12,516 / ৳17,880
+                    </div>
+                  </td>
                   <td className="px-4 py-3.5 text-muted-foreground">Independent hosting entrepreneurs, regional hosts</td>
                   <td className="px-4 py-3.5 text-muted-foreground">Up to 250 active clients, multi-server routing, custom email branding, priority queue</td>
                   <td className="px-4 py-3.5 text-amber-600 dark:text-amber-400">Indicative Pricing</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3.5 font-bold text-foreground">Scale</td>
-                  <td className="px-4 py-3.5 text-foreground font-semibold">US$399 / mo</td>
+                  <td className="px-4 py-3.5 text-foreground font-semibold">
+                    <div>US$399 / mo</div>
+                    <div className="text-[11px] font-mono text-muted-foreground font-normal">
+                      ₹33,516 / ৳47,880
+                    </div>
+                  </td>
                   <td className="px-4 py-3.5 text-muted-foreground">Growing hosting brands with multi-region nodes</td>
                   <td className="px-4 py-3.5 text-muted-foreground">Up to 1,000 active clients, automated server provisioning, multi-currency, audit logs</td>
                   <td className="px-4 py-3.5 text-amber-600 dark:text-amber-400">Indicative Pricing</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3.5 font-bold text-foreground">Enterprise</td>
-                  <td className="px-4 py-3.5 text-foreground font-semibold">Custom (from $999/mo)</td>
+                  <td className="px-4 py-3.5 text-foreground font-semibold">
+                    <div>Custom (from $999/mo)</div>
+                    <div className="text-[11px] font-mono text-muted-foreground font-normal">
+                      from ₹83,916 / ৳1,19,880
+                    </div>
+                  </td>
                   <td className="px-4 py-3.5 text-muted-foreground">Large web hosting companies, telecom resellers</td>
                   <td className="px-4 py-3.5 text-muted-foreground">Unlimited clients, dedicated VPC, custom SLA, bespoke registrar integrations, SSO</td>
                   <td className="px-4 py-3.5 text-muted-foreground">Custom Quotation</td>
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div className="border-t border-border px-4 py-2.5 bg-muted/20 flex flex-wrap items-center justify-between text-[11px] font-mono text-muted-foreground">
+            <span>Standard portfolio benchmark: 1 USD = 84.00 INR = 120.00 BDT</span>
+            <span>All tiers convert to USD ($), INR (₹), and BDT (৳)</span>
           </div>
         </div>
 

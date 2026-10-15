@@ -4,7 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import {
   calculatePortfolioEconomicsSummary,
+  convertPortfolioSummary,
 } from '@/lib/portfolio-economics/calculations';
+import { type SupportedCurrency } from '@/lib/portfolio-economics/decimal';
 import { getFinancialPeriods } from '@/lib/portfolio-economics/periods';
 import { type UserSession, PUBLIC_SESSION, LOCAL_DEV_SESSION } from '@/lib/portfolio-economics/auth';
 import { EconomicsHeader } from './economics-header';
@@ -33,6 +35,7 @@ export function ManagementDashboardView() {
   const isDev = process.env.NODE_ENV === 'development';
   const periods = getFinancialPeriods();
   const [selectedPeriodId, setSelectedPeriodId] = useState(periods[0]?.id || 'fy2026');
+  const [currency, setCurrency] = useState<SupportedCurrency>('INR');
   const [activeTab, setActiveTab] = useState<
     'ledger' | 'assets' | 'comparison' | 'periods' | 'reconciliation' | 'reports'
   >('ledger');
@@ -41,7 +44,8 @@ export function ManagementDashboardView() {
   // Fake admin sessions and client-side role switchers are permanently removed.
   const session: UserSession = isDev ? LOCAL_DEV_SESSION : PUBLIC_SESSION;
 
-  const summary = calculatePortfolioEconomicsSummary(selectedPeriodId);
+  const rawSummary = calculatePortfolioEconomicsSummary(selectedPeriodId);
+  const summary = convertPortfolioSummary(rawSummary, currency);
 
   // If deployed in production static environment, block privileged management interface
   if (!isDev) {
@@ -103,6 +107,8 @@ export function ManagementDashboardView() {
         selectedPeriodId={selectedPeriodId}
         onSelectPeriod={setSelectedPeriodId}
         isInternal={false}
+        currency={currency}
+        onCurrencyChange={setCurrency}
       />
 
       {/* Local Development Mode Indicator */}
@@ -155,6 +161,7 @@ export function ManagementDashboardView() {
                 projects={summary.projects}
                 currency={summary.currency}
                 isInternal={false}
+                onCurrencyChange={setCurrency}
               />
               <PortfolioCharts summary={summary} />
               <DataQualityCards summary={summary} />
@@ -163,7 +170,11 @@ export function ManagementDashboardView() {
 
           {activeTab === 'assets' && (
             <div className="space-y-6">
-              <CorporateAssetRegister isInternal={false} />
+              <CorporateAssetRegister
+                isInternal={false}
+                activeCurrency={currency}
+                onCurrencyChange={setCurrency}
+              />
             </div>
           )}
 
@@ -181,6 +192,7 @@ export function ManagementDashboardView() {
               <PeriodComparison
                 initialPeriodA={selectedPeriodId}
                 initialPeriodB={selectedPeriodId === 'fy2026' ? 'fy2027' : 'fy2026'}
+                currency={summary.currency}
               />
             </div>
           )}

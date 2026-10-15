@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { StatusBadge } from '@/components/shared/status-badge';
 import { ConfidenceBadge } from './confidence-badge';
-import { formatCurrency, formatHours } from '@/lib/portfolio-economics/decimal';
+import { CurrencySelector } from './currency-selector';
+import { formatCurrency, formatHours, getCurrencySymbol, type SupportedCurrency } from '@/lib/portfolio-economics/decimal';
 import type { ProjectEconomicProfile } from '@/lib/portfolio-economics/types';
 import { ArrowUpRight, Search, Info } from 'lucide-react';
 
@@ -12,10 +13,12 @@ export function ProjectsEconomicsTable({
   projects,
   currency = 'INR',
   isInternal = false,
+  onCurrencyChange,
 }: {
   projects: ProjectEconomicProfile[];
   currency?: string;
   isInternal?: boolean;
+  onCurrencyChange?: (c: SupportedCurrency) => void;
 }) {
   const [filter, setFilter] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
@@ -66,6 +69,12 @@ export function ProjectsEconomicsTable({
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
+          <CurrencySelector
+            value={currency as SupportedCurrency}
+            onChange={onCurrencyChange}
+            compact={true}
+          />
+
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-muted-foreground" />
             <input
@@ -99,11 +108,11 @@ export function ProjectsEconomicsTable({
             <tr className="border-b border-border bg-muted/30 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
               <th className="px-4 py-3 font-medium">Project</th>
               <th className="px-4 py-3 font-medium">Status</th>
-              <th className="px-4 py-3 font-medium text-right">Investment</th>
-              <th className="px-4 py-3 font-medium text-right">Operating Cost</th>
-              <th className="px-4 py-3 font-medium text-right">Revenue</th>
+              <th className="px-4 py-3 font-medium text-right">Investment ({currency})</th>
+              <th className="px-4 py-3 font-medium text-right">Operating Cost ({currency})</th>
+              <th className="px-4 py-3 font-medium text-right">Revenue ({currency})</th>
               <th className="px-4 py-3 font-medium text-right">Engineering</th>
-              <th className="px-4 py-3 font-medium text-right">Contribution</th>
+              <th className="px-4 py-3 font-medium text-right">Contribution ({currency})</th>
               <th className="px-4 py-3 font-medium text-center">Confidence</th>
               {isInternal && <th className="px-4 py-3 font-medium text-center">Completeness</th>}
               <th className="px-4 py-3 font-medium text-right">Action</th>
@@ -177,7 +186,10 @@ export function ProjectsEconomicsTable({
                       className={
                         p.isResearch
                           ? 'text-muted-foreground italic'
-                          : revenueDisplay === 'Tracked' || revenueDisplay.startsWith('₹')
+                          : revenueDisplay === 'Tracked' ||
+                            revenueDisplay.startsWith('₹') ||
+                            revenueDisplay.startsWith('$') ||
+                            revenueDisplay.startsWith('৳')
                           ? 'text-foreground font-medium'
                           : 'text-muted-foreground'
                       }
@@ -240,7 +252,7 @@ export function ProjectsEconomicsTable({
           </span>
         </div>
         <div className="font-mono text-[10px]">
-          {projects.length} Initiatives • Currency: INR (₹)
+          {projects.length} Initiatives • Currency: {currency} ({getCurrencySymbol(currency)})
         </div>
       </div>
     </div>
