@@ -27,7 +27,14 @@ export default function ContactPage() {
 
   useEffect(() => {
     mountTimeRef.current = Date.now();
-  }, []);
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const catParam = searchParams.get('category');
+      if (catParam && categories.some((c) => c.value === catParam.toLowerCase())) {
+        setCategory(catParam.toLowerCase());
+      }
+    }
+  }, [categories]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -21,6 +21,7 @@ export const metadata: Metadata = generatePageMetadata({
 
 export default function ProjectsPage() {
   const projects = getProjects().filter((p) => p.status === 'Stable Release');
+  const ventures = getProjects().filter((p) => p.status === 'Development');
 
   const breadcrumbs = [
     { name: 'Home', path: '/' },
@@ -31,7 +32,7 @@ export default function ProjectsPage() {
     pagePath: '/projects',
     pageTitle: 'Software & Systems Portfolio — Tonmoy Infrastructure and Vision',
     pageDescription:
-      'Stable release software platforms, infrastructure systems, and research projects built and shipped by Tonmoy Infrastructure and Vision.',
+      'Stable release software platforms, ventures in development, and infrastructure systems built and shipped by Tonmoy Infrastructure and Vision.',
     breadcrumbs,
   });
 
@@ -41,12 +42,12 @@ export default function ProjectsPage() {
       <PageHeader
         index="PROJECTS"
         label="Software Portfolio"
-        title="Shipped software systems."
-        description="TIV has built and shipped four stable release software platforms — OpenMail, Mercura, M31A, and Octate. Each system addresses a concrete infrastructure problem."
+        title="Shipped software systems &amp; emerging ventures."
+        description="TIV maintains four stable release software platforms — OpenMail, Mercura, M31A, and Octate — alongside emerging ventures under active development such as Runstead."
         meta={[
-          { label: 'PORTFOLIO', value: '4 Systems' },
+          { label: 'STABLE PORTFOLIO', value: '4 Systems' },
           { label: 'STATUS', value: 'Stable Release' },
-          { label: 'DEVELOPMENT', value: 'Active' },
+          { label: 'VENTURES', value: '1 In Development' },
           { label: 'PHILOSOPHY', value: 'Self-Reliant' },
         ]}
       />
@@ -57,6 +58,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
+      {/* 01 — Stable Release Portfolio */}
       <section>
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
@@ -80,6 +82,33 @@ export default function ProjectsPage() {
           </StaggerContainer>
         </div>
       </section>
+
+      {/* 02 — Ventures in Development */}
+      {ventures.length > 0 && (
+        <section className="border-t border-border bg-secondary/10">
+          <div className="tiv-container py-16 md:py-24">
+            <Reveal>
+              <SectionHeader
+                index="02"
+                label="Ventures in Development"
+                title="Emerging software platforms under active development."
+                description="Early-stage company ventures engineered under TIV. These platforms feature verified interactive demonstrations, active roadmap delivery, and transparent commercial models."
+              />
+            </Reveal>
+
+            <StaggerContainer
+              className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2"
+              stagger={0.1}
+            >
+              {ventures.map((venture) => (
+                <StaggerItem key={venture.slug}>
+                  <ProjectCard project={venture} />
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+      )}
 
       {/* AI & Experimental Work Discovery */}
       <section className="border-t border-border bg-secondary/30">

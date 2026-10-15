@@ -147,6 +147,42 @@ export default function HomePage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Ventures in Development Highlight */}
+          <Reveal delay={0.2} className="mt-8">
+            <div className="border border-border bg-card p-6 md:p-8">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-amber-400" />
+                    <span className="tiv-meta text-amber-400">VENTURE IN DEVELOPMENT</span>
+                  </div>
+                  <h3 className="mt-2 font-display text-xl tracking-tight">
+                    Runstead — Modern Hosting-Business Operating System
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-pretty text-sm text-muted-foreground">
+                    Next-generation hosting-business automation and client-organization platform engineered with multi-tenant PostgreSQL Row-Level Security (RLS). Currently in active pre-release development and interactive demonstration.
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 shrink-0">
+                  <Link
+                    href="/projects/runstead"
+                    className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors"
+                  >
+                    View Venture Profile
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href="/projects/runstead#financial-model"
+                    className="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors"
+                  >
+                    Financial Model
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

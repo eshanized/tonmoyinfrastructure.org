@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/shared/page-header';
 import { SectionHeader } from '@/components/shared/section-header';
 import { ProjectCard } from '@/components/shared/project-card';
@@ -19,7 +20,9 @@ export const metadata: Metadata = generatePageMetadata({
 });
 
 export default function ProductsPage() {
-  const products = getProjects().filter((p) => p.type === 'software');
+  const products = getProjects().filter(
+    (p) => p.type === 'software' && p.status === 'Stable Release'
+  );
 
   const breadcrumbs = [
     { name: 'Home', path: '/' },
@@ -77,6 +80,39 @@ export default function ProductsPage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Ventures in Development Discovery */}
+      <section className="border-t border-border bg-secondary/30">
+        <div className="tiv-container py-16 md:py-20">
+          <div className="flex flex-col justify-between gap-6 border border-border bg-card p-6 md:flex-row md:items-center md:p-8">
+            <div>
+              <span className="tiv-meta text-brand">VENTURES IN DEVELOPMENT</span>
+              <h3 className="mt-2 font-display text-xl tracking-tight">
+                Looking for TIV&apos;s Emerging Software Ventures?
+              </h3>
+              <p className="mt-2 text-pretty text-sm text-muted-foreground">
+                In addition to our four stable software platforms, explore <strong>Runstead</strong> — our modern SaaS operating system for web hosting businesses featuring multi-tenant PostgreSQL Row-Level Security.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <Link
+                href="/projects/runstead"
+                className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors"
+              >
+                Explore Runstead
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors"
+              >
+                All Projects
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

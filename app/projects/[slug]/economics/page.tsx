@@ -130,6 +130,38 @@ export default async function ProjectEconomicsPage({
       </div>
 
       <main className="tiv-container py-12 space-y-10">
+        {/* Unverified / Emerging Venture Notice */}
+        {profile.overallConfidence === 'Unverified' && (
+          <div className="border border-amber-500/30 bg-amber-500/5 p-6">
+            <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400 font-mono text-xs font-semibold uppercase tracking-wider">
+              <ShieldCheck className="h-4 w-4" />
+              Active Venture In Development — Unrecorded Historical Actuals
+            </div>
+            <p className="mt-2 text-sm text-foreground/90 leading-relaxed">
+              <strong>{profile.projectTitle}</strong> is an emerging platform under active development.
+              Authentic historical financial transactions (cash development expenditure, direct operating expenses, and engineering timesheets) are currently <strong>Not Tracked</strong> in TIV&apos;s FY2026 historical accounting ledger.
+              In strict accordance with TIV financial integrity standards, no fictional historical costs or simulated revenue figures have been fabricated.
+            </p>
+            {project.slug === 'runstead' && (
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/projects/runstead#financial-model"
+                  className="inline-flex items-center gap-1.5 border border-brand bg-brand px-3.5 py-1.5 text-xs font-medium text-brand-foreground hover:bg-brand/90 transition-colors"
+                >
+                  View Illustrative Financial Model
+                  <TrendingUp className="h-3.5 w-3.5" />
+                </Link>
+                <Link
+                  href="/projects/runstead#investment-thesis"
+                  className="inline-flex items-center gap-1.5 border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-foreground hover:bg-secondary transition-colors"
+                >
+                  Read Investment Thesis
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Core Contribution & Snapshot */}
         <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div className="border border-border bg-card p-5">
