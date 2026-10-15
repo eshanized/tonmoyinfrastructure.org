@@ -1,24 +1,61 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Dosis, JetBrains_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { ThemeProvider } from '@/components/layout/theme-provider';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { ScrollProgress } from '@/components/shared/scroll-progress';
 import { cn } from '@/lib/utils';
 
-const dosis = Dosis({
-  subsets: ['latin'],
-  variable: '--font-dosis',
+const barlow = localFont({
+  src: [
+    {
+      path: './fonts/barlow-latin-400-normal.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/barlow-latin-500-normal.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/barlow-latin-600-normal.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: './fonts/barlow-latin-700-normal.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-barlow',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
 });
 
-const jetbrains = JetBrains_Mono({
-  subsets: ['latin'],
+const jetbrains = localFont({
+  src: [
+    {
+      path: './fonts/jetbrains-mono-latin-400-normal.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/jetbrains-mono-latin-500-normal.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/jetbrains-mono-latin-700-normal.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
   variable: '--font-jetbrains',
   display: 'swap',
 });
+
 
 import { siteConfig } from '@/lib/site-config';
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/structured-data';
@@ -95,7 +132,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          dosis.variable,
+          barlow.variable,
           jetbrains.variable,
           'font-sans antialiased'
         )}

@@ -37,6 +37,7 @@
     --chart-5: 0 0% 60%;
 
     --radius: 0.25rem;
+    --font-dosis: var(--font-barlow);
 
     --grid-line: 0 0% 0% / 0.04;
   --grid-line-dark: 0 0% 100% / 0.03;

@@ -12,8 +12,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-dosis)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-dosis)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-barlow)', 'var(--font-dosis)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-barlow)', 'var(--font-dosis)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-jetbrains)', 'monospace'],
       },
       backgroundImage: {
