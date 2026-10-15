@@ -5,7 +5,6 @@ import {
   Pie,
   Cell,
   Tooltip,
-  ResponsiveContainer,
 } from 'recharts';
 import type { CapitalAllocation } from '@/lib/types';
 
@@ -29,36 +28,34 @@ export function CapitalAllocationChart({
   return (
     <div className="flex flex-col items-center gap-6 md:flex-row">
       <div className="h-[220px] w-[220px] flex-shrink-0">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              data={data}
-              dataKey="percentage"
-              nameKey="label"
-              cx="50%"
-              cy="50%"
-              innerRadius={50}
-              outerRadius={90}
-              paddingAngle={2}
-              stroke="hsl(var(--background))"
-              strokeWidth={2}
-            >
-              {data.map((_, i) => (
-                <Cell key={i} fill={colors[i % colors.length]} />
-              ))}
-            </Pie>
-            <Tooltip
-              contentStyle={{
-                backgroundColor: 'hsl(var(--popover))',
-                border: '1px solid hsl(var(--border))',
-                borderRadius: 'var(--radius)',
-                fontFamily: 'var(--font-jetbrains)',
-                fontSize: '12px',
-              }}
-              formatter={(value: number) => [`${value}%`, 'Allocation']}
-            />
-          </PieChart>
-        </ResponsiveContainer>
+        <PieChart width={220} height={220}>
+          <Pie
+            data={data}
+            dataKey="percentage"
+            nameKey="label"
+            cx="50%"
+            cy="50%"
+            innerRadius={50}
+            outerRadius={90}
+            paddingAngle={2}
+            stroke="hsl(var(--background))"
+            strokeWidth={2}
+          >
+            {data.map((_, i) => (
+              <Cell key={i} fill={colors[i % colors.length]} />
+            ))}
+          </Pie>
+          <Tooltip
+            contentStyle={{
+              backgroundColor: 'hsl(var(--popover))',
+              border: '1px solid hsl(var(--border))',
+              borderRadius: 'var(--radius)',
+              fontFamily: 'var(--font-jetbrains)',
+              fontSize: '12px',
+            }}
+            formatter={(value: number) => [`${value}%`, 'Allocation']}
+          />
+        </PieChart>
       </div>
       <div className="flex-1">
         <ul className="space-y-2">

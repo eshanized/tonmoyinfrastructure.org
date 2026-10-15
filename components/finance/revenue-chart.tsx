@@ -6,11 +6,11 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  ResponsiveContainer,
   Cell,
 } from 'recharts';
 import type { RevenueStream } from '@/lib/types';
 import type { SupportedCurrency } from '@/lib/portfolio-economics/decimal';
+import { useContainerWidth } from '@/components/shared/use-container-width';
 
 interface RevenueChartProps {
   data: RevenueStream[];
@@ -34,6 +34,8 @@ function formatChartValue(value: number, symbol: string, currency?: SupportedCur
 }
 
 export function RevenueChart({ data, currencySymbol, currency = 'INR' }: RevenueChartProps) {
+  const { containerRef, width: containerWidth } = useContainerWidth(600);
+
   const chartData = data.map((d) => ({
     ...d,
     label: d.label.length > 25 ? d.label.slice(0, 25) + '...' : d.label,
@@ -42,56 +44,56 @@ export function RevenueChart({ data, currencySymbol, currency = 'INR' }: Revenue
   const isSouthAsian = currency === 'INR' || currency === 'BDT' || currencySymbol === '₹' || currencySymbol === '৳';
 
   return (
-    <div className="h-[300px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          data={chartData}
-          layout="vertical"
-          margin={{ top: 8, right: 16, bottom: 8, left: 120 }}
-        >
-          <XAxis
-            type="number"
-            tickFormatter={(v) => formatChartValue(v, currencySymbol, currency)}
-            stroke="hsl(var(--muted-foreground))"
-            fontSize={11}
-            fontFamily="var(--font-jetbrains)"
-          />
-          <YAxis
-            type="category"
-            dataKey="label"
-            stroke="hsl(var(--muted-foreground))"
-            fontSize={11}
-            fontFamily="var(--font-jetbrains)"
-            width={120}
-            tickLine={false}
-            axisLine={false}
-          />
-          <Tooltip
-            cursor={{ fill: 'hsl(var(--muted) / 0.3)' }}
-            contentStyle={{
-              backgroundColor: 'hsl(var(--popover))',
-              border: '1px solid hsl(var(--border))',
-              borderRadius: 'var(--radius)',
-              fontFamily: 'var(--font-jetbrains)',
-              fontSize: '12px',
-            }}
-            formatter={(value: number) => [
-              isSouthAsian
-                ? `${currencySymbol}${(value / 100000).toFixed(2)} lakh`
-                : `${currencySymbol}${Math.round(value).toLocaleString('en-US')}`,
-              'Revenue',
-            ]}
-          />
-          <Bar dataKey="amount" radius={[0, 2, 2, 0]}>
-            {chartData.map((_, i) => (
-              <Cell
-                key={i}
-                fill={i === 0 ? 'hsl(var(--brand))' : 'hsl(var(--chart-2))'}
-              />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
+    <div ref={containerRef} className="h-[300px] w-full min-w-0 overflow-hidden">
+      <BarChart
+        width={containerWidth}
+        height={300}
+        data={chartData}
+        layout="vertical"
+        margin={{ top: 8, right: 16, bottom: 8, left: 120 }}
+      >
+        <XAxis
+          type="number"
+          tickFormatter={(v) => formatChartValue(v, currencySymbol, currency)}
+          stroke="hsl(var(--muted-foreground))"
+          fontSize={11}
+          fontFamily="var(--font-jetbrains)"
+        />
+        <YAxis
+          type="category"
+          dataKey="label"
+          stroke="hsl(var(--muted-foreground))"
+          fontSize={11}
+          fontFamily="var(--font-jetbrains)"
+          width={120}
+          tickLine={false}
+          axisLine={false}
+        />
+        <Tooltip
+          cursor={{ fill: 'hsl(var(--muted) / 0.3)' }}
+          contentStyle={{
+            backgroundColor: 'hsl(var(--popover))',
+            border: '1px solid hsl(var(--border))',
+            borderRadius: 'var(--radius)',
+            fontFamily: 'var(--font-jetbrains)',
+            fontSize: '12px',
+          }}
+          formatter={(value: number) => [
+            isSouthAsian
+              ? `${currencySymbol}${(value / 100000).toFixed(2)} lakh`
+              : `${currencySymbol}${Math.round(value).toLocaleString('en-US')}`,
+            'Revenue',
+          ]}
+        />
+        <Bar dataKey="amount" minPointSize={0} radius={[0, 2, 2, 0]}>
+          {chartData.map((_, i) => (
+            <Cell
+              key={i}
+              fill={i === 0 ? 'hsl(var(--brand))' : 'hsl(var(--chart-2))'}
+            />
+          ))}
+        </Bar>
+      </BarChart>
     </div>
   );
 }
