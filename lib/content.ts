@@ -1043,6 +1043,187 @@ M31Entropy is an experimental architecture exploration investigating large-vocab
 The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entropy](https://huggingface.co/eshanized/M31Entropy).`,
     updatedAt: '2026-09-08',
   },
+  {
+    slug: 'runstead',
+    title: 'Runstead',
+    seoTitle: 'Runstead — Modern Operating System for Hosting Businesses | TIV Venture',
+    seoDescription:
+      'Runstead is a modern SaaS operating system for hosting businesses developed by Tonmoy Infrastructure. Unifying client CRM, automated billing, service provisioning, DNS, and white-label storefronts.',
+    type: 'software',
+    productStatus: 'preview',
+    releaseStatus: 'pre-release',
+    developmentStage: 'active',
+    status: 'Development',
+    category: 'Software',
+    shortDescription:
+      'Modern operating system and automation platform for web hosting businesses.',
+    description:
+      'Runstead is a modern operating system for hosting businesses developed by Tonmoy Infrastructure & Vision. It unifies customer management, product catalogs, recurring billing, service lifecycle provisioning, domain and DNS operations, multi-channel ticketing, and white-label storefronts into a single cohesive platform.',
+    version: '0.2.0-dev',
+    releaseDate: '2026-10-15',
+    featured: false,
+    technology: [
+      'Next.js 15',
+      'TypeScript',
+      'PostgreSQL',
+      'Prisma ORM',
+      'Row-Level Security (RLS)',
+      'Tailwind CSS',
+      'Radix UI',
+      'Recharts',
+    ],
+    repository: 'https://github.com/eshanized/Runstead',
+    documentation: '/projects/runstead',
+    website: 'https://runstead.tonmoyinfrastructure.org/',
+    license: 'Commercial Venture / Proprietary',
+    artifactType: 'Software Platform',
+    owner: 'eshanized',
+    organization: 'Tonmoy Infrastructure & Vision',
+    affiliation: 'TIV',
+    sources: [
+      {
+        platform: 'github',
+        type: 'repository',
+        url: 'https://github.com/eshanized/Runstead',
+        label: 'GitHub Repository',
+        affiliation: 'TIV',
+        organization: 'Tonmoy Infrastructure & Vision',
+        verified: true,
+      },
+      {
+        platform: 'documentation',
+        type: 'documentation',
+        url: '/projects/runstead',
+        label: 'Venture Profile & Investment Case',
+        affiliation: 'TIV',
+        organization: 'Tonmoy Infrastructure & Vision',
+        verified: true,
+      },
+    ],
+    problem:
+      'The global web hosting operations market is dominated by legacy, monolithic software architectures—principally WHMCS—and fragmented third-party utilities. Operating an independent hosting company today requires stitching together disconnected portals: separate tools for billing and invoices, unintegrated ticketing panels, manual registrar dashboards for domain registration, disjointed DNS consoles, and antiquated customer self-service portals with poor mobile experiences. This fragmentation leads to high integration maintenance, manual reconciliation overhead, security vulnerabilities, and elevated operational costs for emerging hosting entrepreneurs.',
+    approach:
+      'Runstead replaces legacy tool fragmentation with a unified, developer-friendly architecture following three phased horizons: Horizon A delivers the commercial operating platform (CRM, catalog, recurring billing, tickets, storefronts); Horizon B establishes resilient automation and connectors (cPanel/WHM, Plesk, DirectAdmin, registrar EPP APIs, Stripe, automated ACME SSL); and Horizon C charts a path toward owned infrastructure (hypervisors, native control panels, Anycast DNS). Development proceeds with strict multi-tenant Row-Level Security, transaction-scoped database contexts, and verifiable CI testing.',
+    architecture:
+      'Runstead is built on Next.js App Router with strict TypeScript, backed by PostgreSQL with database-enforced Row-Level Security (RLS) across all tenant-owned tables. The platform implements least-privilege role separation (runstead_admin vs runstead_app) and transaction-local tenant context binding (withTenantContext), preventing tenant cross-talk. An asynchronous job queue with exponential backoff handles upstream provisioning and registrar actions. In addition to the production persistence schema, the repository features an offline browser demonstration layer with deterministic seed fixtures and 77 automated tests.',
+    features: [
+      'Multi-tenant client CRM with organization hierarchies and referential integrity',
+      'Multi-cycle product catalog (monthly, annual, biennial) with resource limits and setup fees',
+      'Order lifecycle state machine (draft → pending_payment → processing → active)',
+      'Automated invoicing engine with multi-currency, tax calculation, and payment reconciliation',
+      'Hosting service fleet management with suspend, restore, upgrade, and cancellation controls',
+      'RFC-compliant DNS zone editor supporting A, AAAA, CNAME, MX, TXT, and CAA records',
+      'Multi-channel support ticketing queue with customer threads and private internal staff notes',
+      'Real-time WYSIWYG white-label storefront customizer with live desktop/tablet/mobile preview',
+      'Self-service customer portal for account management, service monitoring, and invoice payments',
+      'Executive analytics telemetry tracking MRR, ARPU, customer retention, and service distributions',
+      'Multi-tenant platform operator console for fleet oversight and quota enforcement',
+      'PostgreSQL Row-Level Security (RLS) guaranteeing strict tenant data isolation at the database level',
+    ],
+    roadmap: [
+      { item: 'Phase 0: Project Charter & Verification Baseline', done: true },
+      { item: 'Phase 1: Dependency Hardening & Security Audit Baseline', done: true },
+      { item: 'Phase 2: Relational PostgreSQL Schema & Multi-Tenant RLS Enforcement', done: true },
+      { item: 'Milestone 4: Upstream cPanel/WHM XML-API & Plesk Provisioning Connectors', done: false },
+      { item: 'Milestone 5: Domain Registrar API Integrations (EPP) & Anycast DNS Sync', done: false },
+      { item: 'Milestone 6: Production Stripe Webhook Settlement & Hardened v1.0 Release', done: false },
+    ],
+    relatedProjects: ['openmail', 'mercura', 'm31a', 'octate'],
+    keywords: [
+      'Runstead',
+      'hosting business software',
+      'WHMCS alternative',
+      'hosting billing system',
+      'web hosting automation',
+      'cPanel integration',
+      'multi-tenant SaaS',
+      'TIV venture',
+      'hosting operating system',
+    ],
+    updatedAt: '2026-10-15',
+    content: `## Executive Overview
+
+Runstead is a modern, unified operating system engineered specifically for hosting businesses. Developed under Tonmoy Infrastructure & Vision (TIV), Runstead addresses the operational friction created by fragmented, legacy software ecosystems (such as WHMCS, legacy billing portals, and manual registrar consoles) by providing a single, cohesive, developer-friendly control plane.
+
+> [!IMPORTANT]
+> **Investor & Commercial Demonstration Notice**: Runstead is currently an active venture in development. The repository provides an interactive browser-first demonstration of the platform alongside a production-grade relational PostgreSQL schema with Row-Level Security (RLS) completed in Phase 2. Live payment processing via credit card networks, physical hypervisor provisioning, and public DNS root updates are simulated within the demo environment.
+
+---
+
+## The Three Architectural Horizons
+
+Runstead enforces clear architectural boundaries across three evolutionary stages:
+
+### Horizon A: Hosting-Business Operating Platform (Verified Demonstration & Baseline)
+The commercial and business management foundation:
+- Multi-tenant client CRM and organization accounts.
+- Flexible multi-cycle catalog (Shared, VPS, Dedicated, Domains, Add-ons) with resource quotas.
+- Order processing state machine (\`awaiting_payment\` → \`paid\` → \`provisioning\` → \`active\`).
+- Automated invoice calculation, tax rates, line items, and payment reconciliation.
+- Multi-channel support ticket queues with customer conversation threads and internal notes.
+- Real-time WYSIWYG storefront visual builder with live multi-viewport preview.
+- Client self-service portal for services, domains, invoices, and helpdesk.
+
+### Horizon B: Automation & Integration Layer (In Progress / Milestones 4–5)
+The connector and orchestration layer linking business events to external providers:
+- Asynchronous resilient job queue with exponential backoff and dead-letter queues.
+- Standardized Driver Adapters for upstream control panels:
+  - cPanel / WHM (XML-API / UAPI)
+  - Plesk (REST API)
+  - DirectAdmin (CMD_API)
+- Registrar API Connectors for automated domain registrations, transfers, and nameservers (ResellerClub, Enom, Namecheap).
+- Payment Gateway Integration: Stripe Checkout, Payment Intents, and Webhook settlement.
+- DNS Edge Synchronization: Cloudflare and PowerDNS API connectors.
+- Automated Let's Encrypt / ACME SSL certificate issuance and renewal.
+
+### Horizon C: Owned Infrastructure Platform (Long-Term Roadmap)
+Future sovereign infrastructure capabilities developed by Tonmoy Infrastructure:
+- Native bare-metal hypervisor node orchestration (KVM/QEMU, microVMs).
+- Native containerized shared hosting control panel (eliminating third-party panel licensing).
+- Authoritative globally distributed Anycast DNS network.
+- Deduplicated block and object backup storage engine with point-in-time recovery.
+
+---
+
+## Technical Stack & Architecture
+
+- **Frontend & App Framework**: Next.js 15+ (App Router with React Server Components & Client Boundaries)
+- **Programming Language**: Strict TypeScript throughout
+- **Database & Persistence**: PostgreSQL 16+ with Prisma ORM 6.12.0
+- **Multi-Tenant Security**: PostgreSQL Row-Level Security (\`FORCE ROW LEVEL SECURITY\`) enforced across all 18 tenant-owned tables with transaction-scoped tenant context (\`withTenantContext\`)
+- **Styling & Design Tokens**: Tailwind CSS with dark surfaces and TIV coral-red accent (\`#f43f5e\` / \`#E5484D\`)
+- **UI Components**: Accessible primitives built on Radix UI
+- **Visualizations**: Recharts for MRR trends, client growth, sales distribution, and resource metrics
+- **Offline Demonstration Engine**: Typed Demo State Provider with localStorage persistence and deterministic seed fixtures, verified with 77 automated tests.
+
+---
+
+## Indicative Commercial Model
+
+Runstead's commercial pricing is structured around transparent, predictable SaaS tiers for hosting entrepreneurs:
+
+| Tier | Listed Monthly Price | Target Reseller Profile | Active Service Capacity |
+| :--- | :---: | :--- | :--- |
+| **Sandbox** | **Free ($0)** | Developers, evaluators, and pre-launch testing | Up to 3 active clients |
+| **Launch** | **US$49** | Freelance web designers & boutique agencies | Up to 50 active clients |
+| **Growth** | **US$149** | Independent hosting entrepreneurs & regional hosts | Up to 250 active clients |
+| **Scale** | **US$399** | Growing hosting brands requiring multi-server fleet automation | Up to 1,000 active clients |
+| **Enterprise** | **Custom** | Dedicated infrastructure, custom SLAs, and high-volume billing | Unlimited clients |
+
+> [!NOTE]
+> **Strict Billing Separation**: The tiers above represent Runstead's indicative subscription fees charged to hosting businesses. Revenue generated by hosting businesses from selling hosting, domains, or email to their downstream end-users belongs entirely to those businesses and is never counted as Runstead or TIV revenue.
+
+---
+
+## Production Readiness Blockers & Next Milestones
+
+To transition from the current verified demonstration to production availability, the following deliverables are prioritized:
+1. **Upstream cPanel/WHM Client**: Real REST API integration for automated account creation, suspension, and deletion.
+2. **Persistent Background Task Queue**: BullMQ / Redis job queue for resilient provisioning retries and failure isolation.
+3. **Stripe Webhook Settlement**: Live webhook signature verification and automatic invoice state transitions.
+4. **Registrar EPP Connectors**: Real domain registration and DNS record synchronization via provider APIs.
+5. **Session Authentication & MFA**: Production session token issuance, email verification, and TOTP multi-factor authentication.`,
+  },
 ];
 
 // Validate at build/runtime with Zod
@@ -1866,6 +2047,20 @@ const repos: Repo[] = [
     affiliation: 'TIV',
     parameterCount: '314M',
   },
+  {
+    slug: 'runstead',
+    name: 'Runstead',
+    description: 'Modern operating system for hosting businesses: client CRM, automated billing, DNS, and white-label storefronts.',
+    language: 'TypeScript',
+    license: 'Commercial Venture / Proprietary',
+    status: 'Development',
+    repository: 'https://github.com/eshanized/Runstead',
+    documentation: '/projects/runstead',
+    latestRelease: 'v0.2.0-dev',
+    platform: 'github',
+    artifactType: 'Software Platform',
+    affiliation: 'TIV',
+  },
 ];
 
 export function getRepos(): Repo[] {
@@ -2073,6 +2268,25 @@ export function getTechnicalArtifacts(): TechnicalArtifact[] {
       author: 'eshanized',
       affiliation: 'Founder',
       tags: ['SLM', 'Fine-Tuning', 'Colab'],
+      verified: true,
+    },
+    {
+      slug: 'runstead',
+      name: 'Runstead',
+      description: 'Modern operating system for hosting businesses: client CRM, automated billing, DNS, and white-label storefronts.',
+      artifactType: 'Software Platform',
+      platform: 'github',
+      platformType: 'repository',
+      status: 'Development',
+      language: 'TypeScript',
+      license: 'Commercial Venture / Proprietary',
+      url: 'https://github.com/eshanized/Runstead',
+      documentation: '/projects/runstead',
+      author: 'eshanized',
+      organization: 'Tonmoy Infrastructure & Vision',
+      affiliation: 'TIV',
+      latestRelease: 'v0.2.0-dev',
+      tags: ['Hosting OS', 'SaaS', 'Billing', 'cPanel', 'DNS', 'Prisma RLS'],
       verified: true,
     },
   ];

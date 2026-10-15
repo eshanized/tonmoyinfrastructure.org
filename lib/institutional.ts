@@ -243,6 +243,30 @@ const rawReleases: Release[] = [
       },
     ],
   },
+  {
+    slug: 'runstead-0-2-0-dev',
+    project: 'runstead',
+    version: '0.2.0-dev',
+    date: '2026-10-15',
+    status: 'Pre-release',
+    summary:
+      'Phase 2 delivery: Server-side PostgreSQL schema with Prisma ORM 6.12.0 and Row-Level Security (RLS) across all 18 tenant tables.',
+    notes: [
+      {
+        type: 'Added',
+        items: [
+          'PostgreSQL relational schema modeling 19 domain entities in prisma/schema.prisma',
+          'Enforced ENABLE and FORCE ROW LEVEL SECURITY across all 18 tenant-owned tables',
+          'Transaction-scoped tenant context (withTenantContext) preventing connection pool leakage',
+          'Role separation: runstead_admin (migration superuser) and runstead_app (NOSUPERUSER, NOBYPASSRLS)',
+          '25 automated database RLS integration tests in tests/db-rls.test.ts',
+          'Interactive browser demonstration layer with 77 passing automated unit and integration tests',
+          'Full RFC-compliant DNS zone editor supporting A, AAAA, CNAME, MX, TXT, and CAA records',
+          'Multi-tenant platform operator console for reseller fleet monitoring and quota enforcement',
+        ],
+      },
+    ],
+  },
 ];
 
 const releases: Release[] = validateReleases(

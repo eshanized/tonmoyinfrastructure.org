@@ -1313,4 +1313,18 @@ export const initialStrategicAssessments: StrategicAssessment[] = [
     notes:
       'Large vocabulary tokenizer scaling exploration. Informs tokenizer density and AST embedding architectures across M31.',
   },
+  {
+    id: 'strat-runstead',
+    projectId: 'runstead',
+    assessmentDate: '2026-10-15',
+    assessor: 'Eshan Roy (Founder)',
+    strategicImportance: 4,
+    technicalDifferentiation: 4,
+    infrastructureRelevance: 5,
+    researchSignificance: 2,
+    revenuePotential: 5,
+    ecosystemImportance: 4,
+    notes:
+      'Commercial hosting-business operating platform venture. Modern SaaS and automation layer for web hosting resellers, bridging TIV sovereign infrastructure with commercial hosting operations.',
+  },
 ];

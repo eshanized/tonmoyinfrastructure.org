@@ -50,6 +50,7 @@ DirectorySlash Off
     RewriteRule ^mercura/?$ https://%{HTTP_HOST}/projects/mercura/ [R=301,L]
     RewriteRule ^m31a/?$ https://%{HTTP_HOST}/projects/m31a/ [R=301,L]
     RewriteRule ^octate/?$ https://%{HTTP_HOST}/projects/octate/ [R=301,L]
+    RewriteRule ^runstead/?$ https://%{HTTP_HOST}/projects/runstead/ [R=301,L]
     RewriteRule ^m31genesis/?$ https://%{HTTP_HOST}/projects/m31genesis/ [R=301,L]
     RewriteRule ^m31tesla/?$ https://%{HTTP_HOST}/projects/m31tesla/ [R=301,L]
     RewriteRule ^m31entropy/?$ https://%{HTTP_HOST}/projects/m31entropy/ [R=301,L]
