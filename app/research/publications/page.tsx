@@ -1,34 +1,68 @@
-import Link from 'next/link';
 import { PageHeader } from '@/components/shared/page-header';
-import { StatusBadge } from '@/components/shared/status-badge';
 import { Breadcrumbs } from '@/components/shared/breadcrumbs';
-import { getPublications } from '@/lib/content';
-import { Reveal, StaggerContainer, StaggerItem } from '@/components/shared/motion';
-import { generatePageMetadata } from '@/lib/seo';
+import { getPublications } from '@/lib/publications/pipeline';
+import { FeaturedPublication } from '@/components/publications/featured-publication';
+import { PublicationCatalog } from '@/components/publications/publication-catalog';
+import { generatePageMetadata, buildCanonicalUrl } from '@/lib/seo';
 import { generatePageGraph } from '@/lib/structured-data';
 import { JsonLd } from '@/components/shared/json-ld';
+import type { Metadata } from 'next';
+import type { Publication, PublicationStatus } from '@/lib/publications/types';
 
-export const metadata = generatePageMetadata({
-  title: 'Publications & Technical Papers',
+export const metadata: Metadata = generatePageMetadata({
+  title: 'Publications & Technical Papers — Tonmoy Infrastructure and Vision',
   description:
-    'TIV research publications, technical reports, empirical findings, and peer-reviewed software engineering manuscripts.',
+    'Institutional research library of Tonmoy Infrastructure and Vision (TIV). Research papers, technical reports, empirical findings, and software engineering manuscripts.',
   path: '/research/publications',
-  keywords: ['TIV publications', 'research papers', 'technical reports', 'software engineering research'],
+  overrideTitle: true,
+  keywords: [
+    'TIV publications',
+    'research papers',
+    'technical reports',
+    'software engineering research',
+    'autonomous systems',
+    'Tonmoy Infrastructure and Vision',
+  ],
 });
 
 export default function PublicationsPage() {
-  const publications = getPublications();
+  const publications: Publication[] = getPublications();
+  const featuredPub = publications.find((p: Publication) => p.featured);
+
+  const areas: string[] = Array.from(new Set(publications.map((p: Publication) => p.area))).sort();
+  const types: string[] = Array.from(new Set(publications.map((p: Publication) => p.type || 'Research Paper'))).sort();
+  const statuses: PublicationStatus[] = Array.from(new Set(publications.map((p: Publication) => p.status))).sort();
+
+  const publishedCount = publications.filter((p: Publication) => p.status === 'Published').length;
+  const draftCount = publications.filter((p: Publication) => p.status === 'Draft').length;
+  const experimentalCount = publications.filter((p: Publication) => p.status === 'Experimental').length;
+
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'Research', path: '/research' },
+    { name: 'Publications', path: '/research/publications' },
+  ];
+
+  const itemListSchema = {
+    '@type': 'ItemList',
+    name: 'TIV Research Publications',
+    description: 'Catalog of publications, technical reports, and experimental findings from TIV Research.',
+    numberOfItems: publications.length,
+    itemListElement: publications.map((pub: Publication, idx: number) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: pub.title,
+      url: buildCanonicalUrl(`/research/publications/${pub.slug}`),
+    })),
+  };
 
   const pageGraph = generatePageGraph({
-    title: 'Publications & Technical Papers — Tonmoy Infrastructure and Vision',
-    description:
-      'TIV research publications, technical reports, empirical findings, and peer-reviewed software engineering manuscripts.',
-    path: '/research/publications',
-    breadcrumbs: [
-      { name: 'Home', item: '/' },
-      { name: 'Research', item: '/research' },
-      { name: 'Publications', item: '/research/publications' },
-    ],
+    pagePath: '/research/publications',
+    pageTitle: 'Publications & Technical Papers — Tonmoy Infrastructure and Vision',
+    pageDescription:
+      'Institutional research library of Tonmoy Infrastructure and Vision (TIV). Research papers, technical reports, empirical findings, and software engineering manuscripts.',
+    breadcrumbs,
+    entities: [itemListSchema],
   });
 
   return (
@@ -36,13 +70,14 @@ export default function PublicationsPage() {
       <JsonLd data={pageGraph} />
       <PageHeader
         index="PUBLICATIONS"
-        label="Research"
-        title="Publications."
-        description="Research papers, technical reports, and experimental findings from TIV's research activities."
+        label="Research Library"
+        title="Institutional research and technical papers."
+        description="We conduct primary research into artificial intelligence, runtime governance, distributed systems, fiber optics, and sovereign infrastructure — and publish findings openly with full methodological transparency."
       />
 
-      <section className="border-b border-border">
-        <div className="tiv-container py-12">
+      {/* Breadcrumbs and Stats bar */}
+      <section className="border-b border-border bg-secondary/30">
+        <div className="tiv-container py-8">
           <Breadcrumbs
             items={[
               { label: 'Home', href: '/' },
@@ -50,46 +85,57 @@ export default function PublicationsPage() {
               { label: 'Publications' },
             ]}
           />
+
+          <div className="mt-6 grid grid-cols-2 gap-4 border border-border bg-card p-4 sm:grid-cols-4">
+            <div>
+              <span className="tiv-meta text-[10px] block mb-1">Total Catalogue</span>
+              <span className="font-mono text-xl font-bold text-foreground">
+                {publications.length}
+              </span>
+            </div>
+            <div>
+              <span className="tiv-meta text-[10px] block mb-1">Published</span>
+              <span className="font-mono text-xl font-bold text-emerald-500">
+                {publishedCount}
+              </span>
+            </div>
+            <div>
+              <span className="tiv-meta text-[10px] block mb-1">Drafts in Progress</span>
+              <span className="font-mono text-xl font-bold text-amber-500">
+                {draftCount}
+              </span>
+            </div>
+            <div>
+              <span className="tiv-meta text-[10px] block mb-1">Active Areas</span>
+              <span className="font-mono text-xl font-bold text-brand">
+                {areas.length}
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section>
-        <div className="tiv-container py-16 md:py-20">
-          {publications.length === 0 ? (
-            <div className="border border-border bg-card p-12 text-center">
-              <p className="text-sm text-muted-foreground">
-                No publications have been published yet. Research is in progress.
-              </p>
-            </div>
-          ) : (
-            <StaggerContainer className="space-y-px" stagger={0.08}>
-              {publications.map((pub) => (
-                <StaggerItem key={pub.slug}>
-                  <Link
-                    href={`/research/publications/${pub.slug}`}
-                    className="group relative grid grid-cols-1 gap-4 border border-border bg-card p-6 transition-colors hover:border-brand/40 md:grid-cols-[140px_120px_1fr_auto] md:items-center"
-                  >
-                    <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {pub.identifier}
-                    </span>
-                    <StatusBadge status={pub.status} />
-                    <div>
-                      <h3 className="font-display text-lg transition-colors group-hover:text-brand">
-                        {pub.title}
-                      </h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {pub.area} · v{pub.version} · {pub.date}
-                      </p>
-                    </div>
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {pub.authors.join(', ')}
-                    </span>
-                  </Link>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          )}
+      {/* Optional Featured Publication */}
+      {featuredPub && <FeaturedPublication publication={featuredPub} />}
+
+      {/* Main Catalogue Section */}
+      <section className="py-16 md:py-24">
+        <div className="tiv-container">
+          <div className="mb-8">
+            <h2 className="font-display text-2xl md:text-3xl tracking-tight text-foreground">
+              All Publications
+            </h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Filter by research domain, publication type, or status.
+            </p>
+          </div>
+
+          <PublicationCatalog
+            initialPublications={publications}
+            areas={areas}
+            types={types}
+            statuses={statuses}
+          />
         </div>
       </section>
     </>

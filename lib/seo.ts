@@ -8,6 +8,7 @@ import type {
   InfrastructureService,
 } from '@/lib/types';
 import type { Person } from '@/lib/people';
+import { getAuthorNames } from '@/lib/publications/citations';
 
 /**
  * Normalizes a route path into an absolute canonical URL using the production site URL.
@@ -193,25 +194,33 @@ export function generateProjectMetadata(
  */
 export function generatePublicationMetadata(publication: Publication): Metadata {
   const canonicalPath = `/research/publications/${publication.slug}`;
-  const title = `${publication.title} — TIV Research`;
-  const ogImage = `${siteConfig.url}${siteConfig.defaultOgImage}`;
+  const title = publication.seoTitle || `${publication.title} — TIV Research`;
+  const description = publication.seoDescription || publication.abstract;
+  const ogImage = publication.ogImage || `${siteConfig.url}${siteConfig.defaultOgImage}`;
+  const authorNames = getAuthorNames(publication);
 
   return generatePageMetadata({
     title,
-    description: publication.abstract,
+    description,
     path: canonicalPath,
+    canonical: publication.canonicalUrl,
     ogType: 'article',
     ogImage,
-    publishedTime: publication.date,
-    authors: publication.authors,
+    noIndex: publication.noIndex || false,
+    publishedTime: publication.publicationDate || publication.date,
+    modifiedTime: publication.updatedAt,
+    authors: authorNames,
     overrideTitle: true,
-    keywords: [
-      publication.area,
-      publication.identifier,
-      'TIV Research',
-      'Tonmoy Infrastructure and Vision',
-      ...publication.authors,
-    ],
+    keywords: publication.keywords && publication.keywords.length > 0
+      ? publication.keywords
+      : [
+          publication.area,
+          publication.identifier,
+          'TIV Research',
+          'Tonmoy Infrastructure and Vision',
+          ...authorNames,
+          ...(publication.tags || []),
+        ],
   });
 }
 

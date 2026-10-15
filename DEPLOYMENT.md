@@ -71,18 +71,22 @@ The core platform is intentionally static and does not depend on secret database
 Before deploying changes to production, execute the automated validation suite:
 
 ```bash
-# 1. Type check all TypeScript files
+# 1. Compile MDX publications and generate manifest
+node scripts/compile-publications.mjs
+
+# 2. Type check all TypeScript files (auto-runs publication compiler)
 npm run typecheck
 
-# 2. Verify code styling and lint rules
+# 3. Verify code styling and lint rules
 npm run lint
 
-# 3. Verify test assertions (e.g. status integrity)
+# 4. Verify test assertions (status integrity, publications MDX suite)
 npm test
 
-# 4. Perform full production build
+# 5. Perform full production build (compiles publications, builds static export to out/)
 npm run build
 ```
+
 
 ---
 

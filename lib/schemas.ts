@@ -286,31 +286,85 @@ export const FinancialReportSchema = z.object({
 export type FinancialReportInput = z.infer<typeof FinancialReportSchema>;
 
 // ─── Research Schema ────────────────────────────────────────────────
-export const PublicationStatusSchema = z.enum([
-  'Draft',
-  'Experimental',
-  'Published',
-  'Superseded',
-  'Archived',
-]);
+export {
+  PublicationStatusSchema,
+  PublicationAuthorSchema,
+  PublicationReferenceSchema,
+  PublicationSlugSchema,
+  PublicationFrontmatterSchema,
+} from '@/lib/publications/schema';
 
 export const PublicationSchema = z.object({
   slug: z.string().min(1),
   title: z.string().min(1),
   identifier: z.string().min(1),
-  authors: z.array(z.string()).min(1),
+  authors: z.array(z.union([
+    z.string().min(1),
+    z.object({
+      name: z.string().min(1),
+      affiliation: z.string().optional(),
+      role: z.string().optional(),
+      orcid: z.string().optional(),
+      url: z.string().optional(),
+      email: z.string().optional(),
+    }),
+  ])).min(1),
   abstract: z.string().min(1),
   publicationDate: z.string().min(1),
   date: z.string().min(1),
+  updatedAt: z.string().optional(),
   version: z.string().min(1),
-  status: PublicationStatusSchema,
+  status: z.enum(['Draft', 'Experimental', 'Published', 'Superseded', 'Archived']),
+  supersededBy: z.string().optional(),
+  type: z.string().optional().default('Research Paper'),
   area: z.string().min(1),
+  tags: z.array(z.string()).optional().default([]),
+  keywords: z.array(z.string()).optional().default([]),
+  featured: z.boolean().optional().default(false),
   project: z.string().optional(),
+  doi: z.string().optional(),
+  journal: z.string().optional(),
+  conference: z.string().optional(),
+  volume: z.union([z.string(), z.number()]).optional(),
+  issue: z.union([z.string(), z.number()]).optional(),
+  pages: z.string().optional(),
+  license: z.string().optional().default('CC-BY-4.0'),
   pdf: z.string().optional(),
   repository: z.string().optional(),
   dataset: z.string().optional(),
-  references: z.array(z.string()).optional(),
+  supplementaryFiles: z.array(z.object({
+    title: z.string().min(1),
+    url: z.string(),
+    description: z.string().optional(),
+    size: z.string().optional(),
+    format: z.string().optional(),
+  })).optional().default([]),
+  references: z.array(z.union([
+    z.string(),
+    z.object({
+      id: z.string().optional(),
+      title: z.string(),
+      authors: z.array(z.string()).optional(),
+      year: z.union([z.number(), z.string()]).optional(),
+      venue: z.string().optional(),
+      doi: z.string().optional(),
+      url: z.string().optional(),
+    }),
+  ])).optional().default([]),
+  canonicalUrl: z.string().optional(),
+  inLanguage: z.string().optional().default('en-US'),
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
+  ogImage: z.string().optional(),
+  noIndex: z.boolean().optional(),
   content: z.string().min(1),
+  toc: z.array(z.object({
+    id: z.string(),
+    text: z.string(),
+    level: z.number(),
+  })).optional().default([]),
+  readingTime: z.number().optional(),
+  filePath: z.string().optional(),
 });
 
 export type PublicationInput = z.infer<typeof PublicationSchema>;

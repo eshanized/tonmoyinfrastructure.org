@@ -3,12 +3,12 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && node scripts/postbuild.mjs",
+    "dev": "node scripts/compile-publications.mjs && next dev",
+    "build": "node scripts/compile-publications.mjs && next build && node scripts/postbuild.mjs",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit",
-    "test": "node --test tests/audit.test.mjs tests/portfolio-economics.test.mjs tests/seo-recovery.test.mjs tests/contact-delivery.test.mjs tests/status-telemetry.test.mjs tests/security-portfolio.test.mjs tests/navigation-accessibility.test.mjs tests/canonical-redirects.test.mjs tests/runstead.test.mjs"
+    "typecheck": "node scripts/compile-publications.mjs && tsc --noEmit",
+    "test": "node scripts/compile-publications.mjs && node --test tests/audit.test.mjs tests/portfolio-economics.test.mjs tests/seo-recovery.test.mjs tests/contact-delivery.test.mjs tests/status-telemetry.test.mjs tests/security-portfolio.test.mjs tests/navigation-accessibility.test.mjs tests/canonical-redirects.test.mjs tests/runstead.test.mjs tests/publications-mdx.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -55,6 +55,7 @@
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.1",
     "framer-motion": "^13.2.0",
+    "gray-matter": "^4.0.3",
     "input-otp": "^1.2.4",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.446.0",

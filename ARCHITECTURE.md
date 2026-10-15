@@ -98,3 +98,48 @@ The Portfolio Economics engine (`lib/portfolio-economics/` and `components/portf
 4. **Shared Cost Allocation**: Multi-project infrastructure costs require explicit allocation percentages that validate mathematically to 100% of the source cost without silent allocation.
 5. **Traceable Lineage & Confidence**: Every financial number links to a traceable source (invoice, timesheet, contract, or allocation memo) with an explicit confidence classification (Verified, Calculated, Allocated, Estimated, or Unverified). Missing data is preserved as "Not Tracked" rather than masked as ₹0.
 
+---
+
+## 7. Research Publication MDX Pipeline Architecture
+
+The publication pipeline transforms authored MDX files (`content/publications/*.mdx`) into a statically compiled, type-safe research library.
+
+```
+  [content/publications/*.mdx]
+               │
+               ▼
+  [scripts/compile-publications.mjs]
+       ├─ Duplicate Slug Detection
+       ├─ Frontmatter Zod Validation (strict ISO dates, safe URLs)
+       ├─ Table of Contents Extraction & Stable Anchor Generation
+       └─ Deterministic Newest-First Sorting
+               │
+               ▼
+  [lib/publications/manifest.json]  ◄─── (Single Source of Truth)
+               │
+       ┌───────┴──────────────────────────────┐
+       ▼                                      ▼
+  [lib/publications/pipeline.ts]         [lib/content.ts]
+       ├─ getAllPublications()                └─ getPublications()
+       ├─ getPublicationBySlug()
+       ├─ getPublicationSlugs()
+       └─ getFeaturedPublications()
+               │
+       ┌───────┴──────────────────────────────┬─────────────────────────┐
+       ▼                                      ▼                         ▼
+  [/research/publications]              [/research/publications/[slug]]   [app/sitemap.ts]
+  - Institutional hero                  - Breadcrumbs & academic header   - Canonical URLs
+  - Search & faceted filters (Client)   - Status banner (Draft notice)    - Verified dates
+  - Responsive card grid                - Abstract callout                - Static export
+                                        - MDXRenderer & TOC sidebar
+                                        - BibTeX / APA Citations
+                                        - ScholarlyArticle JSON-LD
+```
+
+### Key Architectural Guarantees
+1. **Single Source of Truth**: Publications exist only as MDX files in `content/publications/`. No secondary manual metadata arrays exist in `lib/content.ts`.
+2. **Client-Safe Boundaries**: Runtime modules imported by client components (e.g. `app/search/page.tsx`) do not access the Node `fs` or `path` APIs. All filesystem compilation occurs build-time into `manifest.json`.
+3. **Controlled Component Map**: No arbitrary HTML evaluation. Only explicitly approved academic primitives (`Figure`, `Callout`, `CodeBlock`, `ResearchTable`, `Reference`) are exposed.
+4. **Deterministic Static Export**: 100% of publication routes are pre-rendered into standalone static HTML (`out/research/publications/`) compatible with purely static hosting (NGINX, cPanel, GitHub Pages).
+
+

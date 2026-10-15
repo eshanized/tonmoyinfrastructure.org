@@ -1,0 +1,127 @@
+[
+  {
+    "slug": "autonomous-development-systems",
+    "title": "Towards Autonomous Development Systems: A Research Framework",
+    "identifier": "TIV-RES-2026-001",
+    "authors": [
+      {
+        "name": "Tonmoy Infrastructure and Vision",
+        "affiliation": "Jayapura Sovereign Facility",
+        "url": "https://tonmoyinfrastructure.org"
+      }
+    ],
+    "abstract": "We propose a research framework for autonomous development systems — AI systems capable of understanding, maintaining, and operating codebases. We define the problem space, identify key challenges, and outline a research agenda.",
+    "publicationDate": "2026-09-12",
+    "date": "2026-09-12",
+    "version": "0.1",
+    "status": "Draft",
+    "type": "Research Framework",
+    "area": "Artificial Intelligence",
+    "tags": [
+      "autonomous systems",
+      "runtime governance",
+      "systems engineering",
+      "software agents"
+    ],
+    "keywords": [
+      "autonomous coding agents",
+      "M31A runtime",
+      "deterministic policy gates",
+      "software engineering research"
+    ],
+    "featured": true,
+    "project": "m31a",
+    "license": "CC-BY-4.0",
+    "pdf": "/publications/autonomous-development-systems.pdf",
+    "repository": "https://github.com/eshanized/M31A",
+    "supplementaryFiles": [],
+    "references": [
+      {
+        "id": "1",
+        "title": "M31A: High-Assurance Rust-Native Autonomous Software Engineering Runtime",
+        "authors": [
+          "Eshan Roy"
+        ],
+        "year": 2026,
+        "venue": "Tonmoy Infrastructure and Vision Technical Specifications",
+        "url": "https://m31a.tonmoyinfrastructure.org/"
+      },
+      {
+        "id": "2",
+        "title": "OWASP Application Security Verification Standard (ASVS) 4.0",
+        "authors": [
+          "OWASP Foundation"
+        ],
+        "year": 2021,
+        "venue": "OWASP Foundation Standards",
+        "url": "https://owasp.org/www-project-application-security-verification-standard/"
+      },
+      {
+        "id": "3",
+        "title": "Tree-sitter: An Incremental Parsing System for Programming Tools",
+        "authors": [
+          "Max Brunsfeld"
+        ],
+        "year": 2018,
+        "venue": "GitHub Engineering",
+        "url": "https://tree-sitter.github.io/"
+      }
+    ],
+    "inLanguage": "en-US",
+    "content": "\n## Abstract\n\nWe propose a research framework for autonomous development systems — AI systems capable of understanding, maintaining, and operating codebases. We define the problem space, identify key challenges, and outline a research agenda focused on deterministic runtime governance, verification gates, and bounded confinement.\n\n<Callout type=\"warning\" title=\"Draft Research Framework\">\n  This document represents an early-stage research framework (v0.1). Methodological formalizations and verification metrics are under active development. No peer-reviewed experimental results or verified production benchmarks are claimed in this draft.\n</Callout>\n\n## Problem Space & Motivation\n\nAutonomous coding agents traditionally delegate execution authority directly to non-deterministic large language models. In practice, this delegation introduces critical systemic vulnerabilities into the software development lifecycle:\n\n1. **Catastrophic Execution Drift**: Language models lack continuous state awareness across deep multi-file refactors, resulting in hallucinations, regressions, and incomplete edits.\n2. **Unconstrained Shell Execution**: Agent frameworks that allow models to invoke arbitrary shell commands without pre-execution validation risk destructive side effects and system corruption.\n3. **Absence of Deterministic Verification**: Traditional agent architectures rely on model self-reporting (\"I have completed the task\") rather than cryptographic, reproducible compiler and test suite proofs.\n\nTo address these vulnerabilities, our research proposes a strict architectural separation:\n\n> **\"The model proposes. The runtime decides.\"**\n\nUnder this principle, generative language models are treated as untrusted reasoning components whose role is strictly limited to proposing candidate structured intents. The surrounding deterministic runtime maintains exclusive ownership over scheduling, filesystem mutations, network egress, process supervision, and completion verification.\n\n## Core Architectural Invariants\n\nOur framework structures autonomous development environments into three non-negotiable operational boundaries:\n\n### 1. The Intelligence Boundary\n\nThe intelligence boundary isolates model inference from execution state. Candidate modifications are parsed as structured abstract syntax transformations and validated against pre-execution constraints before any files on disk are touched.\n\n<Figure\n  src=\"/publications/autonomous-development-systems-architecture.svg\"\n  alt=\"Autonomous Development Systems Core Kernel Boundaries\"\n  caption=\"Three-tier operational confinement isolating model inference, side-effect gating, and completion verification.\"\n  number=\"1\"\n></Figure>\n\n### 2. The Policy Evaluation Gate\n\nEvery requested side effect (file writes, child process creation, network sockets, git operations) must pass through a multi-stage deterministic policy evaluation gate. The gate issues one of four mutually exclusive decisions:\n\n- `ALLOW`: Permitted unconditionally within sandbox bounds.\n- `DENY`: Forbidden fail-closed with zero side effects.\n- `ASK`: Requires explicit human operator authorization.\n- `ESCALATE`: Requires elevated administrative privileges.\n\n<ResearchTable caption=\"Policy Gate Decision Matrix across Tool Families\" number=\"1\">\n\n| Capability Family | Default Decision | Execution Boundary | Audit Mechanism |\n| :--- | :--- | :--- | :--- |\n| Filesystem Reads | ALLOW | Workspace Root Only | Canonical Path Resolution |\n| Filesystem Writes | ALLOW | Workspace Root Only | Two-Phase Atomic Commit |\n| Subprocess Execution | ASK / ALLOW | cgroups v2 Confinement | Stripped Environment & Execve |\n| Network Egress | DENY | Airgapped Localhost | SSRF Destination Filter |\n| Git Mutation | ALLOW | Isolated Git Worktree | RFC Commit Trailer Audit |\n\n</ResearchTable>\n\n### 3. Verification & Evidence Gates\n\nNo autonomous task or refactoring mission may transition to a completed state based on model assertion alone. The runtime requires deterministic multi-tier verification proof:\n- Clean abstract syntax tree validation.\n- Zero compiler errors and static analysis linter passes.\n- Deterministic automated regression test suite execution.\n\n## Early Implementation: M31A\n\nThe principles described in this framework are currently being implemented and empirically evaluated in [M31A](https://github.com/eshanized/M31A), an open-source Rust-native autonomous software engineering runtime.\n\n```rust\n// Conceptual architectural invariant in M31A runtime kernel\npub enum PolicyDecision {\n    Allow,\n    Deny { reason: String },\n    Ask { prompt: String },\n    Escalate { required_level: String },\n}\n\npub trait PolicyGate {\n    fn evaluate(&self, intent: &CandidateIntent) -> PolicyDecision;\n}\n```\n\n## Methodology\n\nThe methodology for evaluating autonomous systems under this framework comprises three primary investigative axes:\n\n1. **Containment Integrity**: Stress testing the runtime's sandbox using adversarial prompt injection and deliberate path traversal attempts.\n2. **Completion Reliability**: Measuring task success rates on realistic multi-file refactoring benchmarks when gated by automated verification versus unconstrained model execution.\n3. **Resource Bound Adherence**: Tracking CPU time, memory ceilings, and token consumption under hard operating-system limits.\n\n## Limitations\n\nAs this document is an initial draft framework:\n- Formal empirical benchmark data across standardized suites (e.g. SWE-bench) is in progress and has not yet been audited.\n- Operating system sandboxing is currently verified on Linux x86_64; cross-platform confinement parity for macOS and Windows is under active development.\n- Findings will be continuously updated as the M31A runtime undergoes experimental validation.\n\n## References\n\n<Reference\n  id=\"1\"\n  title=\"M31A: High-Assurance Rust-Native Autonomous Software Engineering Runtime\"\n  authors=\"Eshan Roy\"\n  year=\"2026\"\n  venue=\"Tonmoy Infrastructure and Vision Technical Specifications\"\n  url=\"https://m31a.tonmoyinfrastructure.org/\"\n></Reference>\n\n<Reference\n  id=\"2\"\n  title=\"OWASP Application Security Verification Standard (ASVS) 4.0\"\n  authors=\"OWASP Foundation\"\n  year=\"2021\"\n  venue=\"OWASP Foundation Standards\"\n  url=\"https://owasp.org/www-project-application-security-verification-standard/\"\n></Reference>\n\n<Reference\n  id=\"3\"\n  title=\"Tree-sitter: An Incremental Parsing System for Programming Tools\"\n  authors=\"Max Brunsfeld\"\n  year=\"2018\"\n  venue=\"GitHub Engineering\"\n  url=\"https://tree-sitter.github.io/\"\n></Reference>\n\n\n",
+    "toc": [
+      {
+        "id": "abstract",
+        "text": "Abstract",
+        "level": 2
+      },
+      {
+        "id": "problem-space-motivation",
+        "text": "Problem Space & Motivation",
+        "level": 2
+      },
+      {
+        "id": "core-architectural-invariants",
+        "text": "Core Architectural Invariants",
+        "level": 2
+      },
+      {
+        "id": "1-the-intelligence-boundary",
+        "text": "1. The Intelligence Boundary",
+        "level": 3
+      },
+      {
+        "id": "2-the-policy-evaluation-gate",
+        "text": "2. The Policy Evaluation Gate",
+        "level": 3
+      },
+      {
+        "id": "3-verification-evidence-gates",
+        "text": "3. Verification & Evidence Gates",
+        "level": 3
+      },
+      {
+        "id": "early-implementation-m31a",
+        "text": "Early Implementation: M31A",
+        "level": 2
+      },
+      {
+        "id": "methodology",
+        "text": "Methodology",
+        "level": 2
+      },
+      {
+        "id": "limitations",
+        "text": "Limitations",
+        "level": 2
+      },
+      {
+        "id": "references",
+        "text": "References",
+        "level": 2
+      }
+    ],
+    "readingTime": 4,
+    "filePath": "content/publications/autonomous-development-systems.mdx"
+  }
+]

@@ -15,7 +15,6 @@ import type {
 } from '@/lib/types';
 import {
   validateProjects,
-  validatePublications,
   validateFinancials,
   validateNews,
 } from '@/lib/schemas';
@@ -1296,49 +1295,11 @@ export function getResearchArea(slug: string): ResearchArea | undefined {
   return researchAreas.find((r) => r.slug === slug);
 }
 
-// ─── Publications ──────────────────────────────────────────
-
-const rawPublications: Publication[] = [
-  {
-    slug: 'autonomous-development-systems',
-    title: 'Towards Autonomous Development Systems: A Research Framework',
-    identifier: 'TIV-RES-2026-001',
-    authors: ['Tonmoy Infrastructure and Vision'],
-    abstract:
-      'We propose a research framework for autonomous development systems — AI systems capable of understanding, maintaining, and operating codebases. We define the problem space, identify key challenges, and outline a research agenda.',
-    publicationDate: '2026-09-12',
-    date: '2026-09-12',
-    version: '0.1',
-    status: 'Draft',
-    area: 'Artificial Intelligence',
-    project: 'm31a',
-    content: `## Abstract
-
-We propose a research framework for autonomous development systems — AI systems capable of understanding, maintaining, and operating codebases. We define the problem space, identify key challenges, and outline a research agenda.
-
-## Key Findings
-
-This is an early-stage draft. Key findings will be updated as research progresses.
-
-## Methodology
-
-The methodology is being developed. This section will describe the experimental approach once defined.
-
-## Limitations
-
-This is a draft document. No experimental results have been produced yet.`,
-  },
-];
-
-const publications: Publication[] = validatePublications(rawPublications);
-
-export function getPublications(): Publication[] {
-  return publications;
-}
-
-export function getPublication(slug: string): Publication | undefined {
-  return publications.find((p) => p.slug === slug);
-}
+// Publications are managed as MDX in content/publications/*.mdx and compiled via lib/publications
+export {
+  getAllPublications as getPublications,
+  getPublicationBySlug as getPublication,
+} from '@/lib/publications/pipeline';
 
 // ─── Infrastructure Services ────────────────────────────────
 

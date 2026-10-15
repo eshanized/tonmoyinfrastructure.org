@@ -146,31 +146,14 @@ export interface ResearchArea {
   icon: string;
 }
 
-export type PublicationStatus =
-  | 'Draft'
-  | 'Experimental'
-  | 'Published'
-  | 'Superseded'
-  | 'Archived';
-
-export interface Publication {
-  slug: string;
-  title: string;
-  identifier: string;
-  authors: string[];
-  abstract: string;
-  date: string;
-  publicationDate?: string;
-  version: string;
-  status: PublicationStatus;
-  area: string;
-  project?: string;
-  pdf?: string;
-  repository?: string;
-  dataset?: string;
-  references?: string[];
-  content: string;
-}
+export type {
+  PublicationStatus,
+  Publication,
+  PublicationAuthor,
+  PublicationReference,
+  SupplementaryFile,
+  TableOfContentsItem,
+} from '@/lib/publications/types';
 
 export interface InfrastructureGalleryItem {
   id: string;

@@ -81,9 +81,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const pubPages: MetadataRoute.Sitemap = getPublications().map((p) => ({
     url: buildCanonicalUrl(`/research/publications/${p.slug}`),
-    lastModified: new Date(p.publicationDate || p.date),
-    changeFrequency: 'yearly' as const,
-    priority: 0.75,
+    lastModified: new Date(p.updatedAt || p.publicationDate || p.date),
+    changeFrequency: p.status === 'Draft' ? ('monthly' as const) : ('yearly' as const),
+    priority: 0.8,
   }));
 
   const newsPages: MetadataRoute.Sitemap = getNews().map((a) => ({

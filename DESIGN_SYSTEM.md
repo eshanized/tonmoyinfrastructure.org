@@ -44,3 +44,20 @@ The TIV visual aesthetic reflects an engineering organization that builds founda
 - **Motion Restraint**: All CSS transitions and Framer Motion wrappers check `prefers-reduced-motion`. When reduced motion is requested, animation durations drop to 0s or simple opacity fades.
 - **Keyboard Traversal**: Clear focus rings (`focus-visible:ring-2 focus-visible:ring-brand`) on all interactive buttons, cards, and hyperlinks.
 - **Screen Reader Semantics**: All SVGs include `role="img"` and an explicit `aria-label` describing their topological purpose.
+
+---
+
+## 5. Research Publications Visual System
+
+The research library (`/research/publications` and `/research/publications/[slug]`) implements an academic editorial aesthetic:
+
+- **Institutional Catalogue Hero**: Displays verified document counts, live search input with keyboard shortcuts (`Cmd+K`), and faceted filter toggles (Area, Type, Status).
+- **Featured Paper Spotlight**: Highlights landmark research with distinct border framing, prominent abstract preview, and direct PDF download CTA.
+- **Academic Paper Presentation**:
+  - Two-column reading layout: Comfortable 65-75 character reading measure paired with a sticky 320px metadata & navigation sidebar.
+  - Heading Anchors: Subtle hover hash markers (`#`) linking to section anchor IDs with smooth scroll padding (`scroll-mt-24`).
+  - Table of Contents: Dynamically highlights active sections using a lightweight client scroll observer.
+  - Academic Metadata List: Dual-column tabular display of identifier, status badge, area, license, DOI, and project relations.
+  - Formatted Citation Block: One-click copyable citations in APA 7th, BibTeX, and Inline citation styles with immediate visual feedback (`sonner` toast / copy state).
+  - High-Assurance Status Banners: Semantic warning cards for `Draft` and `Experimental` papers; clear directional notices for `Superseded` publications.
+

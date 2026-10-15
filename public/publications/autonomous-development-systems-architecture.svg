@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="100%" height="100%" fill="none" stroke="#27272a" stroke-width="1.5">
+  <defs>
+    <style>
+      .bg { fill: #09090b; }
+      .box { fill: #111113; stroke: #27272a; stroke-width: 1.5; }
+      .box-brand { fill: #111113; stroke: #e5484d; stroke-width: 1.5; }
+      .box-accent { fill: #18181b; stroke: #3f3f46; stroke-width: 1.5; }
+      .label-mono { font-family: monospace; font-size: 11px; fill: #a1a1aa; text-anchor: middle; letter-spacing: 0.05em; }
+      .label-brand { font-family: monospace; font-size: 11px; fill: #e5484d; text-anchor: middle; font-weight: 600; letter-spacing: 0.05em; }
+      .label-title { font-family: sans-serif; font-size: 14px; fill: #fafafa; text-anchor: middle; font-weight: 600; }
+      .arrow { stroke: #a1a1aa; stroke-width: 1.5; marker-end: url(#arrowhead); }
+      .arrow-brand { stroke: #e5484d; stroke-width: 1.5; marker-end: url(#arrowhead-brand); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#a1a1aa" />
+    </marker>
+    <marker id="arrowhead-brand" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#e5484d" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="420" class="bg" />
+
+  <!-- Grid Guide Lines -->
+  <g stroke="#18181b" stroke-width="1">
+    <line x1="0" y1="70" x2="900" y2="70" />
+    <line x1="0" y1="350" x2="900" y2="350" />
+    <line x1="300" y1="70" x2="300" y2="350" stroke-dasharray="4 4" />
+    <line x1="600" y1="70" x2="600" y2="350" stroke-dasharray="4 4" />
+  </g>
+
+  <!-- Section Columns -->
+  <!-- 1. Untrusted Intelligence Layer -->
+  <rect x="40" y="90" width="220" height="230" rx="2" class="box" />
+  <text x="150" y="125" class="label-brand">TIER 1: PROPOSAL</text>
+  <text x="150" y="150" class="label-title">Untrusted Model Core</text>
+  <text x="150" y="180" class="label-mono">Generative Inference</text>
+  <text x="150" y="200" class="label-mono">Abstract Context Window</text>
+  <rect x="60" y="230" width="180" height="60" rx="2" class="box-accent" />
+  <text x="150" y="255" class="label-mono">Output: Candidate Intent</text>
+  <text x="150" y="275" class="label-brand">(Unverified Mutation)</text>
+
+  <!-- Connector 1 -->
+  <line x1="260" y1="205" x2="330" y2="205" class="arrow" />
+
+  <!-- 2. Deterministic Policy Gate -->
+  <rect x="340" y="90" width="220" height="230" rx="2" class="box-brand" />
+  <text x="450" y="125" class="label-brand">TIER 2: CONFINEMENT</text>
+  <text x="450" y="150" class="label-title">Policy Evaluation Gate</text>
+  <rect x="360" y="170" width="180" height="32" rx="2" class="box-accent" />
+  <text x="450" y="191" class="label-mono">cgroups v2 &amp; Namespace</text>
+  <rect x="360" y="212" width="180" height="32" rx="2" class="box-accent" />
+  <text x="450" y="233" class="label-mono">SSRF Egress Blackhole</text>
+  <rect x="360" y="254" width="180" height="32" rx="2" class="box-accent" />
+  <text x="450" y="275" class="label-mono">Atomic Commit Rollback</text>
+
+  <!-- Connector 2 -->
+  <line x1="560" y1="205" x2="630" y2="205" class="arrow-brand" />
+
+  <!-- 3. Verification & Evidence Gates -->
+  <rect x="640" y="90" width="220" height="230" rx="2" class="box" />
+  <text x="750" y="125" class="label-brand">TIER 3: VERIFICATION</text>
+  <text x="750" y="150" class="label-title">Deterministic Proof</text>
+  <rect x="660" y="170" width="180" height="32" rx="2" class="box-accent" />
+  <text x="750" y="191" class="label-mono">Compiler Proofs (AST)</text>
+  <rect x="660" y="212" width="180" height="32" rx="2" class="box-accent" />
+  <text x="750" y="233" class="label-mono">Automated Test Suites</text>
+  <rect x="660" y="254" width="180" height="32" rx="2" class="box-accent" />
+  <text x="750" y="275" class="label-brand">Cryptographic Audit Trail</text>
+
+  <!-- Caption text inside SVG -->
+  <text x="450" y="385" class="label-mono">FIGURE 1: ARCHITECTURAL BOUNDARY SEPARATION IN AUTONOMOUS DEVELOPMENT KERNEL</text>
+</svg>

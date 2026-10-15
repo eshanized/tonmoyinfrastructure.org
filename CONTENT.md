@@ -110,3 +110,85 @@ The official office address and contact coordinates are centralized in `lib/site
 - **Organizer**: Tonmoy Infrastructure and Vision
 - **No Speculative Fabrication**: Dates, venue, registration availability, ticket prices, attendance figures, and session rosters remain unannounced until officially verified. Truthful wording such as "To be announced" must be used.
 - **Independent Identity**: TIV I/O is an independent developer conference for TIV engineering work. It is never portrayed as a Google affiliate or Google I/O clone.
+
+---
+
+## 6. Research Publications Authoring & MDX Specification
+
+Research papers and academic communications are authored as MDX documents under `content/publications/*.mdx`.
+
+### Frontmatter Schema & Requirements
+
+Every publication must include valid YAML frontmatter matching `PublicationFrontmatterSchema`:
+
+```yaml
+---
+slug: "autonomous-development-systems"
+title: "Autonomous Development Systems: A Research Agenda"
+identifier: "TIV-RES-2026-001"
+authors:
+  - name: "Eshan Roy"
+    affiliation: "Tonmoy Infrastructure and Vision"
+    role: "Lead Researcher"
+    profileUrl: "https://github.com/eshanized"
+abstract: "A clear, factual summary of the research questions, methodology, and theoretical findings."
+publicationDate: "2026-09-12"
+updatedAt: "2026-10-15"
+version: "0.1"
+status: "Draft"
+type: "Research Framework"
+area: "Artificial Intelligence"
+tags: ["Autonomous Systems", "Runtime Verification", "Compiler Invariants"]
+keywords: ["autonomous agents", "policy evaluation", "runtime isolation"]
+featured: true
+project: "m31a"
+license: "CC-BY-4.0"
+pdf: "/publications/autonomous-development-systems.pdf"
+repository: "https://github.com/eshanized/M31A"
+references:
+  - id: "1"
+    title: "M31A: High-Assurance Rust-Native Autonomous Software Engineering Runtime"
+    authors: "Eshan Roy"
+    year: "2026"
+    venue: "Tonmoy Infrastructure and Vision Technical Specifications"
+    url: "https://m31a.tonmoyinfrastructure.org/"
+---
+```
+
+### Publication Status Taxonomy
+
+Publications enforce strict academic status classification:
+- **`Draft`**: Early working paper or theoretical formulation. Explicitly flagged with a cautionary draft notice in the UI and prohibited from claiming peer-reviewed empirical findings.
+- **`Experimental`**: Active investigation with initial experimental data, requiring confirmation.
+- **`Published`**: Formal institutional research paper or accepted conference/journal publication.
+- **`Superseded`**: Replaced by a newer version; frontmatter should specify `supersededBy: "slug-of-new-version"`.
+- **`Archived`**: Historical record preserved for scholarly citation.
+
+### Approved MDX Component Map
+
+To preserve institutional security and design fidelity, arbitrary HTML and external scripts are prohibited. Content authors have access to approved domain components:
+- **`<Figure src="..." alt="..." caption="..." number="1" />`**: Accessible image/diagram figure with centered caption and institutional framing.
+- **`<Callout type="note|info|tip|warning|caution" title="...">`**: Visual callout block with accessible SVG icon and high-contrast styling.
+- **`<ResearchTable caption="..." number="1">`**: Academic data table wrapper supporting native markdown tables or custom grid rows.
+- **`<Reference id="1" title="..." authors="..." year="2026" venue="..." url="..." doi="..." />`**: Bibliographic citation entry with automatic anchor ID (`#ref-1`) and external link formatting.
+
+### Attaching PDFs and Supplementary Assets
+
+- PDF preprints must be placed in `public/publications/[slug].pdf`.
+- Supplementary datasets and code artifacts must be linked using valid absolute HTTPS URLs or root-relative paths (`/publications/...`).
+- JavaScript pseudo-protocols (`javascript:`), base64 data URLs, and protocol-relative URLs (`//evil.com`) are rejected fail-closed during compilation.
+
+### Build-Time Compilation and Local Verification
+
+Publications are compiled at build time into an immutable static manifest (`lib/publications/manifest.json`):
+```bash
+# Compile and validate publications
+node scripts/compile-publications.mjs
+
+# Run full test suite including frontmatter and schema checks
+npm test
+
+# Verify production static build
+npm run build
+```
+
