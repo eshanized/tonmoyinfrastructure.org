@@ -255,3 +255,22 @@ test('10. Official Office Address & TIV I/O Verification', () => {
 function footerNavExtract(file) {
   return file;
 }
+
+test('Company identity disclosure distinguishes public presence from legal registration evidence', () => {
+  const institutionalFile = fs.readFileSync(path.join(ROOT, 'lib/institutional.ts'), 'utf8');
+  const companyPage = fs.readFileSync(path.join(ROOT, 'app/about/company/page.tsx'), 'utf8');
+  const siteConfig = fs.readFileSync(path.join(ROOT, 'lib/site-config.ts'), 'utf8');
+  const structuredData = fs.readFileSync(path.join(ROOT, 'lib/structured-data.ts'), 'utf8');
+  const footer = fs.readFileSync(path.join(ROOT, 'components/layout/site-footer.tsx'), 'utf8');
+
+  assert.match(institutionalFile, /legalName: 'Tonmoy Infrastructure and Vision Ltd'/);
+  assert.match(institutionalFile, /applicationReference: 'Reg-2026-346380'/);
+  assert.match(institutionalFile, /registrationService: 'Foreign Company Registration'/);
+  assert.match(institutionalFile, /taxResidence: 'Bangladesh'/);
+  assert.match(institutionalFile, /not a final registration number/);
+  assert.match(companyPage, /Does Tonmoy Infrastructure and Vision exist\\?/);
+  assert.match(companyPage, /application reference only/);
+  assert.match(siteConfig, /legalName: 'Tonmoy Infrastructure and Vision Ltd'/);
+  assert.match(structuredData, /legalName: siteConfig\\.legalName/);
+  assert.match(footer, /Company Identity', href: '\/about\/company'/);
+});
