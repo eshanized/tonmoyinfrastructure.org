@@ -18,7 +18,7 @@ export const siteConfig = {
     service: 'Foreign Company Registration',
     taxResidence: 'Bangladesh',
     statusNote:
-      'The supplied record does not show approval status or a final registration number.',
+      'Approval status and final registration number are not shown in the supplied record.',
     disclosure:
       'The submitted company record lists application reference Reg-2026-346380 for Foreign Company Registration. This is an application reference, not a final registration number or proof of completed incorporation.',
   },
