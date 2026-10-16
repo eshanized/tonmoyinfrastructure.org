@@ -24,7 +24,7 @@ export default function CompanyPage() {
   const pageGraph = generatePageGraph({
     title: 'Company & Corporate Identity — Tonmoy Infrastructure and Vision',
     description:
-      'Formal corporate identity of Tonmoy Infrastructure and Vision. Legal name, brand, registration details, and official contact information.',
+      'Official company identity, address, tax-residence field, and the documented foreign company registration application reference for Tonmoy Infrastructure and Vision Ltd.',
     path: '/about/company',
     breadcrumbs: [
       { name: 'Home', item: '/' },
