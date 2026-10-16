@@ -13,6 +13,15 @@ export const siteConfig = {
   shortName: 'TIV',
   formalName: 'Tonmoy Infrastructure and Vision (TIV)',
   legalName: 'Tonmoy Infrastructure and Vision Ltd',
+  registration: {
+    applicationReference: 'Reg-2026-346380',
+    service: 'Foreign Company Registration',
+    taxResidence: 'Bangladesh',
+    statusNote:
+      'The supplied record does not show approval status or a final registration number.',
+    disclosure:
+      'The submitted company record lists application reference Reg-2026-346380 for Foreign Company Registration. This is an application reference, not a final registration number or proof of completed incorporation.',
+  },
   tagline: 'Technology Infrastructure',
   basePath,
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://tonmoyinfrastructure.org/').replace(/\/+$/, ''),
