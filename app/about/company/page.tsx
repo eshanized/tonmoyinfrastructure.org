@@ -43,7 +43,7 @@ export default function CompanyPage() {
     { label: 'Company Type', value: company.type, icon: FileText },
     { label: 'Jurisdiction', value: company.jurisdiction, icon: MapPin },
     { label: 'Incorporation Date', value: company.incorporationDate, icon: Calendar },
-    { label: 'Registered Office', value: company.registeredOffice, icon: MapPin },
+    { label: 'Address on Supplied Record', value: company.registeredOffice, icon: MapPin },
   ].filter((f) => f.value);
 
   return (
@@ -145,7 +145,7 @@ export default function CompanyPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-brand" aria-hidden="true" />
-                    <span className="tiv-meta">Official Office & Coordinates</span>
+                    <span className="tiv-meta">Address & Coordinates</span>
                   </div>
                   <span className="font-mono text-xs text-muted-foreground">
                     {company.officeAddress.latitude}, {company.officeAddress.longitude}
