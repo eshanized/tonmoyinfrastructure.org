@@ -18,7 +18,7 @@ import { siteConfig } from '@/lib/site-config';
 // ─── Company Info ───────────────────────────────────────────
 
 const rawCompanyInfo: CompanyInfo = {
-  legalName: 'Tonmoy Infrastructure and Vision Ltd',
+  legalName: siteConfig.applicationName,
   brandName: 'TIV',
   applicationReference: siteConfig.registration.applicationReference,
   registrationService: siteConfig.registration.service,
