@@ -34,7 +34,7 @@ export default function CompanyPage() {
   });
 
   const fields = [
-    { label: 'Legal Company Name', value: company.legalName, icon: Building2 },
+    { label: 'Company Name on Registration Application', value: company.legalName, icon: Building2 },
     { label: 'Brand Name', value: company.brandName, icon: Building2 },
     { label: 'Country of Tax Residence', value: company.taxResidence, icon: Globe },
     { label: 'Registration Application Reference', value: company.applicationReference, icon: FileText },
