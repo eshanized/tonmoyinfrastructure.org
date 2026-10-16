@@ -13,7 +13,7 @@ import { JsonLd } from '@/components/shared/json-ld';
 export const metadata = generatePageMetadata({
   title: 'Company & Corporate Identity',
   description:
-    'Formal corporate identity of Tonmoy Infrastructure and Vision. Legal name, brand, registration details, and official contact information.',
+    'Official company identity, address, tax-residence field, and the documented foreign company registration application reference for Tonmoy Infrastructure and Vision Ltd.',
   path: '/about/company',
   keywords: ['TIV company', 'corporate identity', 'legal name', 'official contacts'],
 });
@@ -24,7 +24,7 @@ export default function CompanyPage() {
   const pageGraph = generatePageGraph({
     title: 'Company & Corporate Identity — Tonmoy Infrastructure and Vision',
     description:
-      'Formal corporate identity of Tonmoy Infrastructure and Vision. Legal name, brand, registration details, and official contact information.',
+      'Official company identity, address, tax-residence field, and the documented foreign company registration application reference for Tonmoy Infrastructure and Vision Ltd.',
     path: '/about/company',
     breadcrumbs: [
       { name: 'Home', item: '/' },
@@ -34,13 +34,16 @@ export default function CompanyPage() {
   });
 
   const fields = [
-    { label: 'Legal Company Name', value: company.legalName, icon: Building2 },
+    { label: 'Company Name on Registration Application', value: company.legalName, icon: Building2 },
     { label: 'Brand Name', value: company.brandName, icon: Building2 },
+    { label: 'Country of Tax Residence', value: company.taxResidence, icon: Globe },
+    { label: 'Registration Application Reference', value: company.applicationReference, icon: FileText },
+    { label: 'Registration Service', value: company.registrationService, icon: FileText },
+    { label: 'Registration Status', value: company.registrationStatus, icon: FileText },
     { label: 'Company Type', value: company.type, icon: FileText },
     { label: 'Jurisdiction', value: company.jurisdiction, icon: MapPin },
     { label: 'Incorporation Date', value: company.incorporationDate, icon: Calendar },
-    { label: 'Registration Information', value: company.registrationInfo, icon: FileText },
-    { label: 'Registered Office', value: company.registeredOffice, icon: MapPin },
+    { label: 'Address on Supplied Record', value: company.registeredOffice, icon: MapPin },
   ].filter((f) => f.value);
 
   return (
@@ -66,10 +69,12 @@ export default function CompanyPage() {
 
       <section className="border-b border-border">
         <div className="tiv-container py-8">
-          <Callout type="info" title="Verified Information Only">
-            TIV does not fabricate registration details, addresses, or legal
-            information. Only fields with confirmed data are shown. The content
-            model supports additional fields as they become available.
+          <Callout type="info" title="Registration Reference — Not a Final Registration Number">
+            {company.registrationInfo} The document also lists Bangladesh as the
+            country of tax residence and an office address in Jayapura, Papua,
+            Indonesia. These are reproduced as shown in the supplied record;
+            this page does not independently certify incorporation, tax status,
+            or the current status of the application.
           </Callout>
         </div>
       </section>
@@ -140,7 +145,7 @@ export default function CompanyPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-brand" aria-hidden="true" />
-                    <span className="tiv-meta">Official Office & Coordinates</span>
+                    <span className="tiv-meta">Address & Coordinates</span>
                   </div>
                   <span className="font-mono text-xs text-muted-foreground">
                     {company.officeAddress.latitude}, {company.officeAddress.longitude}
@@ -199,11 +204,57 @@ export default function CompanyPage() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-secondary/30">
+      <section className="border-t border-border bg-secondary/20">
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
             <SectionHeader
               index="02"
+              label="Verification"
+              title="Existence and registration status."
+              description="A clear distinction between TIV's public organizational presence and the separate question of formal legal registration."
+            />
+          </Reveal>
+          <div className="mt-10 grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2">
+            <article className="bg-card p-6 md:p-8">
+              <h3 className="font-display text-xl tracking-tight">
+                Does Tonmoy Infrastructure and Vision exist?
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                Yes. Tonmoy Infrastructure and Vision (TIV) is the technology
+                organization behind this official website and its publicly
+                linked software projects, release records, and research
+                materials. These public materials establish an identifiable
+                organizational presence and body of work; they are not, by
+                themselves, proof of completed legal incorporation.
+              </p>
+            </article>
+            <article className="bg-card p-6 md:p-8">
+              <h3 className="font-display text-xl tracking-tight">
+                What does Reg-2026-346380 mean?
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                It is the application reference shown on the supplied Foreign
+                Company Registration record. The record provided does not show
+                approval status or a final registration certificate or number,
+                so TIV identifies it here as an application reference only.
+              </p>
+            </article>
+          </div>
+          <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+            The supplied record lists Bangladesh as the country of tax
+            residence and gives an address in Jayapura, Papua, Indonesia. Tax
+            residence and office address are separate details. For formal legal
+            verification, use a final certificate or confirmation from the
+            relevant official registry once available.
+          </p>
+        </div>
+      </section>
+
+      <section className="border-t border-border bg-secondary/30">
+        <div className="tiv-container py-16 md:py-24">
+          <Reveal>
+            <SectionHeader
+              index="03"
               label="Related"
               title="Connected information."
               description="Company information is connected to TIV's governance, leadership, and transparency architecture."

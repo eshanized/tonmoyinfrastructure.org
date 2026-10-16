@@ -29,6 +29,7 @@ const footerNav = {
   ],
   Company: [
     { label: 'About', href: '/about' },
+    { label: 'Company Identity', href: '/about/company' },
     { label: 'Leadership', href: '/about/leadership' },
     { label: 'Governance', href: '/about/governance' },
     { label: 'Timeline', href: '/about/timeline' },

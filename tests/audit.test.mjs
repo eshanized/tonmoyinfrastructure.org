@@ -255,3 +255,25 @@ test('10. Official Office Address & TIV I/O Verification', () => {
 function footerNavExtract(file) {
   return file;
 }
+
+test('Company identity disclosure distinguishes public presence from legal registration evidence', () => {
+  const institutionalFile = fs.readFileSync(path.join(ROOT, 'lib/institutional.ts'), 'utf8');
+  const companyPage = fs.readFileSync(path.join(ROOT, 'app/about/company/page.tsx'), 'utf8');
+  const siteConfig = fs.readFileSync(path.join(ROOT, 'lib/site-config.ts'), 'utf8');
+  const structuredData = fs.readFileSync(path.join(ROOT, 'lib/structured-data.ts'), 'utf8');
+  const footer = fs.readFileSync(path.join(ROOT, 'components/layout/site-footer.tsx'), 'utf8');
+
+  assert.ok(institutionalFile.includes('legalName: siteConfig.applicationName'));
+  assert.ok(siteConfig.includes("applicationName: 'Tonmoy Infrastructure and Vision Ltd'"));
+  assert.ok(siteConfig.includes("applicationReference: 'Reg-2026-346380'"));
+  assert.ok(siteConfig.includes("service: 'Foreign Company Registration'"));
+  assert.ok(siteConfig.includes("taxResidence: 'Bangladesh'"));
+  assert.ok(siteConfig.includes('not a final registration number'));
+  assert.ok(institutionalFile.includes('siteConfig.registration.applicationReference'));
+  assert.ok(companyPage.includes('Does Tonmoy Infrastructure and Vision exist?'));
+  assert.ok(companyPage.includes('application reference only'));
+  assert.ok(structuredData.includes('name: \'Company name on registration application\''));
+  assert.ok(structuredData.includes('siteConfig.registration.applicationReference'));
+  assert.ok(structuredData.includes('additionalProperty: ['));
+  assert.ok(footer.includes("{ label: 'Company Identity', href: '/about/company' }"));
+});

@@ -1,6 +1,6 @@
 /**
  * Centralized Site and SEO Configuration for Tonmoy Infrastructure and Vision (TIV).
- * Contains verified corporate identity, canonical URLs, and authoritative technical profiles.
+ * Contains public organization identity, canonical URLs, and technical profiles.
  */
 
 const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined
@@ -12,6 +12,16 @@ export const siteConfig = {
   name: 'Tonmoy Infrastructure and Vision',
   shortName: 'TIV',
   formalName: 'Tonmoy Infrastructure and Vision (TIV)',
+  applicationName: 'Tonmoy Infrastructure and Vision Ltd',
+  registration: {
+    applicationReference: 'Reg-2026-346380',
+    service: 'Foreign Company Registration',
+    taxResidence: 'Bangladesh',
+    statusNote:
+      'Approval status and final registration number are not shown in the supplied record.',
+    disclosure:
+      'The submitted company record lists application reference Reg-2026-346380 for Foreign Company Registration. This is an application reference, not a final registration number or proof of completed incorporation.',
+  },
   tagline: 'Technology Infrastructure',
   basePath,
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://tonmoyinfrastructure.org/').replace(/\/+$/, ''),

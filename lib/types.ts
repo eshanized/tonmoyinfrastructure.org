@@ -397,6 +397,10 @@ export interface CompanyInfo {
   jurisdiction?: string;
   incorporationDate?: string;
   registrationInfo?: string;
+  applicationReference?: string;
+  registrationService?: string;
+  registrationStatus?: string;
+  taxResidence?: string;
   registeredOffice?: string;
   officeAddress?: OfficeAddress;
   officialContact: string;

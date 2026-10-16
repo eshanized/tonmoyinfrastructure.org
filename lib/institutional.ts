@@ -18,8 +18,13 @@ import { siteConfig } from '@/lib/site-config';
 // ─── Company Info ───────────────────────────────────────────
 
 const rawCompanyInfo: CompanyInfo = {
-  legalName: 'Tonmoy Infrastructure and Vision',
+  legalName: siteConfig.applicationName,
   brandName: 'TIV',
+  applicationReference: siteConfig.registration.applicationReference,
+  registrationService: siteConfig.registration.service,
+  registrationStatus: siteConfig.registration.statusNote,
+  taxResidence: siteConfig.registration.taxResidence,
+  registrationInfo: siteConfig.registration.disclosure,
   description:
     'Tonmoy Infrastructure and Vision is an organization building practical infrastructure across software, internet infrastructure, networking, fiber optics, artificial intelligence, and systems engineering.',
   registeredOffice: 'Pusat Bisnis Jayapura, Jl. Pasifik Permai, Jayapura, Papua 99111, Indonesia',

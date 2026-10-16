@@ -20,6 +20,33 @@ export function generateOrganizationSchema() {
       caption: `${siteConfig.name} Logo`,
     },
     description: siteConfig.description,
+    additionalProperty: [
+      {
+        '@type': 'PropertyValue',
+        name: 'Company name on registration application',
+        value: siteConfig.applicationName,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Registration application reference',
+        value: siteConfig.registration.applicationReference,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Registration service',
+        value: siteConfig.registration.service,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Registration status disclosure',
+        value: siteConfig.registration.statusNote,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Country of tax residence',
+        value: siteConfig.registration.taxResidence,
+      },
+    ],
     telephone: siteConfig.address.phone,
     address: {
       '@type': 'PostalAddress',
