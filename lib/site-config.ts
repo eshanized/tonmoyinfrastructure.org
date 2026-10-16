@@ -12,7 +12,7 @@ export const siteConfig = {
   name: 'Tonmoy Infrastructure and Vision',
   shortName: 'TIV',
   formalName: 'Tonmoy Infrastructure and Vision (TIV)',
-  legalName: 'Tonmoy Infrastructure and Vision Ltd',
+  applicationName: 'Tonmoy Infrastructure and Vision Ltd',
   registration: {
     applicationReference: 'Reg-2026-346380',
     service: 'Foreign Company Registration',
