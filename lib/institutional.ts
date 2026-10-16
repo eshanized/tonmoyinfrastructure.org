@@ -20,13 +20,11 @@ import { siteConfig } from '@/lib/site-config';
 const rawCompanyInfo: CompanyInfo = {
   legalName: 'Tonmoy Infrastructure and Vision Ltd',
   brandName: 'TIV',
-  applicationReference: 'Reg-2026-346380',
-  registrationService: 'Foreign Company Registration',
-  registrationStatus:
-    'The supplied record does not show approval status or a final registration number.',
-  taxResidence: 'Bangladesh',
-  registrationInfo:
-    'The submitted company record lists application reference Reg-2026-346380 for Foreign Company Registration. This is an application reference, not a final registration number or proof of completed incorporation.',
+  applicationReference: siteConfig.registration.applicationReference,
+  registrationService: siteConfig.registration.service,
+  registrationStatus: siteConfig.registration.statusNote,
+  taxResidence: siteConfig.registration.taxResidence,
+  registrationInfo: siteConfig.registration.disclosure,
   description:
     'Tonmoy Infrastructure and Vision is an organization building practical infrastructure across software, internet infrastructure, networking, fiber optics, artificial intelligence, and systems engineering.',
   registeredOffice: 'Pusat Bisnis Jayapura, Jl. Pasifik Permai, Jayapura, Papua 99111, Indonesia',
