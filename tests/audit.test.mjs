@@ -263,8 +263,8 @@ test('Company identity disclosure distinguishes public presence from legal regis
   const structuredData = fs.readFileSync(path.join(ROOT, 'lib/structured-data.ts'), 'utf8');
   const footer = fs.readFileSync(path.join(ROOT, 'components/layout/site-footer.tsx'), 'utf8');
 
-  assert.ok(institutionalFile.includes("legalName: 'Tonmoy Infrastructure and Vision Ltd'"));
-  assert.ok(siteConfig.includes("legalName: 'Tonmoy Infrastructure and Vision Ltd'"));
+  assert.ok(institutionalFile.includes('legalName: siteConfig.applicationName'));
+  assert.ok(siteConfig.includes("applicationName: 'Tonmoy Infrastructure and Vision Ltd'"));
   assert.ok(siteConfig.includes("applicationReference: 'Reg-2026-346380'"));
   assert.ok(siteConfig.includes("service: 'Foreign Company Registration'"));
   assert.ok(siteConfig.includes("taxResidence: 'Bangladesh'"));
@@ -272,7 +272,7 @@ test('Company identity disclosure distinguishes public presence from legal regis
   assert.ok(institutionalFile.includes('siteConfig.registration.applicationReference'));
   assert.ok(companyPage.includes('Does Tonmoy Infrastructure and Vision exist?'));
   assert.ok(companyPage.includes('application reference only'));
-  assert.ok(structuredData.includes('legalName: siteConfig.legalName'));
+  assert.ok(structuredData.includes('name: \'Company name on registration application\''));
   assert.ok(structuredData.includes('siteConfig.registration.applicationReference'));
   assert.ok(structuredData.includes('additionalProperty: ['));
   assert.ok(footer.includes("{ label: 'Company Identity', href: '/about/company' }"));
