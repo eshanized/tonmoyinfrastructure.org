@@ -11,8 +11,7 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     '@id': `${siteConfig.url}/#organization`,
     name: siteConfig.name,
-    legalName: siteConfig.legalName,
-    alternateName: [siteConfig.shortName, siteConfig.formalName],
+    alternateName: [siteConfig.shortName, siteConfig.formalName, siteConfig.applicationName],
     url: siteConfig.canonicalUrl,
     logo: {
       '@type': 'ImageObject',
@@ -22,6 +21,11 @@ export function generateOrganizationSchema() {
     },
     description: siteConfig.description,
     additionalProperty: [
+      {
+        '@type': 'PropertyValue',
+        name: 'Company name on registration application',
+        value: siteConfig.applicationName,
+      },
       {
         '@type': 'PropertyValue',
         name: 'Registration application reference',
