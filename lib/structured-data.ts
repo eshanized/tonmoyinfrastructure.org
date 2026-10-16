@@ -11,7 +11,7 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     '@id': `${siteConfig.url}/#organization`,
     name: siteConfig.name,
-    alternateName: [siteConfig.shortName, siteConfig.formalName, siteConfig.applicationName],
+    alternateName: [siteConfig.shortName, siteConfig.formalName],
     url: siteConfig.canonicalUrl,
     logo: {
       '@type': 'ImageObject',
