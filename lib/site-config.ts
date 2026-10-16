@@ -1,6 +1,6 @@
 /**
  * Centralized Site and SEO Configuration for Tonmoy Infrastructure and Vision (TIV).
- * Contains verified corporate identity, canonical URLs, and authoritative technical profiles.
+ * Contains public organization identity, canonical URLs, and technical profiles.
  */
 
 const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined
@@ -12,6 +12,7 @@ export const siteConfig = {
   name: 'Tonmoy Infrastructure and Vision',
   shortName: 'TIV',
   formalName: 'Tonmoy Infrastructure and Vision (TIV)',
+  legalName: 'Tonmoy Infrastructure and Vision Ltd',
   tagline: 'Technology Infrastructure',
   basePath,
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://tonmoyinfrastructure.org/').replace(/\/+$/, ''),
