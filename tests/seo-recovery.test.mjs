@@ -26,7 +26,7 @@ test('SEO-1: Sitemap URL Uniqueness, Canonical Formatting & Absence of Date Chur
   );
 
   // Verify canonical project routes exist in sitemap
-  assert.match(sitemapContent, /\/projects\/\$\{p\.slug\}/, 'Sitemap must index canonical project routes');
+  assert.match(sitemapContent, /\/projects\/\$\{project\.slug\}/, 'Sitemap must index canonical project routes');
 
   // Verify infrastructure routes mapping
   assert.match(sitemapContent, /\/infrastructure\//, 'Sitemap must index infrastructure routes');
