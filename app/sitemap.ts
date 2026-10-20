@@ -151,5 +151,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  return [...uniqueEntries.values()].sort((a, b) => a.url.localeCompare(b.url));
+  return Array.from(uniqueEntries.values()).sort((a, b) => a.url.localeCompare(b.url));
 }
