@@ -11,101 +11,145 @@ import {
 
 export const dynamic = 'force-static';
 
+const PAGE_PRIORITIES = {
+  home: 1,
+  core: 0.9,
+  hub: 0.8,
+  supporting: 0.6,
+} as const;
+
+/**
+ * Build a deterministic sitemap from canonical, indexable routes only.
+ *
+ * Individual product/work aliases redirect to /projects/:slug and therefore
+ * do not receive their own entries. Query-driven search and internal routes
+ * are excluded. Dynamic content is included only when it is publishable.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Static pages: omit lastModified when no individual page edit date is tracked,
-  // or use verified milestone dates to avoid build-time lastModified churn.
   const staticPages: MetadataRoute.Sitemap = [
-    { url: siteConfig.canonicalUrl, changeFrequency: 'weekly', priority: 1.0 },
-    { url: buildCanonicalUrl('/work'), changeFrequency: 'weekly', priority: 0.9 },
-    { url: buildCanonicalUrl('/products'), changeFrequency: 'weekly', priority: 0.9 },
-    { url: buildCanonicalUrl('/projects'), changeFrequency: 'weekly', priority: 0.9 },
-    { url: buildCanonicalUrl('/releases'), lastModified: new Date('2026-10-02'), changeFrequency: 'weekly', priority: 0.7 },
-    { url: buildCanonicalUrl('/open-source'), changeFrequency: 'weekly', priority: 0.8 },
-    { url: buildCanonicalUrl('/io'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: buildCanonicalUrl('/technology'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: buildCanonicalUrl('/technology/ai'), changeFrequency: 'weekly', priority: 0.8 },
-    { url: buildCanonicalUrl('/technology/architecture'), changeFrequency: 'monthly', priority: 0.7 },
-    { url: buildCanonicalUrl('/solutions'), changeFrequency: 'weekly', priority: 0.9 },
-    { url: buildCanonicalUrl('/infrastructure'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: buildCanonicalUrl('/research'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: buildCanonicalUrl('/research/ai'), changeFrequency: 'weekly', priority: 0.8 },
-    { url: buildCanonicalUrl('/research/areas'), changeFrequency: 'monthly', priority: 0.7 },
-    { url: buildCanonicalUrl('/research/experiments'), changeFrequency: 'monthly', priority: 0.7 },
-    { url: buildCanonicalUrl('/research/publications'), lastModified: new Date('2026-09-12'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: buildCanonicalUrl('/research/whitepaper'), lastModified: new Date('2026-09-13'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: buildCanonicalUrl('/research/whitepaper/v1.0'), lastModified: new Date('2026-09-13'), changeFrequency: 'yearly', priority: 0.7 },
-    { url: buildCanonicalUrl('/transparency'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: buildCanonicalUrl('/transparency/financials'), lastModified: new Date('2026-09-13'), changeFrequency: 'monthly', priority: 0.7 },
-    { url: buildCanonicalUrl('/transparency/financials/portfolio-economics'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: buildCanonicalUrl('/transparency/financials/portfolio-economics/methodology'), changeFrequency: 'monthly', priority: 0.7 },
-    { url: buildCanonicalUrl('/transparency/annual-reports'), lastModified: new Date('2026-09-13'), changeFrequency: 'yearly', priority: 0.7 },
-    { url: buildCanonicalUrl('/transparency/governance'), changeFrequency: 'monthly', priority: 0.6 },
-    { url: buildCanonicalUrl('/news'), lastModified: new Date('2026-09-12'), changeFrequency: 'weekly', priority: 0.7 },
-    { url: buildCanonicalUrl('/about'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: buildCanonicalUrl('/about/company'), changeFrequency: 'monthly', priority: 0.7 },
-    { url: buildCanonicalUrl('/about/leadership'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: buildCanonicalUrl('/about/governance'), changeFrequency: 'monthly', priority: 0.7 },
-    { url: buildCanonicalUrl('/about/timeline'), changeFrequency: 'monthly', priority: 0.6 },
-    { url: buildCanonicalUrl('/security'), changeFrequency: 'monthly', priority: 0.7 },
-    { url: buildCanonicalUrl('/trust'), changeFrequency: 'monthly', priority: 0.6 },
-    { url: buildCanonicalUrl('/careers'), changeFrequency: 'weekly', priority: 0.5 },
-    { url: buildCanonicalUrl('/contact'), changeFrequency: 'monthly', priority: 0.5 },
-    { url: buildCanonicalUrl('/investors'), changeFrequency: 'monthly', priority: 0.5 },
-    { url: buildCanonicalUrl('/media'), changeFrequency: 'monthly', priority: 0.5 },
-    { url: buildCanonicalUrl('/docs'), changeFrequency: 'monthly', priority: 0.5 },
-    { url: buildCanonicalUrl('/status'), changeFrequency: 'daily', priority: 0.6 },
-    { url: buildCanonicalUrl('/legal'), changeFrequency: 'yearly', priority: 0.5 },
-    { url: buildCanonicalUrl('/privacy'), changeFrequency: 'yearly', priority: 0.4 },
-    { url: buildCanonicalUrl('/terms'), changeFrequency: 'yearly', priority: 0.4 },
-    { url: buildCanonicalUrl('/accessibility'), changeFrequency: 'yearly', priority: 0.4 },
-    { url: buildCanonicalUrl('/licenses'), changeFrequency: 'yearly', priority: 0.4 },
-    { url: buildCanonicalUrl('/sitemap'), changeFrequency: 'yearly', priority: 0.3 },
+    { url: siteConfig.canonicalUrl, changeFrequency: 'weekly', priority: PAGE_PRIORITIES.home },
+    { url: buildCanonicalUrl('/work'), changeFrequency: 'weekly', priority: PAGE_PRIORITIES.hub },
+    { url: buildCanonicalUrl('/products'), changeFrequency: 'weekly', priority: PAGE_PRIORITIES.hub },
+    { url: buildCanonicalUrl('/projects'), changeFrequency: 'weekly', priority: PAGE_PRIORITIES.hub },
+    { url: buildCanonicalUrl('/releases'), changeFrequency: 'weekly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/open-source'), changeFrequency: 'weekly', priority: PAGE_PRIORITIES.hub },
+    { url: buildCanonicalUrl('/io'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/technology'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/technology/ai'), changeFrequency: 'weekly', priority: PAGE_PRIORITIES.hub },
+    { url: buildCanonicalUrl('/technology/architecture'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/solutions'), changeFrequency: 'weekly', priority: PAGE_PRIORITIES.hub },
+    { url: buildCanonicalUrl('/infrastructure'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.hub },
+    { url: buildCanonicalUrl('/research'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.hub },
+    { url: buildCanonicalUrl('/research/ai'), changeFrequency: 'weekly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/research/areas'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/research/experiments'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/research/publications'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.hub },
+    { url: buildCanonicalUrl('/research/whitepaper'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.hub },
+    { url: buildCanonicalUrl('/research/whitepaper/v1.0'), changeFrequency: 'yearly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/transparency'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/transparency/financials'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/transparency/financials/portfolio-economics'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/transparency/financials/portfolio-economics/methodology'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/transparency/annual-reports'), changeFrequency: 'yearly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/transparency/governance'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/news'), changeFrequency: 'weekly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/about'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/about/company'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/about/leadership'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/about/governance'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/about/timeline'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/security'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/trust'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/careers'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/contact'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/investors'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/media'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/docs'), changeFrequency: 'monthly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/status'), changeFrequency: 'daily', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/legal'), changeFrequency: 'yearly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/privacy'), changeFrequency: 'yearly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/terms'), changeFrequency: 'yearly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/accessibility'), changeFrequency: 'yearly', priority: PAGE_PRIORITIES.supporting },
+    { url: buildCanonicalUrl('/licenses'), changeFrequency: 'yearly', priority: PAGE_PRIORITIES.supporting },
   ];
 
-  // Canonical project entity URLs with authentic modification timestamps
-  const projectPages: MetadataRoute.Sitemap = getProjects().map((p) => {
-    const rawDate = p.updatedAt || p.releaseDate;
-    return {
-      url: buildCanonicalUrl(`/projects/${p.slug}`),
-      ...(rawDate ? { lastModified: new Date(rawDate) } : {}),
-      changeFrequency: 'monthly' as const,
-      priority: p.status === 'Stable Release' ? 0.9 : 0.8,
-    };
-  });
+  const projectPages: MetadataRoute.Sitemap = getProjects()
+    .filter((project) => !project.noIndex)
+    .map((project) => {
+      const rawDate = project.updatedAt || project.releaseDate;
+      return {
+        url: buildCanonicalUrl(`/projects/${project.slug}`),
+        ...(rawDate && !Number.isNaN(Date.parse(rawDate))
+          ? { lastModified: new Date(rawDate) }
+          : {}),
+        changeFrequency: 'monthly' as const,
+        priority: project.status === 'Stable Release' ? PAGE_PRIORITIES.core : PAGE_PRIORITIES.supporting,
+      };
+    });
 
-  const infraPages: MetadataRoute.Sitemap = getInfrastructureServices().map((s) => ({
-    url: buildCanonicalUrl(`/infrastructure/${s.slug === 'optical-systems' ? 'optical' : s.slug}`),
+  const infraPages: MetadataRoute.Sitemap = getInfrastructureServices().map((service) => ({
+    url: buildCanonicalUrl(`/infrastructure/${service.slug === 'optical-systems' ? 'optical' : service.slug}`),
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    priority: PAGE_PRIORITIES.supporting,
   }));
 
-  const pubPages: MetadataRoute.Sitemap = getPublications().map((p) => ({
-    url: buildCanonicalUrl(`/research/publications/${p.slug}`),
-    lastModified: new Date(p.updatedAt || p.publicationDate || p.date),
-    changeFrequency: p.status === 'Draft' ? ('monthly' as const) : ('yearly' as const),
-    priority: 0.8,
-  }));
+  const pubPages: MetadataRoute.Sitemap = getPublications()
+    .filter((publication) => !publication.noIndex && publication.status !== 'Draft')
+    .map((publication) => {
+      const rawDate = publication.updatedAt || publication.publicationDate || publication.date;
+      return {
+        url: buildCanonicalUrl(`/research/publications/${publication.slug}`),
+        ...(rawDate && !Number.isNaN(Date.parse(rawDate))
+          ? { lastModified: new Date(rawDate) }
+          : {}),
+        changeFrequency: 'yearly' as const,
+        priority: PAGE_PRIORITIES.hub,
+      };
+    });
 
-  const newsPages: MetadataRoute.Sitemap = getNews().map((a) => ({
-    url: buildCanonicalUrl(`/news/${a.slug}`),
-    lastModified: new Date(a.date),
+  const newsPages: MetadataRoute.Sitemap = getNews().map((article) => ({
+    url: buildCanonicalUrl(`/news/${article.slug}`),
+    ...(article.date && !Number.isNaN(Date.parse(article.date))
+      ? { lastModified: new Date(article.date) }
+      : {}),
     changeFrequency: 'yearly' as const,
-    priority: 0.6,
+    priority: PAGE_PRIORITIES.supporting,
   }));
 
-  const reportPages: MetadataRoute.Sitemap = getTransparencyReports().map((r) => ({
-    url: buildCanonicalUrl(`/transparency/${r.slug}`),
-    lastModified: new Date(r.publicationDate),
-    changeFrequency: 'yearly' as const,
-    priority: 0.65,
-  }));
+  const reportPages: MetadataRoute.Sitemap = getTransparencyReports()
+    .filter((report) => report.status === 'Published')
+    .map((report) => ({
+      url: buildCanonicalUrl(`/transparency/${report.slug}`),
+      ...(report.publicationDate && !Number.isNaN(Date.parse(report.publicationDate))
+        ? { lastModified: new Date(report.publicationDate) }
+        : {}),
+      changeFrequency: 'yearly' as const,
+      priority: PAGE_PRIORITIES.supporting,
+    }));
 
-  return [
+  const canonicalOrigin = new URL(siteConfig.canonicalUrl).origin;
+  const entries = [
     ...staticPages,
     ...projectPages,
     ...infraPages,
     ...pubPages,
     ...newsPages,
     ...reportPages,
-  ];
+  ].filter((entry) => {
+    const url = new URL(entry.url);
+    return url.origin === canonicalOrigin &&
+      !url.pathname.startsWith('/search') &&
+      !url.pathname.startsWith('/internal/') &&
+      !url.pathname.startsWith('/api/');
+  });
+
+  const uniqueEntries = new Map<string, MetadataRoute.Sitemap[number]>();
+  for (const entry of entries) {
+    const existing = uniqueEntries.get(entry.url);
+    if (!existing || (entry.priority ?? 0) > (existing.priority ?? 0)) {
+      uniqueEntries.set(entry.url, entry);
+    }
+  }
+
+  return [...uniqueEntries.values()].sort((a, b) => a.url.localeCompare(b.url));
 }
