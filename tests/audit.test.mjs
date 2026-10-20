@@ -196,7 +196,7 @@ test('9. SEO, Canonical, Sitemap & Structured Data Architecture', () => {
 
   const sitemapFile = fs.readFileSync(path.join(ROOT, 'app/sitemap.ts'), 'utf8');
   assert.match(sitemapFile, /!url\.pathname\.startsWith\('\/search'\)/, 'Sitemap must exclude /search');
-  assert.match(sitemapFile, /\/projects\/\$\{p\.slug\}/, 'Sitemap must index canonical project routes');
+  assert.match(sitemapFile, /\/projects\/\$\{project\.slug\}/, 'Sitemap must index canonical project routes');
   assert.match(sitemapFile, /\/io/, 'Sitemap must index /io route');
 
   // 5. Canonical Consolidation on Project Detail Variants
