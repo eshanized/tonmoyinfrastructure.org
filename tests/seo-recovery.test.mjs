@@ -9,9 +9,9 @@ test('SEO-1: Sitemap URL Uniqueness, Canonical Formatting & Absence of Date Chur
   const sitemapContent = fs.readFileSync(path.join(ROOT, 'app/sitemap.ts'), 'utf8');
 
   // Verify non-indexable routes are excluded
-  assert.doesNotMatch(sitemapContent, /'\/search'/, 'Sitemap must exclude /search');
-  assert.doesNotMatch(sitemapContent, /'\/internal/, 'Sitemap must exclude /internal routes');
-  assert.doesNotMatch(sitemapContent, /'\/api/, 'Sitemap must exclude /api routes');
+  assert.match(sitemapContent, /!url\.pathname\.startsWith\('\/search'\)/, 'Sitemap must exclude /search');
+  assert.match(sitemapContent, /!url\.pathname\.startsWith\('\/internal\/'\)/, 'Sitemap must exclude /internal routes');
+  assert.match(sitemapContent, /!url\.pathname\.startsWith\('\/api\/'\)/, 'Sitemap must exclude /api routes');
 
   // Verify no wholesale "lastModified: new Date()" churn on static pages
   // Match lines in staticPages: they should either have a static milestone date or omit lastModified
@@ -26,7 +26,7 @@ test('SEO-1: Sitemap URL Uniqueness, Canonical Formatting & Absence of Date Chur
   );
 
   // Verify canonical project routes exist in sitemap
-  assert.match(sitemapContent, /\/projects\/\$\{p\.slug\}/, 'Sitemap must index canonical project routes');
+  assert.match(sitemapContent, /\/projects\/\$\{project\.slug\}/, 'Sitemap must index canonical project routes');
 
   // Verify infrastructure routes mapping
   assert.match(sitemapContent, /\/infrastructure\//, 'Sitemap must index infrastructure routes');

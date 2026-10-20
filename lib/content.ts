@@ -25,9 +25,9 @@ const rawProjects: Project[] = [
   {
     slug: 'openmail',
     title: 'OpenMail',
-    seoTitle: 'OpenMail — Self-Hosted Email & Communication Infrastructure',
+    seoTitle: 'OpenMail — Self-Hosted Email Server for SMTP, IMAP & TLS',
     seoDescription:
-      'Self-hosted email and communication infrastructure platform. Single-binary mail server with integrated SMTP, IMAP, automated TLS, and local data ownership.',
+      'Self-hosted email server and communication infrastructure with integrated SMTP and IMAP, automatic TLS certificates, local data storage, spam protection, and mail-domain tooling.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -143,9 +143,9 @@ OpenMail is a stable release. The core platform is complete and deployed. Active
   {
     slug: 'mercura',
     title: 'Mercura',
-    seoTitle: 'Mercura — Self-Hosted Mercurial Code Hosting & Management',
+    seoTitle: 'Mercura — Self-Hosted Mercurial Code Hosting Platform',
     seoDescription:
-      'Self-hosted code hosting platform built around Mercurial distributed version control. Features web code review, read-only Git mirror, and granular access control.',
+      'Self-hosted source code hosting built around Mercurial distributed version control, with browser-based repository browsing, web code review, a read-only Git mirror, and granular access controls.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -251,9 +251,9 @@ Mercura is a stable release. The core platform is complete and deployed. Active 
   {
     slug: 'm31a',
     title: 'M31A',
-    seoTitle: 'M31A — Autonomous Software Engineering Runtime in Rust',
+    seoTitle: 'M31A — Open-Source Rust AI Coding Agent Runtime',
     seoDescription:
-      'High-assurance, Rust-native autonomous software-engineering runtime. Deterministic lifecycle control, non-bypassable policy gates, resource bounds via cgroups v2, and continuous verification.',
+      'Rust-native runtime for autonomous coding agents with deterministic lifecycle control, non-bypassable policy gates, resource-bounded execution, continuous verification, crash-resilient checkpoints, and local observability.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -465,9 +465,9 @@ m31a eval run --all
   {
     slug: 'octate',
     title: 'Octate',
-    seoTitle: 'Octate — Terminal-Native AI Code Review CLI & AST Intelligence',
+    seoTitle: 'Octate — AI Code Review CLI with Tree-sitter & SARIF',
     seoDescription:
-      'Terminal-native AI code review CLI. Combines local Tree-sitter WASM AST parsing and cross-file reference graphs with multi-stage LLM review DAGs and SARIF export.',
+      'Terminal-native AI code review CLI combining Tree-sitter AST parsing, cross-file reference graphs, static-linter findings, multi-stage LLM review, critic validation, and SARIF export.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -1045,9 +1045,9 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
   {
     slug: 'runstead',
     title: 'Runstead',
-    seoTitle: 'Runstead — Modern Operating System for Hosting Businesses | TIV Venture',
+    seoTitle: 'Runstead — Hosting Business Management and Billing SaaS',
     seoDescription:
-      'Runstead is a modern SaaS operating system for hosting businesses developed by Tonmoy Infrastructure. Unifying client CRM, automated billing, service provisioning, DNS, and white-label storefronts.',
+      'Pre-release hosting-business management platform under development, bringing together client CRM, recurring billing, service lifecycle workflows, domain and DNS operations, ticketing, and white-label storefronts.',
     type: 'software',
     productStatus: 'preview',
     releaseStatus: 'pre-release',
