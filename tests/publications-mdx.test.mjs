@@ -243,8 +243,8 @@ test('PUB-11: Accurate Scholarly JSON-LD Schema Generation', () => {
 test('PUB-12: Sitemap URL Uniqueness and Canonical Format', () => {
   const sitemapSource = fs.readFileSync(path.join(ROOT, 'app/sitemap.ts'), 'utf8');
   assert.match(sitemapSource, /getPublications\(\)/, 'Sitemap must crawl publications');
-  assert.match(sitemapSource, /\/research\/publications\/\$\{p\.slug\}/, 'Sitemap must map canonical publication URLs');
-  assert.match(sitemapSource, /p\.updatedAt\s*\|\|\s*p\.publicationDate\s*\|\|\s*p\.date/, 'Sitemap must use authentic update/publication dates');
+  assert.match(sitemapSource, /\/research\/publications\/\$\{publication\.slug\}/, 'Sitemap must map canonical publication URLs');
+  assert.match(sitemapSource, /publication\.updatedAt\s*\|\|\s*publication\.publicationDate\s*\|\|\s*publication\.date/, 'Sitemap must use authentic update/publication dates');
 
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'lib/publications/manifest.json'), 'utf8'));
   for (const pub of manifest) {
