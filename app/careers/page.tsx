@@ -161,7 +161,7 @@ export default function CareersPage() {
                   contact page.
                 </p>
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="group mt-6 inline-flex items-center gap-2 bg-brand px-6 py-3 font-medium text-brand-foreground transition-opacity hover:opacity-90"
                 >
                   Get in touch

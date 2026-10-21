@@ -223,14 +223,14 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
-                    href="/about/leadership"
+                    href="/about/leadership/"
                     className="group inline-flex items-center gap-1.5 bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-opacity hover:opacity-90"
                   >
                     Founder profile & leadership
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
-                    href="/about/governance"
+                    href="/about/governance/"
                     className="group inline-flex items-center gap-1.5 border border-border bg-card px-5 py-2.5 text-sm font-medium transition-colors hover:border-brand hover:text-brand"
                   >
                     Governance principles
@@ -248,7 +248,7 @@ export default function AboutPage() {
         <div className="tiv-container py-16">
           <div className="grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-3">
             <Link
-              href="/about/company"
+              href="/about/company/"
               className="group bg-card p-6 transition-colors hover:bg-card/80"
             >
               <span className="tiv-meta">COMPANY</span>
@@ -260,7 +260,7 @@ export default function AboutPage() {
               </p>
             </Link>
             <Link
-              href="/about/timeline"
+              href="/about/timeline/"
               className="group bg-card p-6 transition-colors hover:bg-card/80"
             >
               <span className="tiv-meta">TIMELINE</span>
@@ -272,7 +272,7 @@ export default function AboutPage() {
               </p>
             </Link>
             <Link
-              href="/transparency"
+              href="/transparency/"
               className="group bg-card p-6 transition-colors hover:bg-card/80"
             >
               <span className="tiv-meta">TRANSPARENCY</span>

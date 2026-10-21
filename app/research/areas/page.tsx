@@ -251,7 +251,7 @@ export default function ResearchAreasPage() {
         <div className="tiv-container py-16">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <Link
-              href="/research/experiments"
+              href="/research/experiments/"
               className="group border border-border bg-card p-6 transition-colors hover:border-brand/40"
             >
               <span className="tiv-meta">EMPIRICAL METHOD</span>
@@ -268,7 +268,7 @@ export default function ResearchAreasPage() {
             </Link>
 
             <Link
-              href="/research/publications"
+              href="/research/publications/"
               className="group border border-border bg-card p-6 transition-colors hover:border-brand/40"
             >
               <span className="tiv-meta">PUBLICATIONS</span>

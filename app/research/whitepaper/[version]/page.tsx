@@ -157,8 +157,8 @@ export default async function WhitepaperVersionPage({
               <Callout type="info" title="About This Document">
                 This is version {wp.version} of the TIV Infrastructure Whitepaper.
                 The latest version is always available at{' '}
-                <Link href="/research/whitepaper" className="text-brand underline-offset-4 hover:underline">
-                  /research/whitepaper
+                <Link href="/research/whitepaper/" className="text-brand underline-offset-4 hover:underline">
+                  /research/whitepaper/
                 </Link>.
               </Callout>
 

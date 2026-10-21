@@ -93,7 +93,7 @@ export default async function NewsArticlePage({
 
             <div className="mt-12 border-t border-border pt-8">
               <Link
-                href="/news"
+                href="/news/"
                 className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-brand"
               >
                 <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />

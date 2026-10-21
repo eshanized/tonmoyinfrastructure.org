@@ -196,14 +196,14 @@ export default function IoPage() {
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </a>
                   <Link
-                    href="/work"
+                    href="/work/"
                     className="group inline-flex items-center justify-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand"
                   >
                     Explore shipped work
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
-                    href="/research"
+                    href="/research/"
                     className="group inline-flex items-center justify-center gap-2 border border-border px-6 py-3 font-medium text-muted-foreground transition-colors hover:border-brand hover:text-brand"
                   >
                     Explore research
@@ -482,7 +482,7 @@ export default function IoPage() {
                 </p>
                 <div className="mt-6">
                   <Link
-                    href="/news"
+                    href="/news/"
                     className="group inline-flex items-center gap-2 text-sm font-medium text-brand hover:underline"
                   >
                     View TIV news & updates
@@ -502,7 +502,7 @@ export default function IoPage() {
                 </p>
                 <div className="mt-6">
                   <Link
-                    href="/contact"
+                    href="/contact/"
                     className="group inline-flex items-center gap-2 text-sm font-medium text-brand hover:underline"
                   >
                     Contact TIV (General / Technical)
@@ -530,7 +530,7 @@ export default function IoPage() {
           <Reveal delay={0.1} className="mt-12">
             <div className="grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
               <Link
-                href="/products"
+                href="/products/"
                 className="group relative flex flex-col bg-card p-6 transition-colors hover:bg-card/80"
               >
                 <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
@@ -547,7 +547,7 @@ export default function IoPage() {
               </Link>
 
               <Link
-                href="/infrastructure"
+                href="/infrastructure/"
                 className="group relative flex flex-col bg-card p-6 transition-colors hover:bg-card/80"
               >
                 <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
@@ -564,7 +564,7 @@ export default function IoPage() {
               </Link>
 
               <Link
-                href="/research"
+                href="/research/"
                 className="group relative flex flex-col bg-card p-6 transition-colors hover:bg-card/80"
               >
                 <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />

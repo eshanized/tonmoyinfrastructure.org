@@ -108,21 +108,21 @@ export function SiteFooter() {
           </p>
           <div className="flex flex-wrap items-center gap-6">
             <Link
-              href="/trust"
+              href="/trust/"
               className="group flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-brand"
             >
               <Shield className="h-3.5 w-3.5" aria-hidden="true" />
               Trust Center
             </Link>
             <Link
-              href="/transparency"
+              href="/transparency/"
               className="group flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-brand"
             >
               <FileText className="h-3.5 w-3.5" aria-hidden="true" />
               Transparency
             </Link>
             <Link
-              href="/sitemap"
+              href="/sitemap/"
               className="text-sm text-muted-foreground transition-colors hover:text-brand"
             >
               Site Map

@@ -178,7 +178,7 @@ export default function GovernancePage() {
           <Reveal delay={0.1} className="mt-10">
             <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-3">
               <Link
-                href="/about/leadership"
+                href="/about/leadership/"
                 className="group relative flex h-full flex-col bg-card p-6 transition-colors hover:bg-card/80"
               >
                 <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
@@ -195,7 +195,7 @@ export default function GovernancePage() {
                 </div>
               </Link>
               <Link
-                href="/transparency/financials"
+                href="/transparency/financials/"
                 className="group relative flex h-full flex-col bg-card p-6 transition-colors hover:bg-card/80"
               >
                 <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
@@ -212,7 +212,7 @@ export default function GovernancePage() {
                 </div>
               </Link>
               <Link
-                href="/security"
+                href="/security/"
                 className="group relative flex h-full flex-col bg-card p-6 transition-colors hover:bg-card/80"
               >
                 <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />

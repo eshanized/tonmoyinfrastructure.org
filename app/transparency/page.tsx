@@ -171,7 +171,7 @@ export default function TransparencyPage() {
             </Link>
 
             <Link
-              href="/technology/ai"
+              href="/technology/ai/"
               className="group bg-card p-6 transition-colors hover:bg-card/80"
             >
               <div className="flex items-center justify-between">
@@ -187,7 +187,7 @@ export default function TransparencyPage() {
             </Link>
 
             <Link
-              href="/research"
+              href="/research/"
               className="group bg-card p-6 transition-colors hover:bg-card/80"
             >
               <div className="flex items-center justify-between">
@@ -203,7 +203,7 @@ export default function TransparencyPage() {
             </Link>
 
             <Link
-              href="/research/publications"
+              href="/research/publications/"
               className="group bg-card p-6 transition-colors hover:bg-card/80"
             >
               <div className="flex items-center justify-between">

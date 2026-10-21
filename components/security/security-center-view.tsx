@@ -194,7 +194,7 @@ export function SecurityCenterView({ breadcrumbs }: SecurityCenterViewProps) {
 
               <div className="mt-6">
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="group inline-flex items-center gap-2 bg-brand px-6 py-3 font-medium text-brand-foreground transition-opacity hover:opacity-90"
                 >
                   <Mail className="h-4 w-4" />

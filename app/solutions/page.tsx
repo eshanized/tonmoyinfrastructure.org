@@ -156,7 +156,7 @@ export default function SolutionsPage() {
                 />
               </div>
               <Link
-                href="/infrastructure/courier"
+                href="/infrastructure/courier/"
                 className="flex items-center gap-1.5 text-xs font-mono text-brand hover:underline self-start md:self-auto"
               >
                 Logistics Architecture <ArrowRight className="h-3.5 w-3.5" />
@@ -298,14 +298,14 @@ export default function SolutionsPage() {
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="flex items-center gap-2 bg-brand px-6 py-3 font-mono text-xs font-medium text-brand-foreground transition-all hover:bg-brand/90 hover:shadow-lg"
                 >
                   Contact Infrastructure Sales
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="/infrastructure"
+                  href="/infrastructure/"
                   className="flex items-center gap-2 border border-border bg-secondary px-6 py-3 font-mono text-xs font-medium text-foreground transition-colors hover:bg-secondary/80"
                 >
                   Explore All Systems

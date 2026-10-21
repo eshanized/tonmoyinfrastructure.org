@@ -77,7 +77,7 @@ export default function ResearchPage() {
         <div className="tiv-container py-12">
           <Reveal>
             <Link
-              href="/research/whitepaper"
+              href="/research/whitepaper/"
               className="group relative flex flex-col gap-4 border border-border bg-card p-6 transition-colors hover:border-brand/40 md:flex-row md:items-center md:justify-between"
             >
               <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />

@@ -52,7 +52,7 @@ export function DataCenterExplorer() {
           <strong className="text-foreground">Sovereign Facility Ground Truth:</strong> TIV operates a confirmed physical sovereign
           facility located in <strong>Jayapura, Papua, Indonesia</strong> hosting TIV software platforms (OpenMail, Mercura, M31A,
           Octate) and authoritative DNS. Public self-serve retail colocation is not offered; sovereign enterprise capacity is evaluated
-          exclusively via <Link href="/contact" className="text-brand hover:underline">private inquiry</Link>.
+          exclusively via <Link href="/contact/" className="text-brand hover:underline">private inquiry</Link>.
         </div>
       </div>
 

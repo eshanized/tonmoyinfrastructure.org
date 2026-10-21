@@ -125,14 +125,14 @@ export default function ProjectsPage() {
             </div>
             <div className="flex flex-wrap items-center gap-3 shrink-0">
               <Link
-                href="/technology/ai"
+                href="/technology/ai/"
                 className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90"
               >
                 AI / ML Portal
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/open-source"
+                href="/open-source/"
                 className="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary"
               >
                 Open Technical Work

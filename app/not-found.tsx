@@ -24,7 +24,7 @@ export default function NotFound() {
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
-            href="/search"
+            href="/search/"
             className="group inline-flex items-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand"
           >
             <Search className="h-4 w-4" />
@@ -32,12 +32,12 @@ export default function NotFound() {
           </Link>
         </div>
         <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
-          <Link href="/work" className="transition-colors hover:text-brand">Work</Link>
-          <Link href="/about" className="transition-colors hover:text-brand">About</Link>
-          <Link href="/research" className="transition-colors hover:text-brand">Research</Link>
-          <Link href="/transparency" className="transition-colors hover:text-brand">Transparency</Link>
-          <Link href="/trust" className="transition-colors hover:text-brand">Trust</Link>
-          <Link href="/contact" className="transition-colors hover:text-brand">Contact</Link>
+          <Link href="/work/" className="transition-colors hover:text-brand">Work</Link>
+          <Link href="/about/" className="transition-colors hover:text-brand">About</Link>
+          <Link href="/research/" className="transition-colors hover:text-brand">Research</Link>
+          <Link href="/transparency/" className="transition-colors hover:text-brand">Transparency</Link>
+          <Link href="/trust/" className="transition-colors hover:text-brand">Trust</Link>
+          <Link href="/contact/" className="transition-colors hover:text-brand">Contact</Link>
         </div>
       </div>
     </section>

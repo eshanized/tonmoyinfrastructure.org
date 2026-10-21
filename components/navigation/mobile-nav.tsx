@@ -131,7 +131,7 @@ export function MobileNav() {
   return (
     <>
       <Link
-        href="/search"
+        href="/search/"
         prefetch={false}
         className="flex h-9 w-9 items-center justify-center rounded-sm text-muted-foreground transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand lg:hidden"
         aria-label="Search"

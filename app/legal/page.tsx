@@ -20,22 +20,22 @@ export const metadata = generatePageMetadata({
 const docMeta: Record<string, { icon: typeof FileText; path: string; summary: string }> = {
   privacy: {
     icon: Eye,
-    path: '/legal/privacy',
+    path: '/privacy/',
     summary: 'Our data protection commitments: zero behavioral telemetry, zero ad trackers, and absolute user privacy.',
   },
   terms: {
     icon: Scale,
-    path: '/legal/terms',
+    path: '/terms/',
     summary: 'Conditions governing the use of the TIV website, open protocols, public APIs, and software downloads.',
   },
   accessibility: {
     icon: Accessibility,
-    path: '/legal/accessibility',
+    path: '/accessibility/',
     summary: 'Our WCAG 2.2 AA compliance standards, keyboard accessibility, semantic structure, and screen-reader testing.',
   },
   licenses: {
     icon: ShieldCheck,
-    path: '/legal/licenses',
+    path: '/licenses/',
     summary: 'Permissive and copyleft open-source licenses governing OpenMail, Mercura, M31A, and Octate.',
   },
 };
@@ -134,7 +134,7 @@ export default function LegalIndexPage() {
             </p>
             <div className="mt-8 border-t border-border pt-6">
               <Link
-                href="/contact"
+                href="/contact/"
                 className="group inline-flex items-center gap-2 text-xs font-medium text-brand hover:underline"
               >
                 Inquiries regarding legal or licensing matters

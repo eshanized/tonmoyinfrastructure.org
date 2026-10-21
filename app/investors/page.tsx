@@ -108,7 +108,7 @@ export default function InvestorsPage() {
           <Reveal delay={0.1} className="mt-10">
             <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2">
               <Link
-                href="/transparency/financials"
+                href="/transparency/financials/"
                 className="group relative flex h-full flex-col bg-card p-6 transition-colors hover:bg-card/80"
               >
                 <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
@@ -121,7 +121,7 @@ export default function InvestorsPage() {
                 </div>
               </Link>
               <Link
-                href="/transparency"
+                href="/transparency/"
                 className="group relative flex h-full flex-col bg-card p-6 transition-colors hover:bg-card/80"
               >
                 <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
@@ -151,7 +151,7 @@ export default function InvestorsPage() {
           </Reveal>
           <Reveal delay={0.1} className="mt-8">
             <Link
-              href="/contact"
+              href="/contact/"
               className="group inline-flex items-center gap-2 bg-brand px-6 py-3 font-medium text-brand-foreground transition-opacity hover:opacity-90"
             >
               Contact TIV

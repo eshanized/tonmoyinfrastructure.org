@@ -301,7 +301,7 @@ export function CourierNetworkExplorer() {
             </h4>
           </div>
           <Link
-            href="/contact"
+            href="/contact/"
             className="flex items-center gap-1.5 text-xs font-mono text-brand hover:underline"
           >
             Custom Route Inquiry <ArrowRight className="h-3.5 w-3.5" />

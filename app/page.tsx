@@ -238,7 +238,7 @@ export default function HomePage() {
                     Operational (Internal)
                   </span>
                   <Link
-                    href="/contact"
+                    href="/contact/"
                     className="border border-border px-3 py-1 font-mono text-xs hover:border-brand hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   >
                     Inquire for Capacity
@@ -329,7 +329,7 @@ export default function HomePage() {
             {researchAreas.map((area) => (
               <StaggerItem key={area.slug}>
                 <Link
-                  href="/research"
+                  href="/research/"
                   className="group relative flex h-full flex-col bg-card p-6 transition-colors hover:bg-card/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                 >
                   <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
@@ -399,11 +399,11 @@ export default function HomePage() {
                   label="Transparency & Governance"
                   title="Building in public with structural accountability."
                   description="TIV publishes what it can without exposing what it shouldn't. Financial estimates, asset registers, governance structures, and security commitments remain fully visible."
-                  link={{ label: 'Transparency portal', href: '/transparency' }}
+                  link={{ label: 'Transparency portal', href: '/transparency/' }}
                 />
                 <div className="mt-8 space-y-4">
                   <Link
-                    href="/transparency/financials"
+                    href="/transparency/financials/"
                     className="group flex items-center gap-3 border border-border p-4 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   >
                     <FileText className="h-5 w-5 text-brand" aria-hidden="true" />
@@ -414,7 +414,7 @@ export default function HomePage() {
                     <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
-                    href="/security"
+                    href="/security/"
                     className="group flex items-center gap-3 border border-border p-4 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   >
                     <Shield className="h-5 w-5 text-brand" aria-hidden="true" />
@@ -519,14 +519,14 @@ export default function HomePage() {
                 </div>
                 <div className="flex flex-wrap gap-4">
                   <Link
-                    href="/about"
+                    href="/about/"
                     className="group inline-flex items-center gap-1.5 text-sm font-medium border border-border px-5 py-2.5 hover:border-brand hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     About TIV
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
-                    href="/about/leadership"
+                    href="/about/leadership/"
                     className="group inline-flex items-center gap-1.5 text-sm font-medium bg-brand text-brand-foreground px-5 py-2.5 hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     Leadership Profile
@@ -590,7 +590,7 @@ export default function HomePage() {
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
-                    href="/contact"
+                    href="/contact/"
                     className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     Event inquiries
@@ -697,21 +697,21 @@ export default function HomePage() {
             <Reveal delay={0.3}>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="group inline-flex items-center gap-2 bg-brand px-6 py-3 font-medium text-brand-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
                   Initiate institutional inquiry
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
-                  href="/about"
+                  href="/about/"
                   className="group inline-flex items-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
                   Explore organization
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
-                  href="/security"
+                  href="/security/"
                   className="group inline-flex items-center gap-2 border border-border px-6 py-3 font-medium transition-colors hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
                   Security reporting

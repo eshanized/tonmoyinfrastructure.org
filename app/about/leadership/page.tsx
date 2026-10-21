@@ -239,7 +239,7 @@ export default function LeadershipPage() {
                   organization formalizes its governance structure.
                 </p>
                 <Link
-                  href="/about/governance"
+                  href="/about/governance/"
                   className="group mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand"
                 >
                   Read about TIV&apos;s governance approach

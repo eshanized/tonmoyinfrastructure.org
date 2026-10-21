@@ -74,7 +74,7 @@ export default function GovernancePage() {
               </p>
               <div className="mt-6 border-t border-border pt-4">
                 <Link
-                  href="/about/leadership"
+                  href="/about/leadership/"
                   className="group inline-flex items-center gap-1.5 text-xs font-medium text-brand"
                 >
                   View leadership profile
@@ -91,7 +91,7 @@ export default function GovernancePage() {
               </p>
               <div className="mt-6 border-t border-border pt-4">
                 <Link
-                  href="/transparency/financials"
+                  href="/transparency/financials/"
                   className="group inline-flex items-center gap-1.5 text-xs font-medium text-brand"
                 >
                   Review financial reports
@@ -209,14 +209,14 @@ export default function GovernancePage() {
       <section className="bg-secondary/30">
         <div className="tiv-container py-12 flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link
-            href="/transparency"
+            href="/transparency/"
             className="group inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-brand transition-colors"
           >
             ← Back to Transparency Portal
           </Link>
           <div className="flex gap-4">
             <Link
-              href="/transparency/financials"
+              href="/transparency/financials/"
               className="text-sm font-medium text-brand hover:underline"
             >
               Financial Reports

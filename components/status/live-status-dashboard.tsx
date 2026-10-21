@@ -342,7 +342,7 @@ export function LiveStatusDashboard() {
           <p className="mt-4 text-xs font-mono text-muted-foreground leading-relaxed">
             <strong>Operational Scope vs Commercial Availability:</strong> The Jayapura facility hosts TIV internal infrastructure,
             mail servers, and authoritative domain services. No public colocation or retail self-service is offered; dedicated capacity
-            for sovereign enterprise workloads is evaluated exclusively via <Link href="/contact" className="text-brand hover:underline">direct inquiry</Link>.
+            for sovereign enterprise workloads is evaluated exclusively via <Link href="/contact/" className="text-brand hover:underline">direct inquiry</Link>.
           </p>
         </div>
       )}

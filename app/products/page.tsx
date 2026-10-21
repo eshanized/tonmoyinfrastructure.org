@@ -105,7 +105,7 @@ export default function ProductsPage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/projects"
+                href="/projects/"
                 className="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors"
               >
                 All Projects

@@ -136,13 +136,13 @@ export function DataCenterDetail({ service, breadcrumbs }: DataCenterDetailProps
                   Inspect visual gallery
                 </a>
                 <Link
-                  href="/infrastructure"
+                  href="/infrastructure/"
                   className="inline-flex items-center justify-center border border-border bg-card px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-foreground transition-colors hover:border-brand/40 hover:bg-card/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                 >
                   Infrastructure overview
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-muted-foreground hover:text-brand transition-colors"
                 >
                   <span>Sovereign inquiries</span>
@@ -465,14 +465,14 @@ export function DataCenterDetail({ service, breadcrumbs }: DataCenterDetailProps
 
               <div className="flex flex-wrap items-center gap-4">
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="inline-flex items-center gap-2 border border-brand bg-brand px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-white transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                 >
                   <span>Submit sovereign infrastructure inquiry</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="/infrastructure"
+                  href="/infrastructure/"
                   className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-muted-foreground hover:text-brand"
                 >
                   <span>View all infrastructure services</span>
@@ -506,7 +506,7 @@ export function DataCenterDetail({ service, breadcrumbs }: DataCenterDetailProps
                 </ul>
                 <div className="pt-2">
                   <Link
-                    href="/contact"
+                    href="/contact/"
                     className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-brand hover:underline"
                   >
                     <span>Contact systems architecture team</span>

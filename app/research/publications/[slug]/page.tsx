@@ -284,7 +284,7 @@ export default async function PublicationDetailPage({
               {/* Bottom Nav / Return to Publications */}
               <div className="mt-16 border-t border-border pt-8 flex flex-wrap items-center justify-between gap-4">
                 <Link
-                  href="/research/publications"
+                  href="/research/publications/"
                   className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-brand"
                 >
                   <ArrowLeft className="h-4 w-4" />
