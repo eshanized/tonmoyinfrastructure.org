@@ -42,7 +42,7 @@ export function NetworkDiagram() {
           <text x="90" y="26" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
             Tier-1 Upstream Transit
           </text>
-          <text x="90" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="90" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Full BGP Feed (AS Peering)
           </text>
         </g>
@@ -53,7 +53,7 @@ export function NetworkDiagram() {
           <text x="90" y="26" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
             Internet Exchange (IXP)
           </text>
-          <text x="90" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="90" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Direct Peering / Bilateral
           </text>
         </g>
@@ -71,7 +71,7 @@ export function NetworkDiagram() {
           <text x="80" y="28" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="13" fontWeight="600" fontFamily="var(--font-display)">
             Edge Router 01 (North)
           </text>
-          <text x="80" y="48" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="80" y="48" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Active · VRRP / BGP Anycast
           </text>
         </g>
@@ -83,14 +83,14 @@ export function NetworkDiagram() {
           <text x="80" y="28" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="13" fontWeight="600" fontFamily="var(--font-display)">
             Edge Router 02 (South)
           </text>
-          <text x="80" y="48" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="80" y="48" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Active · VRRP / BGP Anycast
           </text>
         </g>
 
         {/* Inter-Edge Link (Sync) */}
         <line x1="340" y1="205" x2="460" y2="205" stroke="hsl(var(--brand))" strokeWidth="2" />
-        <text x="400" y="198" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-jetbrains)">
+        <text x="400" y="198" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-fira-sans)">
           100G Sync Mesh
         </text>
 
@@ -104,10 +104,10 @@ export function NetworkDiagram() {
           <text x="160" y="28" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="13" fontWeight="600" fontFamily="var(--font-display)">
             High-Throughput Backbone Fabric
           </text>
-          <text x="160" y="48" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="160" y="48" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Segment Routing (SRv6) · EVPN-VXLAN Encapsulation
           </text>
-          <text x="160" y="66" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="160" y="66" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Zero-Trust Mutual TLS / WireGuard Mesh
           </text>
         </g>
@@ -118,7 +118,7 @@ export function NetworkDiagram() {
           <text x="65" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="600" fontFamily="var(--font-display)">
             PoP Node: Delta
           </text>
-          <text x="65" y="40" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="65" y="40" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-fira-sans)">
             Compute / Edge Cache
           </text>
         </g>
@@ -129,7 +129,7 @@ export function NetworkDiagram() {
           <text x="65" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="600" fontFamily="var(--font-display)">
             PoP Node: Gamma
           </text>
-          <text x="65" y="40" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="65" y="40" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-fira-sans)">
             Storage / Queue Sinks
           </text>
         </g>

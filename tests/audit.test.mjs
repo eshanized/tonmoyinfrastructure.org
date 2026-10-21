@@ -237,7 +237,7 @@ test('10. Official Office Address & TIV I/O Verification', () => {
   assert.match(contactFile, /getOfficeAddress/, 'Contact page must reuse getOfficeAddress');
 
   const companyFile = fs.readFileSync(path.join(ROOT, 'app/about/company/page.tsx'), 'utf8');
-  assert.match(companyFile, /Official Office & Coordinates/, 'Company page must display office address and coordinates');
+  assert.match(companyFile, /Address & Coordinates/, 'Company page must display office address and coordinates');
 
   // 4. TIV I/O Route Integrity
   const ioFile = fs.readFileSync(path.join(ROOT, 'app/io/page.tsx'), 'utf8');

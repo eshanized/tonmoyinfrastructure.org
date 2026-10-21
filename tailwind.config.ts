@@ -12,9 +12,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-barlow)', 'var(--font-dosis)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-barlow)', 'var(--font-dosis)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-jetbrains)', 'monospace'],
+        sans: ['var(--font-fira-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-fira-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-fira-sans)', 'monospace'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

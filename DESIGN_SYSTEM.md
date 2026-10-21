@@ -32,9 +32,7 @@ The TIV visual aesthetic reflects an engineering organization that builds founda
 
 ## 3. Typography Hierarchy
 
-- **Display Serif / Sans**: `var(--font-display)` (Instrument Serif / Syne) for major editorial statements, section indices, and hero headlines.
-- **Body Sans**: `var(--font-sans)` (Inter) for readable paragraphs, navigation labels, and UI controls.
-- **Monospace**: `var(--font-jetbrains)` (JetBrains Mono) for timestamps, version numbers (`v1.0.0`), IP/BGP routing numbers, and cryptographic keys.
+- **Primary Typeface**: [Fira Sans](https://fonts.google.com/specimen/Fira+Sans) (`var(--font-fira-sans)`) used consistently across all headings, display titles, body copy, UI controls, navigation labels, badges, and code/technical elements.
 
 ---
 

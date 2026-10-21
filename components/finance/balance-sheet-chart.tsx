@@ -83,7 +83,7 @@ export function BalanceSheetChart({
           dataKey="category"
           stroke="hsl(var(--muted-foreground))"
           fontSize={12}
-          fontFamily="var(--font-jetbrains)"
+          fontFamily="var(--font-fira-sans)"
           tickLine={false}
           axisLine={false}
         />
@@ -91,7 +91,7 @@ export function BalanceSheetChart({
           tickFormatter={(v) => formatChartValue(v, currencySymbol, currency)}
           stroke="hsl(var(--muted-foreground))"
           fontSize={11}
-          fontFamily="var(--font-jetbrains)"
+          fontFamily="var(--font-fira-sans)"
         />
         <Tooltip
           cursor={{ fill: 'hsl(var(--muted) / 0.3)' }}
@@ -99,7 +99,7 @@ export function BalanceSheetChart({
             backgroundColor: 'hsl(var(--popover))',
             border: '1px solid hsl(var(--border))',
             borderRadius: 'var(--radius)',
-            fontFamily: 'var(--font-jetbrains)',
+            fontFamily: 'var(--font-fira-sans)',
             fontSize: '12px',
           }}
           formatter={(value: number) => [

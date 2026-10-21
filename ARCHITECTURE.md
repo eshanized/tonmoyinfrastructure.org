@@ -83,7 +83,7 @@ Styling utilizes Tailwind CSS configured to read semantic CSS custom properties:
 - Accent: Coral Red (`--brand`: `#E5484D`)
 - Surfaces: Deep Black (`--background`: `#09090b`), Secondary (`--secondary`: `#18181b`), Card (`--card`: `#111113`)
 - Borders: Subtle hairline (`--border`: `rgba(255, 255, 255, 0.1)`)
-- Fonts: `var(--font-display)` (Instrument Serif / Syne), `var(--font-sans)` (Inter), `var(--font-jetbrains)` (JetBrains Mono).
+- Fonts: `var(--font-fira-sans)` ([Fira Sans](https://fonts.google.com/specimen/Fira+Sans)) across all UI, display headlines, body, and technical elements.
 
 ---
 

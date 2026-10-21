@@ -50,7 +50,7 @@ export function CapitalAllocationChart({
               backgroundColor: 'hsl(var(--popover))',
               border: '1px solid hsl(var(--border))',
               borderRadius: 'var(--radius)',
-              fontFamily: 'var(--font-jetbrains)',
+              fontFamily: 'var(--font-fira-sans)',
               fontSize: '12px',
             }}
             formatter={(value: number) => [`${value}%`, 'Allocation']}

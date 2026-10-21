@@ -66,7 +66,7 @@ export function TechnologyStackDiagram() {
                 y={y + blockHeight / 2 + 1}
                 fill="hsl(var(--muted-foreground))"
                 fontSize="11"
-                fontFamily="var(--font-jetbrains)"
+                fontFamily="var(--font-fira-sans)"
                 dominantBaseline="middle"
                 textAnchor="end"
               >
@@ -95,7 +95,7 @@ export function TechnologyStackDiagram() {
             y={padding - 18}
             fill="hsl(var(--muted-foreground))"
             fontSize="10"
-            fontFamily="var(--font-jetbrains)"
+            fontFamily="var(--font-fira-sans)"
             textAnchor="middle"
           >
             depends on ↓

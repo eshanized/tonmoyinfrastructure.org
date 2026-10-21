@@ -194,7 +194,7 @@ export function DataCenterExplorer() {
                     y="4"
                     fill="hsl(var(--foreground))"
                     fontSize="10"
-                    fontFamily="var(--font-jetbrains)"
+                    fontFamily="var(--font-fira-sans)"
                     fontWeight={isSelected ? '600' : '400'}
                     className="pointer-events-none drop-shadow"
                   >

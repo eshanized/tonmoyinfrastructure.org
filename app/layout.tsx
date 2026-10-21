@@ -7,52 +7,45 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { ScrollProgress } from '@/components/shared/scroll-progress';
 import { cn } from '@/lib/utils';
 
-const barlow = localFont({
+const firaSans = localFont({
   src: [
     {
-      path: './fonts/barlow-latin-400-normal.woff2',
+      path: './fonts/fira-sans-latin-300-normal.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: './fonts/fira-sans-latin-400-normal.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: './fonts/barlow-latin-500-normal.woff2',
+      path: './fonts/fira-sans-latin-400-italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: './fonts/fira-sans-latin-500-normal.woff2',
       weight: '500',
       style: 'normal',
     },
     {
-      path: './fonts/barlow-latin-600-normal.woff2',
+      path: './fonts/fira-sans-latin-600-normal.woff2',
       weight: '600',
       style: 'normal',
     },
     {
-      path: './fonts/barlow-latin-700-normal.woff2',
+      path: './fonts/fira-sans-latin-700-normal.woff2',
       weight: '700',
       style: 'normal',
     },
-  ],
-  variable: '--font-barlow',
-  display: 'swap',
-});
-
-const jetbrains = localFont({
-  src: [
     {
-      path: './fonts/jetbrains-mono-latin-400-normal.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './fonts/jetbrains-mono-latin-500-normal.woff2',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: './fonts/jetbrains-mono-latin-700-normal.woff2',
-      weight: '700',
+      path: './fonts/fira-sans-latin-800-normal.woff2',
+      weight: '800',
       style: 'normal',
     },
   ],
-  variable: '--font-jetbrains',
+  variable: '--font-fira-sans',
   display: 'swap',
 });
 
@@ -132,8 +125,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          barlow.variable,
-          jetbrains.variable,
+          firaSans.variable,
           'font-sans antialiased'
         )}
       >

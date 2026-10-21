@@ -170,7 +170,7 @@ export function CourierNetworkExplorer() {
                     y="4"
                     fill="hsl(var(--foreground))"
                     fontSize="9.5"
-                    fontFamily="var(--font-jetbrains)"
+                    fontFamily="var(--font-fira-sans)"
                     fontWeight={isSelected ? '600' : '400'}
                     className="pointer-events-none drop-shadow"
                   >

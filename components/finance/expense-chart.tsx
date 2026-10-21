@@ -57,14 +57,14 @@ export function ExpenseChart({ data, currencySymbol, currency = 'INR' }: Expense
           tickFormatter={(v) => formatChartValue(v, currencySymbol, currency)}
           stroke="hsl(var(--muted-foreground))"
           fontSize={11}
-          fontFamily="var(--font-jetbrains)"
+          fontFamily="var(--font-fira-sans)"
         />
         <YAxis
           type="category"
           dataKey="label"
           stroke="hsl(var(--muted-foreground))"
           fontSize={11}
-          fontFamily="var(--font-jetbrains)"
+          fontFamily="var(--font-fira-sans)"
           width={120}
           tickLine={false}
           axisLine={false}
@@ -75,7 +75,7 @@ export function ExpenseChart({ data, currencySymbol, currency = 'INR' }: Expense
             backgroundColor: 'hsl(var(--popover))',
             border: '1px solid hsl(var(--border))',
             borderRadius: 'var(--radius)',
-            fontFamily: 'var(--font-jetbrains)',
+            fontFamily: 'var(--font-fira-sans)',
             fontSize: '12px',
           }}
           formatter={(value: number) => [

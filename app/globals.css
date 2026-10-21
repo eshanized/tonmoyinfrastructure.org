@@ -37,7 +37,13 @@
     --chart-5: 0 0% 60%;
 
     --radius: 0.25rem;
-    --font-dosis: var(--font-barlow);
+    --font-fira-sans: 'Fira Sans', sans-serif;
+    --font-sans: var(--font-fira-sans);
+    --font-display: var(--font-fira-sans);
+    --font-mono: var(--font-fira-sans);
+    --font-barlow: var(--font-fira-sans);
+    --font-jetbrains: var(--font-fira-sans);
+    --font-dosis: var(--font-fira-sans);
 
     --grid-line: 0 0% 0% / 0.04;
   --grid-line-dark: 0 0% 100% / 0.03;
@@ -85,7 +91,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "ss01", "cv01", "cv02";
+    font-feature-settings: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -243,7 +249,7 @@
 @import 'leaflet/dist/leaflet.css';
 
 .leaflet-container {
-  font-family: var(--font-jetbrains), monospace;
+  font-family: var(--font-fira-sans), sans-serif;
   background-color: hsl(var(--background)) !important;
   z-index: 10;
 }
@@ -277,6 +283,6 @@
 .leaflet-control-attribution {
   background-color: hsl(var(--background) / 0.85) !important;
   color: hsl(var(--muted-foreground)) !important;
-  font-family: var(--font-jetbrains), monospace;
+  font-family: var(--font-fira-sans), sans-serif;
   font-size: 10px !important;
 }

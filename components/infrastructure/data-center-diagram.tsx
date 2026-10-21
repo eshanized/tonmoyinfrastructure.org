@@ -38,10 +38,10 @@ export function DataCenterDiagram() {
           <text x="110" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
             Utility Substation Feed A + B
           </text>
-          <text x="110" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="110" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Dual Independent 33kV Lines
           </text>
-          <text x="110" y="60" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="110" y="60" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-fira-sans)">
             Dual Substation Feeds
           </text>
         </g>
@@ -52,10 +52,10 @@ export function DataCenterDiagram() {
           <text x="110" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
             Auxiliary Backup Generation
           </text>
-          <text x="110" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="110" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             On-Site Emergency Power Systems
           </text>
-          <text x="110" y="60" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="110" y="60" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-fira-sans)">
             Automatic Transfer Switches (ATS)
           </text>
         </g>
@@ -70,10 +70,10 @@ export function DataCenterDiagram() {
           <text x="220" y="26" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
             Static Transfer Switches & Dual Online UPS Systems
           </text>
-          <text x="220" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="220" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             0ms Transfer Time · Isolated Power Distribution Units (PDUs) · A/B Bus
           </text>
-          <text x="220" y="60" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="220" y="60" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-fira-sans)">
             Concurrently Maintainable A/B Bus Distribution
           </text>
         </g>
@@ -102,7 +102,7 @@ export function DataCenterDiagram() {
                 <text x="47.5" y="22" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="10" fontWeight="500" fontFamily="var(--font-sans)">
                   {rack.label}
                 </text>
-                <text x="47.5" y="38" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="8" fontFamily="var(--font-jetbrains)">
+                <text x="47.5" y="38" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="8" fontFamily="var(--font-fira-sans)">
                   {rack.sub}
                 </text>
                 <circle cx="47.5" cy="50" r="3" fill="hsl(var(--brand))" />
@@ -117,16 +117,16 @@ export function DataCenterDiagram() {
           <text x="115" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
             Meet-Me Room (MMR)
           </text>
-          <text x="115" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="115" y="44" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Carrier Demarcation & Ingress
           </text>
-          <text x="115" y="62" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="115" y="62" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Upstream Connectivity & Regional Peering
           </text>
-          <text x="115" y="80" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="115" y="80" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-fira-sans)">
             Redundant Cross-Connects
           </text>
-          <text x="115" y="98" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="8" fontFamily="var(--font-jetbrains)">
+          <text x="115" y="98" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="8" fontFamily="var(--font-fira-sans)">
             Direct Optical Patch Demarcation
           </text>
         </g>

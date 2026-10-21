@@ -11,8 +11,7 @@
     "test": "node scripts/compile-publications.mjs && node --test tests/audit.test.mjs tests/portfolio-economics.test.mjs tests/seo-recovery.test.mjs tests/contact-delivery.test.mjs tests/status-telemetry.test.mjs tests/security-portfolio.test.mjs tests/navigation-accessibility.test.mjs tests/canonical-redirects.test.mjs tests/runstead.test.mjs tests/publications-mdx.test.mjs"
   },
   "dependencies": {
-    "@fontsource/barlow": "^5.3.0",
-    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/fira-sans": "^5.3.0",
     "@hookform/resolvers": "^3.9.0",
     "@netlify/plugin-nextjs": "^5.15.1",
     "@next/swc-wasm-nodejs": "13.5.1",

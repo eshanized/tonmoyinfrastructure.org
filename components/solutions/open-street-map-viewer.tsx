@@ -101,7 +101,7 @@ export default function OpenStreetMapViewer() {
         });
 
         const popupHtml = `
-          <div style="font-family: var(--font-jetbrains), monospace; min-width: 260px; padding: 4px;">
+          <div style="font-family: var(--font-fira-sans), sans-serif; min-width: 260px; padding: 4px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
               <div>
                 <span style="font-size: 10px; color: #e5484d; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">${dc.region} · DATA CENTER</span>
@@ -183,7 +183,7 @@ export default function OpenStreetMapViewer() {
         });
 
         const popupHtml = `
-          <div style="font-family: var(--font-jetbrains), monospace; min-width: 250px; padding: 4px;">
+          <div style="font-family: var(--font-fira-sans), sans-serif; min-width: 250px; padding: 4px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
               <div>
                 <span style="font-size: 10px; color: #e5484d; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">COURIER GATEWAY HUB</span>

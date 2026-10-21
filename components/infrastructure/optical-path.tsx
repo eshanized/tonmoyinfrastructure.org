@@ -28,17 +28,17 @@ export function OpticalPath() {
         {/* Stage 1: Transponders / Transmitters */}
         <g transform="translate(30, 40)">
           <rect width="110" height="40" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="55" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="600" fontFamily="var(--font-jetbrains)">
+          <text x="55" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="600" fontFamily="var(--font-fira-sans)">
             TX λ1 (1550.12nm)
           </text>
 
           <rect y="55" width="110" height="40" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="55" y="79" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="600" fontFamily="var(--font-jetbrains)">
+          <text x="55" y="79" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="600" fontFamily="var(--font-fira-sans)">
             TX λ2 (1550.92nm)
           </text>
 
           <rect y="110" width="110" height="40" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="55" y="134" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="600" fontFamily="var(--font-jetbrains)">
+          <text x="55" y="134" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="600" fontFamily="var(--font-fira-sans)">
             TX λN (1559.79nm)
           </text>
         </g>
@@ -62,10 +62,10 @@ export function OpticalPath() {
         {/* Stage 3: Booster EDFA & OSC */}
         <g transform="translate(310, 85)">
           <polygon points="0,0 45,30 0,60" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="16" y="34" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontWeight="bold" fontFamily="var(--font-jetbrains)">
+          <text x="16" y="34" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontWeight="bold" fontFamily="var(--font-fira-sans)">
             EDFA
           </text>
-          <text x="22" y="76" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="22" y="76" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-fira-sans)">
             +18dBm Booster
           </text>
         </g>
@@ -78,10 +78,10 @@ export function OpticalPath() {
           <text x="80" y="-18" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="10" fontWeight="600" fontFamily="var(--font-display)">
             G.652D Dark Fiber Span
           </text>
-          <text x="80" y="-2" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="80" y="-2" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-fira-sans)">
             Attenuation: ~0.2 dB/km
           </text>
-          <text x="80" y="14" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="80" y="14" textAnchor="middle" fill="hsl(var(--brand))" fontSize="9" fontFamily="var(--font-fira-sans)">
             Municipal Conduit Link
           </text>
         </g>
@@ -89,10 +89,10 @@ export function OpticalPath() {
         {/* Stage 4: Pre-amplifier EDFA */}
         <g transform="translate(535, 85)">
           <polygon points="0,0 45,30 0,60" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="16" y="34" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontWeight="bold" fontFamily="var(--font-jetbrains)">
+          <text x="16" y="34" textAnchor="middle" fill="hsl(var(--brand))" fontSize="10" fontWeight="bold" fontFamily="var(--font-fira-sans)">
             EDFA
           </text>
-          <text x="22" y="76" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-jetbrains)">
+          <text x="22" y="76" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontSize="9" fontFamily="var(--font-fira-sans)">
             Pre-Amp
           </text>
         </g>
@@ -116,17 +116,17 @@ export function OpticalPath() {
         {/* Receivers */}
         <g transform="translate(730, 40)">
           <rect width="40" height="40" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="20" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="20" y="24" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             RX λ1
           </text>
 
           <rect y="55" width="40" height="40" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="20" y="79" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="20" y="79" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             RX λ2
           </text>
 
           <rect y="110" width="40" height="40" rx="2" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="20" y="134" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="20" y="134" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             RX λN
           </text>
         </g>
@@ -137,10 +137,10 @@ export function OpticalPath() {
           <text x="20" y="26" fill="hsl(var(--foreground))" fontSize="12" fontWeight="600" fontFamily="var(--font-display)">
             Wavelength Division & Channel Multiplexing Parameters
           </text>
-          <text x="20" y="48" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="20" y="48" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Spectral Band: C-Band (1530nm – 1565nm) · Channel Spacing: 100 GHz (0.8 nm) · Modulation: DP-QPSK / 16-QAM
           </text>
-          <text x="20" y="68" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-jetbrains)">
+          <text x="20" y="68" fill="hsl(var(--muted-foreground))" fontSize="10" fontFamily="var(--font-fira-sans)">
             Supervisory Channel (OSC): 1510 nm Out-of-Band Telemetry · Dispersion Tolerance: &gt; 1600 ps/nm
           </text>
         </g>
