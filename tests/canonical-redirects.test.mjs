@@ -17,6 +17,10 @@ test('Canonical Routes & Static Redirect Rules Consolidation', () => {
   assert.match(redirectsFile, /\/products\/:slug\s+\/projects\/:slug\/\s+301/, '_redirects must redirect /products/:slug to /projects/:slug/');
   assert.match(redirectsFile, /\/work\/:slug\s+\/projects\/:slug\/\s+301/, '_redirects must redirect /work/:slug to /projects/:slug/');
 
+  // Category hubs remain accessible; only detail paths should redirect.
+  assert.doesNotMatch(redirectsFile, /^\/products\/?\s+/m, '_redirects must preserve the /products category hub');
+  assert.doesNotMatch(redirectsFile, /^\/work\/?\s+/m, '_redirects must preserve the /work category hub');
+
   // 2. Apache .htaccess 301 Rewrite Rules
   assert.match(htaccessFile, /RewriteRule\s+\^products\/\(\[\^\/\]\+\)\/\?\$ https:\/\/\%\{HTTP_HOST\}\/projects\/\$1\/ \[R=301,L\]/, '.htaccess must rewrite /products/ to /projects/');
   assert.match(htaccessFile, /RewriteRule\s+\^work\/\(\[\^\/\]\+\)\/\?\$ https:\/\/\%\{HTTP_HOST\}\/projects\/\$1\/ \[R=301,L\]/, '.htaccess must rewrite /work/ to /projects/');

@@ -165,9 +165,10 @@ export function generateProjectMetadata(
   options: { basePath?: 'projects' | 'products' | 'work' } = {}
 ): Metadata {
   const canonicalPath = `/projects/${project.slug}`;
-  const title = project.seoTitle
-    ? (project.seoTitle.includes(siteConfig.name) ? project.seoTitle : `${project.seoTitle} — ${siteConfig.name}`)
-    : `${project.title} — ${siteConfig.name}`;
+  const rawTitle = project.seoTitle || project.title;
+  const title = rawTitle.includes(siteConfig.name)
+    ? rawTitle
+    : `${rawTitle} — ${siteConfig.name}`;
   const description = project.seoDescription || project.description;
   const ogImage = project.ogImage || `${siteConfig.url}${siteConfig.defaultOgImage}`;
 
