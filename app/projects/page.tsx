@@ -43,7 +43,7 @@ export default function ProjectsPage() {
         index="PROJECTS"
         label="Software Portfolio"
         title="Shipped software systems &amp; emerging ventures."
-        description="TIV maintains four stable release software platforms — OpenMail, Mercura, M31A, and Octate — alongside emerging ventures under active development such as Runstead."
+        description="Explore TIV software systems and ventures in active development, including Kyro, a visual desktop AI agent, and Runstead, a hosting-business operating platform."
         meta={[
           { label: 'STABLE PORTFOLIO', value: '4 Systems' },
           { label: 'STATUS', value: 'Stable Release' },
@@ -66,7 +66,7 @@ export default function ProjectsPage() {
               index="01"
               label="Stable Portfolio"
               title="Four systems built and shipped."
-              description="These are complete stable releases, not upcoming concepts or prototypes. Active development continues on each."
+              description="These are the established stable releases in the TIV software portfolio. Active development ventures are listed separately below."
             />
           </Reveal>
 

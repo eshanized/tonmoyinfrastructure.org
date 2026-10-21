@@ -12,6 +12,7 @@ import { SystemMap } from '@/components/infrastructure/system-map';
 import { InfrastructureMap } from '@/components/infrastructure/infrastructure-map';
 import {
   getFeaturedProjects,
+  getProjects,
   getResearchAreas,
   getRepos,
   getNews,
@@ -30,6 +31,7 @@ export const metadata = generatePageMetadata({
 
 export default function HomePage() {
   const projects = getFeaturedProjects();
+  const kyroProject = getProjects().find((project) => project.slug === 'kyro');
   const researchAreas = getResearchAreas();
   const repos = getRepos();
   const news = getNews().slice(0, 3);
@@ -127,6 +129,46 @@ export default function HomePage() {
           </StaggerContainer>
 
           {/* Ventures in Development Highlight */}
+          {/* Kyro — Everyday AI Operator & Developer Agent */}
+          {kyroProject && (
+            <Reveal delay={0.15} className="mt-8">
+              <div className="border border-brand/40 bg-card p-6 md:p-8">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-amber-400" />
+                      <span className="tiv-meta text-amber-400">NEW VENTURE · IN DEVELOPMENT</span>
+                    </div>
+                    <h3 className="mt-2 font-display text-xl tracking-tight">
+                      Kyro — Visual AI Desktop Agent
+                    </h3>
+                    <p className="mt-2 max-w-2xl text-pretty text-sm text-muted-foreground">
+                      One governed desktop workspace for screen understanding, browser automation, document and file workflows, and developer diagnostics. Kyro is an active pre-release project; capabilities depend on the configured model and runtime.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-3 shrink-0">
+                    <Link
+                      href="/projects/kyro"
+                      className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    >
+                      Explore Kyro
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <a
+                      href="https://github.com/eshanized/Kyro"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    >
+                      Source Code
+                      <Github className="h-4 w-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          )}
+
           <Reveal delay={0.2} className="mt-8">
             <div className="border border-border bg-card p-6 md:p-8">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">

@@ -1043,6 +1043,120 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
     updatedAt: '2026-09-08',
   },
   {
+    slug: 'kyro',
+    title: 'Kyro',
+    seoTitle: 'Kyro — Visual AI Desktop Agent for Everyday Tasks and Software Development',
+    seoDescription:
+      'Kyro is a desktop AI agent in active development, combining screen understanding, grounded computer use, browser inspection, reversible file organization, document analysis, and developer workflows in a Tauri desktop application.',
+    type: 'software',
+    productStatus: 'preview',
+    releaseStatus: 'pre-release',
+    developmentStage: 'active',
+    status: 'Development',
+    category: 'Software',
+    shortDescription:
+      'A visual desktop AI operator for everyday computer tasks and end-to-end developer workflows.',
+    description:
+      'Kyro is a local-first desktop AI assistant being developed by Tonmoy Infrastructure & Vision. It brings screen explanation, screenshot-based visual analysis, grounded UI interaction, browser automation, safe file organization with undo, local document analysis, reusable routines, project inspection, build diagnostics, visual UI audits, and checkpoint-based code recovery into one governed desktop workspace.',
+    version: '0.1.0-dev',
+    featured: true,
+    technology: [
+      'Tauri 2',
+      'React',
+      'TypeScript',
+      'Rust',
+      'Multimodal AI',
+      'Browser Automation',
+    ],
+    repository: 'https://github.com/eshanized/Kyro',
+    documentation: 'https://github.com/eshanized/Kyro',
+    website: '',
+    license: 'MIT',
+    artifactType: 'Software Platform',
+    owner: 'eshanized',
+    organization: 'Tonmoy Infrastructure & Vision',
+    affiliation: 'TIV',
+    sources: [
+      {
+        platform: 'github',
+        type: 'repository',
+        url: 'https://github.com/eshanized/Kyro',
+        label: 'GitHub Repository',
+        affiliation: 'TIV',
+        organization: 'Tonmoy Infrastructure & Vision',
+        verified: false,
+        description: 'Source repository; project remains in active development.',
+      },
+    ],
+    problem:
+      'Everyday users and developers often have to switch between separate tools for understanding what is on screen, handling documents and files, automating browser tasks, diagnosing application failures, and testing interfaces. Desktop automation can also be difficult to trust when actions are not grounded in observed state or when changes cannot be reviewed and reversed.',
+    approach:
+      'Kyro is being built around an observe–reason–act–verify workflow. It combines visual and semantic observations with governed tool execution, explicit approvals for risky operations, evidence-linked results, and reversible workflows where practical. Its Everyday and Dev experiences share the same execution and governance foundation.',
+    architecture:
+      'The desktop application uses Tauri 2 with a React and TypeScript interface and a Rust backend. The current codebase includes browser automation and UI-audit paths, a model-capability lookup and visual-analysis layer, file-organization transactions, document-analysis commands, developer checkpoints, and build-failure diagnostics. Integrations and provider/model capabilities depend on the installed environment and configured credentials.',
+    features: [
+      'Explain screenshots and desktop screens with visual context',
+      'Grounded UI observations and Set-of-Marks screen capture',
+      'Browser sessions, DOM snapshots, screenshots, and interaction tools',
+      'File-organization previews with transaction manifests and undo support',
+      'Local document analysis and document comparison',
+      'Developer workbench for project inspection, build diagnostics, and checkpoints',
+      'Route and responsive UI auditing with screenshot evidence',
+      'Reusable task routines and a shared governed agent workflow',
+    ],
+    roadmap: [
+      { item: 'Everyday and Dev experience modes', done: true },
+      { item: 'Visual analysis and model-capability handling', done: true },
+      { item: 'Browser observation and UI-audit evidence paths', done: true },
+      { item: 'File organization and undo workflow', done: true },
+      { item: 'Document analysis and comparison', done: true },
+      { item: 'Developer checkpoints and build diagnostics', done: true },
+      { item: 'Complete end-to-end verification across supported platforms and providers', done: false },
+      { item: 'Release qualification and stable release', done: false },
+    ],
+    relatedProjects: ['m31a', 'octate', 'runstead'],
+    keywords: [
+      'Kyro',
+      'desktop AI assistant',
+      'visual AI agent',
+      'AI computer use',
+      'browser automation',
+      'AI developer agent',
+      'screen understanding',
+      'Tauri desktop app',
+    ],
+    updatedAt: '2026-10-21',
+    content: `## Overview
+
+Kyro is an AI-powered desktop operator under active development at Tonmoy Infrastructure & Vision (TIV). It aims to help everyday users understand and work with their computer while giving developers a governed workspace for software engineering tasks.
+
+## Everyday workflows
+
+- **Explain Screen** — capture a screen and request visual analysis to help understand controls, errors, and displayed information.
+- **Organize Files** — preview proposed file moves, execute an organization plan, keep transaction information, and undo operations where content checks permit.
+- **Document Assistant** — analyze local documents for summaries, key facts, action items, dates, and compare two documents.
+- **Automations & Routines** — work toward reusable task routines through the shared agent workflow.
+
+## Developer workflows
+
+- **Project workbench** — access project-oriented tooling, diagnostics, checkpoints, and audit workflows.
+- **Browser and visual QA** — inspect browser pages and DOM snapshots, capture screenshots, and run route and viewport checks.
+- **Build diagnostics and recovery** — structure build-failure diagnostics and create checkpoints that support guarded rollback.
+
+## Architecture
+
+Kyro uses a Tauri 2 desktop shell, React and TypeScript for the interface, and Rust for backend and execution paths. Visual analysis and browser capabilities depend on the selected model, configured provider credentials, and supported browser/runtime setup.
+
+## Development status
+
+Kyro is a pre-release project in active development. Its feature paths are represented in the current codebase, but release qualification and complete end-to-end verification across supported environments remain outstanding. It should not be represented as a stable production release.
+
+## Project links
+
+- [Source repository](https://github.com/eshanized/Kyro)
+- [Tonmoy Infrastructure & Vision](https://tonmoyinfrastructure.org/)`,
+  },
+  {
     slug: 'runstead',
     title: 'Runstead',
     seoTitle: 'Runstead — Hosting Business Management and Billing SaaS',
