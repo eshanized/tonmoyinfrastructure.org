@@ -324,6 +324,34 @@ export function generateNewsArticleSchema(item: NewsItem) {
   };
 }
 
+/**
+ * Generates FAQPage structured data answering verified institutional inquiries.
+ */
+export function generateCompanyFaqSchema() {
+  return {
+    '@type': 'FAQPage',
+    '@id': `${siteConfig.url}/about/company/#faq`,
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Does Tonmoy Infrastructure and Vision exist?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Tonmoy Infrastructure and Vision (TIV) is the technology organization behind this official website and its publicly linked software projects, release records, and research materials.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What does Reg-2026-346380 mean?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'It is the application reference shown on the supplied Foreign Company Registration record. The record provided does not show approval status or a final registration certificate or number, so TIV identifies it as an application reference only.',
+        },
+      },
+    ],
+  };
+}
+
 export interface PageGraphOptions {
   pagePath?: string;
   path?: string;

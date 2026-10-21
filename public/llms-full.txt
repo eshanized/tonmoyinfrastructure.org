@@ -1,0 +1,65 @@
+# Tonmoy Infrastructure and Vision (TIV) — Comprehensive Technical & Entity Context
+
+## 1. Institutional Identity & Verification
+- Formal Legal Entity on Application: Tonmoy Infrastructure and Vision Ltd
+- Application Reference: Reg-2026-346380 (Foreign Company Registration)
+- Tax Residence: Bangladesh
+- Primary Operating Facility: Pusat Bisnis Jayapura, Jl. Pasifik Permai, Jayapura, Papua 99111, Indonesia
+- Coordinates: Latitude -2.543186, Longitude 140.714993
+- Official Telephone: (0967) 551888 (tel:+62967551888)
+- Official Domain: https://tonmoyinfrastructure.org/
+- Founder: Eshan Roy (@eshanized), Systems Architect & Open Source Maintainer
+- ORCID: 0009-0007-1261-6805
+- GitHub: https://github.com/eshanized
+- Hugging Face: https://huggingface.co/eshanized
+
+## 2. Production Shipped Systems (v1.0.0+)
+### OpenMail (/projects/openmail/)
+- Category: Email & Communication Infrastructure
+- Status: Stable Release (v1.0.0, 2026-09-10)
+- Stack: Go, SQLite, integrated SMTP/IMAP, ACME automated TLS
+- Architecture: Single-binary monolithic mail engine with local-first data ownership, zero vendor telemetry, DKIM/SPF/DMARC tooling.
+- Repository: https://github.com/eshanized/OpenMail
+
+### Mercura (/projects/mercura/)
+- Category: Developer Infrastructure / VCS Forge
+- Status: Stable Release (v1.0.0, 2026-09-11)
+- Stack: Go, Mercurial, Tree-sitter
+- Architecture: Local-first code intelligence, fast repository exploration, AST indexing.
+- Repository: https://tonmoyinfrastructure.org/projects/mercura/
+
+### M31A (/projects/m31a/)
+- Category: Autonomous Software Engineering Runtime
+- Status: Stable Release (v0.1.1, 2026-09-12)
+- Stack: Rust (single crate), Terminal Cockpit, non-bypassable policy gates
+- Architecture: Verifiable autonomous execution with strict capability sandboxing and step-by-step verification ledger.
+- Dedicated Host: https://m31a.tonmoyinfrastructure.org/
+
+### Octate (/projects/octate/)
+- Category: Developer Tooling / Code Review CLI
+- Status: Stable Release (v1.0.0, 2026-09-13)
+- Stack: TypeScript, Node.js, Tree-sitter WASM, React / Ink, SARIF v2.1.0
+- Architecture: Terminal-native AI code review combining deterministic AST intelligence, cross-file reference graphs, multi-stage LLM review DAGs, and a two-stage critic gate.
+- npm: @tiverse/octate
+- Repository: https://github.com/vedanthq/Octate
+
+## 3. Experimental AI Models & Research Checkpoints
+### M31Genesis (/projects/m31genesis/)
+- Parameter Count: 425M-class decoder-only transformer
+- Training: High-quality code and structured reasoning tokens
+- Hugging Face: https://huggingface.co/eshanized/M31Genesis
+
+### M31Tesla (/projects/m31tesla/)
+- Parameter Count: 228.9M parameters
+- Architecture: 20 layers, 896 hidden dimension, Grouped-Query Attention (GQA), RoPE embeddings
+- Task: Autonomous Python code repair runtime
+- Hugging Face: https://huggingface.co/eshanized/M31Tesla
+
+### M31Entropy (/projects/m31entropy/)
+- Parameter Count: 314M parameters
+- Architecture: 128k vocabulary density exploration transformer
+- Hugging Face: https://huggingface.co/eshanized/M31Entropy
+
+## 4. Sovereign Physical Infrastructure
+- Jayapura Sovereign Facility: Internal data center facility hosting authoritative DNS, private mail relays, sovereign git mirrors, and build runners.
+- Commercial Policy: No self-serve retail colocation; enterprise inquiries handled through direct institutional channels.

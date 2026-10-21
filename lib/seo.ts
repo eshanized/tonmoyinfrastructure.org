@@ -66,7 +66,10 @@ export function formatTitle(title?: string, override: boolean = false): string {
   if (!title) return `${siteConfig.name} — ${siteConfig.tagline}`;
   if (override) return title;
   if (title.includes('—') || title.includes('–')) return title;
-  if (title.includes(siteConfig.name)) return title;
+  if (title.includes(siteConfig.name) || title.includes(siteConfig.shortName)) return title;
+  if (title.length + siteConfig.name.length + 3 > 60) {
+    return `${title} — ${siteConfig.shortName}`;
+  }
   return `${title} — ${siteConfig.name}`;
 }
 
@@ -166,9 +169,10 @@ export function generateProjectMetadata(
 ): Metadata {
   const canonicalPath = `/projects/${project.slug}`;
   const rawTitle = project.seoTitle || project.title;
-  const title = rawTitle.includes(siteConfig.name)
+  const brandSuffix = rawTitle.length + siteConfig.name.length + 3 > 60 ? siteConfig.shortName : siteConfig.name;
+  const title = (rawTitle.includes(siteConfig.name) || rawTitle.includes(siteConfig.shortName))
     ? rawTitle
-    : `${rawTitle} — ${siteConfig.name}`;
+    : `${rawTitle} — ${brandSuffix}`;
   const description = project.seoDescription || project.description;
   const ogImage = project.ogImage || `${siteConfig.url}${siteConfig.defaultOgImage}`;
 

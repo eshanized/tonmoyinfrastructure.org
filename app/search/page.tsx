@@ -231,7 +231,7 @@ export default function SearchPage() {
       {
         title: 'Corporate Governance & Legal Structure',
         type: 'Governance',
-        href: '/governance',
+        href: '/about/governance/',
         description: 'Organizational bylaws, supervisory board oversight, and legal commitments to open infrastructure.',
         isExternal: false,
       },

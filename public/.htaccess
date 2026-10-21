@@ -60,6 +60,8 @@ DirectorySlash Off
     RewriteCond %{REQUEST_URI} !^/work/?$ [NC]
     RewriteRule ^work/([^/]+)/?$ https://%{HTTP_HOST}/projects/$1/ [R=301,L]
     RewriteRule ^infrastructure/optical-systems/?$ https://%{HTTP_HOST}/infrastructure/optical/ [R=301,L]
+    RewriteRule ^governance/?$ https://%{HTTP_HOST}/about/governance/ [R=301,L]
+    RewriteRule ^projects/mcp-superassistant/?$ https://github.com/eshanized/MCP-SuperAssistant [R=301,L]
 
     # --------------------------------------------------------------------------
     # 4. NEXT.JS STATIC ROUTING & TRAILING SLASH (Main domain only)
@@ -126,6 +128,7 @@ ErrorDocument 404 /404.html
     Header set X-Frame-Options "DENY"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
     Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 </IfModule>
 
 # Proper MIME types

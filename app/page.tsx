@@ -425,7 +425,7 @@ export default function HomePage() {
                     <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
-                    href="/governance"
+                    href="/about/governance/"
                     className="group flex items-center gap-3 border border-border p-4 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   >
                     <Building className="h-5 w-5 text-brand" aria-hidden="true" />

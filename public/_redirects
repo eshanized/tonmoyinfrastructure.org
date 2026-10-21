@@ -9,3 +9,5 @@
 /products/:slug  /projects/:slug/      301
 /work/:slug      /projects/:slug/      301
 /infrastructure/optical-systems  /infrastructure/optical/  301
+/governance      /about/governance/    301
+/projects/mcp-superassistant  https://github.com/eshanized/MCP-SuperAssistant  301

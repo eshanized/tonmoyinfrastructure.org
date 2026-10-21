@@ -2321,7 +2321,7 @@ export function getTechnicalArtifacts(): TechnicalArtifact[] {
       language: 'TypeScript',
       license: 'MIT',
       url: 'https://github.com/eshanized/MCP-SuperAssistant',
-      documentation: '/projects/mcp-superassistant',
+      documentation: 'https://github.com/eshanized/MCP-SuperAssistant',
       author: 'eshanized',
       organization: 'Tonmoy Infrastructure & Vision',
       affiliation: 'TIV',

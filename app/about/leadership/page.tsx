@@ -72,9 +72,9 @@ export default function LeadershipPage() {
             {/* Left: profile content */}
             <Reveal delay={0.1}>
               <div>
-                <h1 className="font-display text-4xl leading-tight tracking-tight md:text-5xl">
+                <h2 className="font-display text-4xl leading-tight tracking-tight md:text-5xl">
                   {founder.name}
-                </h1>
+                </h2>
                 <div className="mt-3 flex items-center gap-2">
                   <span className="font-mono text-sm text-muted-foreground">
                     @{founder.handle}

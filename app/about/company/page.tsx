@@ -7,7 +7,7 @@ import { Reveal } from '@/components/shared/motion';
 import { Breadcrumbs } from '@/components/shared/breadcrumbs';
 import { getCompanyInfo } from '@/lib/institutional';
 import { generatePageMetadata } from '@/lib/seo';
-import { generatePageGraph } from '@/lib/structured-data';
+import { generatePageGraph, generateCompanyFaqSchema } from '@/lib/structured-data';
 import { JsonLd } from '@/components/shared/json-ld';
 
 export const metadata = generatePageMetadata({
@@ -30,6 +30,9 @@ export default function CompanyPage() {
       { name: 'Home', item: '/' },
       { name: 'About', item: '/about' },
       { name: 'Company', item: '/about/company' },
+    ],
+    additionalNodes: [
+      generateCompanyFaqSchema(),
     ],
   });
 
@@ -145,7 +148,7 @@ export default function CompanyPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-brand" aria-hidden="true" />
-                    <span className="tiv-meta">Official Office & Coordinates</span>
+                    <span className="tiv-meta">Official Office Address & Coordinates</span>
                   </div>
                   <span className="font-mono text-xs text-muted-foreground">
                     {company.officeAddress.latitude}, {company.officeAddress.longitude}

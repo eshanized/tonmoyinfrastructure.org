@@ -1,0 +1,34 @@
+# Tonmoy Infrastructure and Vision (TIV)
+
+> Independent technology organization engineering sovereign developer platforms, verifiable execution runtimes, and distributed infrastructure architecture.
+
+Tonmoy Infrastructure and Vision (TIV) is a private technology organization operating from Jayapura, Papua, Indonesia. Founded by Eshan Roy (@eshanized), TIV designs, builds, and maintains sovereign software systems, pre-trained AI checkpoints, and physical computing infrastructure.
+
+## Founder & Leadership
+- [Leadership & Engineering Stewardship](https://tonmoyinfrastructure.org/about/leadership/): Eshan Roy (@eshanized) — Founder, Systems Architect, and Open Source Maintainer.
+- [Company Identity & Verification](https://tonmoyinfrastructure.org/about/company/): Official identity, physical office details, and application reference Reg-2026-346380 (Foreign Company Registration).
+
+## Stable Software Systems (Production Releases)
+- [OpenMail](https://tonmoyinfrastructure.org/projects/openmail/): Self-hosted, single-binary email infrastructure with native SMTP, IMAP, automated TLS, and local data ownership.
+- [Mercura](https://tonmoyinfrastructure.org/projects/mercura/): Local-first code intelligence, repository hosting, and Mercurial forge written in Go.
+- [M31A](https://tonmoyinfrastructure.org/projects/m31a/): High-assurance Rust autonomous software-engineering runtime with 11-stage non-bypassable policy gates.
+- [Octate](https://tonmoyinfrastructure.org/projects/octate/): Terminal-native AI code review CLI with Tree-sitter WASM AST intelligence, LLM reasoning DAGs, and SARIF export.
+
+## Experimental AI Checkpoints & Research
+- [M31Genesis](https://tonmoyinfrastructure.org/projects/m31genesis/): 425M-parameter causal language model pre-trained on code and reasoning tokens.
+- [M31Tesla](https://tonmoyinfrastructure.org/projects/m31tesla/): 228.9M-parameter autonomous agent runtime model with grouped-query attention.
+- [M31Entropy](https://tonmoyinfrastructure.org/projects/m31entropy/): 314M-parameter architecture exploration model testing high vocabulary representation density.
+- [Research Whitepaper](https://tonmoyinfrastructure.org/research/whitepaper/): Sovereign Internet Architecture and verifiable engineering systems.
+
+## Sovereign Physical Infrastructure
+- [Data Centers](https://tonmoyinfrastructure.org/infrastructure/data-centers/): Primary sovereign facility in Jayapura, Papua, Indonesia (Pusat Bisnis Jayapura, Jl. Pasifik Permai).
+- [Optical & Networking](https://tonmoyinfrastructure.org/infrastructure/optical/): Authoritative DNS, sovereign routing, and private network interconnects.
+
+## Transparency, Governance & Verification
+- [Corporate Governance](https://tonmoyinfrastructure.org/about/governance/): Institutional bylaws, engineering ethics, and decision frameworks.
+- [Portfolio Economics](https://tonmoyinfrastructure.org/transparency/financials/portfolio-economics/): Verifiable economic accounting, founder time allocation, and anti-speculation declarations.
+- [Security & Vulnerability Disclosure](https://tonmoyinfrastructure.org/security/): PGP keys, responsible disclosure guidelines, and security policies.
+
+## Machine-Readable Resources
+- [Full Text Context](https://tonmoyinfrastructure.org/llms-full.txt): Comprehensive entity and technical documentation mirror for AI agents.
+- [Sitemap](https://tonmoyinfrastructure.org/sitemap.xml): Machine-readable index of all canonical routes.
