@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "node scripts/compile-publications.mjs && tsc --noEmit",
-    "test": "node scripts/compile-publications.mjs && node --test tests/audit.test.mjs tests/portfolio-economics.test.mjs tests/seo-recovery.test.mjs tests/contact-delivery.test.mjs tests/status-telemetry.test.mjs tests/security-portfolio.test.mjs tests/navigation-accessibility.test.mjs tests/canonical-redirects.test.mjs tests/runstead.test.mjs tests/kyro.test.mjs tests/kyro.test.mjs tests/publications-mdx.test.mjs tests/seo-quality.test.mjs"
+    "test": "node scripts/compile-publications.mjs && node --test tests/audit.test.mjs tests/portfolio-economics.test.mjs tests/seo-recovery.test.mjs tests/contact-delivery.test.mjs tests/status-telemetry.test.mjs tests/security-portfolio.test.mjs tests/navigation-accessibility.test.mjs tests/canonical-redirects.test.mjs tests/runstead.test.mjs tests/kyro.test.mjs tests/publications-mdx.test.mjs tests/seo-quality.test.mjs"
   },
   "dependencies": {
     "@fontsource/barlow": "^5.3.0",
