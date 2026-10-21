@@ -75,6 +75,26 @@ TIV develops and actively maintains four foundational software systems, all publ
 
 ---
 
+### Venture in Development: Kyro
+
+| Project | Version | Primary Stack | License | Repository | Project Profile | Scope |
+|:---|:---|:---|:---|:---|:---|:---|
+| **[Kyro](https://github.com/eshanized/Kyro)** | `0.1.0-dev` | Tauri 2 / React / TypeScript / Rust | MIT | [`eshanized/Kyro`](https://github.com/eshanized/Kyro) | [Project Profile](https://tonmoyinfrastructure.org/projects/kyro) | Visual desktop AI operator under active development for screen understanding, grounded browser automation, reversible file workflows, document assistance, developer diagnostics, and evidence-backed UI audits. |
+
+Kyro is a pre-release development project, not a stable release. Its capabilities depend on the configured model/provider and the supported desktop/browser runtime.
+
+---
+
+### Venture in Development: Kyro
+
+| Project | Version | Primary Stack | License | Repository | Project Profile | Scope |
+|:---|:---|:---|:---|:---|:---|:---|
+| **[Kyro](https://github.com/eshanized/Kyro)** | `0.1.0-dev` | Tauri 2 / React / TypeScript / Rust | MIT | [`eshanized/Kyro`](https://github.com/eshanized/Kyro) | [Project Profile](https://tonmoyinfrastructure.org/projects/kyro) | Visual desktop AI operator under active development for screen understanding, grounded browser automation, reversible file workflows, document assistance, developer diagnostics, and evidence-backed UI audits. |
+
+Kyro is a pre-release development project, not a stable release. Its capabilities depend on the configured model/provider and the supported desktop/browser runtime.
+
+---
+
 ## AI Research & Experimental Models (M31 Ecosystem)
 
 In parallel with stable software releases, TIV conducts open research into causal language models, agentic workflows, and context mechanisms. Research models are strictly labeled as **Experimental Checkpoints**:
