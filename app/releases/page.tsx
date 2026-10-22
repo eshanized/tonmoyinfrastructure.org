@@ -17,7 +17,7 @@ export const metadata = generatePageMetadata({
   description:
     'Version history for TIV software, including stable releases and Kyro v0.1.0, an early public Linux release with direct package downloads and SHA-256 checksums.',
   path: '/releases',
-  keywords: ['TIV releases', 'software releases', 'changelogs', 'OpenMail release', 'Mercura release'],
+  keywords: ['TIV releases', 'software releases', 'changelogs', 'OpenMail release', 'Mercura release', 'Kyro v0.1.0', 'Kyro Linux download', 'Kyro AppImage', 'Kyro Debian package', 'Kyro Arch package', 'Kyro RPM', 'SHA-256 checksums'],
 });
 
 export default function ReleasesPage() {
