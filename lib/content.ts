@@ -1045,9 +1045,9 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
   {
     slug: 'kyro',
     title: 'Kyro',
-    seoTitle: 'Kyro — Desktop AI Assistant for Linux | Download v0.1.0 | TIV',
+    seoTitle: 'Kyro — Desktop AI Assistant & Linux Downloads | TIV',
     seoDescription:
-      'Kyro is a local-first desktop AI assistant with a public v0.1.0 Linux release. Explore screen understanding, browser automation, document and file workflows, developer tools, and downloads for Debian/Ubuntu, Fedora, Arch, and AppImage. Built by Tonmoy Infrastructure & Vision.',
+      'Kyro is a local-first desktop AI assistant with a public v0.1.0 Linux release. Download AppImage, Debian/Ubuntu, Fedora/RHEL, or Arch packages.',
     type: 'software',
     productStatus: 'preview',
     releaseStatus: 'released',
