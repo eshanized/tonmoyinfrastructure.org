@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 interface NavItem {
   label: string;
   href: string;
-  children?: { label: string; href: string; meta?: string }[];
+  children?: { label: string; href: string; meta?: string; external?: boolean }[];
 }
 
 const navItems: NavItem[] = [
@@ -23,6 +23,9 @@ const navItems: NavItem[] = [
       { label: 'Mercura', href: '/projects/mercura' },
       { label: 'M31A', href: '/projects/m31a' },
       { label: 'Octate', href: '/projects/octate' },
+      { label: 'Kyro', href: '/projects/kyro', meta: 'New' },
+      { label: 'Kyro Downloads', href: '/projects/kyro/downloads', meta: 'Linux' },
+      { label: 'Kyro Official Website', href: 'https://kyro.tonmoyinfrastructure.org/', meta: 'Official', external: true },
       { label: 'Runstead (Venture)', href: '/projects/runstead', meta: 'Venture' },
       { label: 'Releases', href: '/releases' },
     ],
@@ -224,6 +227,8 @@ export function SiteNav() {
                           href={child.href}
                           role="menuitem"
                           prefetch={false}
+                          target={child.external ? '_blank' : undefined}
+                          rel={child.external ? 'noopener noreferrer' : undefined}
                           className={cn(
                             'flex items-center justify-between px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-brand focus-visible:bg-muted focus-visible:text-brand focus-visible:outline-none',
                             pathname === child.href && 'text-brand font-medium bg-brand/5'
