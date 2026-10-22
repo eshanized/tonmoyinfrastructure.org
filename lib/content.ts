@@ -1174,7 +1174,7 @@ Kyro uses a Tauri 2 desktop shell, React and TypeScript for the interface, and R
 
 ## Release status
 
-Kyro v0.1.0 is publicly released for Linux, with Debian/Ubuntu `.deb`, Fedora/RHEL `.rpm`, Arch `.pkg.tar.zst`, AppImage, and portable `.tar.gz` downloads. This is an early release, not a claim of stable production qualification. Complete end-to-end verification across supported environments remains an active milestone. Provider/model capabilities depend on the selected runtime and configuration.
+Kyro v0.1.0 is publicly released for Linux, with Debian/Ubuntu \`.deb\`, Fedora/RHEL \`.rpm\`, Arch \`.pkg.tar.zst\`, AppImage, and portable \`.tar.gz\` downloads. This is an early release, not a claim of stable production qualification. Complete end-to-end verification across supported environments remains an active milestone. Provider/model capabilities depend on the selected runtime and configuration.
 
 ## Project links
 
