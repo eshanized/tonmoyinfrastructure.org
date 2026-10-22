@@ -13,7 +13,7 @@ import { JsonLd } from '@/components/shared/json-ld';
 export const metadata = generatePageMetadata({
   title: 'Software Releases & Changelogs',
   description:
-    'Version history, release changelogs, and checksums for TIV stable software systems: OpenMail, Mercura, M31A, and Octate.',
+    'Version history for TIV software, including stable releases and Kyro v0.1.0, an early public Linux release with direct package downloads and SHA-256 checksums.',
   path: '/releases',
   keywords: ['TIV releases', 'software releases', 'changelogs', 'OpenMail release', 'Mercura release'],
 });
@@ -21,11 +21,12 @@ export const metadata = generatePageMetadata({
 export default function ReleasesPage() {
   const releases = getReleases();
   const projects = getProjects().filter((p) => p.status === 'Stable Release');
+  const kyro = getProjects().find((p) => p.slug === 'kyro');
 
   const pageGraph = generatePageGraph({
     title: 'Software Releases & Changelogs — Tonmoy Infrastructure and Vision',
     description:
-      'Version history, release changelogs, and checksums for TIV stable software systems: OpenMail, Mercura, M31A, and Octate.',
+      'Version history for TIV software, including stable releases and Kyro v0.1.0, an early public Linux release with direct package downloads and SHA-256 checksums.',
     path: '/releases',
     breadcrumbs: [
       { name: 'Home', item: '/' },
@@ -40,7 +41,7 @@ export default function ReleasesPage() {
         index="RELEASES"
         label="Software"
         title="Releases."
-        description="Version history and release notes for TIV software projects. TIV builds and ships stable software — only real releases are listed."
+        description="Version history for stable TIV software and early public releases. Kyro v0.1.0 is available for Linux x86_64 with official installer packages and checksums."
       />
 
       <section className="border-b border-border">
@@ -75,11 +76,53 @@ export default function ReleasesPage() {
         </div>
       </section>
 
+      {kyro && (
+        <section className="border-t border-border bg-secondary/20">
+          <div className="tiv-container py-14 md:py-18">
+            <Reveal>
+              <SectionHeader
+                index="02"
+                label="Early Public Release"
+                title="Kyro v0.1.0 for Linux."
+                description="Kyro has a public Linux x86_64 release, separate from TIV’s four products classified as stable. Download assets and checksums are maintained in its official GitHub release."
+              />
+            </Reveal>
+            <div className="mt-8 border border-border bg-card p-6 md:p-8">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="font-mono text-lg font-semibold text-brand">v0.1.0</span>
+                    <StatusBadge status="Development" />
+                    <span className="font-mono text-xs text-muted-foreground">Published 21 Oct 2026</span>
+                  </div>
+                  <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                    Initial Linux multi-distro release for a local-first desktop AI assistant built with Tauri 2, Rust, and React.
+                    The product remains in active development and is not claimed to be a stable production release.
+                  </p>
+                  <p className="mt-3 text-xs text-muted-foreground">Linux packages: .deb, .rpm, .pkg.tar.zst, AppImage, portable .tar.gz, SHA-256 manifest.</p>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <a href="https://github.com/eshanized/Kyro/releases/tag/v0.1.0" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">
+                    Release notes <ArrowRight className="h-4 w-4" />
+                  </a>
+                  <Link href="/projects/kyro/downloads" className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-3 text-sm font-medium text-brand-foreground hover:bg-brand/90">
+                    Download Kyro <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <a href="https://kyro.tonmoyinfrastructure.org/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">
+                    Official website <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       <section>
         <div className="tiv-container py-16 md:py-24">
           <Reveal>
             <SectionHeader
-              index="02"
+              index="03"
               label="Release Notes"
               title="Version history."
               description="Detailed release notes for each TIV software project. Release records will appear here as they are documented."
