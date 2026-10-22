@@ -94,7 +94,7 @@ export default function ReleasesPage() {
                 <div>
                   <div className="flex flex-wrap items-center gap-3">
                     <span className="font-mono text-lg font-semibold text-brand">v0.1.0</span>
-                    <StatusBadge status="Development" />
+                    <StatusBadge status="Preview" />
                     <span className="font-mono text-xs text-muted-foreground">Published 21 Oct 2026</span>
                   </div>
                   <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
