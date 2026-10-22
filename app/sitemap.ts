@@ -101,6 +101,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
     });
 
+  const kyroDownloadPages: MetadataRoute.Sitemap = getProjects()
+    .filter((project) => project.slug === 'kyro' && !project.noIndex)
+    .map((project) => ({
+      url: buildCanonicalUrl('/projects/kyro/downloads'),
+      ...(project.updatedAt && !Number.isNaN(Date.parse(project.updatedAt))
+        ? { lastModified: new Date(project.updatedAt) }
+        : {}),
+      changeFrequency: 'weekly' as const,
+      priority: PAGE_PRIORITIES.supporting,
+    }));
+
   const infraPages: MetadataRoute.Sitemap = getInfrastructureServices().map((service) => ({
     url: buildCanonicalUrl(`/infrastructure/${service.slug === 'optical-systems' ? 'optical' : service.slug}`),
     changeFrequency: 'monthly' as const,
@@ -146,6 +157,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticPages,
     ...projectPages,
     ...projectEconomicPages,
+    ...kyroDownloadPages,
     ...infraPages,
     ...pubPages,
     ...newsPages,
