@@ -34,7 +34,7 @@ export default function ProductsPage() {
     pagePath: '/products',
     pageTitle: 'Products — Tonmoy Infrastructure and Vision',
     pageDescription:
-      'Software products developed and shipped by Tonmoy Infrastructure and Vision. OpenMail, Mercura, M31A, and Octate are existing stable platforms.',
+      'Four stable software products plus Kyro, an MIT-licensed desktop AI assistant with an early public Linux v0.1.0 release and ongoing development.',
     breadcrumbs,
   });
 
@@ -45,7 +45,7 @@ export default function ProductsPage() {
         index="PRODUCTS"
         label="Software"
         title="TIV Products."
-        description="Completed software applications with stable releases. OpenMail, Mercura, M31A, and Octate are existing stable platforms."
+        description="Browse four stable TIV software applications and Kyro, an MIT-licensed desktop AI assistant with public v0.1.0 Linux downloads and ongoing development."
         meta={[
           { label: 'PORTFOLIO', value: '4 Products' },
           { label: 'STATUS', value: 'Stable Release' },
