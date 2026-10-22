@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { Shield, FileText } from 'lucide-react';
 
-const footerNav = {
+type FooterNavLink = { label: string; href: string; external?: boolean };
+
+const footerNav: Record<string, FooterNavLink[]> = {
   Work: [
     { label: 'Products', href: '/products' },
     { label: 'Projects', href: '/projects' },
