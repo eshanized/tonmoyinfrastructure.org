@@ -36,3 +36,25 @@ test('KYRO-2: discovery, static route and SEO indexing integration', () => {
   assert.match(sitemap, /getProjects\(\)/, 'sitemap must derive project URLs from project catalogue');
   assert.match(structuredData, /generateSoftwareApplicationSchema/, 'project route should have software structured-data support');
 });
+
+
+test('KYRO-3: canonical project metadata, feature detail, and sitemap discoverability', () => {
+  const content = fs.readFileSync(path.join(ROOT, 'lib/content.ts'), 'utf8');
+  const route = fs.readFileSync(path.join(ROOT, 'app/projects/[slug]/page.tsx'), 'utf8');
+  const structuredData = fs.readFileSync(path.join(ROOT, 'lib/structured-data.ts'), 'utf8');
+  const sitemap = fs.readFileSync(path.join(ROOT, 'app/sitemap.ts'), 'utf8');
+  const kyroIdx = content.indexOf("slug: 'kyro'");
+  const nextProject = content.indexOf("\\n  {", kyroIdx + 10);
+  const kyro = content.slice(kyroIdx, nextProject === -1 ? kyroIdx + 8000 : nextProject);
+
+  assert.match(kyro, /seoTitle: 'Kyro — Desktop AI Assistant/);
+  assert.match(kyro, /seoDescription:/);
+  assert.match(kyro, /desktop AI assistant/i);
+  assert.match(kyro, /pre-release/i);
+  assert.match(kyro, /https:\\/\\/tonmoyinfrastructure\\.org\\/projects\\/kyro\\//, 'catalog should refer to canonical Kyro profile');
+  assert.match(route, /generateProjectMetadata\(project/);
+  assert.match(route, /generateSoftwareApplicationSchema\(project\)/);
+  assert.match(structuredData, /'@type': 'SoftwareApplication'/);
+  assert.match(sitemap, /project\\.slug === 'kyro' \\|\\| project\\.status === 'Stable Release'/, 'Kyro gets a core project priority');
+  assert.match(sitemap, /getProjects\(\)/, 'project catalogue should feed the sitemap');
+});
