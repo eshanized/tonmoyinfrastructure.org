@@ -1057,7 +1057,7 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
     shortDescription:
       'A desktop AI assistant for everyday computer tasks, visual understanding, browser workflows, and software development.',
     description:
-      'Kyro is a local-first desktop AI assistant under active development at Tonmoy Infrastructure & Vision (TIV). The Tauri desktop application brings visual screen analysis, governed computer interaction, browser automation, reversible file organization, document analysis, reusable routines, project inspection, build diagnostics, UI audits, and checkpoint-based recovery into one workspace. Some workflows depend on configured model providers, permissions, and supported runtime capabilities.'
+      'Kyro is a local-first desktop AI assistant under active development at Tonmoy Infrastructure & Vision (TIV). The Tauri desktop application brings visual screen analysis, governed computer interaction, browser automation, reversible file organization, document analysis, reusable routines, project inspection, build diagnostics, UI audits, and checkpoint-based recovery into one workspace. Some workflows depend on configured model providers, permissions, and supported runtime capabilities.',
     version: '0.1.0-dev',
     featured: true,
     technology: [
