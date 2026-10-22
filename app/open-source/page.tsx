@@ -31,7 +31,7 @@ export default function OpenSourcePage() {
     pagePath: '/open-source',
     pageTitle: 'Open Technical Work — Tonmoy Infrastructure and Vision',
     pageDescription:
-      'TIV open-source repositories, AI models, spaces, research publications, and developer tooling across GitHub and Hugging Face.',
+      'TIV open-source repositories, AI models, Spaces, research publications, and developer tools across GitHub and Hugging Face, including Kyro, an MIT-licensed desktop AI assistant with a public Linux v0.1.0 release.',
     breadcrumbs,
   });
 
