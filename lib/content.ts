@@ -1045,20 +1045,20 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
   {
     slug: 'kyro',
     title: 'Kyro',
-    seoTitle: 'Kyro — Desktop AI Assistant & Visual Computer-Use Agent | TIV',
+    seoTitle: 'Kyro — Desktop AI Assistant for Linux | Download v0.1.0 | TIV',
     seoDescription:
-      'Kyro is a pre-release desktop AI assistant for screen understanding, browser automation, document and file workflows, reusable routines, and developer diagnostics. Built with Tauri, React, TypeScript, and Rust by Tonmoy Infrastructure & Vision.',
+      'Kyro is a local-first desktop AI assistant with a public v0.1.0 Linux release. Explore screen understanding, browser automation, document and file workflows, developer tools, and downloads for Debian/Ubuntu, Fedora, Arch, and AppImage. Built by Tonmoy Infrastructure & Vision.',
     type: 'software',
     productStatus: 'preview',
-    releaseStatus: 'pre-release',
+    releaseStatus: 'released',
     developmentStage: 'active',
     status: 'Development',
     category: 'Software',
     shortDescription:
       'A desktop AI assistant for everyday computer tasks, visual understanding, browser workflows, and software development.',
     description:
-      'Kyro is a local-first desktop AI assistant under active development at Tonmoy Infrastructure & Vision (TIV). The Tauri desktop application brings visual screen analysis, governed computer interaction, browser automation, reversible file organization, document analysis, reusable routines, project inspection, build diagnostics, UI audits, and checkpoint-based recovery into one workspace. Some workflows depend on configured model providers, permissions, and supported runtime capabilities.',
-    version: '0.1.0-dev',
+      'Kyro is a local-first desktop AI assistant with a public v0.1.0 Linux release and ongoing development at Tonmoy Infrastructure & Vision (TIV). The Tauri desktop application brings visual screen analysis, governed computer interaction, browser automation, reversible file organization, document analysis, reusable routines, project inspection, build diagnostics, UI audits, and checkpoint-based recovery into one workspace. Some workflows depend on configured model providers, permissions, and supported runtime capabilities.',
+    version: '0.1.0',
     featured: true,
     technology: [
       'Tauri 2',
@@ -1069,8 +1069,8 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
       'Browser Automation',
     ],
     repository: 'https://github.com/eshanized/Kyro',
-    documentation: 'https://github.com/eshanized/Kyro',
-    website: 'https://tonmoyinfrastructure.org/projects/kyro/',
+    documentation: 'https://kyro.tonmoyinfrastructure.org/docs/',
+    website: 'https://kyro.tonmoyinfrastructure.org/',
     license: 'MIT',
     artifactType: 'Software Platform',
     owner: 'eshanized',
@@ -1085,7 +1085,27 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
         affiliation: 'TIV',
         organization: 'Tonmoy Infrastructure & Vision',
         verified: true,
-        description: 'Official source repository; Kyro remains a pre-release project in active development.',
+        description: 'Official source repository for Kyro; v0.1.0 is publicly released for Linux while product development continues.',
+      },
+      {
+        platform: 'website',
+        type: 'website',
+        url: 'https://kyro.tonmoyinfrastructure.org/',
+        label: 'Official Kyro Website',
+        affiliation: 'TIV',
+        organization: 'Tonmoy Infrastructure & Vision',
+        verified: true,
+        description: 'Official Kyro product website and documentation.',
+      },
+      {
+        platform: 'github',
+        type: 'repository',
+        url: 'https://github.com/eshanized/Kyro/releases/tag/v0.1.0',
+        label: 'Download Kyro v0.1.0',
+        affiliation: 'TIV',
+        organization: 'Tonmoy Infrastructure & Vision',
+        verified: true,
+        description: 'Published Linux installers and checksum manifest for v0.1.0.',
       },
     ],
     problem:
@@ -1126,11 +1146,14 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
       'file organization assistant',
       'developer diagnostics',
       'Tauri desktop AI application',
+      'Kyro Linux download',
+      'open-source desktop AI agent',
+      'Linux desktop AI assistant',
     ],
     updatedAt: '2026-10-21',
     content: `## Overview
 
-Kyro is an AI-powered desktop operator under active development at Tonmoy Infrastructure & Vision (TIV). It aims to help everyday users understand and work with their computer while giving developers a governed workspace for software engineering tasks.
+Kyro is an early-release AI-powered desktop operator under active development at Tonmoy Infrastructure & Vision (TIV). It aims to help everyday users understand and work with their computer while giving developers a governed workspace for software engineering tasks.
 
 ## Everyday workflows
 
@@ -1149,12 +1172,14 @@ Kyro is an AI-powered desktop operator under active development at Tonmoy Infras
 
 Kyro uses a Tauri 2 desktop shell, React and TypeScript for the interface, and Rust for backend and execution paths. Visual analysis and browser capabilities depend on the selected model, configured provider credentials, and supported browser/runtime setup.
 
-## Development status
+## Release status
 
-Kyro is a pre-release project in active development. Its feature paths are represented in the current codebase, but release qualification and complete end-to-end verification across supported environments remain outstanding. It should not be represented as a stable production release.
+Kyro v0.1.0 is publicly released for Linux, with Debian/Ubuntu `.deb`, Fedora/RHEL `.rpm`, Arch `.pkg.tar.zst`, AppImage, and portable `.tar.gz` downloads. This is an early release, not a claim of stable production qualification. Complete end-to-end verification across supported environments remains an active milestone. Provider/model capabilities depend on the selected runtime and configuration.
 
 ## Project links
 
+- [Official Kyro website](https://kyro.tonmoyinfrastructure.org/)
+- [Download v0.1.0](https://github.com/eshanized/Kyro/releases/tag/v0.1.0)
 - [Source repository](https://github.com/eshanized/Kyro)
 - [Tonmoy Infrastructure & Vision](https://tonmoyinfrastructure.org/)`,
   },
