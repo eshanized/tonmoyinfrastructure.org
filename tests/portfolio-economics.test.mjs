@@ -28,7 +28,7 @@ test('PE-2: Portfolio Coverage & Dynamic Project Registry Integration', () => {
     'utf8'
   );
 
-  // Assert all 7 known projects exist in content
+  // Assert the maintained software and venture records exist in content
   const requiredProjects = [
     'openmail',
     'mercura',
@@ -37,6 +37,8 @@ test('PE-2: Portfolio Coverage & Dynamic Project Registry Integration', () => {
     'm31genesis',
     'm31tesla',
     'm31entropy',
+    'runstead',
+    'kyro',
   ];
 
   for (const slug of requiredProjects) {
