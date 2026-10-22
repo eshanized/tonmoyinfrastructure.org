@@ -67,16 +67,16 @@ test('KYRO-4: portfolio economics, period selection, and truthful financial disc
   const economicsCase = fs.readFileSync(path.join(ROOT, 'components/projects/kyro-economic-case.tsx'), 'utf8');
   const detailView = fs.readFileSync(path.join(ROOT, 'components/projects/project-detail-view.tsx'), 'utf8');
 
-  assert.match(initialData, /id:\s*'inv-kyro-status-fy2027'[\\s\\S]*?cashAmount:\s*null[\\s\\S]*?economicAmount:\s*null/,
+  assert.match(initialData, /id:\s*'inv-kyro-status-fy2027'[\s\S]*?cashAmount:\s*null[\s\S]*?economicAmount:\s*null/,
     'Kyro must explicitly leave unverified investment actuals untracked rather than inserting zeroes');
-  assert.match(initialData, /id:\s*'strat-kyro'[\\s\\S]*?revenuePotential:\s*3/,
+  assert.match(initialData, /id:\s*'strat-kyro'[\s\S]*?revenuePotential:\s*3/,
     'Kyro must have a preliminary qualitative assessment separate from monetary valuation');
-  assert.match(initialData, /projectId:\s*'kyro'[\\s\\S]*?Preliminary qualitative classification/i);
+  assert.match(initialData, /projectId:\s*'kyro'[\s\S]*?Preliminary qualitative classification/i);
   assert.match(sources, /KYRO-PE-FY2027-STATUS/,
     'Kyro must have a lineage record explaining the status-only entry');
   assert.match(economicsRoute, /getFinancialPeriods/,
     'emerging ventures without historical actuals should use the open reporting period');
-  assert.match(economicsRoute, /Not Tracked[\\s\\S]*zero expenditure or zero revenue/i,
+  assert.match(economicsRoute, /Not Tracked[\s\S]*zero expenditure or zero revenue/i,
     'missing financial data must not be represented as zero');
   assert.match(detailView, /KyroEconomicCase/,
     'Kyro commercial economics must be visible on the project profile');
@@ -84,5 +84,5 @@ test('KYRO-4: portfolio economics, period selection, and truthful financial disc
   assert.match(economicsCase, /No public subscription price/);
   assert.match(economicsCase, /no project valuation, revenue forecast/i);
   assert.match(sitemap, /projectEconomicPages/);
-  assert.match(sitemap, /projects\\/\\$\\{project\\.slug\\}\\/economics/);
+  assert.match(sitemap, /projects\/\$\{project\.slug\}\/economics/);
 });
