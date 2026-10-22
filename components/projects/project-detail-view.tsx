@@ -13,6 +13,8 @@ import {
   Code2,
   ExternalLink,
   BarChart3,
+  Download,
+  Globe,
 } from 'lucide-react';
 import { PageHeader } from '@/components/shared/page-header';
 import { StatusBadge } from '@/components/shared/status-badge';
@@ -104,6 +106,37 @@ export function ProjectDetailView({
                   <Github className="h-4 w-4" />
                   Repository — Release Distribution
                 </span>
+              )}
+
+              {project.slug === 'kyro' && (
+                <>
+                  <a
+                    href="https://kyro.tonmoyinfrastructure.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-brand/40 bg-brand/5 px-4 py-2 text-sm font-medium text-brand transition-colors hover:bg-brand/10"
+                  >
+                    <Globe className="h-4 w-4" />
+                    Official Kyro Website
+                    <ExternalLink className="h-3.5 w-3.5 opacity-60" />
+                  </a>
+                  <Link
+                    href="/projects/kyro/downloads"
+                    className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90"
+                  >
+                    <Download className="h-4 w-4" />
+                    Download v{project.version || '0.1.0'}
+                  </Link>
+                  <a
+                    href="https://github.com/eshanized/Kyro/releases/tag/v0.1.0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-border bg-card px-4 py-2 text-sm transition-colors hover:border-brand hover:text-brand"
+                  >
+                    v0.1.0 Release Notes
+                    <ExternalLink className="h-3.5 w-3.5 opacity-60" />
+                  </a>
+                </>
               )}
 
               {project.documentation &&
