@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 interface NavGroup {
   label: string;
   href: string;
-  children?: { label: string; href: string }[];
+  children?: { label: string; href: string; external?: boolean }[];
 }
 
 const navGroups: NavGroup[] = [
@@ -23,6 +23,9 @@ const navGroups: NavGroup[] = [
       { label: 'Mercura', href: '/projects/mercura' },
       { label: 'M31A', href: '/projects/m31a' },
       { label: 'Octate', href: '/projects/octate' },
+      { label: 'Kyro', href: '/projects/kyro' },
+      { label: 'Kyro Downloads', href: '/projects/kyro/downloads' },
+      { label: 'Kyro Official Website', href: 'https://kyro.tonmoyinfrastructure.org/', external: true },
       { label: 'Runstead (Venture)', href: '/projects/runstead' },
       { label: 'Releases', href: '/releases' },
     ],
@@ -223,6 +226,8 @@ export function MobileNav() {
                                   <Link
                                     href={child.href}
                                     prefetch={false}
+                                    target={child.external ? '_blank' : undefined}
+                                    rel={child.external ? 'noopener noreferrer' : undefined}
                                     onClick={() => setOpen(false)}
                                     className={cn(
                                       'block py-2.5 text-sm transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand',
