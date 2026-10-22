@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getProjects, getProject } from '@/lib/content';
 import { calculateProjectEconomicProfile } from '@/lib/portfolio-economics/calculations';
-import { getDefaultFinancialPeriod } from '@/lib/portfolio-economics/periods';
+import { getDefaultFinancialPeriod, getFinancialPeriods } from '@/lib/portfolio-economics/periods';
 import { StatusBadge } from '@/components/shared/status-badge';
 import { ConfidenceBadge } from '@/components/portfolio-economics/confidence-badge';
 import { Breadcrumbs } from '@/components/shared/breadcrumbs';
@@ -32,7 +32,7 @@ export async function generateMetadata({
 
   return generatePageMetadata({
     title: `${project.title} — Portfolio Economics`,
-    description: `Economic profile, investment tracking, operating costs, and engineering hours attributable to ${project.title}.`,
+    description: `Public portfolio economics for ${project.title}: source-backed development investment, operating-cost and revenue attribution, engineering effort, and qualitative strategic assessment. Unrecorded actuals remain Not Tracked; no speculative monetary valuation is published.`,
     path: `/projects/${project.slug}/economics`,
     overrideTitle: true,
   });
@@ -47,14 +47,38 @@ export default async function ProjectEconomicsPage({
   const project = getProject(slug);
   if (!project) notFound();
 
-  const defaultPeriod = getDefaultFinancialPeriod();
-  const profile = calculateProjectEconomicProfile(project.slug, defaultPeriod.id);
+  // Preserve the latest published financial snapshot when a project has historical evidence.
+  // For active projects with no entries in that snapshot, use the open period containing
+  // today's date so a newly launched venture is not presented as if it existed in FY2026.
+  const publishedPeriod = getDefaultFinancialPeriod();
+  const publishedProfile = calculateProjectEconomicProfile(project.slug, publishedPeriod.id);
+  const hasPublishedLedgerEvidence = Boolean(
+    publishedProfile &&
+      (publishedProfile.developmentInvestmentCash !== null ||
+        publishedProfile.developmentInvestmentEconomic !== null ||
+        publishedProfile.totalOperatingCosts !== null ||
+        publishedProfile.attributedRevenue !== null ||
+        publishedProfile.totalEngineeringHours !== null ||
+        publishedProfile.sourcesCount > 0)
+  );
+  const today = new Date().toISOString().slice(0, 10);
+  const activePeriod = getFinancialPeriods().find(
+    (period) =>
+      period.status === 'Open' &&
+      period.startDate <= today &&
+      period.endDate >= today
+  );
+  const selectedPeriod =
+    !hasPublishedLedgerEvidence && project.developmentStage === 'active' && activePeriod
+      ? activePeriod
+      : publishedPeriod;
+  const profile = calculateProjectEconomicProfile(project.slug, selectedPeriod.id);
   if (!profile) notFound();
 
   const pageGraph = generatePageGraph({
     pagePath: `/projects/${project.slug}/economics`,
     pageTitle: `${project.title} Portfolio Economics — Tonmoy Infrastructure and Vision`,
-    pageDescription: `Resource measurement and economic analytics for ${project.title}.`,
+    pageDescription: `Resource measurement, financial record status, cost and revenue attribution, engineering effort, and qualitative strategic assessment for ${project.title}. Unrecorded actuals remain Not Tracked.`,
     breadcrumbs: [
       { name: 'Home', path: '/' },
       { name: 'Projects', path: '/projects' },
@@ -127,9 +151,9 @@ export default async function ProjectEconomicsPage({
               Active Venture In Development — Unrecorded Historical Actuals
             </div>
             <p className="mt-2 text-sm text-foreground/90 leading-relaxed">
-              <strong>{profile.projectTitle}</strong> is an emerging platform under active development.
-              Authentic historical financial transactions (cash development expenditure, direct operating expenses, and engineering timesheets) are currently <strong>Not Tracked</strong> in TIV&apos;s FY2026 historical accounting ledger.
-              In strict accordance with TIV financial integrity standards, no fictional historical costs or simulated revenue figures have been fabricated.
+              <strong>{profile.projectTitle}</strong> is an active initiative with incomplete project-level financial records for <strong>{profile.fiscalYear}</strong>.
+              The public ledger currently has no verified values for cash or economic development investment, direct or allocated operating costs, attributed revenue, or logged engineering hours for this selected period.
+              These fields remain <strong>Not Tracked</strong>; missing records must not be interpreted as zero expenditure or zero revenue. No fictional financial values have been added.
             </p>
             {project.slug === 'runstead' && (
               <div className="mt-4 flex flex-wrap items-center gap-3">
