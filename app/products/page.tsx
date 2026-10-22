@@ -47,10 +47,10 @@ export default function ProductsPage() {
         title="TIV Products."
         description="Browse four stable TIV software applications and Kyro, an MIT-licensed desktop AI assistant with public v0.1.0 Linux downloads and ongoing development."
         meta={[
-          { label: 'PORTFOLIO', value: '4 Products' },
-          { label: 'STATUS', value: 'Stable Release' },
-          { label: 'DEVELOPMENT', value: 'Active' },
-          { label: 'DELIVERY', value: 'Shipped' },
+          { label: 'PORTFOLIO', value: '5 Listed' },
+          { label: 'STABLE PRODUCTS', value: '4' },
+          { label: 'EARLY RELEASE', value: 'Kyro v0.1.0' },
+          { label: 'DELIVERY', value: 'Linux + Stable' },
         ]}
       />
 
