@@ -166,3 +166,13 @@ Run the production static export:
 npm run build
 ```
 Verify that all 85+ static pages export with zero missing canonicals, zero unresolved JSON-LD types, and zero broken links.
+
+
+## Kyro — Desktop AI Assistant SEO
+
+- Canonical public profile: `https://tonmoyinfrastructure.org/projects/kyro/`.
+- Primary search intent: desktop AI assistant, AI desktop agent, visual computer use, screen understanding, browser automation, local-first document assistant, and developer diagnostics.
+- Secondary search intent should map to distinct, natural phrases about browser workflows, file organization, document analysis, and governed desktop automation. Avoid keyword stuffing and pages that target the same phrase without a distinct user purpose.
+- Kyro is a pre-release project in active development. Page titles, descriptions, visible copy, and SoftwareApplication structured data must not imply a stable release, guaranteed compatibility, or features that are not supported in the current codebase.
+- The project page is generated from `lib/content.ts`; the route supplies canonical metadata and `SoftwareApplication` JSON-LD through shared SEO utilities; and `app/sitemap.ts` discovers the project from the same content catalogue.
+- Keep internal links to Kyro aligned across the homepage, projects/work listings, relevant AI/software index pages, and site search where appropriate. Re-run `npm test`, `npm run typecheck`, and `npm run build` after changing the source catalogue or metadata.
