@@ -5,6 +5,9 @@ const footerNav = {
   Work: [
     { label: 'Products', href: '/products' },
     { label: 'Projects', href: '/projects' },
+    { label: 'Kyro Project Profile', href: '/projects/kyro' },
+    { label: 'Kyro Downloads', href: '/projects/kyro/downloads' },
+    { label: 'Kyro Official Website', href: 'https://kyro.tonmoyinfrastructure.org/', external: true },
     { label: 'Releases', href: '/releases' },
     { label: 'Open Source', href: '/open-source' },
     { label: 'TIV I/O', href: '/io' },
@@ -91,6 +94,8 @@ export function SiteFooter() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
                       className="text-sm text-muted-foreground transition-colors hover:text-brand"
                     >
                       {link.label}
