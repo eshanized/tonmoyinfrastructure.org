@@ -26,7 +26,7 @@ export const metadata = generatePageMetadata({
   title: 'Enterprise Infrastructure & Systems Engineering — Tonmoy Infrastructure and Vision',
   overrideTitle: true,
   description:
-    'Tonmoy Infrastructure and Vision (TIV) engineers sovereign software platforms, verifiable developer runtimes, and distributed infrastructure architecture. Explore stable releases including OpenMail, Mercura, M31A, and Octate.',
+    'Tonmoy Infrastructure and Vision (TIV) engineers sovereign software platforms, verifiable developer runtimes, and distributed infrastructure architecture. Explore stable releases including OpenMail, Mercura, M31A, and Octate, plus Kyro, our desktop AI assistant in active pre-release development.',
 });
 
 export default function HomePage() {
@@ -140,10 +140,10 @@ export default function HomePage() {
                       <span className="tiv-meta text-amber-400">NEW VENTURE · IN DEVELOPMENT</span>
                     </div>
                     <h3 className="mt-2 font-display text-xl tracking-tight">
-                      Kyro — Visual AI Desktop Agent
+                      Kyro — Desktop AI Assistant
                     </h3>
                     <p className="mt-2 max-w-2xl text-pretty text-sm text-muted-foreground">
-                      One governed desktop workspace for screen understanding, browser automation, document and file workflows, and developer diagnostics. Kyro is an active pre-release project; capabilities depend on the configured model and runtime.
+                      Kyro is a local-first desktop AI assistant in active development for screen understanding, governed computer use, browser automation, document analysis, reversible file organization, reusable routines, and developer diagnostics. It is a pre-release project; capabilities depend on configured providers, permissions, and runtime support.
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-3 shrink-0">
