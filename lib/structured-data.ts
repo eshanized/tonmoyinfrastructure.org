@@ -178,9 +178,9 @@ export function generateSoftwareApplicationSchema(project: Project) {
     '@id': `${canonicalUrl}#software`,
     name: project.title,
     description: project.description,
-    applicationCategory: isModel ? 'DeveloperApplication' : 'InfrastructureApplication',
-    operatingSystem: 'Cross-platform, Linux, POSIX',
-    url: canonicalUrl,
+    applicationCategory: isModel || project.slug === 'kyro' ? 'DeveloperApplication' : 'InfrastructureApplication',
+    operatingSystem: project.slug === 'kyro' ? 'Linux (x86_64)' : 'Cross-platform, Linux, POSIX',
+    url: project.slug === 'kyro' && project.website ? project.website : canonicalUrl,
     publisher: {
       '@id': `${siteConfig.url}/#organization`,
     },
@@ -203,6 +203,14 @@ export function generateSoftwareApplicationSchema(project: Project) {
 
   if (project.repository) {
     schema.codeRepository = project.repository;
+  }
+
+  if (project.slug === 'kyro') {
+    schema.downloadUrl = 'https://kyro.tonmoyinfrastructure.org/download/';
+    schema.sameAs = [
+      'https://github.com/eshanized/Kyro',
+      'https://github.com/eshanized/Kyro/releases/tag/v0.1.0',
+    ];
   }
 
   if (isModel && project.parameters) {
