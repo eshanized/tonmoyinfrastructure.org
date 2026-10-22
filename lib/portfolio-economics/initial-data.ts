@@ -398,6 +398,26 @@ export const initialInvestments: DevelopmentInvestment[] = [
     createdAt: '2026-04-01T00:00:00Z',
     updatedAt: '2026-04-01T00:00:00Z',
   },
+  {
+    id: 'inv-kyro-status-fy2027',
+    projectId: 'kyro',
+    financialPeriodId: 'fy2027',
+    category: 'Development',
+    cashAmount: null,
+    economicAmount: null,
+    currency: 'INR',
+    cashOrNonCash: 'mixed',
+    rateMethodology:
+      'No source-backed cash amount or approved engineering-hour total is currently available for Kyro. Null values intentionally mean Not Tracked, not ₹0; no economic development cost is calculated.',
+    sourceId: 'src-kyro-status-fy2027',
+    confidence: 'Unverified',
+    approvalStatus: 'Published',
+    visibility: 'public',
+    notes:
+      'Status entry only, not a financial transaction. Direct operating costs, shared allocations, project-attributed revenue, and engineering hours remain unrecorded until supporting evidence is approved.',
+    createdAt: '2026-10-22T00:00:00Z',
+    updatedAt: '2026-10-22T00:00:00Z',
+  },
 ];
 
 // ─── 5. Engineering Hours (FY2026) ──────────────────────────────────────────
@@ -1326,5 +1346,19 @@ export const initialStrategicAssessments: StrategicAssessment[] = [
     ecosystemImportance: 4,
     notes:
       'Commercial hosting-business operating platform venture. Modern SaaS and automation layer for web hosting resellers, bridging TIV sovereign infrastructure with commercial hosting operations.',
+  },
+  {
+    id: 'strat-kyro',
+    projectId: 'kyro',
+    assessmentDate: '2026-10-22',
+    assessor: 'TIV Portfolio Economics (Preliminary)',
+    strategicImportance: 4,
+    technicalDifferentiation: 4,
+    infrastructureRelevance: 3,
+    researchSignificance: 2,
+    revenuePotential: 3,
+    ecosystemImportance: 4,
+    notes:
+      'Preliminary qualitative classification based on Kyro current product scope and public open-source release. The 1–5 ratings are non-monetary management-analysis inputs, not an independent assessment, sales forecast, or evidence of paying demand. Reassess after adoption, retention, provider-cost, and customer feedback data are recorded.',
   },
 ];
