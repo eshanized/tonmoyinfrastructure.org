@@ -16,7 +16,7 @@ export const metadata: Metadata = generatePageMetadata({
   title: 'Open Technical Work — Tonmoy Infrastructure and Vision',
   overrideTitle: true,
   description:
-    'TIV open-source repositories, AI models, spaces, research publications, and developer tooling across GitHub and Hugging Face.',
+    'TIV open-source repositories, AI models, Spaces, research publications, and developer tools across GitHub and Hugging Face, including Kyro, an MIT-licensed desktop AI assistant with a public Linux v0.1.0 release.',
 });
 
 export default function OpenSourcePage() {
