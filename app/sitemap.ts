@@ -83,7 +83,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           ? { lastModified: new Date(rawDate) }
           : {}),
         changeFrequency: 'monthly' as const,
-        priority: project.status === 'Stable Release' ? PAGE_PRIORITIES.core : PAGE_PRIORITIES.supporting,
+        priority: project.slug === 'kyro' || project.status === 'Stable Release' ? PAGE_PRIORITIES.core : PAGE_PRIORITIES.supporting,
       };
     });
 
