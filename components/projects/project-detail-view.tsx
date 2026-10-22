@@ -238,7 +238,7 @@ export function ProjectDetailView({
                 {project.status}
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                {isStable ? 'Shipped & deployed software' : 'Experimental research artifact'}
+                {isStable ? 'Shipped & deployed software' : project.type === 'software' ? (project.releaseStatus === 'released' ? 'Public early release; active development' : 'Software in active development') : project.type === 'research' ? 'Research artifact in active development' : 'Initiative in active development'}
               </p>
             </div>
             <div className="bg-card p-5">
@@ -247,7 +247,7 @@ export function ProjectDetailView({
                 {project.developmentStage.toUpperCase()}
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                {isStable ? 'Ongoing enhancements' : 'Active research & evaluation'}
+                {isStable ? 'Ongoing enhancements' : project.type === 'software' ? 'Active product development' : 'Active research & evaluation'}
               </p>
             </div>
             <div className="bg-card p-5">
