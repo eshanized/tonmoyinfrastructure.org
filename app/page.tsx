@@ -26,7 +26,7 @@ export const metadata = generatePageMetadata({
   title: 'Enterprise Infrastructure & Systems Engineering — Tonmoy Infrastructure and Vision',
   overrideTitle: true,
   description:
-    'Tonmoy Infrastructure and Vision (TIV) engineers sovereign software platforms, verifiable developer runtimes, and distributed infrastructure architecture. Explore stable releases including OpenMail, Mercura, M31A, and Octate, plus Kyro, our desktop AI assistant in active pre-release development.',
+    'Tonmoy Infrastructure and Vision (TIV) engineers sovereign software platforms, verifiable developer runtimes, and distributed infrastructure architecture. Explore stable releases including OpenMail, Mercura, M31A, and Octate, plus Kyro, our local-first desktop AI assistant with a public v0.1.0 Linux release and continued development.',
 });
 
 export default function HomePage() {
@@ -137,13 +137,13 @@ export default function HomePage() {
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="h-2 w-2 rounded-full bg-amber-400" />
-                      <span className="tiv-meta text-amber-400">NEW VENTURE · IN DEVELOPMENT</span>
+                      <span className="tiv-meta text-amber-400">PUBLIC LINUX RELEASE · IN DEVELOPMENT</span>
                     </div>
                     <h3 className="mt-2 font-display text-xl tracking-tight">
                       Kyro — Desktop AI Assistant
                     </h3>
                     <p className="mt-2 max-w-2xl text-pretty text-sm text-muted-foreground">
-                      Kyro is a local-first desktop AI assistant in active development for screen understanding, governed computer use, browser automation, document analysis, reversible file organization, reusable routines, and developer diagnostics. It is a pre-release project; capabilities depend on configured providers, permissions, and runtime support.
+                      Kyro is a local-first desktop AI assistant with a published v0.1.0 Linux release and ongoing development. It brings together screen understanding, governed computer use, browser automation, document analysis, reversible file organization, reusable routines, and developer diagnostics. It is an early release rather than a claim of stable production qualification; capabilities depend on configured providers, permissions, and runtime support.
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-3 shrink-0">
@@ -162,6 +162,22 @@ export default function HomePage() {
                     >
                       Source Code
                       <Github className="h-4 w-4" />
+                    </a>
+                    <Link
+                      href="/projects/kyro/downloads"
+                      className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    >
+                      Download v0.1.0
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <a
+                      href="https://kyro.tonmoyinfrastructure.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                    >
+                      Official Website
+                      <ArrowRight className="h-4 w-4" />
                     </a>
                   </div>
                 </div>
