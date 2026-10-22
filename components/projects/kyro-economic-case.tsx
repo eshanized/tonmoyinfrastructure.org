@@ -157,7 +157,7 @@ export function KyroEconomicCase() {
       </div>
 
       <Link
-        href="/projects/kyro/economics"
+        href="/projects/kyro/economics/"
         className="inline-flex items-center gap-2 border border-brand/40 bg-brand/5 px-4 py-3 text-sm font-medium text-brand transition-colors hover:bg-brand/10"
       >
         Open Kyro’s Portfolio Economics record

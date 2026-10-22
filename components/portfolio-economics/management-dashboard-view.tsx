@@ -71,14 +71,14 @@ export function ManagementDashboardView() {
 
           <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
-              href="/transparency/financials/portfolio-economics"
+              href="/transparency/financials/portfolio-economics/"
               className="inline-flex items-center gap-2 bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground hover:opacity-90 transition-opacity w-full sm:w-auto justify-center"
             >
               <span>View Public Transparency Portal</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/transparency/financials/portfolio-economics/methodology"
+              href="/transparency/financials/portfolio-economics/methodology/"
               className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:border-brand hover:text-brand transition-colors w-full sm:w-auto justify-center"
             >
               <span>Read Methodology</span>

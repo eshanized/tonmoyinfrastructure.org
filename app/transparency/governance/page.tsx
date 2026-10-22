@@ -223,7 +223,7 @@ export default function GovernancePage() {
             </Link>
             <span className="text-muted-foreground">·</span>
             <Link
-              href="/transparency/annual-reports"
+              href="/transparency/annual-reports/"
               className="text-sm font-medium text-brand hover:underline"
             >
               Annual Reports

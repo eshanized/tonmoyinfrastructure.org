@@ -32,8 +32,8 @@ export async function generateMetadata({
   const wp = getWhitepaperVersion(version);
   if (!wp) return {};
   return generatePageMetadata({
-    path: `/research/whitepaper/v${wp.version}`,
-    title: `TIV Infrastructure Whitepaper v${wp.version} — Tonmoy Infrastructure and Vision`,
+    path: `/research/whitepaper/v${wp.version}/`,
+    title: `TIV Infrastructure Whitepaper v${wp.version} — TIV`,
     overrideTitle: true,
     description: wp.abstract,
     ogType: 'article',

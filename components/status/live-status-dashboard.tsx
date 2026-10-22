@@ -313,7 +313,7 @@ export function LiveStatusDashboard() {
               </h4>
             </div>
             <Link
-              href="/infrastructure/data-centers"
+              href="/infrastructure/data-centers/"
               className="inline-flex items-center gap-1.5 text-xs font-mono text-brand hover:underline"
             >
               Facility Specification <ExternalLink className="h-3 w-3" />

@@ -12,8 +12,8 @@ import { JsonLd } from '@/components/shared/json-ld';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generatePageMetadata({
-  path: '/projects',
-  title: 'Software & Systems Portfolio — Tonmoy Infrastructure and Vision',
+  path: '/projects/',
+  title: 'Software & Systems Portfolio — TIV',
   overrideTitle: true,
   description:
     'Explore TIV’s stable software platforms and early-release ventures, including Kyro, an open-source desktop AI assistant with a public v0.1.0 Linux release for visual computer use, browser automation, document workflows, and developer diagnostics.',

@@ -10,10 +10,10 @@ import type { Metadata } from 'next';
 import type { Publication, PublicationStatus } from '@/lib/publications/types';
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Publications & Technical Papers — Tonmoy Infrastructure and Vision',
+  title: 'Publications & Technical Papers — TIV',
   description:
     'Institutional research library of Tonmoy Infrastructure and Vision (TIV). Research papers, technical reports, empirical findings, and software engineering manuscripts.',
-  path: '/research/publications',
+  path: '/research/publications/',
   overrideTitle: true,
   keywords: [
     'TIV publications',

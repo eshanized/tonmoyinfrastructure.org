@@ -27,10 +27,10 @@ test('Canonical Routes & Static Redirect Rules Consolidation', () => {
 
   // 3. Internal Application Links Standardized to /projects/
   assert.doesNotMatch(whitepaperFile, /\[OpenMail\]\(\/work\//, 'Whitepaper must not link OpenMail to /work/');
-  assert.match(whitepaperFile, /\[OpenMail\]\(\/projects\/openmail\)/, 'Whitepaper must link OpenMail to canonical /projects/openmail');
-  assert.match(whitepaperFile, /\[Mercura\]\(\/projects\/mercura\)/, 'Whitepaper must link Mercura to canonical /projects/mercura');
-  assert.match(whitepaperFile, /\[M31A\]\(\/projects\/m31a\)/, 'Whitepaper must link M31A to canonical /projects/m31a');
-  assert.match(whitepaperFile, /\[Octate\]\(\/projects\/octate\)/, 'Whitepaper must link Octate to canonical /projects/octate');
+  assert.match(whitepaperFile, /\[OpenMail\]\(\/projects\/openmail\/?\)/, 'Whitepaper must link OpenMail to canonical /projects/openmail');
+  assert.match(whitepaperFile, /\[Mercura\]\(\/projects\/mercura\/?\)/, 'Whitepaper must link Mercura to canonical /projects/mercura');
+  assert.match(whitepaperFile, /\[M31A\]\(\/projects\/m31a\/?\)/, 'Whitepaper must link M31A to canonical /projects/m31a');
+  assert.match(whitepaperFile, /\[Octate\]\(\/projects\/octate\/?\)/, 'Whitepaper must link Octate to canonical /projects/octate');
 
   assert.match(timelinePage, /\/projects\/\$\{project\.slug\}/, 'Timeline page must link directly to /projects/${project.slug}');
   assert.doesNotMatch(timelinePage, /\/work\/\$\{project\.slug\}/, 'Timeline page must not link to /work/');

@@ -166,7 +166,7 @@ export function PublicPortfolioView({
               </div>
 
               <Link
-                href="/transparency/financials/portfolio-economics/methodology"
+                href="/transparency/financials/portfolio-economics/methodology/"
                 className="inline-flex items-center justify-center gap-2 border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand/90 transition-colors shrink-0"
               >
                 Read Full Methodology

@@ -249,7 +249,7 @@ test('10. Official Office Address & TIV I/O Verification', () => {
   // 5. Homepage TIV I/O Section
   const homeFile = fs.readFileSync(path.join(ROOT, 'app/page.tsx'), 'utf8');
   assert.match(homeFile, /Tonmoy Infrastructure and Vision I\/O/, 'Homepage must include TIV I/O section');
-  assert.match(homeFile, /href="\/io"/, 'Homepage must link to /io');
+  assert.match(homeFile, /href="\/io\/?\/"?/, 'Homepage must link to /io');
 });
 
 function footerNavExtract(file) {

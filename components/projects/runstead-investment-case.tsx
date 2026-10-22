@@ -616,7 +616,7 @@ export function RunsteadInvestmentCase() {
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link
-              href="/contact?category=investors"
+              href="/contact/?category=investors"
               rel="nofollow"
               className="inline-flex items-center gap-2 border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors shadow-sm"
             >
@@ -624,7 +624,7 @@ export function RunsteadInvestmentCase() {
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/contact?category=partnership"
+              href="/contact/?category=partnership"
               rel="nofollow"
               className="inline-flex items-center gap-2 border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
             >

@@ -46,9 +46,9 @@ export default function PortfolioEconomicsMethodologyPage() {
           <Breadcrumbs
             items={[
               { label: 'Home', href: '/' },
-              { label: 'Transparency', href: '/transparency' },
-              { label: 'Financials', href: '/transparency/financials' },
-              { label: 'Portfolio Economics', href: '/transparency/financials/portfolio-economics' },
+              { label: 'Transparency', href: '/transparency/' },
+              { label: 'Financials', href: '/transparency/financials/' },
+              { label: 'Portfolio Economics', href: '/transparency/financials/portfolio-economics/' },
               { label: 'Methodology' },
             ]}
           />
@@ -71,7 +71,7 @@ export default function PortfolioEconomicsMethodologyPage() {
 
             <div>
               <Link
-                href="/transparency/financials/portfolio-economics"
+                href="/transparency/financials/portfolio-economics/"
                 className="inline-flex items-center gap-1.5 text-xs font-mono text-brand hover:underline"
               >
                 <ArrowLeft className="h-3.5 w-3.5" /> Back to Portfolio Economics

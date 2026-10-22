@@ -102,7 +102,7 @@ test('RUNSTEAD-3: Portfolio Economics & Non-Monetary Strategic Assessment', () =
 
   // Economics subpage must display unrecorded actuals notice
   assert.match(economicsPage, /Unrecorded Historical Actuals/, 'Economics page must display honest unrecorded notice');
-  assert.match(economicsPage, /href="\/projects\/runstead#financial-model"/, 'Economics page must link to financial model');
+  assert.match(economicsPage, /href="\/projects\/runstead\/?#financial-model"/, 'Economics page must link to financial model');
 });
 
 test('RUNSTEAD-4: Deterministic Financial Model Engine & Math Invariants', () => {
@@ -146,10 +146,10 @@ test('RUNSTEAD-5: Discoverability & Canonical Routing Architecture', () => {
   assert.match(projectsPage, /status\s*===\s*'Development'/, 'Projects page must filter development ventures');
 
   // Products page has discovery card
-  assert.match(productsPage, /href="\/projects\/runstead"/, 'Products page must link to Runstead');
+  assert.match(productsPage, /href="\/projects\/runstead\/?\/"?/, 'Products page must link to Runstead');
 
   // Home page has venture highlight
-  assert.match(homePage, /href="\/projects\/runstead"/, 'Home page must link to Runstead');
+  assert.match(homePage, /href="\/projects\/runstead\/?\/"?/, 'Home page must link to Runstead');
   assert.match(homePage, /VENTURE IN DEVELOPMENT/, 'Home page must label Runstead as Venture in Development');
 
   // Navigation has Runstead
@@ -186,6 +186,6 @@ test('RUNSTEAD-7: Investor & Partner Contact Inquiries', () => {
   assert.match(contactPage, /searchParams\.get\('category'\)/, 'Contact page must read category query parameter');
 
   // Investment case links to contact categories
-  assert.match(investmentCase, /href="\/contact\?category=investors"/, 'Investment case must link to /contact?category=investors');
-  assert.match(investmentCase, /href="\/contact\?category=partnership"/, 'Investment case must link to /contact?category=partnership');
+  assert.match(investmentCase, /href="\/contact\/\?category=investors"/, 'Investment case must link to /contact/?category=investors');
+  assert.match(investmentCase, /href="\/contact\/\?category=partnership"/, 'Investment case must link to /contact/?category=partnership');
 });

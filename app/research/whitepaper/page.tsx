@@ -16,8 +16,8 @@ import { JsonLd } from '@/components/shared/json-ld';
 import { siteConfig } from '@/lib/site-config';
 
 export const metadata = generatePageMetadata({
-  path: '/research/whitepaper',
-  title: 'TIV Infrastructure Whitepaper — Tonmoy Infrastructure and Vision',
+  path: '/research/whitepaper/',
+  title: 'TIV Infrastructure Whitepaper — TIV',
   overrideTitle: true,
   description:
     'The TIV Infrastructure Whitepaper describes the principles, technical direction, and long-term vision behind Tonmoy Infrastructure and Vision.',

@@ -99,7 +99,7 @@ export function NewsList({ initialArticles, categories }: NewsListProps) {
               {filteredArticles.map((article) => (
                 <StaggerItem key={article.slug}>
                   <Link
-                    href={`/news/${article.slug}`}
+                    href={`/news/${article.slug}/`}
                     className="group relative flex flex-col gap-3 border border-border bg-card p-6 transition-colors hover:border-brand/40 md:flex-row md:items-start md:justify-between"
                   >
                     <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />

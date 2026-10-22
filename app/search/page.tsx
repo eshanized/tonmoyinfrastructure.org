@@ -56,7 +56,7 @@ export default function SearchPage() {
         addResult({
           title: p.title,
           type: `${p.artifactType || 'Project'} · ${p.status}`,
-          href: `/projects/${p.slug}`,
+          href: `/projects/${p.slug}/`,
           description: p.description,
           status: p.status,
           artifactType: p.artifactType,
@@ -89,7 +89,7 @@ export default function SearchPage() {
         addResult({
           title: p.title,
           type: 'Publication',
-          href: `/research/publications/${p.slug}`,
+          href: `/research/publications/${p.slug}/`,
           description: p.abstract,
           status: p.status,
           isExternal: false,
@@ -103,7 +103,7 @@ export default function SearchPage() {
         addResult({
           title: n.title,
           type: 'News',
-          href: `/news/${n.slug}`,
+          href: `/news/${n.slug}/`,
           description: n.excerpt,
           isExternal: false,
         });
@@ -116,7 +116,7 @@ export default function SearchPage() {
         addResult({
           title: s.title,
           type: 'Infrastructure',
-          href: `/infrastructure/${s.slug}`,
+          href: `/infrastructure/${s.slug === 'optical-systems' ? 'optical' : s.slug}/`,
           description: s.description,
           status: s.status,
           isExternal: false,
@@ -130,7 +130,7 @@ export default function SearchPage() {
         addResult({
           title: r.title,
           type: 'Report',
-          href: `/transparency/${r.slug}`,
+          href: `/transparency/${r.slug}/`,
           description: r.summary,
           status: r.status,
           isExternal: false,
@@ -144,7 +144,7 @@ export default function SearchPage() {
         addResult({
           title: r.title,
           type: 'Annual Report',
-          href: '/transparency/annual-reports',
+          href: '/transparency/annual-reports/',
           description: r.summary,
           isExternal: false,
         });
@@ -157,7 +157,7 @@ export default function SearchPage() {
         addResult({
           title: p.name,
           type: 'Person',
-          href: '/about/leadership',
+          href: '/about/leadership/',
           description: `${p.role} · ${p.organization}`,
           isExternal: false,
         });
@@ -170,7 +170,7 @@ export default function SearchPage() {
         addResult({
           title: e.title,
           type: 'Timeline',
-          href: '/about/timeline',
+          href: '/about/timeline/',
           description: e.description,
           isExternal: false,
         });
@@ -182,49 +182,49 @@ export default function SearchPage() {
       {
         title: 'TIV Whitepaper — Ownable Architecture for the Physical and Digital Internet',
         type: 'Whitepaper',
-        href: '/whitepaper',
+        href: '/research/whitepaper/',
         description: 'Foundational whitepaper outlining TIV philosophy, self-hosted software stack, physical infrastructure, optical systems, and long-term sovereignty.',
         isExternal: false,
       },
       {
         title: 'About Tonmoy Infrastructure and Vision',
         type: 'Overview',
-        href: '/about',
+        href: '/about/',
         description: 'Mission, core philosophy, and foundational background of Tonmoy Infrastructure and Vision.',
         isExternal: false,
       },
       {
         title: 'System Health & Operational Status',
         type: 'Status',
-        href: '/status',
+        href: '/status/',
         description: 'Authoritative operational status and verification telemetry for the Jayapura sovereign facility and core platforms.',
         isExternal: false,
       },
       {
         title: 'Infrastructure & Sovereign Solutions',
         type: 'Solutions',
-        href: '/solutions',
+        href: '/solutions/',
         description: 'Overview of sovereign infrastructure, data centers, logistics corridors, and technical solutions.',
         isExternal: false,
       },
       {
         title: 'Open Source Repositories & Licenses',
         type: 'Open Source',
-        href: '/open-source',
+        href: '/open-source/',
         description: 'Direct access to TIV open-source projects, AGPL-3.0 and MIT licensed codebases, and GitHub organizations.',
         isExternal: false,
       },
       {
         title: 'Financial Transparency & Capital Allocation',
         type: 'Transparency',
-        href: '/transparency/financials',
+        href: '/transparency/financials/',
         description: 'Audited financial disclosures, asset registers, capital efficiency reports, and revenue reconciliation.',
         isExternal: false,
       },
       {
         title: 'Security Architecture & Vulnerability Disclosure',
         type: 'Security',
-        href: '/security',
+        href: '/security/',
         description: 'Security commitments, cryptographic verification protocols, and responsible vulnerability reporting.',
         isExternal: false,
       },
@@ -238,28 +238,28 @@ export default function SearchPage() {
       {
         title: 'Contact & Institutional Inquiries',
         type: 'Contact',
-        href: '/contact',
+        href: '/contact/',
         description: 'Direct institutional contact channels, physical office details in Jayapura, and encrypted communications.',
         isExternal: false,
       },
       {
         title: 'Terms of Service & Usage Policies',
         type: 'Legal',
-        href: '/terms',
+        href: '/terms/',
         description: 'Terms governing public website access, API usage, and infrastructure interaction guidelines.',
         isExternal: false,
       },
       {
         title: 'Privacy Policy & Data Sovereignty',
         type: 'Legal',
-        href: '/privacy',
+        href: '/privacy/',
         description: 'Zero third-party tracking policy, local data retention guarantees, and user privacy protections.',
         isExternal: false,
       },
       {
         title: 'Software Licenses & Open Source Compliance',
         type: 'Legal',
-        href: '/licenses',
+        href: '/licenses/',
         description: 'Open source licensing framework including AGPL-3.0, MIT, and Apache-2.0 declarations.',
         isExternal: false,
       },

@@ -5,8 +5,8 @@ import { AIPortalView } from '@/components/ai/ai-portal-view';
 import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
-  path: '/technology/ai',
-  title: 'Artificial Intelligence & Machine Learning — Tonmoy Infrastructure and Vision',
+  path: '/technology/ai/',
+  title: 'Artificial Intelligence & ML Systems — TIV',
   overrideTitle: true,
   description:
     'TIV artificial intelligence models, agent systems, interactive demos, and experimental architectures on Hugging Face and GitHub, including Kyro, a local-first desktop AI assistant with a public Linux v0.1.0 release.',
@@ -28,10 +28,10 @@ export default function TechnologyAIPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link href="/projects/kyro" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">
+              <Link href="/projects/kyro/" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">
                 Explore Kyro <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/projects/kyro/downloads" className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-3 text-sm font-medium text-brand-foreground hover:bg-brand/90">
+              <Link href="/projects/kyro/downloads/" className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-3 text-sm font-medium text-brand-foreground hover:bg-brand/90">
                 Download v0.1.0 <ArrowRight className="h-4 w-4" />
               </Link>
               <a href="https://kyro.tonmoyinfrastructure.org/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">

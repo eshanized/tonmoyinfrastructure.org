@@ -80,7 +80,7 @@ export default function FinancialsPage() {
           <Breadcrumbs
             items={[
               { label: 'Home', href: '/' },
-              { label: 'Transparency', href: '/transparency' },
+              { label: 'Transparency', href: '/transparency/' },
               { label: 'Financials' },
             ]}
           />
@@ -109,7 +109,7 @@ export default function FinancialsPage() {
               </div>
 
               <Link
-                href="/transparency/financials/portfolio-economics"
+                href="/transparency/financials/portfolio-economics/"
                 className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-2 text-xs font-medium text-white hover:bg-brand/90 transition-colors shrink-0"
               >
                 View Portfolio Economics

@@ -158,7 +158,7 @@ export function ProjectsEconomicsTable({
                 >
                   <td className="px-4 py-3.5">
                     <Link
-                      href={`/projects/${p.projectSlug}/economics`}
+                      href={`/projects/${p.projectSlug}/economics/`}
                       className="font-sans font-medium text-foreground group-hover:text-brand flex items-center gap-1.5"
                     >
                       {p.projectTitle}
@@ -228,7 +228,7 @@ export function ProjectsEconomicsTable({
 
                   <td className="px-4 py-3.5 text-right font-sans">
                     <Link
-                      href={`/projects/${p.projectSlug}/economics`}
+                      href={`/projects/${p.projectSlug}/economics/`}
                       className="inline-flex items-center gap-1 text-xs text-brand hover:underline"
                     >
                       Details

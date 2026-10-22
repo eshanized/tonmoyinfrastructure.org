@@ -234,7 +234,8 @@ export function generatePublicationMetadata(publication: Publication): Metadata 
  */
 export function generateArticleMetadata(newsItem: NewsItem): Metadata {
   const canonicalPath = `/news/${newsItem.slug}`;
-  const title = `${newsItem.title} — ${siteConfig.name}`;
+  const brandSuffix = newsItem.title.length + siteConfig.name.length + 3 > 60 ? siteConfig.shortName : siteConfig.name;
+  const title = `${newsItem.title} — ${brandSuffix}`;
   const ogImage = `${siteConfig.url}${siteConfig.defaultOgImage}`;
 
   return generatePageMetadata({

@@ -36,12 +36,12 @@ export default async function NewsArticlePage({
 
   const breadcrumbs = [
     { name: 'Home', path: '/' },
-    { name: 'News', path: '/news' },
-    { name: article.title, path: `/news/${article.slug}` },
+    { name: 'News', path: '/news/' },
+    { name: article.title, path: `/news/${article.slug}/` },
   ];
 
   const pageGraph = generatePageGraph({
-    pagePath: `/news/${article.slug}`,
+    pagePath: `/news/${article.slug}/`,
     pageTitle: `${article.title} — Tonmoy Infrastructure and Vision`,
     pageDescription: article.excerpt,
     breadcrumbs,

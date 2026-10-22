@@ -121,7 +121,7 @@ export function ProjectDetailView({
                     <ExternalLink className="h-3.5 w-3.5 opacity-60" />
                   </a>
                   <Link
-                    href="/projects/kyro/downloads"
+                    href="/projects/kyro/downloads/"
                     className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90"
                   >
                     <Download className="h-4 w-4" />
@@ -170,7 +170,7 @@ export function ProjectDetailView({
               </Link>
 
               <Link
-                href={`/projects/${project.slug}/economics`}
+                href={`/projects/${project.slug}/economics/`}
                 className="inline-flex items-center gap-2 border border-brand/40 bg-brand/5 px-4 py-2 text-sm font-medium text-brand transition-colors hover:bg-brand/10"
               >
                 <BarChart3 className="h-4 w-4" />
@@ -572,7 +572,7 @@ export function ProjectDetailView({
                       {project.relatedResearch.map((resSlug) => (
                         <Link
                           key={resSlug}
-                          href={`/research/publications/${resSlug}`}
+                          href={`/research/publications/${resSlug}/`}
                           className="group flex items-center justify-between border border-border bg-card p-4 transition-colors hover:border-brand/40"
                         >
                           <span className="text-sm font-medium group-hover:text-brand">
@@ -704,7 +704,7 @@ export function ProjectDetailView({
                     {related.slice(0, 5).map((rel) => (
                       <li key={rel.slug}>
                         <Link
-                          href={`/projects/${rel.slug}`}
+                          href={`/projects/${rel.slug}/`}
                           className="group flex items-center justify-between text-sm transition-colors hover:text-brand"
                         >
                           <span>{rel.title}</span>
@@ -733,7 +733,7 @@ export function ProjectDetailView({
             </Link>
             {related[0] && (
               <Link
-                href={`/projects/${related[0].slug}`}
+                href={`/projects/${related[0].slug}/`}
                 className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-brand"
               >
                 Next: {related[0].title}

@@ -36,9 +36,9 @@ const areaDetails: Record<
       'Evaluation metrics for non-hallucinatory software modifications',
     ],
     systems: [
-      { label: 'Octate (AI Code Review Engine)', href: '/projects/octate' },
-      { label: 'Mercura (Local AI Assistant)', href: '/projects/mercura' },
-      { label: 'Autonomous Systems Paper', href: '/research/publications/autonomous-development-systems' },
+      { label: 'Octate (AI Code Review Engine)', href: '/projects/octate/' },
+      { label: 'Mercura (Local AI Assistant)', href: '/projects/mercura/' },
+      { label: 'Autonomous Systems Paper', href: '/research/publications/autonomous-development-systems/' },
     ],
     objectives:
       'Developing AI systems that operate with deterministic rigor, verifiable reasoning, and zero data leakage, enabling engineers to delegate complex tasks safely.',
@@ -52,8 +52,8 @@ const areaDetails: Record<
       'Traffic telemetry and congestion avoidance in bare-metal clusters',
     ],
     systems: [
-      { label: 'TIVNet Overlay Architecture', href: '/infrastructure/networking' },
-      { label: 'Autonomous Systems Paper', href: '/research/publications/autonomous-development-systems' },
+      { label: 'TIVNet Overlay Architecture', href: '/infrastructure/networking/' },
+      { label: 'Autonomous Systems Paper', href: '/research/publications/autonomous-development-systems/' },
     ],
     objectives:
       'Designing self-healing network protocols that eliminate packet retransmission penalties and preserve deterministic latency across global compute clusters.',
@@ -67,8 +67,8 @@ const areaDetails: Record<
       'Photonic interconnects for sub-microsecond compute-to-compute transfer',
     ],
     systems: [
-      { label: 'Optical Systems Service', href: '/infrastructure/optical-systems' },
-      { label: 'Experimental Infrastructure', href: '/research/experiments' },
+      { label: 'Optical Systems Service', href: '/infrastructure/optical/' },
+      { label: 'Experimental Infrastructure', href: '/research/experiments/' },
     ],
     objectives:
       'Pushing the boundary of high-capacity photonic transit to build dedicated low-attenuation backbones for internal compute workloads.',
@@ -82,8 +82,8 @@ const areaDetails: Record<
       'Provable linearizability verification across heterogeneous nodes',
     ],
     systems: [
-      { label: 'OpenMail (Queue Engine)', href: '/projects/openmail' },
-      { label: 'M31A (Autonomous Infrastructure)', href: '/projects/m31a' },
+      { label: 'OpenMail (Queue Engine)', href: '/projects/openmail/' },
+      { label: 'M31A (Autonomous Infrastructure)', href: '/projects/m31a/' },
     ],
     objectives:
       'Building distributed primitives that guarantee causal consistency without compromising single-node throughput or introducing cloud vendor lock-in.',
@@ -97,8 +97,8 @@ const areaDetails: Record<
       'Static binary distribution and deterministic containerless deploys',
     ],
     systems: [
-      { label: 'M31A (Autonomous Runtime)', href: '/projects/m31a' },
-      { label: 'OpenMail (Core Daemon)', href: '/projects/openmail' },
+      { label: 'M31A (Autonomous Runtime)', href: '/projects/m31a/' },
+      { label: 'OpenMail (Core Daemon)', href: '/projects/openmail/' },
     ],
     objectives:
       'Extracting bare-metal efficiency from standard x86 and ARM architectures through zero-dependency systems programming and low-level kernel abstractions.',
@@ -112,8 +112,8 @@ const areaDetails: Record<
       'Privacy-preserving developer telemetry and profiling harnesses',
     ],
     systems: [
-      { label: 'Mercura Platform', href: '/projects/mercura' },
-      { label: 'Octate (Code Review CLI)', href: '/projects/octate' },
+      { label: 'Mercura Platform', href: '/projects/mercura/' },
+      { label: 'Octate (Code Review CLI)', href: '/projects/octate/' },
     ],
     objectives:
       'Restoring developer autonomy with blisteringly fast, local-first tooling that requires zero external network roundtrips for core engineering workflows.',
@@ -149,7 +149,7 @@ export default function ResearchAreasPage() {
         <div className="tiv-container py-8">
           <Breadcrumbs
             items={[
-              { label: 'Research', href: '/research' },
+              { label: 'Research', href: '/research/' },
               { label: 'Areas' },
             ]}
           />

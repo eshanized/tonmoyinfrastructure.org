@@ -126,13 +126,13 @@ export default async function ProjectEconomicsPage({
 
             <div className="flex gap-3">
               <Link
-                href={`/projects/${project.slug}`}
+                href={`/projects/${project.slug}/`}
                 className="inline-flex items-center gap-1.5 border border-border bg-card px-3 py-2 text-xs font-mono text-foreground hover:border-brand hover:text-brand"
               >
                 <ArrowLeft className="h-3.5 w-3.5" /> Project Overview
               </Link>
               <Link
-                href="/transparency/financials/portfolio-economics"
+                href="/transparency/financials/portfolio-economics/"
                 className="inline-flex items-center gap-1.5 border border-brand bg-brand px-3 py-2 text-xs font-mono text-white hover:bg-brand/90"
               >
                 Portfolio Matrix
@@ -158,14 +158,14 @@ export default async function ProjectEconomicsPage({
             {project.slug === 'runstead' && (
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <Link
-                  href="/projects/runstead#financial-model"
+                  href="/projects/runstead/#financial-model"
                   className="inline-flex items-center gap-1.5 border border-brand bg-brand px-3.5 py-1.5 text-xs font-medium text-brand-foreground hover:bg-brand/90 transition-colors"
                 >
                   View Illustrative Financial Model
                   <TrendingUp className="h-3.5 w-3.5" />
                 </Link>
                 <Link
-                  href="/projects/runstead#investment-thesis"
+                  href="/projects/runstead/#investment-thesis"
                   className="inline-flex items-center gap-1.5 border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-foreground hover:bg-secondary transition-colors"
                 >
                   Read Investment Thesis

@@ -25,7 +25,7 @@ const rawProjects: Project[] = [
   {
     slug: 'openmail',
     title: 'OpenMail',
-    seoTitle: 'OpenMail — Self-Hosted Email Server for SMTP, IMAP & TLS',
+    seoTitle: 'OpenMail — Self-Hosted Email Server (SMTP/IMAP) — TIV',
     seoDescription:
       'Self-hosted email server and communication infrastructure with integrated SMTP and IMAP, automatic TLS certificates, local data storage, spam protection, and mail-domain tooling.',
     type: 'software',
@@ -465,7 +465,7 @@ m31a eval run --all
   {
     slug: 'octate',
     title: 'Octate',
-    seoTitle: 'Octate — AI Code Review CLI with Tree-sitter & SARIF',
+    seoTitle: 'Octate — AI Code Review CLI with SARIF & AST — TIV',
     seoDescription:
       'Terminal-native AI code review CLI combining Tree-sitter AST parsing, cross-file reference graphs, static-linter findings, multi-stage LLM review, critic validation, and SARIF export.',
     type: 'software',
@@ -1187,7 +1187,7 @@ Kyro v0.1.0 is publicly released for Linux, with Debian/Ubuntu \`.deb\`, Fedora/
   {
     slug: 'runstead',
     title: 'Runstead',
-    seoTitle: 'Runstead — Hosting Business Management and Billing SaaS',
+    seoTitle: 'Runstead — Hosting Business Management & Billing — TIV',
     seoDescription:
       'Pre-release hosting-business management platform under development, bringing together client CRM, recurring billing, service lifecycle workflows, domain and DNS operations, ticketing, and white-label storefronts.',
     type: 'software',

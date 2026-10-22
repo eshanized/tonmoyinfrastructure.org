@@ -156,7 +156,7 @@ These four principles are interconnected. A system that is understandable but no
 
 ### OpenMail
 
-[OpenMail](/projects/openmail) is self-hosted email and communication infrastructure. It is designed to give individuals and organizations full control over their email systems without depending on centralized providers.
+[OpenMail](/projects/openmail/) is self-hosted email and communication infrastructure. It is designed to give individuals and organizations full control over their email systems without depending on centralized providers.
 
 Email is foundational to the internet, yet self-hosting email has become notoriously difficult. OpenMail takes a pragmatic approach: a single binary that handles SMTP, IMAP, and administration, with modern TLS by default and built-in spam protection.
 
@@ -164,7 +164,7 @@ OpenMail is a stable release. The core platform is complete and deployed. Active
 
 ### Mercura
 
-[Mercura](/projects/mercura) is self-hosted code hosting built around Mercurial. It provides repository hosting, code review, and collaboration tools for teams that prefer distributed version control systems.
+[Mercura](/projects/mercura/) is self-hosted code hosting built around Mercurial. It provides repository hosting, code review, and collaboration tools for teams that prefer distributed version control systems.
 
 Most code hosting platforms are centralized and proprietary. Mercura offers an alternative: self-hosted, open, and built around Mercurial's powerful distributed model. It is designed to be lightweight, Git-compatible, and extensible.
 
@@ -172,13 +172,13 @@ Mercura is a stable release. The core platform is complete and deployed. Active 
 
 ### M31A
 
-[M31A](/projects/m31a) is a Rust-native autonomous software-engineering runtime. It operates under the core principle: *"The model proposes. The runtime decides."* M31A provides deterministic lifecycle control, an 11-stage non-bypassable policy evaluation gate, resource-bounded execution with OS-level confinement, continuous multi-tier verification, atomic two-phase checkpoints, and local observability for autonomous coding agents.
+[M31A](/projects/m31a/) is a Rust-native autonomous software-engineering runtime. It operates under the core principle: *"The model proposes. The runtime decides."* M31A provides deterministic lifecycle control, an 11-stage non-bypassable policy evaluation gate, resource-bounded execution with OS-level confinement, continuous multi-tier verification, atomic two-phase checkpoints, and local observability for autonomous coding agents.
 
 M31A is a stable release (v0.1.1) dual-licensed under MIT and Apache-2.0. It operates with a dedicated platform website at [m31a.tonmoyinfrastructure.org](https://m31a.tonmoyinfrastructure.org/) and source on GitHub ([eshanized/M31A](https://github.com/eshanized/M31A)).
 
 ### Octate
 
-[Octate](/projects/octate) is a terminal-native AI code review CLI that combines deterministic repository intelligence (Tree-sitter AST parsing, cross-file reference graphs, static linters) with multi-stage LLM reasoning and a two-stage critic quality gate. Published as \`@tiverse/octate\` on npm with source on GitHub (\`vedanthq/Octate\`), Octate is a stable release supporting interactive terminal inspection and automated CI/CD SARIF v2.1.0 workflows.
+[Octate](/projects/octate/) is a terminal-native AI code review CLI that combines deterministic repository intelligence (Tree-sitter AST parsing, cross-file reference graphs, static linters) with multi-stage LLM reasoning and a two-stage critic quality gate. Published as \`@tiverse/octate\` on npm with source on GitHub (\`vedanthq/Octate\`), Octate is a stable release supporting interactive terminal inspection and automated CI/CD SARIF v2.1.0 workflows.
 
 ### How These Projects Fit Together
 
@@ -397,16 +397,16 @@ Open source is the foundation of ownable infrastructure. Without it, "ownership"
 
 TIV's major software projects are open source:
 
-- [OpenMail](/projects/openmail) — AGPL-3.0
-- [Mercura](/projects/mercura) — AGPL-3.0
-- [M31A](/projects/m31a) — MIT License or Apache-2.0 ([Website](https://m31a.tonmoyinfrastructure.org/) / [GitHub](https://github.com/eshanized/M31A))
-- [Octate](/projects/octate) — MIT License ([GitHub](https://github.com/vedanthq/Octate) / [npm](https://www.npmjs.com/package/@tiverse/octate))
+- [OpenMail](/projects/openmail/) — AGPL-3.0
+- [Mercura](/projects/mercura/) — AGPL-3.0
+- [M31A](/projects/m31a/) — MIT License or Apache-2.0 ([Website](https://m31a.tonmoyinfrastructure.org/) / [GitHub](https://github.com/eshanized/M31A))
+- [Octate](/projects/octate/) — MIT License ([GitHub](https://github.com/vedanthq/Octate) / [npm](https://www.npmjs.com/package/@tiverse/octate))
 
 TIV uses copyleft licenses (AGPL) rather than permissive licenses (MIT, Apache) because copyleft ensures that modifications remain open. Permissive licenses allow organizations to close-source modifications, which undermines the goal of ownable infrastructure.
 
 ### Open Source Page
 
-For a complete list of TIV's open-source repositories, see the [Open Source page](/open-source).`,
+For a complete list of TIV's open-source repositories, see the [Open Source page](/open-source/).`,
     },
     {
       id: 'security-and-trust',
@@ -425,7 +425,7 @@ Security is not a feature added after development — it is a design constraint 
 
 ### Responsible Disclosure
 
-TIV follows responsible disclosure practices. When security issues are identified, they are reported and addressed before public disclosure. TIV's security policy is available on the [Security page](/security).
+TIV follows responsible disclosure practices. When security issues are identified, they are reported and addressed before public disclosure. TIV's security policy is available on the [Security page](/security/).
 
 ### Minimizing Exposure
 
@@ -450,7 +450,7 @@ TIV protects:
 
 ### Transparency Without Compromising Security
 
-TIV is transparent about its security philosophy and practices without exposing sensitive details. The [Security page](/security) provides public information about TIV's security approach. Internal security architecture, configuration details, and vulnerability information are not published.
+TIV is transparent about its security philosophy and practices without exposing sensitive details. The [Security page](/security/) provides public information about TIV's security approach. Internal security architecture, configuration details, and vulnerability information are not published.
 
 TIV does not expose internal security architecture. Transparency means being honest about practices — not revealing information that would aid attackers.`,
     },
@@ -482,7 +482,7 @@ TIV's economic model follows several principles:
 
 ### No Fabricated Projections
 
-TIV does not publish revenue projections, customer counts, or market size estimates in this whitepaper. When financial data is available, it is published on the [Transparency page](/transparency) with clear labeling.
+TIV does not publish revenue projections, customer counts, or market size estimates in this whitepaper. When financial data is available, it is published on the [Transparency page](/transparency/) with clear labeling.
 
 TIV does not present speculative business assumptions as facts. The economic model described here is a direction, not a claim of current results.`,
     },
@@ -521,8 +521,8 @@ TIV never calls estimated information audited. When audited financial statements
 
 ### Links
 
-- [Transparency page](/transparency)
-- [Financial reports](/transparency/financials)`,
+- [Transparency page](/transparency/)
+- [Financial reports](/transparency/financials/)`,
     },
     {
       id: 'research-and-development',
@@ -544,16 +544,16 @@ TIV's research follows several principles:
 
 TIV's research spans six areas:
 
-- [Artificial Intelligence](/research) — autonomous development systems, codebase understanding
-- [Networking](/research) — routing protocols, network architecture, edge infrastructure
-- [Fiber Optics](/research) — optical networking, fiber transmission systems
-- [Distributed Systems](/research) — consensus, replication, fault tolerance
-- [Systems Engineering](/research) — operating systems, storage engines, low-level systems
-- [Developer Infrastructure](/research) — tools and platforms for software development
+- [Artificial Intelligence](/research/) — autonomous development systems, codebase understanding
+- [Networking](/research/) — routing protocols, network architecture, edge infrastructure
+- [Fiber Optics](/research/) — optical networking, fiber transmission systems
+- [Distributed Systems](/research/) — consensus, replication, fault tolerance
+- [Systems Engineering](/research/) — operating systems, storage engines, low-level systems
+- [Developer Infrastructure](/research/) — tools and platforms for software development
 
 ### Publications
 
-TIV publishes research findings through the [Research portal](/research) and the [Publications page](/research/publications). Publications are clearly labeled by status: Draft, Experimental, Published, or Superseded.
+TIV publishes research findings through the [Research portal](/research/) and the [Publications page](/research/publications/). Publications are clearly labeled by status: Draft, Experimental, Published, or Superseded.
 
 ### Connection to Products
 
@@ -615,7 +615,7 @@ TIV is responsible for what it builds. This means:
 
 ### Transparency
 
-TIV publishes what it can without exposing what it shouldn't. Financial reports, governance information, security practices, and research findings are all published openly. See the [Transparency page](/transparency).
+TIV publishes what it can without exposing what it shouldn't. Financial reports, governance information, security practices, and research findings are all published openly. See the [Transparency page](/transparency/).
 
 ### Technical Accountability
 
@@ -623,7 +623,7 @@ TIV is technically accountable for its software. When issues are identified in T
 
 ### Security
 
-TIV takes security seriously. Security practices are documented on the [Security page](/security). TIV follows responsible disclosure and minimizes unnecessary exposure.
+TIV takes security seriously. Security practices are documented on the [Security page](/security/). TIV follows responsible disclosure and minimizes unnecessary exposure.
 
 ### Documentation
 

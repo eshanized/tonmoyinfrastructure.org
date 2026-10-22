@@ -154,7 +154,7 @@ test('SEO-8: Internal Navigation & Canonical Cross-Linking', () => {
   assert.match(navContent, /href:\s*'\/projects\/octate'/, 'SiteNav must link Octate to /projects/octate');
 
   // ProjectDetailView must link related items to canonical /projects/
-  assert.match(detailViewContent, /href=\{`\/projects\/\$\{rel\.slug\}`\}/, 'Detail view must link related items to /projects/${rel.slug}');
+  assert.match(detailViewContent, /href=\{`\/projects\/\$\{rel\.slug\}\/?`\}/, 'Detail view must link related items to /projects/${rel.slug}');
 });
 
 test('SEO-9: Homepage Architecture & Headings Structure', () => {
@@ -169,7 +169,7 @@ test('SEO-9: Homepage Architecture & Headings Structure', () => {
   assert.match(homeContent, /sovereign software platforms/, 'Homepage description must reflect software platforms');
 
   // Commercial & technical discovery CTAs
-  assert.match(homeContent, /href="\/products"/, 'Homepage hero must link to /products');
-  assert.match(homeContent, /href="\/infrastructure"/, 'Homepage hero must link to /infrastructure');
-  assert.match(homeContent, /href="\/contact"/, 'Homepage hero must link to /contact for inquiries');
+  assert.match(homeContent, /href="\/products\/?\/"?/, 'Homepage hero must link to /products');
+  assert.match(homeContent, /href="\/infrastructure\/?\/"?/, 'Homepage hero must link to /infrastructure');
+  assert.match(homeContent, /href="\/contact\/?\/"?/, 'Homepage hero must link to /contact for inquiries');
 });

@@ -155,7 +155,7 @@ export default function TransparencyPage() {
           {/* Quick Inspection Hub */}
           <div className="mt-10 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             <Link
-              href="/open-source"
+              href="/open-source/"
               className="group bg-card p-6 transition-colors hover:bg-card/80"
             >
               <div className="flex items-center justify-between">
@@ -355,7 +355,7 @@ export default function TransparencyPage() {
                     </p>
                   </div>
                   <Link
-                    href={`/transparency/${report.slug}`}
+                    href={`/transparency/${report.slug}/`}
                     className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-brand"
                   >
                     Read report

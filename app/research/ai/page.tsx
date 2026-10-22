@@ -3,8 +3,8 @@ import { AIPortalView } from '@/components/ai/ai-portal-view';
 import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generatePageMetadata({
-  path: '/research/ai',
-  title: 'AI & Machine Learning Research — Tonmoy Infrastructure and Vision',
+  path: '/research/ai/',
+  title: 'AI & Machine Learning Research — TIV',
   overrideTitle: true,
   description:
     'Research checkpoints, open causal models, agent systems, and experimental architectures from Tonmoy Infrastructure & Vision.',

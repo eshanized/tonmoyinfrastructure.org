@@ -28,6 +28,13 @@ DirectorySlash Off
     RewriteRule ^ - [L]
 
     # --------------------------------------------------------------------------
+    # 1.5 CANONICAL HOST ENFORCEMENT (www -> non-www apex)
+    # --------------------------------------------------------------------------
+    # Prevent duplicate content and host splitting by redirecting www to apex domain.
+    RewriteCond %{HTTP_HOST} ^www\.tonmoyinfrastructure\.org$ [NC]
+    RewriteRule ^(.*)$ https://tonmoyinfrastructure.org/$1 [R=301,L]
+
+    # --------------------------------------------------------------------------
     # 2. HTTPS ENFORCEMENT (StackCDN / Cloudflare / Reverse Proxy Compatible)
     # --------------------------------------------------------------------------
     # 20i StackCDN and Cloudflare terminate SSL at the edge and proxy requests to

@@ -81,7 +81,7 @@ export default function InfrastructurePage() {
             {services.map((svc) => (
               <StaggerItem key={svc.slug}>
                 <Link
-                  href={`/infrastructure/${svc.slug === 'optical-systems' ? 'optical' : svc.slug}`}
+                  href={`/infrastructure/${svc.slug === 'optical-systems' ? 'optical' : svc.slug}/`}
                   className="group relative bg-card p-6 transition-colors hover:bg-card/80"
                 >
                   <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />

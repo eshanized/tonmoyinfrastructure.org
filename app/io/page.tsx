@@ -581,7 +581,7 @@ export default function IoPage() {
               </Link>
 
               <Link
-                href="/open-source"
+                href="/open-source/"
                 className="group relative flex flex-col bg-card p-6 transition-colors hover:bg-card/80"
               >
                 <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />

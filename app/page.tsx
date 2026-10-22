@@ -23,7 +23,7 @@ import { generatePageMetadata } from '@/lib/seo';
 
 export const metadata = generatePageMetadata({
   path: '/',
-  title: 'Enterprise Infrastructure & Systems Engineering — Tonmoy Infrastructure and Vision',
+  title: 'Enterprise Infrastructure & Systems Engineering — TIV',
   overrideTitle: true,
   description:
     'Tonmoy Infrastructure and Vision (TIV) engineers sovereign software platforms, verifiable developer runtimes, and distributed infrastructure architecture. Explore stable releases including OpenMail, Mercura, M31A, and Octate, plus Kyro, our local-first desktop AI assistant with a public v0.1.0 Linux release and continued development.',
@@ -70,14 +70,14 @@ export default function HomePage() {
               <Reveal delay={0.24}>
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <Link
-                    href="/products"
+                    href="/products/"
                     className="group inline-flex items-center justify-center gap-2 bg-brand px-6 py-3.5 text-sm font-medium text-brand-foreground transition-all duration-200 hover:opacity-95 hover:shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     Explore our systems
                     <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </Link>
                   <Link
-                    href="/infrastructure"
+                    href="/infrastructure/"
                     className="group inline-flex items-center justify-center gap-2 border border-border bg-card/60 px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-200 hover:border-brand/60 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     Explore infrastructure
@@ -88,7 +88,7 @@ export default function HomePage() {
                   <span className="h-1.5 w-1.5 rounded-full bg-brand/60" aria-hidden="true" />
                   <span>Institutional & commercial deployment:</span>
                   <Link
-                    href="/contact"
+                    href="/contact/"
                     className="text-foreground underline decoration-border hover:decoration-brand hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand"
                   >
                     Direct inquiries &rarr;
@@ -148,7 +148,7 @@ export default function HomePage() {
                   </div>
                   <div className="flex flex-wrap items-center gap-3 shrink-0">
                     <Link
-                      href="/projects/kyro"
+                      href="/projects/kyro/"
                       className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                     >
                       Explore Kyro
@@ -164,7 +164,7 @@ export default function HomePage() {
                       <Github className="h-4 w-4" />
                     </a>
                     <Link
-                      href="/projects/kyro/downloads"
+                      href="/projects/kyro/downloads/"
                       className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                     >
                       Download v0.1.0
@@ -202,14 +202,14 @@ export default function HomePage() {
                 </div>
                 <div className="flex flex-wrap items-center gap-3 shrink-0">
                   <Link
-                    href="/projects/runstead"
+                    href="/projects/runstead/"
                     className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     View Venture Profile
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
-                    href="/projects/runstead#financial-model"
+                    href="/projects/runstead/#financial-model"
                     className="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     Financial Model
@@ -291,7 +291,7 @@ export default function HomePage() {
             {infraServices.map((svc) => (
               <StaggerItem key={svc.slug}>
                 <Link
-                  href={`/infrastructure/${svc.slug === 'optical-systems' ? 'optical' : svc.slug}`}
+                  href={`/infrastructure/${svc.slug === 'optical-systems' ? 'optical' : svc.slug}/`}
                   className="group relative flex h-full flex-col bg-card p-5 transition-colors hover:bg-card/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                 >
                   <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />
@@ -367,7 +367,7 @@ export default function HomePage() {
           <div className="mt-12">
             <div className="flex items-center justify-between border-b border-border pb-4">
               <span className="tiv-meta">OPEN-SOURCE CODEBASES</span>
-              <Link href="/open-source" className="text-xs font-mono text-brand hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand">
+              <Link href="/open-source/" className="text-xs font-mono text-brand hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand">
                 View all repositories &rarr;
               </Link>
             </div>
@@ -599,7 +599,7 @@ export default function HomePage() {
                 </div>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
-                    href="/io"
+                    href="/io/"
                     className="group inline-flex items-center gap-2 bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                   >
                     Explore TIV I/O
@@ -662,7 +662,7 @@ export default function HomePage() {
             {news.map((article) => (
               <StaggerItem key={article.slug}>
                 <Link
-                  href={`/news/${article.slug}`}
+                  href={`/news/${article.slug}/`}
                   className="group relative flex flex-col gap-2 border border-border bg-card p-6 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand md:flex-row md:items-center md:justify-between"
                 >
                   <span className="absolute top-0 left-0 h-0.5 w-0 bg-brand transition-all duration-300 group-hover:w-full" />

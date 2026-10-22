@@ -12,7 +12,7 @@ import { JsonLd } from '@/components/shared/json-ld';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generatePageMetadata({
-  path: '/products',
+  path: '/products/',
   title: 'Products — Tonmoy Infrastructure and Vision',
   overrideTitle: true,
   description:
@@ -99,14 +99,14 @@ export default function ProductsPage() {
             </div>
             <div className="flex flex-wrap items-center gap-3 shrink-0">
               <Link
-                href="/projects/runstead"
+                href="/projects/runstead/"
                 className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors"
               >
                 Explore Runstead
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/projects/kyro/downloads"
+                href="/projects/kyro/downloads/"
                 className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors"
               >
                 Download Kyro
@@ -138,10 +138,10 @@ export default function ProductsPage() {
                 <p className="mt-3 text-xs text-muted-foreground">MIT License · Tauri 2 · React · TypeScript · Rust</p>
               </div>
               <div className="flex flex-wrap gap-3">
-                <Link href="/projects/kyro" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">
+                <Link href="/projects/kyro/" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">
                   Project profile <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link href="/projects/kyro/downloads" className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-3 text-sm font-medium text-brand-foreground hover:bg-brand/90">
+                <Link href="/projects/kyro/downloads/" className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-3 text-sm font-medium text-brand-foreground hover:bg-brand/90">
                   Download v0.1.0 <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a href="https://kyro.tonmoyinfrastructure.org/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">

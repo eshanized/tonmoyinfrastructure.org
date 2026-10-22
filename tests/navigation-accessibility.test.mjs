@@ -51,7 +51,7 @@ test('Navigation & Interactive Controls Accessibility', () => {
   assert.match(newsList, /Clear filter/, 'News list must provide a clear filter mechanism');
 
   assert.match(searchPage, /aria-label="Clear search query"/, 'Search page must provide accessible clear button');
-  assert.match(searchPage, /href:\s*`\/projects\/\$\{p\.slug\}`/, 'Search must return canonical /projects/ routes');
+  assert.match(searchPage, /href:\s*`\/projects\/\$\{p\.slug\}\/?`/, 'Search must return canonical /projects/ routes');
   assert.match(searchPage, /\/whitepaper/, 'Search must index whitepaper');
   assert.match(searchPage, /\/status/, 'Search must index operational status');
 });

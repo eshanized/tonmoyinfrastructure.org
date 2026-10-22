@@ -123,7 +123,7 @@ export default function KyroDownloadsPage() {
           />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/projects/kyro"
+              href="/projects/kyro/"
               className="inline-flex items-center gap-2 border border-border bg-card px-4 py-2 text-sm hover:border-brand hover:text-brand"
             >
               <ArrowLeft className="h-4 w-4" />

@@ -100,7 +100,7 @@ export function EconomicsHeader({
             />
 
             <Link
-              href="/transparency/financials/portfolio-economics/methodology"
+              href="/transparency/financials/portfolio-economics/methodology/"
               className="inline-flex items-center gap-1.5 border border-border bg-card px-3 py-2 text-sm font-medium transition-colors hover:border-brand hover:text-brand"
             >
               <BookOpen className="h-4 w-4 text-brand" />
@@ -110,14 +110,14 @@ export function EconomicsHeader({
 
             {isInternal ? (
               <Link
-                href="/transparency/financials/portfolio-economics"
+                href="/transparency/financials/portfolio-economics/"
                 className="inline-flex items-center gap-1.5 border border-border bg-muted/40 px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 Public View
               </Link>
             ) : (
               <Link
-                href="/transparency/financials/portfolio-economics/dashboard"
+                href="/transparency/financials/portfolio-economics/dashboard/"
                 className="inline-flex items-center gap-1.5 border border-brand/40 bg-brand/5 px-3 py-2 text-sm font-medium text-brand transition-colors hover:bg-brand/10"
               >
                 <BarChart3 className="h-4 w-4" />

@@ -130,7 +130,7 @@ export default function SolutionsPage() {
                 />
               </div>
               <Link
-                href="/infrastructure/data-centers"
+                href="/infrastructure/data-centers/"
                 className="flex items-center gap-1.5 text-xs font-mono text-brand hover:underline self-start md:self-auto"
               >
                 Detailed Specifications <ArrowRight className="h-3.5 w-3.5" />
@@ -183,7 +183,7 @@ export default function SolutionsPage() {
                 />
               </div>
               <Link
-                href="/transparency/financials/portfolio-economics"
+                href="/transparency/financials/portfolio-economics/"
                 className="flex items-center gap-1.5 text-xs font-mono text-brand hover:underline self-start md:self-auto"
               >
                 Portfolio Economics Dashboard <ArrowRight className="h-3.5 w-3.5" />
@@ -257,7 +257,7 @@ export default function SolutionsPage() {
             </div>
 
             <Link
-              href="/transparency/financials/portfolio-economics/methodology"
+              href="/transparency/financials/portfolio-economics/methodology/"
               className="inline-flex items-center gap-1.5 border border-border bg-secondary px-3.5 py-1.5 font-mono text-xs text-foreground hover:border-brand hover:text-brand transition-colors shrink-0"
             >
               Read Valuation Policy <ArrowRight className="h-3.5 w-3.5" />

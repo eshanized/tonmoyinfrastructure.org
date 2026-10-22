@@ -107,7 +107,7 @@ export default function ReleasesPage() {
                   <a href="https://github.com/eshanized/Kyro/releases/tag/v0.1.0" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">
                     Release notes <ArrowRight className="h-4 w-4" />
                   </a>
-                  <Link href="/projects/kyro/downloads" className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-3 text-sm font-medium text-brand-foreground hover:bg-brand/90">
+                  <Link href="/projects/kyro/downloads/" className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-3 text-sm font-medium text-brand-foreground hover:bg-brand/90">
                     Download Kyro <ArrowRight className="h-4 w-4" />
                   </Link>
                   <a href="https://kyro.tonmoyinfrastructure.org/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">
