@@ -1045,9 +1045,9 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
   {
     slug: 'kyro',
     title: 'Kyro',
-    seoTitle: 'Kyro — Visual AI Desktop Agent for Everyday Tasks and Software Development',
+    seoTitle: 'Kyro — Desktop AI Assistant & Visual Computer-Use Agent | TIV',
     seoDescription:
-      'Kyro is a desktop AI agent in active development, combining screen understanding, grounded computer use, browser inspection, reversible file organization, document analysis, and developer workflows in a Tauri desktop application.',
+      'Kyro is a pre-release desktop AI assistant for screen understanding, browser automation, document and file workflows, reusable routines, and developer diagnostics. Built with Tauri, React, TypeScript, and Rust by Tonmoy Infrastructure & Vision.',
     type: 'software',
     productStatus: 'preview',
     releaseStatus: 'pre-release',
@@ -1055,9 +1055,9 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
     status: 'Development',
     category: 'Software',
     shortDescription:
-      'A visual desktop AI operator for everyday computer tasks and end-to-end developer workflows.',
+      'A desktop AI assistant for everyday computer tasks, visual understanding, browser workflows, and software development.',
     description:
-      'Kyro is a local-first desktop AI assistant being developed by Tonmoy Infrastructure & Vision. It brings screen explanation, screenshot-based visual analysis, grounded UI interaction, browser automation, safe file organization with undo, local document analysis, reusable routines, project inspection, build diagnostics, visual UI audits, and checkpoint-based code recovery into one governed desktop workspace.',
+      'Kyro is a local-first desktop AI assistant under active development at Tonmoy Infrastructure & Vision (TIV). The Tauri desktop application brings visual screen analysis, governed computer interaction, browser automation, reversible file organization, document analysis, reusable routines, project inspection, build diagnostics, UI audits, and checkpoint-based recovery into one workspace. Some workflows depend on configured model providers, permissions, and supported runtime capabilities.'
     version: '0.1.0-dev',
     featured: true,
     technology: [
@@ -1070,7 +1070,7 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
     ],
     repository: 'https://github.com/eshanized/Kyro',
     documentation: 'https://github.com/eshanized/Kyro',
-    website: '',
+    website: 'https://tonmoyinfrastructure.org/projects/kyro/',
     license: 'MIT',
     artifactType: 'Software Platform',
     owner: 'eshanized',
@@ -1084,8 +1084,8 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
         label: 'GitHub Repository',
         affiliation: 'TIV',
         organization: 'Tonmoy Infrastructure & Vision',
-        verified: false,
-        description: 'Source repository; project remains in active development.',
+        verified: true,
+        description: 'Official source repository; Kyro remains a pre-release project in active development.',
       },
     ],
     problem:
@@ -1118,12 +1118,14 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
     keywords: [
       'Kyro',
       'desktop AI assistant',
-      'visual AI agent',
-      'AI computer use',
-      'browser automation',
-      'AI developer agent',
-      'screen understanding',
-      'Tauri desktop app',
+      'AI desktop agent',
+      'visual computer use',
+      'AI screen understanding',
+      'browser automation desktop app',
+      'document assistant',
+      'file organization assistant',
+      'developer diagnostics',
+      'Tauri desktop AI application',
     ],
     updatedAt: '2026-10-21',
     content: `## Overview
