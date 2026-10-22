@@ -1150,7 +1150,7 @@ The model card and checkpoint are hosted on Hugging Face at [eshanized/M31Entrop
       'open-source desktop AI agent',
       'Linux desktop AI assistant',
     ],
-    updatedAt: '2026-10-21',
+    updatedAt: '2026-10-22',
     content: `## Overview
 
 Kyro is an early-release AI-powered desktop operator under active development at Tonmoy Infrastructure & Vision (TIV). It aims to help everyday users understand and work with their computer while giving developers a governed workspace for software engineering tasks.
@@ -2171,6 +2171,25 @@ export function getRepos(): Repo[] {
 
 export function getTechnicalArtifacts(): TechnicalArtifact[] {
   return [
+    {
+      slug: 'kyro',
+      name: 'Kyro',
+      description: 'Local-first desktop AI assistant with a public v0.1.0 Linux release, computer-use automation, browser workflows, and developer tools.',
+      artifactType: 'Application',
+      platform: 'github',
+      platformType: 'repository',
+      status: 'Preview',
+      language: 'Rust / TypeScript',
+      license: 'MIT',
+      url: 'https://github.com/eshanized/Kyro',
+      documentation: 'https://kyro.tonmoyinfrastructure.org/',
+      author: 'eshanized',
+      organization: 'Tonmoy Infrastructure & Vision',
+      affiliation: 'TIV',
+      latestRelease: 'v0.1.0',
+      tags: ['Desktop AI Assistant', 'Computer Use', 'Local First', 'Tauri', 'Linux Download'],
+      verified: true,
+    },
     {
       slug: 'openmail',
       name: 'OpenMail',
