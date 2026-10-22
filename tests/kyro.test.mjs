@@ -57,6 +57,8 @@ test('KYRO-3: project metadata and sitemap discoverability', () => {
   assert.match(route, /generateProjectMetadata\(project/);
   assert.match(route, /generateSoftwareApplicationSchema\(project\)/);
   assert.match(structuredData, /'@type': 'SoftwareApplication'/);
+  assert.match(structuredData, /schema\.downloadUrl = 'https:\/\/kyro\.tonmoyinfrastructure\.org\/download\//, 'Kyro software schema must provide its official download URL');
+  assert.match(structuredData, /operatingSystem: project\.slug === 'kyro' \? 'Linux \(x86_64\)'/, 'Kyro platform availability must reflect published Linux assets');
   assert.match(sitemap, /project\.slug === 'kyro' \|\| project\.status === 'Stable Release'/, 'Kyro gets a core project priority');
   assert.match(sitemap, /getProjects\(\)/, 'project catalogue feeds the sitemap');
 });
