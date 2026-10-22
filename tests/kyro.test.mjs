@@ -5,7 +5,7 @@ import path from 'node:path';
 
 const ROOT = process.cwd();
 
-test('KYRO-1: project registration and truthful pre-release status', () => {
+test('KYRO-1: project registration and truthful early-release status', () => {
   const contentFile = fs.readFileSync(path.join(ROOT, 'lib/content.ts'), 'utf8');
   const kyroIdx = contentFile.indexOf("slug: 'kyro'");
   assert.ok(kyroIdx !== -1, 'Kyro must be registered in lib/content.ts');
@@ -13,10 +13,12 @@ test('KYRO-1: project registration and truthful pre-release status', () => {
   const kyroChunk = contentFile.slice(kyroIdx, nextProject === -1 ? kyroIdx + 12000 : nextProject);
   assert.match(kyroChunk, /status:\s*'Development'/, 'Kyro must remain in development');
   assert.match(kyroChunk, /productStatus:\s*'preview'/, 'Kyro must remain preview');
-  assert.match(kyroChunk, /releaseStatus:\s*'pre-release'/, 'Kyro must remain pre-release');
+  assert.match(kyroChunk, /releaseStatus:\s*'released'/, 'Kyro must reflect the published v0.1.0 release');
   assert.match(kyroChunk, /repository:\s*'https:\/\/github\.com\/eshanized\/Kyro'/, 'Kyro source URL must be present');
   assert.match(kyroChunk, /observe–reason–act–verify/i, 'Kyro approach should be documented');
   assert.match(kyroChunk, /release qualification/i, 'Kyro must not be claimed as fully release-qualified');
+  assert.match(kyroChunk, /version: '0.1.0'/, 'catalogue version must match published release');
+  assert.match(kyroChunk, /website: 'https:\/\/kyro\.tonmoyinfrastructure\.org\/'/, 'official product website must be recorded');
 });
 
 test('KYRO-2: discovery, static route and SEO indexing integration', () => {
@@ -50,8 +52,8 @@ test('KYRO-3: project metadata and sitemap discoverability', () => {
   assert.match(kyro, /seoTitle: 'Kyro — Desktop AI Assistant/);
   assert.match(kyro, /seoDescription:/);
   assert.match(kyro, /desktop AI assistant/i);
-  assert.match(kyro, /pre-release/i);
-  assert.match(kyro, /https:\/\/tonmoyinfrastructure\.org\/projects\/kyro\//, 'catalog should refer to the canonical Kyro profile');
+  assert.match(kyro, /public v0\.1\.0 Linux release/i);
+  assert.match(kyro, /https:\/\/kyro\.tonmoyinfrastructure\.org\//, 'catalog should refer to Kyro official website');
   assert.match(route, /generateProjectMetadata\(project/);
   assert.match(route, /generateSoftwareApplicationSchema\(project\)/);
   assert.match(structuredData, /'@type': 'SoftwareApplication'/);
@@ -85,4 +87,38 @@ test('KYRO-4: portfolio economics, period selection, and truthful financial disc
   assert.match(economicsCase, /no project valuation, revenue forecast/i);
   assert.match(sitemap, /projectEconomicPages/);
   assert.match(sitemap, /projects\/\$\{project\.slug\}\/economics/);
+});
+
+test('KYRO-5: navigation, official product website, and release download discoverability', () => {
+  const content = fs.readFileSync(path.join(ROOT, 'lib/content.ts'), 'utf8');
+  const desktopNav = fs.readFileSync(path.join(ROOT, 'components/navigation/site-nav.tsx'), 'utf8');
+  const mobileNav = fs.readFileSync(path.join(ROOT, 'components/navigation/mobile-nav.tsx'), 'utf8');
+  const footer = fs.readFileSync(path.join(ROOT, 'components/layout/site-footer.tsx'), 'utf8');
+  const home = fs.readFileSync(path.join(ROOT, 'app/page.tsx'), 'utf8');
+  const products = fs.readFileSync(path.join(ROOT, 'app/products/page.tsx'), 'utf8');
+  const releases = fs.readFileSync(path.join(ROOT, 'app/releases/page.tsx'), 'utf8');
+  const detail = fs.readFileSync(path.join(ROOT, 'components/projects/project-detail-view.tsx'), 'utf8');
+  const downloadPage = fs.readFileSync(path.join(ROOT, 'app/projects/kyro/downloads/page.tsx'), 'utf8');
+  const sitemap = fs.readFileSync(path.join(ROOT, 'app/sitemap.ts'), 'utf8');
+  const publicArtifacts = content.slice(content.indexOf('export function getTechnicalArtifacts'));
+
+  assert.match(desktopNav, /Kyro Downloads/);
+  assert.match(desktopNav, /https:\/\/kyro\.tonmoyinfrastructure\.org\//);
+  assert.match(mobileNav, /Kyro Downloads/);
+  assert.match(mobileNav, /https:\/\/kyro\.tonmoyinfrastructure\.org\//);
+  assert.match(footer, /Kyro Project Profile/);
+  assert.match(footer, /Kyro Official Website/);
+  assert.match(home, /Download v0\.1\.0/);
+  assert.match(home, /Official Website/);
+  assert.match(products, /Kyro v0\.1\.0 is available for Linux/);
+  assert.match(releases, /Kyro v0\.1\.0 for Linux/);
+  assert.match(detail, /Official Kyro Website/);
+  assert.match(detail, /\/projects\/kyro\/downloads/);
+  assert.match(downloadPage, /Kyro_0\.1\.0_amd64\.deb/);
+  assert.match(downloadPage, /Kyro_0\.1\.0_amd64\.AppImage/);
+  assert.match(downloadPage, /kyro-0\.1\.0-1-x86_64\.pkg\.tar\.zst/);
+  assert.match(downloadPage, /SHA256SUMS\.txt/);
+  assert.match(downloadPage, /https:\/\/kyro\.tonmoyinfrastructure\.org\/download\//);
+  assert.match(sitemap, /\/projects\/kyro\/downloads/);
+  assert.match(publicArtifacts, /slug: 'kyro'/, 'Kyro must be listed in open-source technical artifacts');
 });
