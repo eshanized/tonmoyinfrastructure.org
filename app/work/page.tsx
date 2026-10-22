@@ -17,7 +17,7 @@ export const metadata: Metadata = generatePageMetadata({
   title: 'Work — Projects & Products — Tonmoy Infrastructure and Vision',
   overrideTitle: true,
   description:
-    'TIV projects across software, internet infrastructure, network infrastructure, and foundational research.',
+    'TIV projects across software, internet infrastructure, network infrastructure, and foundational research, including Kyro’s public Linux v0.1.0 desktop AI release.',
 });
 
 const categoryIcons: Record<string, string> = {
@@ -51,7 +51,7 @@ export default function WorkPage() {
         index="WORK"
         label="Projects & Products"
         title="What we build."
-        description="TIV builds and ships practical software infrastructure. Four stable release products — OpenMail, Mercura, M31A, and Octate — plus infrastructure services and fundamental research."
+        description="TIV builds practical software infrastructure, including four stable products, Kyro’s early public Linux release, Runstead’s hosting-business platform, infrastructure services, and foundational research."
       />
 
       <section className="border-b border-border">
