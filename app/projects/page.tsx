@@ -16,7 +16,7 @@ export const metadata: Metadata = generatePageMetadata({
   title: 'Software & Systems Portfolio — Tonmoy Infrastructure and Vision',
   overrideTitle: true,
   description:
-    'Explore Tonmoy Infrastructure and Vision software projects, including stable software platforms and Kyro, a desktop AI assistant in active pre-release development for visual computer use, browser automation, document workflows, and developer diagnostics.',
+    'Explore TIV’s stable software platforms and early-release ventures, including Kyro, an open-source desktop AI assistant with a public v0.1.0 Linux release for visual computer use, browser automation, document workflows, and developer diagnostics.',
 });
 
 export default function ProjectsPage() {
@@ -92,7 +92,7 @@ export default function ProjectsPage() {
                 index="02"
                 label="Ventures in Development"
                 title="Emerging software platforms under active development."
-                description="Early-stage company ventures engineered under TIV. These platforms feature verified interactive demonstrations, active roadmap delivery, and transparent commercial models."
+                description="Early-stage company ventures engineered under TIV. Kyro has a public v0.1.0 Linux release while remaining in active development; Runstead is building a hosting-business operating platform."
               />
             </Reveal>
 
