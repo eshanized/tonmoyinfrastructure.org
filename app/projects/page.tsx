@@ -16,7 +16,7 @@ export const metadata: Metadata = generatePageMetadata({
   title: 'Software & Systems Portfolio — Tonmoy Infrastructure and Vision',
   overrideTitle: true,
   description:
-    'Stable release software platforms, infrastructure systems, and research projects built and shipped by Tonmoy Infrastructure and Vision.',
+    'Explore Tonmoy Infrastructure and Vision software projects, including stable software platforms and Kyro, a desktop AI assistant in active pre-release development for visual computer use, browser automation, document workflows, and developer diagnostics.',
 });
 
 export default function ProjectsPage() {
@@ -43,11 +43,11 @@ export default function ProjectsPage() {
         index="PROJECTS"
         label="Software Portfolio"
         title="Shipped software systems &amp; emerging ventures."
-        description="Explore TIV software systems and ventures in active development, including Kyro, a visual desktop AI agent, and Runstead, a hosting-business operating platform."
+        description="Explore TIV software systems and ventures in active development, including Kyro, a desktop AI assistant for visual computer use and everyday tasks, and Runstead, a hosting-business operating platform."
         meta={[
           { label: 'STABLE PORTFOLIO', value: '4 Systems' },
           { label: 'STATUS', value: 'Stable Release' },
-          { label: 'VENTURES', value: '1 In Development' },
+          { label: 'VENTURES', value: `${ventures.length} In Development` },
           { label: 'PHILOSOPHY', value: 'Self-Reliant' },
         ]}
       />
