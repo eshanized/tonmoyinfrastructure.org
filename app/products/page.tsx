@@ -16,13 +16,14 @@ export const metadata: Metadata = generatePageMetadata({
   title: 'Products — Tonmoy Infrastructure and Vision',
   overrideTitle: true,
   description:
-    'Software products developed and shipped by Tonmoy Infrastructure and Vision. OpenMail, Mercura, M31A, and Octate are existing stable platforms.',
+    'Software products developed by Tonmoy Infrastructure and Vision, including four stable platforms and Kyro, an open-source desktop AI assistant with a public v0.1.0 Linux release.',
 });
 
 export default function ProductsPage() {
   const products = getProjects().filter(
     (p) => p.type === 'software' && p.status === 'Stable Release'
   );
+  const kyro = getProjects().find((p) => p.slug === 'kyro');
 
   const breadcrumbs = [
     { name: 'Home', path: '/' },
@@ -115,6 +116,35 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
+      {kyro && (
+        <section className="border-t border-border bg-secondary/20">
+          <div className="tiv-container py-16 md:py-20">
+            <div className="grid grid-cols-1 gap-8 border border-brand/40 bg-card p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8">
+              <div>
+                <span className="tiv-meta-brand">EARLY PUBLIC RELEASE · ACTIVE DEVELOPMENT</span>
+                <h2 className="mt-2 font-display text-2xl md:text-3xl">Kyro — Desktop AI Assistant</h2>
+                <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                  Kyro v0.1.0 is available for Linux x86_64. Its local-first desktop workspace combines computer-use tools,
+                  browser automation, document and file workflows, and a developer workbench. It remains under active
+                  development and is not yet described as a stable production release.
+                </p>
+                <p className="mt-3 text-xs text-muted-foreground">MIT License · Tauri 2 · React · TypeScript · Rust</p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/projects/kyro" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">
+                  Project profile <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="/projects/kyro/downloads" className="inline-flex items-center gap-2 border border-brand bg-brand px-4 py-3 text-sm font-medium text-brand-foreground hover:bg-brand/90">
+                  Download v0.1.0 <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a href="https://kyro.tonmoyinfrastructure.org/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-border bg-card px-4 py-3 text-sm font-medium hover:border-brand hover:text-brand">
+                  Official website <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }
