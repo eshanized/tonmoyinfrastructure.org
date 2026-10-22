@@ -94,7 +94,7 @@ export default function ProductsPage() {
                 Looking for TIV&apos;s Emerging Software Ventures?
               </h3>
               <p className="mt-2 text-pretty text-sm text-muted-foreground">
-                In addition to our four stable software platforms, explore <strong>Runstead</strong> — our modern SaaS operating system for web hosting businesses featuring multi-tenant PostgreSQL Row-Level Security.
+                Alongside our four stable software platforms, Kyro has a public v0.1.0 Linux release and Runstead is building a modern operating system for web hosting businesses with multi-tenant PostgreSQL Row-Level Security.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3 shrink-0">
@@ -103,6 +103,13 @@ export default function ProductsPage() {
                 className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors"
               >
                 Explore Runstead
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/projects/kyro/downloads"
+                className="inline-flex items-center gap-1.5 border border-brand bg-brand px-4 py-2 text-sm font-medium text-brand-foreground hover:bg-brand/90 transition-colors"
+              >
+                Download Kyro
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
