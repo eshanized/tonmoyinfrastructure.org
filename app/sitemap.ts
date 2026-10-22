@@ -87,6 +87,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
     });
 
+  const projectEconomicPages: MetadataRoute.Sitemap = getProjects()
+    .filter((project) => !project.noIndex)
+    .map((project) => {
+      const rawDate = project.updatedAt || project.releaseDate;
+      return {
+        url: buildCanonicalUrl(`/projects/${project.slug}/economics`),
+        ...(rawDate && !Number.isNaN(Date.parse(rawDate))
+          ? { lastModified: new Date(rawDate) }
+          : {}),
+        changeFrequency: 'monthly' as const,
+        priority: PAGE_PRIORITIES.supporting,
+      };
+    });
+
   const infraPages: MetadataRoute.Sitemap = getInfrastructureServices().map((service) => ({
     url: buildCanonicalUrl(`/infrastructure/${service.slug === 'optical-systems' ? 'optical' : service.slug}`),
     changeFrequency: 'monthly' as const,
@@ -131,6 +145,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries = [
     ...staticPages,
     ...projectPages,
+    ...projectEconomicPages,
     ...infraPages,
     ...pubPages,
     ...newsPages,
