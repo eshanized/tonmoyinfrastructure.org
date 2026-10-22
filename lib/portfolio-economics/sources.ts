@@ -60,6 +60,16 @@ const initialSources: FinancialSource[] = [
     date: '2026-04-05',
     createdAt: '2026-04-05T00:00:00Z',
   },
+  {
+    id: 'src-kyro-status-fy2027',
+    sourceType: 'Other',
+    reference: 'KYRO-PE-FY2027-STATUS',
+    description:
+      'Public portfolio status note: no verified project-level Kyro amounts for cash investment, development hours, operating expenses, or attributed revenue have been approved for disclosure. This note records the current tracking status; it does not establish zero spend or zero revenue.',
+    document: 'Kyro Portfolio Economics Status Note (2026-10-22)',
+    date: '2026-10-22',
+    createdAt: '2026-10-22T00:00:00Z',
+  },
 ];
 
 let sourcesStore: FinancialSource[] = [...initialSources];
