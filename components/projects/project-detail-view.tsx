@@ -30,6 +30,7 @@ import {
 import { getProjects } from '@/lib/content';
 import { getReleasesForProject } from '@/lib/institutional';
 import { RunsteadInvestmentCase } from '@/components/projects/runstead-investment-case';
+import { KyroEconomicCase } from '@/components/projects/kyro-economic-case';
 import type { Project, Release, ReleaseNote } from '@/lib/types';
 
 interface ProjectDetailViewProps {
@@ -383,6 +384,15 @@ export function ProjectDetailView({
                 <Reveal delay={0.22}>
                   <div className="border-t border-border pt-12">
                     <RunsteadInvestmentCase />
+                  </div>
+                </Reveal>
+              )}
+
+              {/* Kyro Portfolio Economics & Commercial Pathway */}
+              {project.slug === 'kyro' && (
+                <Reveal delay={0.23}>
+                  <div className="border-t border-border pt-12">
+                    <KyroEconomicCase />
                   </div>
                 </Reveal>
               )}
