@@ -28,7 +28,7 @@ test('KYRO-2: discovery, static route and SEO indexing integration', () => {
   const structuredData = fs.readFileSync(path.join(ROOT, 'lib/structured-data.ts'), 'utf8');
 
   assert.match(contentFile, /slug:\s*'kyro'/, 'canonical catalogue must include Kyro');
-  assert.match(homepage, /Kyro — Visual AI Desktop Agent/, 'homepage must feature Kyro');
+  assert.match(homepage, /Kyro — Desktop AI Assistant/, 'homepage must feature Kyro');
   assert.match(homepage, /href="\/projects\/kyro"/, 'homepage must link to the project profile');
   assert.match(homepage, /https:\/\/github\.com\/eshanized\/Kyro/, 'homepage must link to the GitHub repository');
   assert.match(projectIndex, /getProjects\(\)\.filter\(\(p\) => p\.status === 'Development'\)/, 'development venture list must be catalogue-driven');
