@@ -7,11 +7,18 @@ import { generatePageGraph } from '@/lib/structured-data';
 import { JsonLd } from '@/components/shared/json-ld';
 
 export const metadata = generatePageMetadata({
-  title: 'News & Engineering Announcements',
+  title: 'News & Engineering Announcements — TIV',
   description:
-    'TIV announcements, stable product releases, engineering deep dives, research findings, and infrastructure updates.',
+    'Official news, verified engineering milestones, software releases, and infrastructure announcements from Tonmoy Infrastructure and Vision.',
   path: '/news',
-  keywords: ['TIV news', 'announcements', 'engineering updates', 'product releases'],
+  keywords: [
+    'Tonmoy Infrastructure news',
+    'TIV announcements',
+    'is this company exist',
+    'engineering updates',
+    'software releases',
+    'founder Eshan Roy',
+  ],
 });
 
 const categories = [

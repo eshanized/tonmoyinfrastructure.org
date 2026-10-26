@@ -12,11 +12,18 @@ import { generatePageGraph, generateFounderPersonSchema } from '@/lib/structured
 import { JsonLd } from '@/components/shared/json-ld';
 
 export const metadata = generatePageMetadata({
-  title: 'Leadership & Engineering Stewardship',
+  title: 'Founder & Leadership — Eshan Roy (eshanized)',
   description:
-    'Leadership and engineering stewardship for Tonmoy Infrastructure and Vision. Eshan Roy (eshanized), systems engineering, and open-source architecture.',
+    'Founder and systems architect profile for Eshan Roy (eshanized) at Tonmoy Infrastructure and Vision. Background, verified open-source footprint, and leadership.',
   path: '/about/leadership',
-  keywords: ['TIV leadership', 'Eshan Roy', 'eshanized', 'systems architect', 'open source founder'],
+  keywords: [
+    'Eshan Roy',
+    'eshanized',
+    'Tonmoy Infrastructure founder',
+    'TIV owner',
+    'systems architect',
+    'open source founder',
+  ],
 });
 
 const areaIcons: Record<string, typeof Cpu> = {

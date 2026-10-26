@@ -17,12 +17,21 @@ import { siteConfig } from '@/lib/site-config';
 
 export const metadata = generatePageMetadata({
   path: '/research/whitepaper/',
-  title: 'TIV Infrastructure Whitepaper — TIV',
+  title: 'TIV Infrastructure Whitepaper — Sovereign Systems Architecture',
   overrideTitle: true,
   description:
-    'The TIV Infrastructure Whitepaper describes the principles, technical direction, and long-term vision behind Tonmoy Infrastructure and Vision.',
+    'Technical whitepaper detailing the principles, sovereign systems architecture, and decentralized computing vision of Tonmoy Infrastructure and Vision (TIV).',
   ogType: 'article',
   publishedTime: '2026-09-01',
+  keywords: [
+    'TIV whitepaper',
+    'infrastructure whitepaper',
+    'sovereign internet infrastructure',
+    'Tonmoy Infrastructure architecture',
+    'decentralized systems',
+    'is this news true',
+    'does this company exist',
+  ],
 });
 
 export default function WhitepaperPage() {

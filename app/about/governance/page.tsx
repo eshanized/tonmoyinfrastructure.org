@@ -9,11 +9,18 @@ import { generatePageGraph } from '@/lib/structured-data';
 import { JsonLd } from '@/components/shared/json-ld';
 
 export const metadata = generatePageMetadata({
-  title: 'Governance Principles & Decision Process',
+  title: 'Corporate Governance & Entity Verification',
   description:
-    "TIV's approach to governance — corporate responsibility, technical accountability, financial stewardship, and open-source commitments.",
+    'Official corporate governance, legal registration disclosures, ownership structure, and technical stewardship of Tonmoy Infrastructure and Vision (TIV).',
   path: '/about/governance',
-  keywords: ['TIV governance', 'governance principles', 'decision process', 'open source stewardship'],
+  keywords: [
+    'TIV governance',
+    'does this company exist',
+    'Tonmoy Infrastructure verification',
+    'corporate responsibility',
+    'technical accountability',
+    'open source stewardship',
+  ],
 });
 
 const governanceAreas = [

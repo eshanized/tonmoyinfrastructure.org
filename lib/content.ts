@@ -27,7 +27,7 @@ const rawProjects: Project[] = [
     title: 'OpenMail',
     seoTitle: 'OpenMail — Self-Hosted Email Server (SMTP/IMAP) — TIV',
     seoDescription:
-      'Self-hosted email server and communication infrastructure with integrated SMTP and IMAP, automatic TLS certificates, local data storage, spam protection, and mail-domain tooling.',
+      'Deploy a complete, single-binary private mail server with integrated SMTP, IMAP, automated TLS certificates, built-in spam protection, and DKIM/SPF tooling.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -97,6 +97,18 @@ const rawProjects: Project[] = [
       { item: 'Enhanced deliverability diagnostic tooling', done: false },
     ],
     relatedProjects: ['mercura', 'm31a', 'octate'],
+    keywords: [
+      'OpenMail',
+      'self-hosted email server',
+      'single binary mail server',
+      'open source smtp imap server',
+      'go email server',
+      'private email hosting',
+      'dkim spf dmarc mail server',
+      'self-hosted mail transfer agent',
+      'lightweight mail server',
+      'data sovereign email',
+    ],
     content: `## Overview
 
 OpenMail is a self-hosted email and communication infrastructure platform. It gives individuals and organizations full control over their email systems without depending on centralized providers.
@@ -143,9 +155,9 @@ OpenMail is a stable release. The core platform is complete and deployed. Active
   {
     slug: 'mercura',
     title: 'Mercura',
-    seoTitle: 'Mercura — Self-Hosted Mercurial Code Hosting Platform',
+    seoTitle: 'Mercura — Self-Hosted Mercurial Code Hosting & Git Mirror — TIV',
     seoDescription:
-      'Self-hosted source code hosting built around Mercurial distributed version control, with browser-based repository browsing, web code review, a read-only Git mirror, and granular access controls.',
+      'Modern self-hosted Mercurial repository hosting and code review platform. Includes web changeset browsing, read-only Git mirroring, and team access controls.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -204,6 +216,19 @@ OpenMail is a stable release. The core platform is complete and deployed. Active
       { item: 'Enhanced collaboration features', done: false },
     ],
     relatedProjects: ['openmail', 'm31a', 'octate'],
+    keywords: [
+      'Mercura',
+      'mercurial hosting',
+      'self-hosted mercurial server',
+      'mercurial repository hosting',
+      'mercurial code hosting',
+      'mercurial code review',
+      'open source mercurial hosting',
+      'mercurial software',
+      'free mercurial hosting',
+      'distributed version control',
+      'mercurial git mirror',
+    ],
     content: `## Overview
 
 Mercura is a self-hosted code hosting platform built around Mercurial. It provides repository hosting, code review, and collaboration tools for teams that prefer distributed version control systems.
@@ -251,9 +276,9 @@ Mercura is a stable release. The core platform is complete and deployed. Active 
   {
     slug: 'm31a',
     title: 'M31A',
-    seoTitle: 'M31A — Open-Source Rust AI Coding Agent Runtime',
+    seoTitle: 'M31A — Open-Source Rust AI Coding Agent Runtime — TIV',
     seoDescription:
-      'Rust-native runtime for autonomous coding agents with deterministic lifecycle control, non-bypassable policy gates, resource-bounded execution, continuous verification, crash-resilient checkpoints, and local observability.',
+      'Single-crate Rust runtime for autonomous coding agents. Features 11-stage non-bypassable security gates, SQLite WAL state, and fail-closed verification.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -341,6 +366,18 @@ Mercura is a stable release. The core platform is complete and deployed. Active 
     ],
     relatedResearch: ['autonomous-development-systems'],
     relatedProjects: ['openmail', 'mercura', 'octate'],
+    keywords: [
+      'M31A',
+      'autonomous software engineering agent',
+      'Rust AI coding agent runtime',
+      'verifiable code execution runtime',
+      'deterministic autonomous agent',
+      'agent policy gates',
+      'SQLite WAL mode',
+      'Ratatui coding agent',
+      'NVIDIA NIM coding agent',
+      'fail-closed agent architecture',
+    ],
     content: `> **"The model proposes. The runtime decides."**
 
 **Website:** [https://m31a.tonmoyinfrastructure.org/](https://m31a.tonmoyinfrastructure.org/) &bull; **Repository:** [https://github.com/eshanized/M31A/](https://github.com/eshanized/M31A/)
@@ -465,9 +502,9 @@ m31a eval run --all
   {
     slug: 'octate',
     title: 'Octate',
-    seoTitle: 'Octate — AI Code Review CLI with SARIF & AST — TIV',
+    seoTitle: 'Octate — AI Code Review CLI for Terminal & CI/CD — TIV',
     seoDescription:
-      'Terminal-native AI code review CLI combining Tree-sitter AST parsing, cross-file reference graphs, static-linter findings, multi-stage LLM review, critic validation, and SARIF export.',
+      'Open-source AI code review CLI for terminal & GitHub Actions. Run multi-stage LLM reviews with Tree-sitter AST parsing, linter discovery, and SARIF export.',
     type: 'software',
     productStatus: 'stable',
     releaseStatus: 'stable',
@@ -545,6 +582,18 @@ m31a eval run --all
       { item: 'Local quantized model runtime support', done: false },
     ],
     relatedProjects: ['openmail', 'mercura', 'm31a'],
+    keywords: [
+      'Octate',
+      'ai code review cli',
+      'terminal ai code reviewer',
+      'sarif code review tool',
+      'tree-sitter code review',
+      'open source ai code review',
+      'cli code review tool',
+      'ink react tui cli',
+      'automated pull request reviewer',
+      'ast code analysis',
+    ],
     content: `## Overview
 
 Octate is a developer-first, terminal-native AI code-review CLI tool. It combines deterministic repository intelligence (Tree-sitter WASM AST parsing, cross-file reference graphs, static linters) with multi-stage LLM reasoning and a two-stage critic quality gate.
@@ -745,6 +794,16 @@ Octate \`v1.0.0\` is an existing **Stable Release**. The core CLI engine, TUI, T
     ],
     relatedResearch: ['autonomous-development-systems'],
     relatedProjects: ['m31a', 'm31tesla', 'm31entropy'],
+    keywords: [
+      'M31Genesis',
+      'small language model for coding',
+      'causal language model code',
+      '425M code model',
+      'agentic coding research model',
+      'RoPE transformer coding',
+      'Hugging Face code model',
+      'open source code LLM',
+    ],
     content: `## Overview
 
 M31Genesis (M31-Genesis-AgenticCode-v1) is a native M31 causal language model developed for agentic coding research. It is designed to explore how compact, purpose-built transformer architectures can perform software engineering, code synthesis, editing, and repository-aware reasoning.
@@ -838,6 +897,13 @@ Public checkpoints are hosted on Hugging Face at [eshanized/M31Genesis](https://
       { item: 'Interactive code editing benchmark suite', done: false },
     ],
     relatedProjects: ['m31genesis', 'm31a'],
+    keywords: [
+      'M31 Q',
+      'M31 programmer demo',
+      'Hugging Face Spaces coding demo',
+      'interactive code reasoning space',
+      'open source programming AI demo',
+    ],
     content: `## Overview
 
 M31 Q // For programmers is an interactive demonstration Space hosted on Hugging Face. It provides an accessible web interface for exploring M31 tooling, developer interactions, and programmer-focused research.
@@ -927,6 +993,15 @@ As part of TIV's commitment to factual transparency:
       { item: 'Multi-file code repair evaluation', done: false },
     ],
     relatedProjects: ['m31genesis', 'm31a', 'm31entropy'],
+    keywords: [
+      'M31Tesla',
+      'Python code repair model',
+      '220M coding agent model',
+      'lightweight python agent runtime',
+      'open-source coding model',
+      'Hugging Face code repair checkpoint',
+      'compact language model python',
+    ],
     content: `## Overview
 
 M31Tesla is an experimental AI research project providing the standalone runtime and checkpoints for the custom **M31-Python-Agent-220M-v5** model.
@@ -1018,6 +1093,14 @@ Checkpoints and runtime files are hosted at [eshanized/M31Tesla](https://hugging
       { item: 'Vocabulary compression ratio evaluation against standard BPE', done: false },
     ],
     relatedProjects: ['m31genesis', 'm31tesla', 'm31a'],
+    keywords: [
+      'M31Entropy',
+      'large vocabulary language model',
+      '128k tokenizer code model',
+      '314M parameter transformer',
+      'causal LM pretraining checkpoint',
+      'code tokenizer representation density',
+    ],
     content: `## Overview
 
 M31Entropy is an experimental architecture exploration investigating large-vocabulary (128,000 tokens) tokenizer dynamics in compact causal transformers.
@@ -1189,7 +1272,7 @@ Kyro v0.1.0 is publicly released for Linux, with Debian/Ubuntu \`.deb\`, Fedora/
     title: 'Runstead',
     seoTitle: 'Runstead — Hosting Business Management & Billing — TIV',
     seoDescription:
-      'Pre-release hosting-business management platform under development, bringing together client CRM, recurring billing, service lifecycle workflows, domain and DNS operations, ticketing, and white-label storefronts.',
+      'Pre-release hosting business management & billing platform. Features client CRM, recurring billing, DNS automation, and open-source alternative to WHMCS.',
     type: 'software',
     productStatus: 'preview',
     releaseStatus: 'pre-release',

@@ -11,11 +11,18 @@ import { generatePageGraph } from '@/lib/structured-data';
 import { JsonLd } from '@/components/shared/json-ld';
 
 export const metadata = generatePageMetadata({
-  title: 'Investor & Stakeholder Information',
+  title: 'Investor & Stakeholder Information — TIV',
   description:
-    'Factual stakeholder and investor information hub for Tonmoy Infrastructure and Vision — business model, infrastructure assets, capital discipline, and governance.',
+    'Official corporate overview, capital structure, sovereign infrastructure assets, and audited governance for Tonmoy Infrastructure and Vision (TIV).',
   path: '/investors',
-  keywords: ['TIV investors', 'stakeholder information', 'capital discipline', 'business areas'],
+  keywords: [
+    'Tonmoy Infrastructure investors',
+    'is this company exist',
+    'TIV stakeholder information',
+    'capital discipline',
+    'business model',
+    'governance',
+  ],
 });
 
 const sections = [

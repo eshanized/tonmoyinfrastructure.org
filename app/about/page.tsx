@@ -13,9 +13,16 @@ import { JsonLd } from '@/components/shared/json-ld';
 export const metadata = generatePageMetadata({
   title: 'About Tonmoy Infrastructure and Vision',
   description:
-    'Tonmoy Infrastructure and Vision (TIV) — who we are, what we believe, our engineering philosophy, open-source work, and long-term infrastructure mission.',
+    'Official overview of Tonmoy Infrastructure and Vision (TIV) — systems engineering philosophy, open-source platforms, sovereign operations, and founder profile.',
   path: '/about',
-  keywords: ['About TIV', 'Tonmoy Infrastructure and Vision', 'engineering organization', 'infrastructure mission'],
+  keywords: [
+    'About TIV',
+    'Tonmoy Infrastructure and Vision',
+    'founder Eshan Roy',
+    'sovereign infrastructure',
+    'engineering organization',
+    'open source systems',
+  ],
 });
 
 const sections = [

@@ -26,7 +26,15 @@ export const metadata = generatePageMetadata({
   title: 'Enterprise Infrastructure & Systems Engineering — TIV',
   overrideTitle: true,
   description:
-    'Tonmoy Infrastructure and Vision (TIV) engineers sovereign software platforms, verifiable developer runtimes, and distributed infrastructure architecture. Explore stable releases including OpenMail, Mercura, M31A, and Octate, plus Kyro, our local-first desktop AI assistant with a public v0.1.0 Linux release and continued development.',
+    'Tonmoy Infrastructure and Vision engineers sovereign software platforms, verifiable runtimes, and distributed architecture. Explore OpenMail, Mercura, M31A, and Octate.',
+  keywords: [
+    'Tonmoy Infrastructure and Vision',
+    'TIV',
+    'sovereign software platforms',
+    'open source developer infrastructure',
+    'systems engineering',
+    'Eshan Roy',
+  ],
 });
 
 export default function HomePage() {

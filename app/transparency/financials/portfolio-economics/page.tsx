@@ -7,17 +7,18 @@ import { sanitizePortfolioForPublic } from '@/lib/portfolio-economics/auth';
 import { PublicPortfolioView } from '@/components/portfolio-economics/public-portfolio-view';
 
 export const metadata = generatePageMetadata({
-  title: 'Portfolio Economics',
+  title: 'Portfolio Economics & Financial Transparency — TIV',
   description:
-    'A transparent measurement and accounting view of development investment, operating costs, attributed revenue, engineering effort, and data confidence across TIV projects.',
+    'Transparent accounting of project economics, engineering investments, operational costs, attributed revenue, and verifiable data lineage across TIV ventures.',
   path: '/transparency/financials/portfolio-economics',
   keywords: [
-    'TIV portfolio economics',
+    'portfolio economics',
+    'TIV financials',
+    'revenue disclosure',
     'infrastructure investment',
     'open source accounting',
     'engineering effort tracking',
     'shared cost allocation',
-    'data confidence',
   ],
 });
 
